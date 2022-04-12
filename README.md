@@ -10,7 +10,7 @@
   <a href ="#metodologia-utilizada"> Metodologia </a>  • 
   <a href ="#product-backlog">Product Backlog </a>  •
   <a href ="#sprints-backlog">Sprints Backlog </a>  •
-  <a href ="#equipe"> Equipe </a> •
+  <a href ="#equipe"> Equipe </a> 
  
 </p>
 
@@ -33,13 +33,12 @@
 ### **Desenvolver um software que atenda as necessidades da empresa:**<br><br>
 
 ### **Requisitos funcionais**   
-- <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Cadastros de Unidades, Concessionárias, Contratos;
+- <img src = "./readme/grupoAPI/feito.jpeg" /> Cadastros de Unidades, Concessionárias, Contratos;
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Cadastro do usuário e seus perfis (administrador, gestor e digitador);
-- <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Cadastro (digitação) da conta de água, energia e gás;
-- <img src = "./readme/grupoAPI/a_fazer.jpeg" />Registro de log de operações (cadastro e deleção);
+- <img src = "./readme/grupoAPI/feito.jpeg" /> Cadastro (digitação) da conta de água e energia;
+- <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Registro de log de operações (cadastro e deleção);
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Relatório de consumo total de água mensal, anual e média;
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" />  Relatório de consumo total de energia mensal, anual e média;
-- <img src = "./readme/grupoAPI/a_fazer.jpeg" />  Relatório de consumo total de gás mensal, anual e média;
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Painel adminitrativo para alterações;
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Emissão de relatorios;
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Geração de alertas de consumo acima da média (a média pode ser definida no cadastro
@@ -59,7 +58,7 @@ do contrato);
 ## 📆 Cronograma das Sprints
 
 - <img src = "./readme/grupoAPI/feito.jpeg" /> Kick-Off - 15/03/2022
-- <img src = "./readme/grupoAPI/a_fazer.jpeg" /> [ Sprint 1 ]( ) - 25/03/2022 a 15/042022   
+- <img src = "./readme/grupoAPI/a_fazer.jpeg" /> [ Sprint 1 ]( ) - 25/03/2022 a 14/04/2022   
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" /> [ Sprint 2 ]( ) - 25/04/2022 a 15/05/2022  
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" /> [ Sprint 3 ]( ) - 16/05/2022 a 05/06/2022  
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" /> [Feira de Soluções](https://youtu.be/xGE51h8fBuY) - 15/06/2022
