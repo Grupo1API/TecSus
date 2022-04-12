@@ -102,7 +102,7 @@ do contrato);
 
 ## 📝 Sprints Backlog
 
-<h1 align="center"> <img src = "./readme/framesFigma/sprintsBacklogs.png" /></h1>
+<h1 align="center"> <img src = "./readme/framesFigma/sprintsBacklogs.png"/></h1>
 
 <br id="equipe">
 
