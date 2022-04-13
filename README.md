@@ -107,8 +107,7 @@ do contrato);
 <br id="equipe">
 
 ## 👨‍💻 Equipe
-<!-- 
-![Equipe Ditial Solutions](/readme/time.gif "Apresentação Equipe Digital Solutions") -->
+<!-- ![Equipe Ditial Solutions](/readme/time.gif "Apresentação Equipe Digital Solutions") -->
 
 <br>
 
