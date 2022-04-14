@@ -7,12 +7,12 @@ Após o cliente aprovar o protótipo apresentado, o desenvolvimento do projeto s
 <br>
 
 <h1 align="center"> 
-<img src = ""/></h1>
+<img src = "sprint1BacklogPrioridades.png"/></h1>
 <br>
 
 ## Burndown da Sprint
 
-<h1 align="center"> <img src = "sprint1BacklogPrioridades.png"/></h1>
+<h1 align="center"> <img src = "burndownSprint_1.jpeg"/></h1>
 
 <br>
 
