@@ -14,10 +14,9 @@ Após o cliente aprovar o protótipo apresentado, o desenvolvimento do projeto s
 
 <h1 align="center"> <img src = "./midias/burndownSprint_1.jpeg"/></h1>
 
-<br>
+<br> 
 
 ## 🖥️ Funcionalidades da Sprint
-
 #
 
 <h3 align="center">Cadastro para conta de água</h3>
