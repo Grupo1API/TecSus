@@ -12,7 +12,7 @@ import org.springframework.hateoas.RepresentationModel;
 public class CadastroUnidade extends RepresentationModel<CadastroUnidade> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long unidade_id;
 	@Column
 	private String nome;
 	@Column
@@ -35,10 +35,10 @@ public class CadastroUnidade extends RepresentationModel<CadastroUnidade> {
 	private String end_numero;
 	
 	public Long getId() {
-		return id;
+		return unidade_id;
 	}
 	public void setId(Long id) {
-		this.id = id;
+		this.unidade_id = id;
 	}
 	public String getNome() {
 		return nome;

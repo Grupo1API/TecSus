@@ -5,47 +5,12 @@ import com.digisolu.tecsus1.entidades.ContaAgua;
 public class ContaAguaAtualizador {
 	
 	private void atualizarDados(ContaAgua contaAgua, ContaAgua atualizacao) {
-		if(!(atualizacao.getConcessionaria()==null)) {
-			contaAgua.setConcessionaria(atualizacao.getConcessionaria());
-		}
-		if(!(atualizacao.getCnpj()==null)) {
-			contaAgua.setCnpj(atualizacao.getCnpj());
-		}
-		if(!(atualizacao.getSegmento()==null)) {
-			contaAgua.setSegmento(atualizacao.getSegmento());
-		}
-		if(!(atualizacao.getN_fornecimento()==null)) {
-			contaAgua.setN_fornecimento(atualizacao.getN_fornecimento());
-		}
+		
 		if(!(atualizacao.getN_documento()==null)) {
 			contaAgua.setN_documento(atualizacao.getN_documento());
 		}
 		if(!(atualizacao.getData_emissao()==null)) {
 			contaAgua.setData_emissao(atualizacao.getData_emissao());
-		}
-		if(!(atualizacao.getNome_cliente()==null)) {
-			contaAgua.setNome_cliente(atualizacao.getNome_cliente());
-		}
-		if(!(atualizacao.getCep()==null)) {
-			contaAgua.setCep(atualizacao.getCep());
-		}
-		if(!(atualizacao.getEndereco()==null)) {
-			contaAgua.setEndereco(atualizacao.getEndereco());
-		}
-		if(!(atualizacao.getCodigo_cliente()==null)) {
-			contaAgua.setCodigo_cliente(atualizacao.getCodigo_cliente());
-		}
-		if(!(atualizacao.getPde_rgi()==null)) {
-			contaAgua.setPde_rgi(atualizacao.getPde_rgi());
-		}
-		if(!(atualizacao.getHidrometro()==null)) {
-			contaAgua.setHidrometro(atualizacao.getHidrometro());
-		}
-		if(!(atualizacao.getEconomia()==null)) {
-			contaAgua.setEconomia(atualizacao.getEconomia());
-		}
-		if(!(atualizacao.getTipo_ligacao()==null)) {
-			contaAgua.setTipo_ligacao(atualizacao.getTipo_ligacao());
 		}
 		if(!(atualizacao.getData_apresentacao()==null)) {
 			contaAgua.setData_apresentacao(atualizacao.getData_apresentacao());

@@ -12,7 +12,7 @@ import org.springframework.hateoas.RepresentationModel;
 public class CadastroConcessionaria extends RepresentationModel<CadastroConcessionaria> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long concessionaria_id;
 	@Column
 	private String cnpj;
 	@Column
@@ -39,10 +39,10 @@ public class CadastroConcessionaria extends RepresentationModel<CadastroConcessi
 	private String inscricao_especial;
 	
 	public Long getId() {
-		return id;
+		return concessionaria_id;
 	}
 	public void setId(Long id) {
-		this.id = id;
+		this.concessionaria_id = id;
 	}
 	public String getCnpj() {
 		return cnpj;

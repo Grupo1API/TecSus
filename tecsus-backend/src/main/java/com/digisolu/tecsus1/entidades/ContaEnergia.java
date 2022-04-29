@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.springframework.hateoas.RepresentationModel;
 
@@ -17,30 +19,14 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column
-	private String concessionaria;
-	@Column
-	private String endereco_concessionaria;
-	@Column
-	private String cep_concessionaria; 
-	@Column
-	private String cnpj_concessionaria;
+	@ManyToOne
+	@JoinColumn(name = "contaenergia_contrato_id", referencedColumnName = "contrato_energia_id")
+	private ContratoEnergia contaenergia_contrato_id;
 
-	//Dados do cliente/local de consumo
-	@Column
-	private String nome_cliente;
-	@Column
-	private String cpf_cnpj_consumo;
-	@Column
-	private String endereco_cliente;
-	@Column
-	private String cep_cliente;
 	@Column
 	private String nota_fiscal;
 	@Column
 	private float valor_total;
-	@Column
-	private String numero_instalacao;
 	@Column
 	private float consumo_kwh_mes;
 	@Column
@@ -124,53 +110,12 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getConcessionaria() {
-		return concessionaria;
+	
+	public ContratoEnergia getContaenergia_contrato_id() {
+		return contaenergia_contrato_id;
 	}
-	public void setConcessionaria(String concessionaria) {
-		this.concessionaria = concessionaria;
-	}
-	public String getEndereco_concessionaria() {
-		return endereco_concessionaria;
-	}
-	public void setEndereco_concessionaria(String endereco_concessionaria) {
-		this.endereco_concessionaria = endereco_concessionaria;
-	}
-	public String getCep_concessionaria() {
-		return cep_concessionaria;
-	}
-	public void setCep_concessionaria(String cep_concessionaria) {
-		this.cep_concessionaria = cep_concessionaria;
-	}
-	public String getCnpj_concessionaria() {
-		return cnpj_concessionaria;
-	}
-	public void setCnpj_concessionaria(String cnpj_concessionaria) {
-		this.cnpj_concessionaria = cnpj_concessionaria;
-	}
-	public String getNome_cliente() {
-		return nome_cliente;
-	}
-	public void setNome_cliente(String nome_cliente) {
-		this.nome_cliente = nome_cliente;
-	}
-	public String getCpf_cnpj_consumo() {
-		return cpf_cnpj_consumo;
-	}
-	public void setCpf_cnpj_consumo(String cpf_cnpj_consumo) {
-		this.cpf_cnpj_consumo = cpf_cnpj_consumo;
-	}
-	public String getEndereco_cliente() {
-		return endereco_cliente;
-	}
-	public void setEndereco_cliente(String endereco_cliente) {
-		this.endereco_cliente = endereco_cliente;
-	}
-	public String getCep_cliente() {
-		return cep_cliente;
-	}
-	public void setCep_cliente(String cep_cliente) {
-		this.cep_cliente = cep_cliente;
+	public void setContaenergia_contrato_id(ContratoEnergia contaenergia_contrato_id) {
+		this.contaenergia_contrato_id = contaenergia_contrato_id;
 	}
 	public String getNota_fiscal() {
 		return nota_fiscal;
@@ -184,12 +129,7 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	public void setValor_total(float valor_total) {
 		this.valor_total = valor_total;
 	}
-	public String getNumero_instalacao() {
-		return numero_instalacao;
-	}
-	public void setNumero_instalacao(String numero_instalacao) {
-		this.numero_instalacao = numero_instalacao;
-	}
+	
 	public float getConsumo_kwh_mes() {
 		return consumo_kwh_mes;
 	}

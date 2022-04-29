@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.springframework.hateoas.RepresentationModel;
 
@@ -13,15 +15,16 @@ public class ContratoEnergia extends RepresentationModel<ContratoEnergia> {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private Long id;
-	@Column
-	private String concessionaria;
-	@Column
-	private String concessionaria_cnpj;
-	@Column
-	private String nome_unidade;
-	@Column
-	private String cpf_cnpj;
+	private Long contrato_energia_id;
+	
+	@ManyToOne
+	@JoinColumn(name = "contrato_concessionaria_id", referencedColumnName = "concessionaria_id")
+	private CadastroConcessionaria contrato_concessionaria_id;
+
+	@ManyToOne
+	@JoinColumn(name = "contrato_unidade_id", referencedColumnName = "unidade_id")
+	private CadastroUnidade contrato_unidade_id;
+	
 	@Column
 	private String codigo_identificador; 
 	@Column
@@ -61,34 +64,23 @@ public class ContratoEnergia extends RepresentationModel<ContratoEnergia> {
 	
 	
 	public Long getId() {
-		return id;
+		return contrato_energia_id;
 	}
 	public void setId(Long id) {
-		this.id = id;
+		this.contrato_energia_id = id;
 	}
-	public String getConcessionaria() {
-		return concessionaria;
+	public CadastroConcessionaria getContrato_concessionaria_id() {
+		return contrato_concessionaria_id;
 	}
-	public void setConcessionaria(String concessionaria) {
-		this.concessionaria = concessionaria;
+	public void setContrato_concessionaria_id(CadastroConcessionaria contrato_concessionaria_id) {
+		this.contrato_concessionaria_id = contrato_concessionaria_id;
 	}
-	public String getConcessionaria_cnpj() {
-		return concessionaria_cnpj;
+	
+	public CadastroUnidade getContrato_unidade_id() {
+		return contrato_unidade_id;
 	}
-	public void setConcessionaria_cnpj(String concessionaria_cnpj) {
-		this.concessionaria_cnpj = concessionaria_cnpj;
-	}
-	public String getNome_unidade() {
-		return nome_unidade;
-	}
-	public void setNome_unidade(String nome_unidade) {
-		this.nome_unidade = nome_unidade;
-	}
-	public String getCpf_cnpj() {
-		return cpf_cnpj;
-	}
-	public void setCpf_cnpj(String cpf_cnpj) {
-		this.cpf_cnpj = cpf_cnpj;
+	public void setContrato_unidade_id(CadastroUnidade contrato_unidade_id) {
+		this.contrato_unidade_id = contrato_unidade_id;
 	}
 	public String getCodigo_identificador() {
 		return codigo_identificador;

@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.springframework.hateoas.RepresentationModel;
 
@@ -15,34 +17,15 @@ public class ContaAgua extends RepresentationModel<ContaAgua>{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column
-	private String concessionaria;
-	@Column
-	private String cnpj;
-	@Column
-	private String segmento;
-	@Column
-	private String n_fornecimento;
+
+	@ManyToOne
+	@JoinColumn(name = "contaagua_contrato_id", referencedColumnName = "contrato_agua_id")
+	private ContratoAgua contaagua_contrato_id;
+	
 	@Column
 	private String n_documento;
 	@Column
 	private LocalDate data_emissao;
-	@Column
-	private String nome_cliente;
-	@Column
-	private String cep;
-	@Column
-	private String endereco;
-	@Column
-	private String codigo_cliente;
-	@Column
-	private String pde_rgi;
-	@Column
-	private String hidrometro;
-	@Column 
-	private String economia;
-	@Column
-	private String tipo_ligacao;
 	@Column
 	private LocalDate data_apresentacao;
 	@Column
@@ -79,30 +62,6 @@ public class ContaAgua extends RepresentationModel<ContaAgua>{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getConcessionaria() {
-		return concessionaria;
-	}
-	public void setConcessionaria(String concessionaria) {
-		this.concessionaria = concessionaria;
-	}
-	public String getCnpj() {
-		return cnpj;
-	}
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
-	}
-	public String getSegmento() {
-		return segmento;
-	}
-	public void setSegmento(String segmento) {
-		this.segmento = segmento;
-	}
-	public String getN_fornecimento() {
-		return n_fornecimento;
-	}
-	public void setN_fornecimento(String n_fornecimento) {
-		this.n_fornecimento = n_fornecimento;
-	}
 	public String getN_documento() {
 		return n_documento;
 	}
@@ -115,54 +74,7 @@ public class ContaAgua extends RepresentationModel<ContaAgua>{
 	public void setData_emissao(LocalDate data_emissao) {
 		this.data_emissao = data_emissao;
 	}
-	public String getNome_cliente() {
-		return nome_cliente;
-	}
-	public void setNome_cliente(String nome_cliente) {
-		this.nome_cliente = nome_cliente;
-	}
-	public String getCep() {
-		return cep;
-	}
-	public void setCep(String cep) {
-		this.cep = cep;
-	}
-	public String getEndereco() {
-		return endereco;
-	}
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
-	public String getCodigo_cliente() {
-		return codigo_cliente;
-	}
-	public void setCodigo_cliente(String codigo_cliente) {
-		this.codigo_cliente = codigo_cliente;
-	}
-	public String getPde_rgi() {
-		return pde_rgi;
-	}
-	public void setPde_rgi(String pde_rgi) {
-		this.pde_rgi = pde_rgi;
-	}
-	public String getHidrometro() {
-		return hidrometro;
-	}
-	public void setHidrometro(String hidrometro) {
-		this.hidrometro = hidrometro;
-	}
-	public String getEconomia() {
-		return economia;
-	}
-	public void setEconomia(String economia) {
-		this.economia = economia;
-	}
-	public String getTipo_ligacao() {
-		return tipo_ligacao;
-	}
-	public void setTipo_ligacao(String tipo_ligacao) {
-		this.tipo_ligacao = tipo_ligacao;
-	}
+	
 	public LocalDate getData_apresentacao() {
 		return data_apresentacao;
 	}
