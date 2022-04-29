@@ -56,6 +56,12 @@ public class ContaAgua extends RepresentationModel<ContaAgua>{
 	private LocalDate data_vencimento;
 	
 	
+	public ContratoAgua getContaagua_contrato_id() {
+		return contaagua_contrato_id;
+	}
+	public void setContaagua_contrato_id(ContratoAgua contaagua_contrato_id) {
+		this.contaagua_contrato_id = contaagua_contrato_id;
+	}
 	public Long getId() {
 		return id;
 	}
