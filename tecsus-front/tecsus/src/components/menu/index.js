@@ -63,6 +63,10 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     color: '#000'
  },
+ button:{
+   background:"#191a1a66",
+   color:"#fff"
+ }
 }));
 
 export default function Dashboard() {
@@ -106,6 +110,9 @@ export default function Dashboard() {
                 <ListItemText primary="Usuario" style={{marginRight:'12px'}} />
                 <ListItemText secondary="(Administrador)"/>
               </div>
+              <Link to='/' className={classes.link} style={{width: '100px', margin: '1px auto', textAlign:'center'}}>
+                <Button variant="contained" size="small" className={classes.button} >Sair</Button>
+              </Link>
             </ListItem>
             <Divider />
             <Link to='/' className={classes.link} > 
@@ -256,9 +263,7 @@ export default function Dashboard() {
             </ListItem>
             
         </List>
-        <Link to='/' className={classes.link} style={{width: '100px', margin: '1px auto', textAlign:'center'}}>
-          <Button size="small" color="#000" >Sair</Button>
-        </Link>
+        
       </Drawer>
     </div>
   );
