@@ -68,7 +68,6 @@ function Unidade(){
                             {/* configurar campos com utf8 */}
                             <TextField
                                 // style={{zIndex: }}
-                                variant="outlined"
                                 id='nome'
                                 className='input'
                                 type='text'
@@ -76,10 +75,10 @@ function Unidade(){
                                 label="Nome"
                                 value={nome}
                                 onChange={(e) => setNome(e.target.value)}
+                                variant="outlined"
                             />
                              <TextField
                                 // style={{zIndex: }}
-                                variant="outlined"
                                 id='cpf_cnpj'
                                 className='input'
                                 type='text'
@@ -87,6 +86,7 @@ function Unidade(){
                                 label="CPF/CNPJ"
                                 value={cpf_cnpj}
                                 onChange={(e) => setCpf_cnpj(e.target.value)}
+                                variant="outlined"
                             />
                             {/* não mexi aqui */}
                             <NumberFormat 
@@ -105,7 +105,6 @@ function Unidade(){
 
                         <div className='coluna'>
                             <TextField
-                                variant="outlined"
                                 // style={{zIndex: }}
                                 className='input'
                                 id='email'
@@ -114,10 +113,10 @@ function Unidade(){
                                 placeholder='Email'
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
+                                variant="outlined"
                             />
                             <TextField
                                 // style={{zIndex: }}
-                                variant="outlined"
                                 id='cep' 
                                 className='input'
                                 type='text'
@@ -125,10 +124,10 @@ function Unidade(){
                                 label="CEP"
                                 value={cep}
                                 onChange={(e) => setCep(e.target.value)}
+                                variant="outlined"
                             />
                             <TextField
                                 // style={{zIndex: }}
-                                variant="outlined"
                                 id='rua'
                                 className='input'
                                 type='text'
@@ -136,13 +135,13 @@ function Unidade(){
                                 label="Rua"
                                 value={rua}
                                 onChange={(e) => setRua(e.target.value)}
+                                variant="outlined"
                             />
                         </div>
 
                         <div className='coluna'>
                             <TextField
                                 // style={{zIndex: }}
-                                variant="outlined"
                                 id='bairro'
                                 className='input'
                                 type='text'
@@ -150,10 +149,10 @@ function Unidade(){
                                 label="Bairro"
                                 value={bairro}
                                 onChange={(e) => setBairro(e.target.value)}
+                                variant="outlined"
                             />
                             <TextField
                                 // style={{zIndex: }}
-                                variant="outlined"
                                 id='estado'
                                 className='input'
                                 type='text'
@@ -161,10 +160,10 @@ function Unidade(){
                                 label="Estado"
                                 value={estado}
                                 onChange={(e) => setEstado(e.target.value)}
+                                variant="outlined"
                             />
                             <TextField
                                 // style={{zIndex: }}
-                                variant="outlined"
                                 id='cidade'
                                 className='input'
                                 type='text'
@@ -172,13 +171,13 @@ function Unidade(){
                                 label="Cidade"
                                 value={cidade}
                                 onChange={(e) => setCidade(e.target.value)}
+                                variant="outlined"
                             />
                         </div>
 
                         <div className='coluna'>
                             <TextField
                                 // style={{zIndex: }}
-                                variant="outlined"
                                 id='num_resid'
                                 className='input'
                                 type='text'
@@ -186,6 +185,7 @@ function Unidade(){
                                 label="N° Residencial/Empresarial"
                                 value={num_resid}
                                 onChange={(e) => setNum_resid(e.target.value)}
+                                variant="outlined"
                             />
                         </div>
 
