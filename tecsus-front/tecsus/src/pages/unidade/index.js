@@ -2,6 +2,7 @@ import './style.css';
 import Menu from '../../components/menu'
 import { useState } from 'react';
 import NumberFormat from 'react-number-format';
+import TextField from '@material-ui/core/TextField';
 
 function Unidade(){
 
@@ -64,92 +65,131 @@ function Unidade(){
                 <div className='cadastro'>
                     <form name='cadastroUnidades' onSubmit={handleSubmit}>
                         <div className='coluna'>
-                            <input
+                            {/* configurar campos com utf8 */}
+                            <TextField
+                                // style={{zIndex: }}
+                                variant="outlined"
                                 id='nome'
+                                className='input'
                                 type='text'
                                 placeholder='Nome'
+                                label="Nome"
                                 value={nome}
                                 onChange={(e) => setNome(e.target.value)}
                             />
-                             <input
+                             <TextField
+                                // style={{zIndex: }}
+                                variant="outlined"
                                 id='cpf_cnpj'
+                                className='input'
                                 type='text'
                                 placeholder='CPF/CNPJ'
+                                label="CPF/CNPJ"
                                 value={cpf_cnpj}
                                 onChange={(e) => setCpf_cnpj(e.target.value)}
                             />
+                            {/* não mexi aqui */}
                             <NumberFormat 
                                 format="(##) #####-####" 
                                 id='telefone'
                                 mask="_"
+                                label="Telefone"
                                 placeholder='Telefone/Celular'
                                 value={telefone} 
                                 onValueChange = { ( valores )  =>  { 
                                     const  {value}  =  valores ; 
                                     setTelefone ( value  ) ;                                 
-                                } }
-                            />
-                             
+                                } } 
+                            />     
                         </div>
+
                         <div className='coluna'>
-                            <input
+                            <TextField
+                                variant="outlined"
+                                // style={{zIndex: }}
+                                className='input'
                                 id='email'
                                 type='text'
+                                label="email"
                                 placeholder='Email'
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
-                            <input
-                                id='cep'
+                            <TextField
+                                // style={{zIndex: }}
+                                variant="outlined"
+                                id='cep' 
+                                className='input'
                                 type='text'
                                 placeholder='CEP'
+                                label="CEP"
                                 value={cep}
                                 onChange={(e) => setCep(e.target.value)}
                             />
-                             <input
+                            <TextField
+                                // style={{zIndex: }}
+                                variant="outlined"
                                 id='rua'
+                                className='input'
                                 type='text'
                                 placeholder='Rua'
+                                label="Rua"
                                 value={rua}
                                 onChange={(e) => setRua(e.target.value)}
                             />
-                             
                         </div>
+
                         <div className='coluna'>
-                            <input
+                            <TextField
+                                // style={{zIndex: }}
+                                variant="outlined"
                                 id='bairro'
+                                className='input'
                                 type='text'
                                 placeholder='Bairro'
+                                label="Bairro"
                                 value={bairro}
                                 onChange={(e) => setBairro(e.target.value)}
                             />
-                            <input
+                            <TextField
+                                // style={{zIndex: }}
+                                variant="outlined"
                                 id='estado'
+                                className='input'
                                 type='text'
                                 placeholder='Estado'
+                                label="Estado"
                                 value={estado}
                                 onChange={(e) => setEstado(e.target.value)}
                             />
-                             <input
+                            <TextField
+                                // style={{zIndex: }}
+                                variant="outlined"
                                 id='cidade'
+                                className='input'
                                 type='text'
                                 placeholder='Cidade'
+                                label="Cidade"
                                 value={cidade}
                                 onChange={(e) => setCidade(e.target.value)}
                             />
-                             
                         </div>
+
                         <div className='coluna'>
-                            <input
+                            <TextField
+                                // style={{zIndex: }}
+                                variant="outlined"
                                 id='num_resid'
+                                className='input'
                                 type='text'
                                 placeholder='N° Residencial/Empresarial'
+                                label="N° Residencial/Empresarial"
                                 value={num_resid}
                                 onChange={(e) => setNum_resid(e.target.value)}
                             />
                         </div>
-                        <div className="bt-container">
 
+                        <div className="bt-container">
                             <button type="submit" className="cadastrar" id="botao_cad">ENVIAR</button>
                         </div>                                                  
                     </form>

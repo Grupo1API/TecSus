@@ -9,7 +9,8 @@
 .cadastro{
     margin-top: 40px;
 }
-input{
+
+.input {
     padding: 15px;
     display: inline-block;
     border: 1px solid #f8f8f8;
