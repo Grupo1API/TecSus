@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.springframework.hateoas.RepresentationModel;
 
@@ -17,7 +18,12 @@ public class ContaAgua extends RepresentationModel<ContaAgua>{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 
+	@OneToOne 
+	@JoinColumn (name = "contadeaguaarquivo_id",referencedColumnName = "arquivo_id")
+	private Arquivo contadeaguaarquivo_id;
+	
 	@ManyToOne
 	@JoinColumn(name = "contaagua_contrato_id", referencedColumnName = "contrato_agua_id")
 	private ContratoAgua contaagua_contrato_id;
@@ -55,7 +61,12 @@ public class ContaAgua extends RepresentationModel<ContaAgua>{
 	@Column
 	private LocalDate data_vencimento;
 	
-	
+	public Arquivo getContadeaguaarquivo_id() {
+		return contadeaguaarquivo_id;
+	}
+	public void setContadeaguaarquivo_id(Arquivo contadeaguaarquivo_id) {
+		this.contadeaguaarquivo_id = contadeaguaarquivo_id;
+	}
 	public ContratoAgua getContaagua_contrato_id() {
 		return contaagua_contrato_id;
 	}

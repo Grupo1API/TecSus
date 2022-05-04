@@ -14,7 +14,7 @@ import org.springframework.hateoas.RepresentationModel;
 public class Arquivo extends RepresentationModel<Arquivo> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long arquivo_id;
 	
 	@Column
 	private String nome;
@@ -28,11 +28,11 @@ public class Arquivo extends RepresentationModel<Arquivo> {
 	private byte[] bytes;
 
 	public Long getId() {
-		return id;
+		return arquivo_id;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.arquivo_id = id;
 	}
 
 	public String getNome() {
