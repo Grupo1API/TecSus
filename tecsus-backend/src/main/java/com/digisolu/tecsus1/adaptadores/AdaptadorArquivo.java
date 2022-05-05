@@ -1,22 +1,42 @@
 package com.digisolu.tecsus1.adaptadores;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+
 import org.springframework.hateoas.RepresentationModel;
 
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
+@Entity
 public class AdaptadorArquivo extends RepresentationModel<AdaptadorArquivo> {
-	private Long id;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long adaptadorArquivo_id;
+	
+	
+	@Column
 	private String nome;
+	@Column
 	private String tamanho;
+	@Column
 	private String tipo;
-	public Long getId() {
-		return id;
+	
+	@Lob
+	@Column
+	private byte[] bytes;
+
+	
+	
+	
+	public Long getAdaptadorArquivo_id() {
+		return adaptadorArquivo_id;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setAdaptadorArquivo_id(Long adaptadorArquivo_id) {
+		this.adaptadorArquivo_id = adaptadorArquivo_id;
 	}
 	public String getNome() {
 		return nome;
@@ -35,6 +55,12 @@ public class AdaptadorArquivo extends RepresentationModel<AdaptadorArquivo> {
 	}
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+	public byte[] getBytes() {
+		return bytes;
+	}
+	public void setBytes(byte[] bytes) {
+		this.bytes = bytes;
 	}
 	
 	

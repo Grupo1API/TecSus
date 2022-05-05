@@ -13,6 +13,8 @@ import javax.persistence.OneToOne;
 
 import org.springframework.hateoas.RepresentationModel;
 
+import com.digisolu.tecsus1.adaptadores.AdaptadorArquivo;
+
 @Entity
 public class ContaAgua extends RepresentationModel<ContaAgua>{
 	@Id
@@ -21,8 +23,8 @@ public class ContaAgua extends RepresentationModel<ContaAgua>{
 	
 
 	@OneToOne 
-	@JoinColumn (name = "contadeaguaarquivo_id",referencedColumnName = "arquivo_id")
-	private Arquivo contadeaguaarquivo_id;
+	@JoinColumn (name = "conta_de_agua_arquivo_id",referencedColumnName = "adaptadorArquivo_id")
+	private AdaptadorArquivo conta_de_agua_arquivo_id;
 	
 	@ManyToOne
 	@JoinColumn(name = "contaagua_contrato_id", referencedColumnName = "contrato_agua_id")
@@ -61,12 +63,15 @@ public class ContaAgua extends RepresentationModel<ContaAgua>{
 	@Column
 	private LocalDate data_vencimento;
 	
-	public Arquivo getContadeaguaarquivo_id() {
-		return contadeaguaarquivo_id;
+	
+	public AdaptadorArquivo getConta_de_agua_arquivo_id() {
+		return conta_de_agua_arquivo_id;
 	}
-	public void setContadeaguaarquivo_id(Arquivo contadeaguaarquivo_id) {
-		this.contadeaguaarquivo_id = contadeaguaarquivo_id;
+	public void setConta_de_agua_arquivo_id(AdaptadorArquivo conta_de_agua_arquivo_id) {
+		this.conta_de_agua_arquivo_id = conta_de_agua_arquivo_id;
 	}
+	
+	
 	public ContratoAgua getContaagua_contrato_id() {
 		return contaagua_contrato_id;
 	}

@@ -4,27 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.digisolu.tecsus1.adaptadores.AdaptadorArquivo;
-import com.digisolu.tecsus1.entidades.Arquivo;
+
 import com.digisolu.tecsus1.modelos.ConstrutorAdaptadorArquivo;
 
 
 
 public class PopuladorAdaptadorArquivo{
-	private List<Arquivo> arquivos;
+	private List<AdaptadorArquivo> adaptadorArquivos;
 
-	public PopuladorAdaptadorArquivo(List<Arquivo> arquivos) {
-		this.arquivos = arquivos;
+	public PopuladorAdaptadorArquivo(List<AdaptadorArquivo> adaptadorArquivos) {
+		this.adaptadorArquivos = adaptadorArquivos;
 	}
 	
 	public List<AdaptadorArquivo> adaptadores(){
 		List<AdaptadorArquivo> adaptadores = new ArrayList<AdaptadorArquivo>();
 		ConstrutorAdaptadorArquivo construtor = new ConstrutorAdaptadorArquivo();
-		for (Arquivo arquivo : arquivos) {
+		for (AdaptadorArquivo adaptadorArquivo : adaptadorArquivos) {
 			construtor.reiniciarObjeto();
-			construtor.setId(arquivo.getId());
-			construtor.setNome(arquivo.getNome());
-			construtor.setTamanho(arquivo.getTamanho());
-			construtor.setTipo(arquivo.getTipo());
+			construtor.setAdaptadorArquivo_id(adaptadorArquivo.getAdaptadorArquivo_id());
+			construtor.setNome(adaptadorArquivo.getNome());
+			construtor.setTamanho(adaptadorArquivo.getTamanho());
+			construtor.setTipo(adaptadorArquivo.getTipo());
 			adaptadores.add(construtor.obterObjeto());
 		}
 		return adaptadores;

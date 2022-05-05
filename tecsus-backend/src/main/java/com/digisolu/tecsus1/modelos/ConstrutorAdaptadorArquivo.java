@@ -9,10 +9,9 @@ public class ConstrutorAdaptadorArquivo implements Construtor<AdaptadorArquivo> 
 		adaptador = new AdaptadorArquivo();
 	}
 
-	public void setId(Long id) {
-		this.adaptador.setId(id);
+	public void setAdaptadorArquivo_id(Long adaptadorArquivo_id) {
+		this.adaptador.setAdaptadorArquivo_id(adaptadorArquivo_id);
 	}
-
 	public void setNome(String nome) {
 		this.adaptador.setNome(nome);
 	}
@@ -34,5 +33,7 @@ public class ConstrutorAdaptadorArquivo implements Construtor<AdaptadorArquivo> 
 	public AdaptadorArquivo obterObjeto() {
 		return this.adaptador;
 	}
+
+
 
 }

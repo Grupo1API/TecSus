@@ -20,7 +20,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.digisolu.tecsus1.adaptadores.AdaptadorArquivo;
 import com.digisolu.tecsus1.adaptadores.servicos.ArmazemArquivo;
-import com.digisolu.tecsus1.entidades.Arquivo;
 import com.digisolu.tecsus1.modelos.AdicionadorLinkAdaptadorArquivo;
 import com.digisolu.tecsus1.populador.PopuladorAdaptadorArquivo;
 
@@ -37,23 +36,23 @@ public class ArquivoControle {
 	@PostMapping("/arquivo/enviar")
 	public ResponseEntity<String> receberArquivo(@RequestParam("file") MultipartFile arquivoEnviado)
 			throws IOException {
-		Arquivo arquivo = new Arquivo();
-		arquivo.setBytes(arquivoEnviado.getBytes());
-		arquivo.setNome(arquivoEnviado.getOriginalFilename());
+		AdaptadorArquivo adaptadorArquivo = new AdaptadorArquivo();
+		adaptadorArquivo.setBytes(arquivoEnviado.getBytes());
+		adaptadorArquivo.setNome(arquivoEnviado.getOriginalFilename());
 		Long tamanho = arquivoEnviado.getSize();
-		arquivo.setTamanho(tamanho.toString());
-		arquivo.setTipo(arquivoEnviado.getContentType());
-		armazem.armazenarArquivo(arquivo);
+		adaptadorArquivo.setTamanho(tamanho.toString());
+		adaptadorArquivo.setTipo(arquivoEnviado.getContentType());
+		armazem.armazenarAdaptadorArquivo(adaptadorArquivo);
 		return new ResponseEntity<String>("arquivo enviado", HttpStatus.ACCEPTED);
 	}
 
 	@GetMapping("/arquivos")
-	public ResponseEntity<List<AdaptadorArquivo>> obterArquivos() {
-		List<Arquivo> arquivos = armazem.obterArquivos();
-		PopuladorAdaptadorArquivo populador = new PopuladorAdaptadorArquivo(arquivos);
+	public ResponseEntity<List<AdaptadorArquivo>> obterAdaptadorArquivos() {
+		List<AdaptadorArquivo> adaptadorArquivos = armazem.obterAdaptadorArquivos();
+		PopuladorAdaptadorArquivo populador = new PopuladorAdaptadorArquivo(adaptadorArquivos);
 		List<AdaptadorArquivo> adaptadores = populador.adaptadores();
 
-		if (arquivos.isEmpty()) {
+		if (adaptadorArquivos.isEmpty()) {
 			ResponseEntity<List<AdaptadorArquivo>> resposta = new ResponseEntity<>(adaptadores, HttpStatus.NOT_FOUND);
 			return resposta;
 		} else {
@@ -64,24 +63,24 @@ public class ArquivoControle {
 	}
 
 	@GetMapping("/arquivo/{id}")
-	public ResponseEntity<Resource> obterArquivo(@PathVariable long id) {
-		Resource recurso = armazem.obterArquivoComoRecurso(id);
+	public ResponseEntity<Resource> obterAdaptadorArquivo(@PathVariable long id) {
+		Resource recurso = armazem.obterAdaptadorArquivoComoRecurso(id);
 		if (recurso == null) {
 			ResponseEntity<Resource> resposta = new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			return resposta;
 		} else {
-			Arquivo arquivo = armazem.obterArquivo(id);
-			MediaType tipoArquivo = MediaType.parseMediaType(arquivo.getTipo());
-			ResponseEntity<Resource> resposta = ResponseEntity.ok().contentType(tipoArquivo).body(recurso);
+			AdaptadorArquivo adaptadorArquivo = armazem.obterAdaptadorArquivo(id);
+			MediaType tipoAdaptadorArquivo = MediaType.parseMediaType(adaptadorArquivo.getTipo());
+			ResponseEntity<Resource> resposta = ResponseEntity.ok().contentType(tipoAdaptadorArquivo).body(recurso);
 			return resposta;
 		}
 	}
 
 	@DeleteMapping("/arquivo/excluir")
-	public ResponseEntity<String> excluirArquivo(@RequestBody Arquivo arquivo) {
-		Arquivo alvo = armazem.obterArquivo(arquivo.getId());
+	public ResponseEntity<String> excluirAdaptadorArquivo(@RequestBody AdaptadorArquivo adaptadorArquivo) {
+		AdaptadorArquivo alvo = armazem.obterAdaptadorArquivo(adaptadorArquivo.getAdaptadorArquivo_id());
 		if (!(alvo == null)) {
-			armazem.excluirArquivo(alvo);
+			armazem.excluirAdaptadorArquivo(alvo);
 			ResponseEntity<String> resposta = new ResponseEntity<String>(HttpStatus.ACCEPTED);
 			return resposta;
 		} else {

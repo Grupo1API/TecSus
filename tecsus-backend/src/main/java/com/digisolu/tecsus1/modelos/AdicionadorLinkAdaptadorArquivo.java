@@ -15,24 +15,24 @@ import com.digisolu.tecsus1.controles.ArquivoControle;
 public class AdicionadorLinkAdaptadorArquivo implements AdicionadorLink<AdaptadorArquivo> {
 	@Override
 	public void adicionarLink(List<AdaptadorArquivo> lista) {
-		for (AdaptadorArquivo arquivo : lista) {
-			long id = arquivo.getId();
+		for (AdaptadorArquivo adaptadorArquivo : lista) {
+			long id = adaptadorArquivo.getAdaptadorArquivo_id();
 			Link linkProprio = WebMvcLinkBuilder
 					.linkTo(WebMvcLinkBuilder
 							.methodOn(ArquivoControle.class)
-							.obterArquivo(id))
+							.obterAdaptadorArquivo(id))
 					.withSelfRel();
-			arquivo.add(linkProprio);
+			adaptadorArquivo.add(linkProprio);
 		}
 	}
 
 	@Override
-	public void adicionarLink(AdaptadorArquivo arquivo) {
+	public void adicionarLink(AdaptadorArquivo adaptadorArquivo) {
 		Link linkLista = WebMvcLinkBuilder
 				.linkTo(WebMvcLinkBuilder
 						.methodOn(ArquivoControle.class)
-						.obterArquivos())
+						.obterAdaptadorArquivos())
 				.withRel("Lista de Arquivos");
-		arquivo.add(linkLista);
+		adaptadorArquivo.add(linkLista);
 	}
 }

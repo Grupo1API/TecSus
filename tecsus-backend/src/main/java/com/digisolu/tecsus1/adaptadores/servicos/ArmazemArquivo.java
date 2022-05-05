@@ -7,7 +7,8 @@ import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
-import com.digisolu.tecsus1.entidades.Arquivo;
+import com.digisolu.tecsus1.adaptadores.AdaptadorArquivo;
+
 import com.digisolu.tecsus1.repositorios.RepositorioArquivo;
 
 
@@ -17,26 +18,26 @@ public class ArmazemArquivo {
 	@Autowired
 	private RepositorioArquivo repositorio;
 	
-	public void armazenarArquivo(Arquivo arquivo) {
-		this.repositorio.save(arquivo);
+	public void armazenarAdaptadorArquivo(AdaptadorArquivo adaptadorArquivo) {
+		this.repositorio.save(adaptadorArquivo);
 	}
 	
-	public List<Arquivo> obterArquivos(){
+	public List<AdaptadorArquivo> obterAdaptadorArquivos(){
 		return this.repositorio.findAll();
 	}
 	
-	public Resource obterArquivoComoRecurso(Long id) {
-		Arquivo arquivo = this.repositorio.getById(id);
-		Resource recurso = new ByteArrayResource(arquivo.getBytes());
+	public Resource obterAdaptadorArquivoComoRecurso(Long id) {
+		AdaptadorArquivo adaptadorArquivo = this.repositorio.getById(id);
+		Resource recurso = new ByteArrayResource(adaptadorArquivo.getBytes());
 		return recurso;
 	}
 	
-	public Arquivo obterArquivo(Long id) {
-		Arquivo arquivo = this.repositorio.getById(id);
-		return arquivo;
+	public AdaptadorArquivo obterAdaptadorArquivo(Long id) {
+		AdaptadorArquivo adaptadorArquivo = this.repositorio.getById(id);
+		return adaptadorArquivo;
 	}
 	
-	public void excluirArquivo(Arquivo arquivo) {
-		this.repositorio.delete(arquivo);
+	public void excluirAdaptadorArquivo(AdaptadorArquivo adaptadorArquivo) {
+		this.repositorio.delete(adaptadorArquivo);
 	}
 }
