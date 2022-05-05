@@ -7,8 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.springframework.hateoas.RepresentationModel;
+
+import com.digisolu.tecsus1.adaptadores.AdaptadorArquivo;
 
 @Entity
 public class ContratoEnergia extends RepresentationModel<ContratoEnergia> {
@@ -16,6 +19,10 @@ public class ContratoEnergia extends RepresentationModel<ContratoEnergia> {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long contrato_energia_id;
+	
+	@OneToOne 
+	@JoinColumn (name = "conta_de_luz_arquivo_id",referencedColumnName = "adaptadorArquivo_id")
+	private AdaptadorArquivo conta_de_luz_arquivo_id;
 	
 	@ManyToOne
 	@JoinColumn(name = "contrato_concessionaria_id", referencedColumnName = "concessionaria_id")
@@ -62,6 +69,12 @@ public class ContratoEnergia extends RepresentationModel<ContratoEnergia> {
 	@Column
 	private String local_numero;
 	
+	public AdaptadorArquivo getConta_de_luz_arquivo_id() {
+		return conta_de_luz_arquivo_id;
+	}
+	public void setConta_de_luz_arquivo_id(AdaptadorArquivo conta_de_luz_arquivo_id) {
+		this.conta_de_luz_arquivo_id = conta_de_luz_arquivo_id;
+	}
 	
 	public Long getId() {
 		return contrato_energia_id;
