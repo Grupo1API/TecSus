@@ -327,7 +327,7 @@ function ContaAgua(){
                                 setSubtotal_esgoto ( floatValue  ) ; 
                                 } }
                             />
-                            
+                             {/* trocar por campo que vai receber o valor total da conta */}
                             <NumberFormat 
                                 prefix={'R$ '} 
                                 id="vtConsumo"   

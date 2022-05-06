@@ -102,7 +102,7 @@ function ContratoEnergia(){
                     <form name="cadastro_contrato_Energia" onSubmit={handleSubmit}>
                         <div className='coluna'>
                             <TextField
-                                id="concessionaria" 
+                                id="concess ionaria" 
                                 className='input'
                                 type='text'
                                 required={true}
@@ -248,23 +248,28 @@ function ContratoEnergia(){
                                 placeholder="Nª Medidor"
                                 value={medidor}
                                 onChange={(e) => setMedidor(e.target.value)}  
-                                variant="outlined"  
+                                variant="outlined"
                             />
-                            {/* não mexi aqui também */}
                             <NumberFormat 
                                 prefix={'R$ '} 
-                                id="valor_medio"   
+                                id="valor_medio" 
+                                className='input'  
                                 floatValue = {true}
                                 value={valor_medio}
                                 required={true}
+                                label="Valor Medio (R$)"
                                 placeholder="Valor Medio (R$)"
+                                customInput={TextField}
                                 onValueChange = { ( valores )  =>  { 
                                 const  {floatValue}  =  valores ; 
                                 setValor_medio ( floatValue  ) ;                                 
                                 } }
+                                variant="outlined"
                             />
                         </div> 
+                        
                         <p>Local de Consumo</p>
+
                         <div className='coluna'>
                             <TextField
                                 id="end_eletrico" 

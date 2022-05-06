@@ -217,22 +217,27 @@ function ContratoAgua(){
                                 value={valor_medio}
                                 onChange={(e) => setValor_medio(e.target.value)}  
                                 variant="outlined"
-                            />
-                            {/* não mexi aqui */}
+                            /> 
                             <NumberFormat 
                                 prefix={'R$ '} 
-                                id="valor_medio"   
+                                id="valor_medio" 
+                                className='input'  
                                 floatValue = {true}
                                 value={valor_medio}
                                 required={true}
+                                label="Valor Medio (R$)"
                                 placeholder="Valor Medio (R$)"
+                                customInput={TextField} 
                                 onValueChange = { ( valores )  =>  { 
                                 const  {floatValue}  =  valores ; 
                                 setValor_medio ( floatValue  ) ;                                 
                                 } }
+                                variant="outlined"
                             />
                         </div>
-                        <p>Local de Consumo</p>
+
+                            <p>Local de Consumo</p>
+                            
                         <div className='coluna'>                              
                             <TextField
                                 id="nome_consumo" 

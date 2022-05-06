@@ -17,6 +17,20 @@ function Unidade(){
     const [cidade, setCidade] = useState('')
     const [num_resid, setNum_resid] = useState('')
 
+    async function buscaCep(){
+        try {
+            const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`)
+            const dados = await response.json()
+            setRua(dados.logradouro)
+            setBairro(dados.bairro)
+            setCidade(dados.localidade)
+            setEstado(dados.uf)
+            
+        } catch (error) {
+            return console.log(error.message);
+        }
+    }
+
     async function handleSubmit(event){
         event.preventDefault()
         const dado ={
@@ -88,18 +102,20 @@ function Unidade(){
                                 onChange={(e) => setCpf_cnpj(e.target.value)}
                                 variant="outlined"
                             />
-                            {/* não mexi aqui */}
                             <NumberFormat 
                                 format="(##) #####-####" 
                                 id='telefone'
+                                className='input'
                                 mask="_"
-                                label="Telefone"
+                                value={telefone}
+                                label="Telefone/Celular"
                                 placeholder='Telefone/Celular'
-                                value={telefone} 
+                                customInput={TextField} 
                                 onValueChange = { ( valores )  =>  { 
                                     const  {value}  =  valores ; 
                                     setTelefone ( value  ) ;                                 
                                 } } 
+                                variant="outlined"
                             />     
                         </div>
 
@@ -124,6 +140,7 @@ function Unidade(){
                                 label="CEP"
                                 value={cep}
                                 onChange={(e) => setCep(e.target.value)}
+                                onBlur = {buscaCep}
                                 variant="outlined"
                             />
                             <TextField
@@ -134,7 +151,7 @@ function Unidade(){
                                 placeholder='Rua'
                                 label="Rua"
                                 value={rua}
-                                onChange={(e) => setRua(e.target.value)}
+                                disabled
                                 variant="outlined"
                             />
                         </div>
@@ -148,7 +165,7 @@ function Unidade(){
                                 placeholder='Bairro'
                                 label="Bairro"
                                 value={bairro}
-                                onChange={(e) => setBairro(e.target.value)}
+                                disabled
                                 variant="outlined"
                             />
                             <TextField
@@ -159,7 +176,7 @@ function Unidade(){
                                 placeholder='Estado'
                                 label="Estado"
                                 value={estado}
-                                onChange={(e) => setEstado(e.target.value)}
+                                disabled
                                 variant="outlined"
                             />
                             <TextField
@@ -170,7 +187,7 @@ function Unidade(){
                                 placeholder='Cidade'
                                 label="Cidade"
                                 value={cidade}
-                                onChange={(e) => setCidade(e.target.value)}
+                                disabled
                                 variant="outlined"
                             />
                         </div>

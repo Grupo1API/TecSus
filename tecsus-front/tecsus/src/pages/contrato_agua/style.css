@@ -6,6 +6,8 @@
     height: 120vh;
     padding-top:20px ;
 }
+
+/* Não sei a função desse trecho de codigo e não apaguei por esse motivo. Vitória
 input[type=number]::-webkit-inner-spin-button { 
     -webkit-appearance: none;
     
@@ -13,8 +15,8 @@ input[type=number]::-webkit-inner-spin-button {
 input[type=number] { 
    -moz-appearance: textfield;
    appearance: textfield;
+} */
 
-}
 .cadastro{
     margin-top: 40px;
 }
@@ -51,4 +53,8 @@ input[type=number] {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+}
+
+p {
+    padding: 10px;
 }
