@@ -43,20 +43,6 @@ public class CadastroUnidadeControle{
 		}
 	}
 	
-	@GetMapping("/cadastrosunidade{id}")
-	public ResponseEntity<CadastroUnidade> obterCadastroUnidade(@PathVariable Long id){
-		List<CadastroUnidade> cadastrosUnidade = repositorio.findAll();
-		CadastroUnidade cadastroUnidade = selecionador.selecionar(cadastrosUnidade, id);
-		if (cadastroUnidade == null) {
-			ResponseEntity<CadastroUnidade> resposta =new ResponseEntity<>(HttpStatus.NOT_FOUND);
-			return resposta;
-		}else {
-			adicionadorLink.adicionarLink(cadastroUnidade);
-			ResponseEntity<CadastroUnidade> resposta = new ResponseEntity<CadastroUnidade>(cadastroUnidade,HttpStatus.FOUND);
-			return resposta;
-		}
-	}
-	
 	@PostMapping("/unidade/cadastro")
 	public ResponseEntity<?> cadastrarCadastroUnidade(@RequestBody CadastroUnidade cadastroUnidade){
 		HttpStatus status = HttpStatus.CONFLICT;
@@ -86,6 +72,29 @@ public class CadastroUnidadeControle{
 		repositorio.delete(cadastroUnidade);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+		@GetMapping("/cadastrosunidade{id}")
+	public ResponseEntity<CadastroUnidade> obterCadastroUnidade(@PathVariable Long id){
+		List<CadastroUnidade> cadastrosUnidade = repositorio.findAll();
+		CadastroUnidade cadastroUnidade = selecionador.selecionar(cadastrosUnidade, id);
+		if (cadastroUnidade == null) {
+			ResponseEntity<CadastroUnidade> resposta =new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return resposta;
+		}else {
+			adicionadorLink.adicionarLink(cadastroUnidade);
+			ResponseEntity<CadastroUnidade> resposta = new ResponseEntity<CadastroUnidade>(cadastroUnidade,HttpStatus.FOUND);
+			return resposta;
+		}
+	}
+	
+	    @GetMapping("unidades/{cpf_cnpj}")
+    public ResponseEntity<CadastroUnidade> getcpf_cnpj(@PathVariable("cpf_cnpj") String cpf_cnpj) {
+        CadastroUnidade unidades = repositorio.findByCpfCnpj(cpf_cnpj);
+        if(unidades == null) {
+            return new ResponseEntity<CadastroUnidade>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<CadastroUnidade>(unidades, HttpStatus.OK);
+    }
 
 }
 
