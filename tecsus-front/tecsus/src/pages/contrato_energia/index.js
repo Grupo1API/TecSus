@@ -28,6 +28,44 @@ function ContratoEnergia(){
     const [estado_consumo, setEstado_consumo] = useState('')
     const [nResidencial_empresarial, setNResidencial_empresarial] = useState('')
     
+    async function buscaCep(){
+        try {
+            const response = await fetch(`https://viacep.com.br/ws/${cep_consumo}/json/`)
+            const dados = await response.json()
+            setRua_consumo(dados.logradouro)
+            setBairro_consumo(dados.bairro)
+            setCidade_consumo(dados.localidade)
+            setEstado_consumo(dados.uf)
+            
+        } catch (error) {
+            return console.log(error.message);
+        }
+    }
+    
+    async function buscaUnidade(){
+        try {
+            const response = await fetch(`http://localhost:8080/unidades/${cpf_cnpj_cliente}`)
+            
+            const dados = await response.json()
+            setNome_cliente(dados.nome_cliente)
+            console.log(dados)
+
+        } catch (error) {
+            return console.log(error.message);
+        }
+    }
+    async function buscaConcessionaria(){
+        try {
+            const response = await fetch(`http://localhost:8080/concessionaria/${cnpj_concessionaria}`)
+            const dados = await response.json()
+            setConcessionaria(dados.concessionaria)
+            console.log(dados)
+
+        } catch (error) {
+            return console.log(error.message);
+        }
+    }
+
     async function handleSubmit(event){
         event.preventDefault()
         const dado ={
@@ -90,7 +128,8 @@ function ContratoEnergia(){
             return console.log(error.message);
         }
     }
-            
+
+    
     
     
     return(
@@ -102,17 +141,6 @@ function ContratoEnergia(){
                     <form name="cadastro_contrato_Energia" onSubmit={handleSubmit}>
                         <div className='coluna'>
                             <TextField
-                                id="concess ionaria" 
-                                className='input'
-                                type='text'
-                                required={true}
-                                label="Concessionária"
-                                placeholder="Concessionaria"
-                                value={concessionaria}
-                                onChange={(e) => setConcessionaria(e.target.value)}
-                                variant="outlined"
-                            />
-                            <TextField
                                 id="cnpj_concessionaria" 
                                 className='input'
                                 type='text'
@@ -121,43 +149,53 @@ function ContratoEnergia(){
                                 placeholder="CNPJ Concessionaria" 
                                 value={cnpj_concessionaria}
                                 onChange={(e) => setCnpj_concessionaria(e.target.value)}
+                                onBlur = {buscaConcessionaria}
                                 variant="outlined"
                             />
                             <TextField
-                                id="nome_cliente" 
+                                id="concessionaria" 
+                                className='input'
+                                type='text'
+                                disable
+                                label="Concessionária"                                
+                                value={concessionaria}
+                                variant="outlined"
+                            /> 
+                            <TextField
+                                id="cnpj_cpf_cliente"
                                 className='input'
                                 type="text" 
                                 required={true}
-                                label="Nome Cliente"
-                                placeholder="Nome Cliente" 
-                                value={nome_cliente}
-                                onChange={(e) => setNome_cliente(e.target.value)}
+                                label="CNPJ/CPF Unidade"
+                                placeholder="CNPJ/CPF cliente" 
+                                value={cpf_cnpj_cliente}
+                                onChange={(e) => setCpf_cnpj_cliente(e.target.value)}
+                                onBlur = {buscaUnidade}
                                 variant="outlined"
-                            />
+                            />                          
+                            
                         </div> 
 
                         <div className='coluna'>
                             <TextField
-                                id="cnpj_cpf_cliente"
+                                id="nome_cliente" 
                                 className='input'
                                 type="text" 
-                                required={true}
-                                label="CNPJ/CPF cliente"
-                                placeholder="CNPJ/CPF cliente" 
-                                value={cpf_cnpj_cliente}
-                                onChange={(e) => setCpf_cnpj_cliente(e.target.value)}
+                                label="Nome Unidade"
+                                disable 
+                                value={nome_cliente}
                                 variant="outlined"
                             />
-                            <TextField
-                                id="cnpj_cpf_cliente"
-                                className='input'
-                                type="text" 
+                            <TextField 
+                                id="codigo_identificador" 
+                                type="number" 
+                                className='input' 
                                 required={true}
-                                label="CNPJ/CPF cliente"
-                                placeholder="CNPJ/CPF cliente" 
-                                value={cpf_cnpj_cliente}
-                                onChange={(e) => setCpf_cnpj_cliente(e.target.value)}
+                                label="Código Identificador"
+                                placeholder="Código Identificador" 
+                                value={codigo_identificador}
                                 variant="outlined"
+                                onChange={(e) => setCodigo_identificador(e.target.value)}
                             />
                             <TextField
                                 id="codigo_fiscal"  
@@ -276,7 +314,7 @@ function ContratoEnergia(){
                                 className='input' 
                                 type="text" 
                                 required={true}
-                                label="End.Eletrico"
+                                label="Endereço Eletrico"
                                 placeholder="End.Eletrico"
                                 value={end_eletrico}
                                 onChange={(e) => setEnd_eletrico(e.target.value)}   
@@ -301,7 +339,8 @@ function ContratoEnergia(){
                                 label="CEP"
                                 placeholder="CEP"
                                 value={cep_consumo}
-                                onChange={(e) => setCep_consumo(e.target.value)}
+                                onChange={e=>setCep_consumo(e.target.value)}
+                                onBlur = {buscaCep}
                                 variant="outlined"   
                             /> 
                         </div> 
@@ -312,9 +351,8 @@ function ContratoEnergia(){
                                 className='input'
                                 type="text" 
                                 label="Rua"
-                                placeholder="Rua"
-                                value={rua_consumo}
-                                onChange={(e) => setRua_consumo(e.target.value)} 
+                                disabled
+                                value={rua_consumo} 
                                 variant="outlined"
                             />
                             <TextField
@@ -322,9 +360,8 @@ function ContratoEnergia(){
                                 className='input'
                                 type="text"
                                 label="Bairro"
-                                placeholder="Bairro"
-                                value={bairro_consumo}
-                                onChange={(e) => setBairro_consumo(e.target.value)} 
+                                disabled
+                                value={bairro_consumo}                               
                                 variant="outlined"
                             />
                             <TextField
@@ -332,9 +369,8 @@ function ContratoEnergia(){
                                 className='input'
                                 type="text" 
                                 label="Cidade"
-                                placeholder="Cidade"
+                                disabled
                                 value={cidade_consumo}
-                                onChange={(e) => setCidade_consumo(e.target.value)}
                                 variant="outlined"  
                             />
                         </div> 
@@ -345,9 +381,8 @@ function ContratoEnergia(){
                                 className='input'
                                 type="text" 
                                 label="Estado"
-                                placeholder="Estado"
-                                value={estado_consumo}
-                                onChange={(e) => setEstado_consumo(e.target.value)}
+                                disabled
+                                value={estado_consumo}   
                                 variant="outlined"   
                             />
                             <TextField

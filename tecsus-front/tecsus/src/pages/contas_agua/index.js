@@ -3,11 +3,13 @@ import Menu from '../../components/menu'
 import { useState } from 'react';
 import NumberFormat from 'react-number-format';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 function ContaAgua(){
     const [concessionaria, setConcessionaria] = useState('')
     const [cnpj_concessionaria, setCnpj_concessionaria] = useState('')
     const [segmento, setSegmento] = useState('')
+    const [cpf_cnpj_cliente, setCpf_cnpj_cliente] = useState('')
     const [fornecimento, setFornecimento] = useState('')
     const [documento, setDocumento] = useState('')
     const [dataEmissao, setDataEmissao] = useState()
@@ -33,7 +35,35 @@ function ContaAgua(){
     const [juros_moradia, setJuros_moradia] = useState('')
     const [taxa_regulacao, setTaxa_regulacao] = useState('')
     const [data_vencimento, setData_vencimento] = useState('')
+    const[upload, setUpload]= useState('')
 
+    async function buscaUnidade(){
+        try {
+            const response = await fetch(`http://localhost:8080/unidades/${cpf_cnpj_cliente}`)
+            
+            const dados = await response.json()
+            setNome_cliente(dados.nome_cliente)
+            setCep(dados.cep)
+            setEndereco(`${dados.rua} - ${dados.bairro}`)
+            console.log(dados)
+    
+        } catch (error) {
+            return console.log(error.message);
+        }
+      } 
+      async function buscaConcessionaria(){
+        try {
+            const response = await fetch(`http://localhost:8080/concessionaria/${cnpj_concessionaria}`)
+            const dados = await response.json()
+            setConcessionaria(dados.concessionaria)
+            setSegmento(dados.segmento)
+            console.log(dados)
+    
+        } catch (error) {
+            return console.log(error.message);
+        }
+      }
+    
     async function handleSubmit(event){
         event.preventDefault()
         const dados = {
@@ -127,56 +157,41 @@ function ContaAgua(){
                 <div className= "cadastro">
                     <form name="cadastro_agua" onSubmit={handleSubmit}>
                         <h2>Dados Concessionaria</h2>
-                        <div className='coluna'>
-                            {/* 1 */}
-                            <TextField
-                                id="concessionaria"
-                                className='input' 
-                                type="text" 
-                                required={true}
-                                label="Concessionaria" 
-                                placeholder="Concessionaria" 
-                                value={concessionaria}
-                                onChange={(e) => setConcessionaria(e.target.value)}
-                                variant="outlined" 
-                            />
-                            {/* 2 */}
+                        <div className='coluna'>                           
                             <TextField
                                 id="cnpj_concessionaria" 
                                 className='input'
-                                type="text" 
+                                type="text"
+                                required={true} 
                                 label="CNPJ" 
                                 placeholder="CNPJ" 
                                 value={cnpj_concessionaria}
                                 onChange={(e) => setCnpj_concessionaria(e.target.value)}
+                                onBlur = {buscaConcessionaria}
                                 variant="outlined" 
                             />
-                            {/* 3 */}
+                            <TextField
+                                id="concessionaria"
+                                className='input' 
+                                type="text" 
+                                label="Concessionaria" 
+                                disable
+                                value={concessionaria}
+                                variant="outlined" 
+                            />                                                               
                             <TextField
                                 id="segmento" 
                                 className='input'
                                 type="text" 
                                 label="Segmento"
-                                placeholder="Segmento" 
+                                disable
                                 value={segmento}
-                                onChange={(e) => setSegmento(e.target.value)}
                                 variant="outlined" 
                             />
                         </div> 
 
-                        <div className='coluna'>
-                            {/* 4 */}
-                            <TextField
-                                id="segmento" 
-                                className='input'
-                                type="text" 
-                                label="Segmento"
-                                placeholder="Segmento" 
-                                value={segmento}
-                                onChange={(e) => setSegmento(e.target.value)}
-                                variant="outlined" 
-                            />
-                            {/* 5 */}
+                        <div className='coluna'>                                         
+                            
                             <TextField
                                 id="documento" 
                                 className='input'                             
@@ -188,7 +203,7 @@ function ContaAgua(){
                                 onChange={(e) => setDocumento(e.target.value)}
                                 variant="outlined" 
                             />
-                            {/* 6 */}
+                            
                             <NumberFormat 
                                 id="data_emissao"
                                 className='input'
@@ -207,44 +222,42 @@ function ContaAgua(){
 
                         <h2>Dados Cliente</h2> 
                         <div className='coluna'> 
-                            {/* 7 */}
+                           
+                            <TextField
+                                id="cnpj_cpf_cliente"
+                                className='input'
+                                type="text" 
+                                required={true}
+                                label="CNPJ/CPF Unidade"
+                                placeholder="CNPJ/CPF cliente" 
+                                value={cpf_cnpj_cliente}
+                                onChange={(e) => setCpf_cnpj_cliente(e.target.value)}
+                                onBlur = {buscaUnidade}
+                                variant="outlined"
+                            />
                             <TextField
                                 id="nome" 
                                 className='input'
                                 type="text"
-                                required={true} 
-                                label="Nome Cliente"
-                                placeholder="Nome Cliente"
+                                label="Nome Unidade"
+                                disable
                                 value={nome_cliente}
-                                onChange={(e) => setNome_cliente(e.target.value)}  
                                 variant="outlined"
                             />     
-                            {/* 8 */}
+                            
                             <TextField
                                 id="cep"
                                 className='input'
                                 type="number" 
                                 label="CEP"
-                                placeholder="CEP"
+                                disable
                                 value={cep}
-                                onChange={(e) => setCep(e.target.value)}  
                                 variant="outlined"
-                            />                       
-                             {/* 9 */}
-                            <TextField
-                                id="endereco" 
-                                className='input'
-                                type="text" 
-                                label="Endereço"
-                                placeholder="Endereço"
-                                value={endereco}
-                                onChange={(e) => setEndereco(e.target.value)} 
-                                variant="outlined"
-                            /> 
+                            />                        
                         </div>
 
                         <div className='coluna'>
-                            {/* 10 */}
+                            
                             <TextField
                                 id="codigo_cliente" 
                                 className='input'
@@ -524,7 +537,19 @@ function ContaAgua(){
                         </div>  
                                
                         <div className="bt-container">
-                            <button type='button' className="cadastrar" id="upload">UPLOAD</button>
+                            <input
+                                accept="file/*"
+                                className="btn-upload"
+                                id="contained-button-file"
+                                multiple
+                                type="file"
+                                onChange={e=>setUpload(e.target.value)}
+                            />
+                            <label htmlFor="contained-button-file">
+                                <Button id="upload" variant="contained" color="primary" component="span">
+                                Upload
+                                </Button>
+                            </label>
                             <button type="submit" className="cadastrar" id="botao_cad">ENVIAR</button>
                             {/* <p>Cadastro realizado com exito</p> */}
                         </div>
