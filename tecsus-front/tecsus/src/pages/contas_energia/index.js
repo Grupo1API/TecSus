@@ -2,6 +2,8 @@ import './style.css';
 import Menu from '../../components/menu'
 import { useState } from 'react';
 import NumberFormat from 'react-number-format';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 function ContaEnergia() {
 
@@ -52,6 +54,36 @@ function ContaEnergia() {
   const [aliquota_cofins, setAliquota_cofins] = useState('')
   const [valor_cofins, setValor_cofins] = useState('')
 
+  const[upload, setUpload]= useState('')
+
+  async function buscaUnidade(){
+    try {
+        const response = await fetch(`http://localhost:8080/unidades/${cnpj_cpf_cliente}`)
+        
+        const dados = await response.json()
+        setNome_cliente(dados.nome_cliente)
+        setEndereco_cliente(`${dados.rua} - ${dados.bairro}`)
+        setCep_cliente(dados.cep)
+        console.log(dados)
+
+    } catch (error) {
+        return console.log(error.message);
+    }
+  } 
+  async function buscaConcessionaria(){
+    try {
+        const response = await fetch(`http://localhost:8080/concessionaria/${cnpj_concessionaria}`)
+        const dados = await response.json()
+        setConcessionaria(dados.concessionaria)
+        setEndereco_concessionaria(`${dados.rua} - ${dados.bairro}`)
+        setCep_concessionaria(dados.cep)
+        console.log(dados)
+
+    } catch (error) {
+        return console.log(error.message);
+    }
+  }
+  
   async function handleSubmit(event){
     event.preventDefault()
     const dado ={
@@ -172,434 +204,411 @@ function ContaEnergia() {
           <form onSubmit={handleSubmit}>
             <h2>Dados Concessionaria</h2>
             <div className = 'coluna'>
-              <input 
-                type="text" 
-                id="concessionaria" 
-                placeholder="Concessionaria"
-                value={concessionaria}
-                required={true}
-                onChange={(e) => setConcessionaria(e.target.value)}  
-              />
-              <input 
-                type="text" 
+             
+             <TextField
                 id="cnpj_concessionaria" 
+                className='input'
+                type="text" 
+                label="CNPJ Concessionaria"
                 placeholder="CNPJ Concessionaria"
                 value={cnpj_concessionaria}
                 required={true}
                 onChange={(e) => setCnpj_concessionaria(e.target.value)}  
+                onBlur = {buscaConcessionaria}
+                variant="outlined"
               />
-              <input 
-                type="text" 
-                id="cep_concessionaria" 
-                placeholder="CEP Concessionaria"
+              <TextField
+                id="concessionaria" 
+                className='input'
+                type="text"
+                label="Concessionaria"
+                disable
+                value={concessionaria}
+                variant="outlined"
+              />              
+              <TextField
+                id="cep_concessionaria"
+                className='input'
+                type="text"
+                label="CEP Concessionaria"
                 value={cep_concessionaria}
-                onChange={(e) => setCep_concessionaria(e.target.value)}  
+                disable
+                variant="outlined"
               />
-              
             </div>
+
             <div className = 'coluna'>
-              <input 
-                type="text" 
-                id="endereco" 
-                placeholder="Endereço"
+              <TextField
+                id="endereco"
+                className='input' 
+                type="text"
+                label="Endereço"
+                disable
                 value={endereco_concessionaria}
-                onChange={(e) => setEndereco_concessionaria(e.target.value)}  
+                variant="outlined"
               />
             </div>
+
             <h2>Dados Cliente</h2> 
             <div className = 'coluna'>
-              <input 
-                type="text" 
-                id="nome_cliente" 
-                placeholder="Nome Cliente"
-                value={nome_cliente}
-                required={true}
-                onChange={(e) => setNome_cliente(e.target.value)}
-              />
-              <input 
-                type="text" 
+              <TextField
                 id="cnpj_cpf_cliente"
+                className='input'
+                type="text" 
+                required={true}
+                label="CNPJ/CPF"
                 placeholder="CNPJ/CPF"
                 value={cnpj_cpf_cliente}
                 onChange={(e) => setCnpj_cpf_cliente(e.target.value)}
+                onBlur = {buscaUnidade}
+                variant="outlined"
               />
-              <input 
-                type="text" 
-                id="cep_cliente" 
-                placeholder="CEP Cliente"
+               <TextField
+                id="nome_cliente" 
+                className='input'
+                type="text"
+                label="Nome Cliente"
+                disable
+                value={nome_cliente}
+                variant="outlined"
+              />
+             
+              <TextField
+                id="cep_cliente"
+                className='input'
+                type="text"
+                label="CEP Cliente"
+                disable
                 value={cep_cliente}
-                required={true}
-                onChange={(e) => setCep_cliente(e.target.value)}  
-              /> 
-                                               
+                variant="outlined"
+              />                               
             </div> 
+
             <div className = 'coluna'>
-              <input 
-                type="text" 
+              
+              <TextField
                 id="endereco_cliente" 
-                placeholder="Endereço Cliente"
+                className='input'
+                type="text" 
+                label="Endereço Cliente"
+                disable
                 value={endereco_cliente}
-                onChange={(e) => setEndereco_cliente(e.target.value)}  
-              />   
-            </div>          
+                variant="outlined" 
+              />
+            </div> 
+
             <h2>Dados Conta</h2> 
             <div className = 'coluna'>
-              <input 
-                type="text" 
+              {/* 10 */}
+              <TextField
                 id="nota_fiscal" 
+                className='input'
+                type="text"
+                label="Nota fiscal"
                 placeholder="Nota fiscal"
                 value={nota_fiscal}
                 required={true}
                 onChange={(e) => setNota_fiscal(e.target.value)}
+                variant="outlined" 
               />
+              {/* 11 */}
               <NumberFormat 
                 prefix={'R$ '} 
                 id="valor_total"
+                className='input'
                 floatValue = {true}
                 value={valor_total}
                 required={true}
+                label="Valor total (R$)"
                 placeholder="Valor total (R$)"
+                customInput={TextField}
                 onValueChange = { ( valores )  =>  { 
                   const  {floatValue}  =  valores ; 
                   setValor_total ( floatValue  ) ; 
                 } }
+                variant="outlined"
               />
-              
-              <input 
-                type="text" 
+              {/* 12 */}
+              <TextField
                 id="numero_instalacao" 
+                className='input'
+                type="text" 
+                label="N° Instalação"
                 placeholder="N° Instalação"
                 required={true}
                 value={numero_instalacao}
                 onChange={(e) => setNumero_instalacao(e.target.value)}  
+                variant="outlined"  
               />
             </div>
+
             <div className = 'coluna'>
-              <input 
-                type="number" 
-                id="consumoKwh"
-                required={true} 
-                placeholder="Consumo Kwh"
-                value={consumoKwh}
-                onChange={(e) => setConsumoKwh(e.target.value)}
-              />
+              
+              {/* 13 */}
               <NumberFormat 
-                type="text" 
                 id="data_vencimento"
+                className='input'
+                type="text" 
                 required={true}
                 format="##/##/####" 
-                value={data_vencimento}
-                onChange={(e) => setData_vencimento(e.target.value)}
-                placeholder="Data Vencimento" 
                 mask={['D', 'D', 'M', 'M', 'Y', 'Y', 'Y', 'Y']}
+                value={data_vencimento}
+                label="Data Vencimento" 
+                placeholder="Data Vencimento" 
+                customInput={TextField}
+                onChange={(e) => setData_vencimento(e.target.value)}
+                variant="outlined"
               />
-              <input 
-                type="text" 
+              {/* 14 */}
+              <TextField
                 id="conta_mes"
+                className='input'
+                type="text" 
                 required={true} 
+                label="Conta Mês" 
                 placeholder="Conta Mês"
                 value={conta_mes}
                 onChange={(e) => setConta_mes(e.target.value)}
+                variant="outlined"   
               />
-            </div>
-            <div className = 'coluna'>
-              <input 
-                type="text" 
+              {/* 15 */}
+              <TextField
                 id="bandeiraTarifaria" 
+                className='input'
+                type="text" 
                 required={true}
+                label="Bandeira Tarifaria" 
                 placeholder="Bandeira Tarifaria"
                 value={bandeiraTarifaria}
                 onChange={(e) => setBandeiraTarifaria(e.target.value)}
-              />              
+                variant="outlined"   
+              /> 
+            </div>
+
+            <div className = 'coluna'>  
+              {/* 16 */}          
               <NumberFormat 
-                type="text" 
                 id="emissao"
+                className='input'
+                type="text" 
                 required={true}
                 format="##/##/####" 
-                value={emissao}
-                onChange={(e) => setEmissao(e.target.value)}
-                placeholder="Data Emissão" 
                 mask={['D', 'D', 'M', 'M', 'Y', 'Y', 'Y', 'Y']}
+                value={emissao}
+                label="Data Emissão"
+                placeholder="Data Emissão" 
+                customInput={TextField}
+                onChange={(e) => setEmissao(e.target.value)}
+                variant="outlined"
               />
-              <input 
+              {/* 17 */}
+              <TextField
+                id="dias_faturamento" 
+                className='input'
                 type="number" 
                 required={true}
-                id="dias_faturamento" 
+                label="N° Dias Faturamento" 
                 placeholder="N° Dias Faturamento"
                 value={dias_faturamento}
                 onChange={(e) => setDias_faturamento(e.target.value)}
-              />              
+                variant="outlined"   
+              />            
             </div>
 
             <p>Descrição do Consumo</p>
 
             <div className = 'coluna'>
-              <input 
+              {/* 18 */}
+              <TextField
+                id="descricao_consumo"
+                className='input'
                 type="text" 
-                id="descricao_consumo" 
+                label="Descrição"
                 placeholder="Descrição"
                 value={descricao_consumo}
                 onChange={(e) => setDescricao_consumo(e.target.value)}
-              />
-              <input 
+                variant="outlined"    
+              /> 
+              {/* 19 */}
+              <TextField
+                id="numero_medidor"
+                className='input'
                 type="text" 
-                id="numero_medidor" 
                 required={true}
+                label="N° medidor" 
                 placeholder="N° medidor"
                 value={numero_medidor}
                 onChange={(e) => setNumero_medidor(e.target.value)}
+                variant="outlined"   
               />
-              <input 
+              {/* 20 */}
+              <TextField
+                id="const_multa"
+                className='input'
                 type="number" 
-                id="const_multa" 
+                label="Const. Multa"  
                 placeholder="Const. Multa"
                 value={const_multa}
                 onChange={(e) => setConst_multa(e.target.value)}
-              />              
+                variant="outlined"   
+              />            
             </div>
+
             <div className = 'coluna'>
-              <input 
+              {/* 21 */}
+              <TextField
+                id="kwhMes"
+                className='input'
                 type="number" 
-                id="kwhMes" 
+                label="Qtd Kwh Mês" 
                 placeholder="Qtd Kwh Mês"
                 value={kwhMes}
                 onChange={(e) => setKwhMes(e.target.value)}
-              />
-            </div>           
-            <p>Descrição do Produto TUSD - Consumo </p>
-
-            <div className = 'coluna'>
-              <input 
-                type="number" 
-                id="qtdKwh_tusd" 
-                placeholder="Quantidades kWh"
-                value={qtdKwh_tusd}
-                onChange={(e) => setQtdKwh_tusd(e.target.value)}
-              />
-              <NumberFormat 
-                prefix={'R$ '} 
-                id="tarifa_aplicada_tusd"
-                floatValue = {true}
-                value={tarifa_aplicada_tusd}
-                placeholder="Taria Aplicada (R$)"
-                onValueChange = { ( valores )  =>  { 
-                  const  {floatValue}  =  valores ; 
-                  setTarifa_aplicada_tusd ( floatValue  ) ; 
-                } }
-              />
-              <NumberFormat 
-                prefix={'R$ '} 
-                id="valor_fornecimento_tusd" 
-                floatValue = {true}
-                value={valor_fornecimento_tusd}
-                placeholder="Valor do Fornecimento (R$)"
-                onValueChange = { ( valores )  =>  { 
-                  const  {floatValue}  =  valores ; 
-                  setValor_fornecimento_tusd ( floatValue  ) ; 
-                } }
-              />
-              
-              
-            </div>
-            <div className = 'coluna'>
-              <NumberFormat 
-                prefix={'R$ '} 
+                variant="outlined"   
+              /> 
+               {/* 22 */}
+               <NumberFormat 
                 id="valor_total_tusd" 
+                className='input'
+                prefix={'R$ '} 
                 floatValue = {true}
                 value={valor_total_tusd}
-                placeholder="Valor Total (R$)"
+                label="Valor Total TUSD"
+                placeholder="R$ "
+                customInput={TextField}
                 onValueChange = { ( valores )  =>  { 
                   const  {floatValue}  =  valores ; 
                   setValor_total_tusd ( floatValue  ) ; 
                 } }
+                variant="outlined"
               />
-            </div>
-
-            <p>Descrição do Produto TE - Consumo </p>
-
-            <div className = 'coluna'>
-              <input 
-                type="number" 
-                id="qtdKwh_te" 
-                placeholder="Quantidades kWh"
-                value={qtdKwh_te}
-                onChange={(e) => setQtdKwh_te(e.target.value)}
-              />
+              {/* 23 */}
               <NumberFormat 
-                prefix={'R$ '} 
-                id="tarifa_aplicada_te"  
-                floatValue = {true}
-                value={tarifa_aplicada_te}
-                placeholder="Taria Aplicada (R$)"
-                onValueChange = { ( valores )  =>  { 
-                  const  {floatValue}  =  valores ; 
-                  setTarifa_aplicada_te ( floatValue  ) ; 
-                } }
-              />
-              <NumberFormat 
-                prefix={'R$ '} 
-                id="valor_fornecimento_te"  
-                floatValue = {true}
-                value={valor_fornecimento_te}
-                placeholder="Valor do Fornecimento (R$)"
-                onValueChange = { ( valores )  =>  { 
-                  const  {floatValue}  =  valores ; 
-                  setValor_fornecimento_te ( floatValue  ) ; 
-                } }
-              />
-              
-            </div>
-            <div className = 'coluna'>
-              <NumberFormat 
-                prefix={'R$ '} 
                 id="valor_total_te"
+                className='input'
+                prefix={'R$ '} 
                 floatValue = {true}
                 value={valor_total_te}
-                placeholder="Valor Total (R$)"
+                label="Valor Total TE"
+                placeholder="R$"
+                customInput={TextField}
                 onValueChange = { ( valores )  =>  { 
                   const  {floatValue}  =  valores ; 
                   setValor_total_te ( floatValue  ) ; 
                 } }
+                variant="outlined"
               />
-            </div>
-
-            <p>Descrição do Produto Adicional bandeiras vigentes </p>
+            </div> 
 
             <div className = 'coluna'>
-              <input 
-                type="number" 
-                id="qtdKwh_bandeira" 
-                placeholder="Quantidades kWh"
-                value={qtdKwh_bandeira}
-                onChange={(e) => setQtdKwh_bandeira(e.target.value)}
-              />
+              {/* 24 */}
               <NumberFormat 
-                prefix={'R$ '} 
-                id="tarifa_aplicada_bandeira"
-                floatValue = {true}
-                value={tarifa_aplicada_bandeira}
-                placeholder="Taria Aplicada (R$)"
-                onValueChange = { ( valores )  =>  { 
-                  const  {floatValue}  =  valores ; 
-                  setTarifa_aplicada_bandeira ( floatValue  ) ; 
-                } }
-              />
-              <NumberFormat 
-                prefix={'R$ '} 
-                id="valor_fornecimento_bandeira"
-                floatValue = {true}
-                value={valor_fornecimento_bandeira}
-                placeholder="Valor do Fornecimento (R$)"
-                onValueChange = { ( valores )  =>  { 
-                  const  {floatValue}  =  valores ; 
-                  setValor_fornecimento_bandeira ( floatValue  ) ; 
-                } }
-              />
-              
-            </div>
-            <div className = 'coluna'>
-              <NumberFormat 
-                prefix={'R$ '} 
                 id="valor_total_bandeira"
+                className='input'
+                prefix={'R$ '} 
                 floatValue = {true}
                 value={valor_total_bandeira}
-                placeholder="Valor Total (R$)"
+                label="Valor Bandeira Tarifária"
+                placeholder="R$ "
+                customInput={TextField}
                 onValueChange = { ( valores )  =>  { 
                   const  {floatValue}  =  valores ; 
                   setValor_total_bandeira ( floatValue  ) ; 
                 } }
-              />
+                variant="outlined"
+              /> 
             </div>
 
             <p>Itens Financeiros (Valores Totais)</p>
 
             <div className = 'coluna'>
+              {/* 25 */}
               <NumberFormat 
+                id="multa"
+                className='input'
                 prefix={'R$ '} 
-                id="multa" 
                 floatValue = {true}
                 value={multa}
+                label="Multa (R$)"
                 placeholder="Multa (R$)"
+                customInput={TextField}
                 onValueChange = { ( valores )  =>  { 
                   const  {floatValue}  =  valores ; 
                   setMulta ( floatValue  ) ; 
                 } }
+                variant="outlined"
               />
-                <NumberFormat 
-                prefix={'R$ '} 
+              {/* 26 */}
+              <NumberFormat 
                 id="cip" 
+                className='input'
+                prefix={'R$ '} 
                 floatValue = {true}
                 value={cip}
+                label="CIP"
                 placeholder="CIP-Contribuição Municipal (R$)"
+                customInput={TextField}
                 onValueChange = { ( valores )  =>  { 
                   const  {floatValue}  =  valores ; 
                   setCip ( floatValue  ) ; 
                 } }
+                variant="outlined"
               />      
             </div>
 
-            <p>Tributos (PIS)</p>
+             <p>Tributos</p>
 
-            <div className = 'coluna'>
-              <input 
-                type="number" 
-                id="base_calculo_pis" 
-                placeholder="Base de Calculo"
-                value={base_calculo_pis}
-                onChange={(e) => setBase_calculo_pis(e.target.value)}
-              />
-              <input 
-                type="number" 
-                id="aliquota_pis" 
-                placeholder="Aliquota"
-                value={aliquota_pis}
-                onChange={(e) => setAliquota_pis(e.target.value)}
-              />
+             <div className = 'coluna'>
+
+              {/* 27 */} 
               <NumberFormat 
-                prefix={'R$ '} 
                 id="valor_pis" 
+                className='input'
+                prefix={'R$ '} 
                 floatValue = {true}
                 value={valor_pis}
-                placeholder="Valor (R$)"
+                label="Valor PIS"
+                placeholder="R$ "
+                customInput={TextField}
                 onValueChange = { ( valores )  =>  { 
                   const  {floatValue}  =  valores ; 
                   setValor_pis ( floatValue  ) ; 
                 } }
+                variant="outlined"
               />
-            </div>
 
-            <p>Tributos (COFINS)</p>
-
-            <div className = 'coluna'>
-              <input 
-                type="number" 
-                id="base_calculo_cofins" 
-                placeholder="Base de Calculo"
-                value={base_calculo_cofins}
-                onChange={(e) => setBase_calculo_cofins(e.target.value)}
-              />
-              <input 
-                type="number" 
-                id="aliquota_cofins" 
-                placeholder="Aliquota"
-                value={aliquota_cofins}
-                onChange={(e) => setAliquota_cofins(e.target.value)}
-              />
+              {/* 28 */}
               <NumberFormat 
+                id="valor_cofins" 
+                className='input'
                 prefix={'R$ '} 
-                id="valor_cofins"  
                 floatValue = {true}
                 value={valor_cofins}
-                placeholder="Valor (R$)"
+                label="Valor COFINS"
+                placeholder="R$ "
+                customInput={TextField}
                 onValueChange = { ( valores )  =>  { 
                   const  {floatValue}  =  valores ; 
                   setValor_cofins ( floatValue  ) ; 
                 } }
+                variant="outlined"
               />
-            </div>
+            </div> 
             
             <div className="bt-container">
-                <button type='button' className="cadastrar" id="upload">UPLOAD</button>
+              <input
+                accept="file/*"
+                className="btn-upload"
+                id="contained-button-file"
+                multiple
+                type="file"
+                onChange={e=>setUpload(e.target.value)}
+              />
+              <label htmlFor="contained-button-file">
+                <Button id="upload" variant="contained" color="primary" component="span">
+                  Upload
+                </Button>
+              </label>
                 <button type="submit" className="cadastrar" id="botao_cad">ENVIAR</button>
             </div>
 
