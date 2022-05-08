@@ -34,8 +34,8 @@ public class ContratoAgua extends RepresentationModel<ContratoAgua>{
 	private String tipo_ligacao;
 	@Column
 	private String tipo_fornecimento;
-	@Column
-	private String n_fornecimento;
+	@Column(name ="n_fornecimento")
+	private String numeroFornecimento;
 	@Column
 	private float valor_medio;
 	@Column
@@ -105,10 +105,10 @@ public class ContratoAgua extends RepresentationModel<ContratoAgua>{
 		this.tipo_fornecimento = tipo_fornecimento;
 	}
 	public String getN_fornecimento() {
-		return n_fornecimento;
+		return numeroFornecimento;
 	}
 	public void setN_fornecimento(String n_fornecimento) {
-		this.n_fornecimento = n_fornecimento;
+		this.numeroFornecimento = n_fornecimento;
 	}
 	public float getValor_medio() {
 		return valor_medio;
