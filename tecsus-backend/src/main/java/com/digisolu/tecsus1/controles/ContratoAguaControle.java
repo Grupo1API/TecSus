@@ -88,5 +88,14 @@ public class ContratoAguaControle {
 	repositorio.delete(contratoAgua);
 	return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+    @GetMapping("/contratoagua/{n_fornecimento}")
+    public ResponseEntity<ContratoAgua> getFornecimento(@PathVariable("n_fornecimento") String n_fornecimento) {
+    	ContratoAgua contratos_agua = repositorio.findByNumeroFornecimento(n_fornecimento);
+        if(contratos_agua == null) {
+            return new ResponseEntity<ContratoAgua>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<ContratoAgua>(contratos_agua, HttpStatus.OK);
+    }
 }
 

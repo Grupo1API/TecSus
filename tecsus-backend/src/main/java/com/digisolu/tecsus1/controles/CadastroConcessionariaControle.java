@@ -86,5 +86,14 @@ public class CadastroConcessionariaControle{
 		repositorio.delete(cadastroConcessionaria);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+    @GetMapping("concessionaria/{cnpj}")
+    public ResponseEntity<CadastroConcessionaria> getcnpj(@PathVariable("cnpj") String cnpj) {
+        CadastroConcessionaria concessionarias = repositorio.findByCnpj(cnpj);
+        if(concessionarias == null) {
+            return new ResponseEntity<CadastroConcessionaria>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<CadastroConcessionaria>(concessionarias, HttpStatus.OK);
+    }
 
 }
