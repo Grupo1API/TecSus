@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './style.css'
 import Menu from '../../components/menu'
 import NumberFormat from 'react-number-format';
+import TextField from '@material-ui/core/TextField';
 
 function ContratoAgua(){
     const [concessionaria, setConcessionaria] = useState('')        //marcar como novo no cadastro 
@@ -24,6 +25,44 @@ function ContratoAgua(){
     const [estado_consumo, setEstado_consumo] = useState('')
     const [nResidencial_empresarial, setNResidencial_empresarial] = useState('')
     
+    async function buscaCep(){
+        try {
+            const response = await fetch(`https://viacep.com.br/ws/${cep_consumo}/json/`)
+            const dados = await response.json()
+            setRua_consumo(dados.logradouro)
+            setBairro_consumo(dados.bairro)
+            setCidade_consumo(dados.localidade)
+            setEstado_consumo(dados.uf)
+            
+        } catch (error) {
+            return console.log(error.message);
+        }
+    }
+
+    async function buscaUnidade(){
+        try {
+            const response = await fetch(`http://localhost:8080/unidades/${cpf_cnpj_cliente}`)
+            
+            const dados = await response.json()
+            setNome_cliente(dados.nome_cliente)
+            console.log(dados)
+
+        } catch (error) {
+            return console.log(error.message);
+        }
+    }
+    async function buscaConcessionaria(){
+        try {
+            const response = await fetch(`http://localhost:8080/concessionaria/${cnpj_concessionaria}`)
+            const dados = await response.json()
+            setConcessionaria(dados.concessionaria)
+            console.log(dados)
+
+        } catch (error) {
+            return console.log(error.message);
+        }
+    }
+
     async function handleSubmit(event){
         event.preventDefault()
         const dado ={
@@ -90,176 +129,226 @@ function ContratoAgua(){
                 <div className= "cadastro">
                     <form name="cadastro_contrato_agua" onSubmit={handleSubmit}>
                         <div className='coluna'>
-                            <input 
-                                id="concessionaria" 
-                                type="text"
-                                required={true} 
-                                placeholder="Concessionaria" 
-                                value={concessionaria}
-                                onChange={(e) => setConcessionaria(e.target.value)}
-                            />
-                            <input 
+                            <TextField
                                 id="cnpj_concessionaria" 
+                                className='input'
                                 type="text" 
                                 required={true}
+                                label="CNPJ Concessionaria" 
                                 placeholder="CNPJ Concessionaria" 
                                 value={cnpj_concessionaria}
                                 onChange={(e) => setCnpj_concessionaria(e.target.value)}
+                                onBlur = {buscaConcessionaria}
+                                variant="outlined" 
                             />
-                            <input 
-                                id="nome_cliente" 
-                                type="text" 
-                                required={true}
-                                placeholder="Nome Cliente" 
-                                value={nome_cliente}
-                                onChange={(e) => setNome_cliente(e.target.value)}
-                            />
-                            
-                        </div> 
-                        <div className='coluna'>
-                            <input 
-                                id="cnpj_cpf_cliente" 
+                            <TextField
+                                id="concessionaria" 
+                                className='input'
+                                type="text"
+                                label="Concessionaria"  
+                                disable
+                                value={concessionaria}
+                                variant="outlined"  
+                            /> 
+                            <TextField
+                                id="cnpj_cpf_cliente"
+                                className='input' 
                                 type="text"
                                 required={true} 
-                                placeholder="CNPJ/CPF cliente" 
+                                label="CNPJ/CPF Unidade" 
+                                placeholder="CNPJ/CPF Unidade" 
                                 value={cpf_cnpj_cliente}
                                 onChange={(e) => setCpf_cnpj_cliente(e.target.value)}
+                                onBlur = {buscaUnidade}
+                                variant="outlined" 
                             />
-                            <input 
-                                id="codigo_cliente" 
+                            
+                        </div>
+                         
+                        <div className='coluna'>
+                            <TextField
+                                id="nome_cliente" 
+                                className='input'
+                                type="text" 
+                                label="Nome Cliente" 
+                                disable
+                                value={nome_cliente}
+                                variant="outlined" 
+                            />
+                            <TextField
+                                id="codigo_cliente"
+                                className='input' 
                                 type="text" 
                                 required={true}
+                                label="Cod.Cliente" 
                                 placeholder="Cod.Cliente" 
                                 value={codigo_cliente}
                                 onChange={(e) => setCodigo_cliente(e.target.value)}
+                                variant="outlined" 
                             />
-                            <input 
-                                id="pde_rgi"                              
+                            <TextField
+                                id="pde_rgi"       
+                                className='input'                        
                                 type="text" 
                                 required={true}
+                                label="PDE/RGI"
                                 placeholder="PDE/RGI"
                                 value={pde_rgi}
                                 onChange={(e) => setPde_rgi(e.target.value)} 
-                            />
-                            
+                                variant="outlined" 
+                            />                            
                         </div> 
+
                         <div className='coluna'>
-                            <input 
-                                id="hidrometro"                              
+                            <TextField
+                                id="hidrometro"
+                                className='input'                                
                                 type="text" 
                                 required={true}
+                                label="Hidrometro" 
                                 placeholder="Hidrometro"  
                                 value={hidrometro}
                                 onChange={(e) => setHidrometro(e.target.value)}
+                                variant="outlined" 
                             />
-                            <input 
-                                id="tipo_ligacao"  
+                            <TextField
+                                id="tipo_ligacao"
+                                className='input'  
                                 type="text" 
+                                label="Tipo de Ligação" 
                                 placeholder="Tipo de Ligação" 
                                 value={tipo_ligacao}
-                                onChange={(e) => setTipo_ligacao(e.target.value)} 
+                                onChange={(e) => setTipo_ligacao(e.target.value)}
+                                variant="outlined" 
                             />
-                            <input 
+                            <TextField
                                 id="Tipo_fornecimento" 
+                                className='input' 
                                 type="text" 
+                                label="Tipo de Fornecimento"
                                 placeholder="Tipo de Fornecimento"
                                 value={tipo_fornecimento}
-                                onChange={(e) => setTipo_fornecimento(e.target.value)}  
-                            />                           
+                                onChange={(e) => setTipo_fornecimento(e.target.value)} 
+                                variant="outlined" 
+                            />                          
                         </div> 
+
                         <div className='coluna'>
-                            <input 
+                            <TextField
                                 id="n_fornecimento" 
+                                className='input' 
                                 type="text" 
+                                label="Numero de Fornecimento"
                                 placeholder="Numero de Fornecimento"
                                 value={n_fornecimento}
-                                onChange={(e) => setN_fornecimento(e.target.value)}  
-                            />
-                            <input 
-                                id="valor_medio" 
-                                type="number" 
-                                required={true}
-                                placeholder="Valor Médio"
-                                value={valor_medio}
-                                onChange={(e) => setValor_medio(e.target.value)}  
+                                onChange={(e) => setN_fornecimento(e.target.value)} 
+                                variant="outlined"
                             />
                             <NumberFormat 
                                 prefix={'R$ '} 
-                                id="valor_medio"   
+                                id="valor_medio" 
+                                className='input'  
                                 floatValue = {true}
                                 value={valor_medio}
                                 required={true}
+                                label="Valor Medio (R$)"
                                 placeholder="Valor Medio (R$)"
+                                customInput={TextField} 
                                 onValueChange = { ( valores )  =>  { 
                                 const  {floatValue}  =  valores ; 
                                 setValor_medio ( floatValue  ) ;                                 
                                 } }
+                                variant="outlined"
                             />
                         </div>
-                        <p>Local de Consumo</p>
+
+                            <p>Local de Consumo</p>
+                            
                         <div className='coluna'>                              
-                            <input 
+                            <TextField
                                 id="nome_consumo" 
+                                className='input'
                                 type="text" 
                                 required={true}
-                                placeholder="Nome"
+                                label="Nome Consumidor"
+                                placeholder="Nome Consumidor"
                                 value={nome_consumo}
-                                onChange={(e) => setNome_consumo(e.target.value)}   
+                                onChange={(e) => setNome_consumo(e.target.value)}
+                                variant="outlined" 
                             />
-                            <input 
+                            <TextField
                                 id="cpf_cnpj_ci" 
+                                className='input'
                                 type="text" 
                                 required={true} 
+                                label="CPF/CNPJ/CI"
                                 placeholder="CPF/CNPJ/CI"
                                 value={cpf_cnpj_ci}
                                 onChange={(e) => setCpf_cnpj_ci(e.target.value)} 
+                                variant="outlined"  
                             />
-                            <input 
+                           <TextField
                                 id="cep_consumo" 
+                                className='input'
                                 type="text" 
                                 required={true} 
+                                label="CEP"
                                 placeholder="CEP"
                                 value={cep_consumo}
-                                onChange={(e) => setCep_consumo(e.target.value)}
+                                onChange={e=>setCep_consumo(e.target.value)}
+                                onBlur = {buscaCep}
+                                variant="outlined"
                             />
                         </div> 
+
                         <div className='coluna'>                           
-                            <input 
+                            <TextField
                                 id="rua_consumo" 
+                                className='input'
                                 type="text" 
-                                placeholder="Rua"
+                                label="Rua"
+                                disabled
                                 value={rua_consumo}
-                                onChange={(e) => setRua_consumo(e.target.value)} 
+                                variant="outlined"
                             />
-                            <input 
+                            <TextField
                                 id="bairro_consumo" 
+                                className='input'
                                 type="text" 
-                                placeholder="Bairro"
+                                label="Bairro"
+                                disabled
                                 value={bairro_consumo}
-                                onChange={(e) => setBairro_consumo(e.target.value)} 
+                                variant="outlined"
                             />
-                            <input 
+                            <TextField
                                 id="cidade_consumo" 
+                                className='input'
                                 type="text" 
-                                placeholder="Cidade"
+                                label="Cidade"
+                                disabled
                                 value={cidade_consumo}
-                                onChange={(e) => setCidade_consumo(e.target.value)}   
+                                variant="outlined" 
                             />
                         </div> 
-                        <div className='coluna'>                           
-                            <input 
+                        <div className='coluna'> 
+                            <TextField
                                 id="estado_consumo" 
+                                className='input'
                                 type="text" 
-                                placeholder="Estado"
+                                label="Estado"
+                                disabled
                                 value={estado_consumo}
-                                onChange={(e) => setEstado_consumo(e.target.value)}
-                            />
-                            <input 
-                                id="nResidencial_Empresarial"                             
+                                variant="outlined"
+                            />                          
+                            <TextField
+                                id="nResidencial_Empresarial" 
+                                className='input'                            
                                 type="text" 
+                                label="Nª Residencial/Empresarial"
                                 placeholder="Nª Residencial/Empresarial" 
                                 value={nResidencial_empresarial}
                                 onChange={(e) => setNResidencial_empresarial(e.target.value)}
+                                variant="outlined"
                             />
                         </div> 
                                

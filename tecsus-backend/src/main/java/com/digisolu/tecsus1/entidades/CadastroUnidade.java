@@ -15,8 +15,8 @@ public class CadastroUnidade extends RepresentationModel<CadastroUnidade> {
 	private Long unidade_id;
 	@Column
 	private String nome;
-	@Column
-	private String cpf_cnpj;
+	@Column(name = "cpf_cnpj")
+	private String cpfCnpj;
 	@Column
 	private String telefone;
 	@Column
@@ -47,10 +47,10 @@ public class CadastroUnidade extends RepresentationModel<CadastroUnidade> {
 		this.nome = nome;
 	}
 	public String getCpf_cnpj() {
-		return cpf_cnpj;
+		return cpfCnpj;
 	}
 	public void setCpf_cnpj(String cpf_cnpj) {
-		this.cpf_cnpj = cpf_cnpj;
+		this.cpfCnpj = cpf_cnpj;
 	}
 	public String getTelefone() {
 		return telefone;

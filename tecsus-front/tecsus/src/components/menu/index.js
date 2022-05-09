@@ -63,6 +63,10 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     color: '#000'
  },
+ button:{
+   background:"#191a1a66",
+   color:"#fff"
+ }
 }));
 
 export default function Dashboard() {
@@ -106,6 +110,9 @@ export default function Dashboard() {
                 <ListItemText primary="Usuario" style={{marginRight:'12px'}} />
                 <ListItemText secondary="(Administrador)"/>
               </div>
+              <Link to='/' className={classes.link} style={{width: '100px', margin: '1px auto', textAlign:'center'}}>
+                <Button variant="contained" size="small" className={classes.button} >Sair</Button>
+              </Link>
             </ListItem>
             <Divider />
             <Link to='/' className={classes.link} > 
@@ -208,9 +215,9 @@ export default function Dashboard() {
               <ListItemText primary="Painel de Controle" />
               {openPainel ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
-
             <Collapse in={openPainel} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
+<<<<<<< HEAD
 
               <Link to='/quadro_unidades' className={classes.link} >
                   <ListItem  button className={classes.nested}>
@@ -228,15 +235,34 @@ export default function Dashboard() {
                     <ListItemText primary="Quadro Contratos" />
                   </ListItem>
                 
+=======
+                <ListItem  button className={classes.nested}>
+                  <ListItemIcon>
+                    <LayersIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Quadro Unidades" />
+                </ListItem>
 
+                <ListItem  button className={classes.nested}>
+                <ListItemIcon>
+                  <LayersIcon />
+                </ListItemIcon>
+                <ListItemText primary="Quadro Contratos" />
+                </ListItem>
+>>>>>>> 7d403b37096e93dd41d561aed75a51663eefd39f
+
+
+                <Link to='/quadro_cons' className={classes.link} >
                 <ListItem  button className={classes.nested}>
                   <ListItemIcon>
                     <LayersIcon />
                   </ListItemIcon>
                   <ListItemText primary="Quadro Concessionária" />
                 </ListItem>
+                </Link>
               </List>
             </Collapse>
+            
             <ListItem button className={classes.itens}>
               <ListItemIcon>
                 <WarningIcon />
@@ -259,11 +285,8 @@ export default function Dashboard() {
             </ListItem>
             
         </List>
-        <Link to='/' className={classes.link} style={{width: '100px', margin: '1px auto', textAlign:'center'}}>
-          <Button size="small" color="#000" >Sair</Button>
-        </Link>
+        
       </Drawer>
     </div>
   );
 }
-

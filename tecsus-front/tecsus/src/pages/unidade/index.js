@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './style.css';
 import Menu from '../../components/menu'
 import NumberFormat from 'react-number-format';
+import TextField from '@material-ui/core/TextField';
 
 function Unidade(){
 
@@ -15,6 +16,20 @@ function Unidade(){
     const [estado, setEstado] = useState('')
     const [cidade, setCidade] = useState('')
     const [num_resid, setNum_resid] = useState('')
+
+    async function buscaCep(){
+        try {
+            const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`)
+            const dados = await response.json()
+            setRua(dados.logradouro)
+            setBairro(dados.bairro)
+            setCidade(dados.localidade)
+            setEstado(dados.uf)
+            
+        } catch (error) {
+            return console.log(error.message);
+        }
+    }
 
     async function handleSubmit(event){
         event.preventDefault()
@@ -64,92 +79,134 @@ function Unidade(){
                 <div className='cadastro'>
                     <form name='cadastroUnidades' onSubmit={handleSubmit}>
                         <div className='coluna'>
-                            <input
+                            {/* configurar campos com utf8 */}
+                            <TextField
+                                // style={{zIndex: }}
                                 id='nome'
+                                className='input'
                                 type='text'
                                 placeholder='Nome'
+                                label="Nome"
                                 value={nome}
                                 onChange={(e) => setNome(e.target.value)}
+                                variant="outlined"
                             />
-                             <input
+                             <TextField
+                                // style={{zIndex: }}
                                 id='cpf_cnpj'
+                                className='input'
                                 type='text'
                                 placeholder='CPF/CNPJ'
+                                label="CPF/CNPJ"
                                 value={cpf_cnpj}
                                 onChange={(e) => setCpf_cnpj(e.target.value)}
+                                variant="outlined"
                             />
                             <NumberFormat 
                                 format="(##) #####-####" 
                                 id='telefone'
+                                className='input'
                                 mask="_"
+                                value={telefone}
+                                label="Telefone/Celular"
                                 placeholder='Telefone/Celular'
-                                value={telefone} 
+                                customInput={TextField} 
                                 onValueChange = { ( valores )  =>  { 
                                     const  {value}  =  valores ; 
                                     setTelefone ( value  ) ;                                 
-                                } }
-                            />
-                             
+                                } } 
+                                variant="outlined"
+                            />     
                         </div>
+
                         <div className='coluna'>
-                            <input
+                            <TextField
+                                // style={{zIndex: }}
+                                className='input'
                                 id='email'
                                 type='text'
+                                label="email"
                                 placeholder='Email'
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
+                                variant="outlined"
                             />
-                            <input
-                                id='cep'
+                            <TextField
+                                // style={{zIndex: }}
+                                id='cep' 
+                                className='input'
                                 type='text'
                                 placeholder='CEP'
+                                label="CEP"
                                 value={cep}
                                 onChange={(e) => setCep(e.target.value)}
+                                onBlur = {buscaCep}
+                                variant="outlined"
                             />
-                             <input
+                            <TextField
+                                // style={{zIndex: }}
                                 id='rua'
+                                className='input'
                                 type='text'
                                 placeholder='Rua'
+                                label="Rua"
                                 value={rua}
-                                onChange={(e) => setRua(e.target.value)}
+                                disabled
+                                variant="outlined"
                             />
-                             
                         </div>
+
                         <div className='coluna'>
-                            <input
+                            <TextField
+                                // style={{zIndex: }}
                                 id='bairro'
+                                className='input'
                                 type='text'
                                 placeholder='Bairro'
+                                label="Bairro"
                                 value={bairro}
-                                onChange={(e) => setBairro(e.target.value)}
+                                disabled
+                                variant="outlined"
                             />
-                            <input
+                            <TextField
+                                // style={{zIndex: }}
                                 id='estado'
+                                className='input'
                                 type='text'
                                 placeholder='Estado'
+                                label="Estado"
                                 value={estado}
-                                onChange={(e) => setEstado(e.target.value)}
+                                disabled
+                                variant="outlined"
                             />
-                             <input
+                            <TextField
+                                // style={{zIndex: }}
                                 id='cidade'
+                                className='input'
                                 type='text'
                                 placeholder='Cidade'
+                                label="Cidade"
                                 value={cidade}
-                                onChange={(e) => setCidade(e.target.value)}
+                                disabled
+                                variant="outlined"
                             />
-                             
                         </div>
+
                         <div className='coluna'>
-                            <input
+                            <TextField
+                                // style={{zIndex: }}
                                 id='num_resid'
+                                className='input'
                                 type='text'
                                 placeholder='N° Residencial/Empresarial'
+                                label="N° Residencial/Empresarial"
                                 value={num_resid}
                                 onChange={(e) => setNum_resid(e.target.value)}
+                                variant="outlined"
                             />
                         </div>
-                        <div className="bt-container">
 
+                        <div className="bt-container">
                             <button type="submit" className="cadastrar" id="botao_cad">ENVIAR</button>
                         </div>                                                  
                     </form>
