@@ -167,13 +167,13 @@ function ContaAgua(){
                         <div className='coluna'>
                             {/* 4 */}
                             <TextField
-                                id="segmento" 
+                                id="N° do Fornecimento" 
                                 className='input'
                                 type="text" 
-                                label="Segmento"
-                                placeholder="Segmento" 
-                                value={segmento}
-                                onChange={(e) => setSegmento(e.target.value)}
+                                label="N° do Fornecimento"
+                                placeholder="N° do Fornecimento" 
+                                value={fornecimento}
+                                onChange={(e) => setFornecimento(e.target.value)}
                                 variant="outlined" 
                             />
                             {/* 5 */}

@@ -20,21 +20,27 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	@Column
 	private String concessionaria;
 	@Column
-	private String endereco_concessionaria;
+	private String cnpj_concessionaria;
 	@Column
 	private String cep_concessionaria; 
 	@Column
-	private String cnpj_concessionaria;
+	private String endereco_concessionaria;
 
-	//Dados do cliente/local de consumo
+	//dados cliente
+	
 	@Column
 	private String nome_cliente;
 	@Column
 	private String cpf_cnpj_consumo;
 	@Column
-	private String endereco_cliente;
-	@Column
 	private String cep_cliente;
+	@Column
+	private String endereco_cliente;
+	////enereço cliente  tem 2 vezes no front /////
+
+
+	//Dados conta
+	
 	@Column
 	private String nota_fiscal;
 	@Column
@@ -42,17 +48,17 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	@Column
 	private String numero_instalacao;
 	@Column
-	private float consumo_kwh_mes;
-	@Column
 	private LocalDate data_vencimento;
 	@Column
 	private String conta_mes;
-	@Column
-	private String bandeira_tarifaria;
+	
+	//cade o bandeira tarifaria ?///
+	
 	@Column
 	private LocalDate emissao;
 	@Column
 	private int num_dias_faturamento;
+
 
 	//Descrição de Consumo
 	@Column
@@ -60,64 +66,30 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	@Column
 	private String numero_medidor;
 	@Column
-	private float const_mult; //constante de multiplicação
+	private float const_mult; 
 	@Column
 	private float quantidade_kwh_mes;
-	
-	//Detalhes de Faturamento
-	//TUSD - Consumo
-	@Column
-	private float quantidade_kwh_tusd;
-	@Column
-	private float tarifa_aplicada_tusd;
-	@Column
-	private float valor_fornecimento_tusd;
 	@Column
 	private float valor_total_tusd;
-	
-	//TE - Consumo
-	@Column
-	private float quantidade_kwh_te;
-	@Column
-	private float tarifa_aplicada_te;
-	@Column
-	private float valor_fornecimento_te;
 	@Column
 	private float valor_total_te;
-	
-	//Adicional Bandeira
 	@Column
-	private float quantidade_kwh_abv;
-	@Column
-	private float tarifa_aplicada_abv;
-	@Column
-	private float valor_fornecimento_abv;
-	@Column
-	private float valor_total_abv;
-	
+	private String bandeira_tarifaria;
+		
 	//Itens Financeiros
-	@Column
-	private float base_calculo_itens;
 	@Column
 	private float valor_multa;
 	@Column
 	private float valor_cip_contrib_municipal;
 	
-	//Pis
-	@Column
-	private float base_calculo_pis;
-	@Column
-	private float aliquota_pis;
+	
+	//tributos
 	@Column
 	private float valor_pis;
-	
-	//Cofins
-	@Column
-	private float base_calculo_cofins;
-	@Column
-	private float aliquota_cofins;
 	@Column
 	private float valor_cofins;
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -190,12 +162,7 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	public void setNumero_instalacao(String numero_instalacao) {
 		this.numero_instalacao = numero_instalacao;
 	}
-	public float getConsumo_kwh_mes() {
-		return consumo_kwh_mes;
-	}
-	public void setConsumo_kwh_mes(float consumo_kwh_mes) {
-		this.consumo_kwh_mes = consumo_kwh_mes;
-	}
+	
 	public LocalDate getData_vencimento() {
 		return data_vencimento;
 	}
@@ -250,84 +217,21 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	public void setQuantidade_kwh_mes(float quantidade_kwh_mes) {
 		this.quantidade_kwh_mes = quantidade_kwh_mes;
 	}
-	public float getQuantidade_kwh_tusd() {
-		return quantidade_kwh_tusd;
-	}
-	public void setQuantidade_kwh_tusd(float quantidade_kwh_tusd) {
-		this.quantidade_kwh_tusd = quantidade_kwh_tusd;
-	}
-	public float getTarifa_aplicada_tusd() {
-		return tarifa_aplicada_tusd;
-	}
-	public void setTarifa_aplicada_tusd(float tarifa_aplicada_tusd) {
-		this.tarifa_aplicada_tusd = tarifa_aplicada_tusd;
-	}
-	public float getValor_fornecimento_tusd() {
-		return valor_fornecimento_tusd;
-	}
-	public void setValor_fornecimento_tusd(float valor_fornecimento_tusd) {
-		this.valor_fornecimento_tusd = valor_fornecimento_tusd;
-	}
+	
 	public float getValor_total_tusd() {
 		return valor_total_tusd;
 	}
 	public void setValor_total_tusd(float valor_total_tusd) {
 		this.valor_total_tusd = valor_total_tusd;
 	}
-	public float getQuantidade_kwh_te() {
-		return quantidade_kwh_te;
-	}
-	public void setQuantidade_kwh_te(float quantidade_kwh_te) {
-		this.quantidade_kwh_te = quantidade_kwh_te;
-	}
-	public float getTarifa_aplicada_te() {
-		return tarifa_aplicada_te;
-	}
-	public void setTarifa_aplicada_te(float tarifa_aplicada_te) {
-		this.tarifa_aplicada_te = tarifa_aplicada_te;
-	}
-	public float getValor_fornecimento_te() {
-		return valor_fornecimento_te;
-	}
-	public void setValor_fornecimento_te(float valor_fornecimento_te) {
-		this.valor_fornecimento_te = valor_fornecimento_te;
-	}
+	
 	public float getValor_total_te() {
 		return valor_total_te;
 	}
 	public void setValor_total_te(float valor_total_te) {
 		this.valor_total_te = valor_total_te;
 	}
-	public float getQuantidade_kwh_abv() {
-		return quantidade_kwh_abv;
-	}
-	public void setQuantidade_kwh_abv(float quantidade_kwh_abv) {
-		this.quantidade_kwh_abv = quantidade_kwh_abv;
-	}
-	public float getTarifa_aplicada_abv() {
-		return tarifa_aplicada_abv;
-	}
-	public void setTarifa_aplicada_abv(float tarifa_aplicada_abv) {
-		this.tarifa_aplicada_abv = tarifa_aplicada_abv;
-	}
-	public float getValor_fornecimento_abv() {
-		return valor_fornecimento_abv;
-	}
-	public void setValor_fornecimento_abv(float valor_fornecimento_abv) {
-		this.valor_fornecimento_abv = valor_fornecimento_abv;
-	}
-	public float getValor_total_abv() {
-		return valor_total_abv;
-	}
-	public void setValor_total_abv(float valor_total_abv) {
-		this.valor_total_abv = valor_total_abv;
-	}
-	public float getBase_calculo_itens() {
-		return base_calculo_itens;
-	}
-	public void setBase_calculo_itens(float base_calculo_itens) {
-		this.base_calculo_itens = base_calculo_itens;
-	}
+	
 	public float getValor_multa() {
 		return valor_multa;
 	}
@@ -340,35 +244,11 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	public void setValor_cip_contrib_municipal(float valor_cip_contrib_municipal) {
 		this.valor_cip_contrib_municipal = valor_cip_contrib_municipal;
 	}
-	public float getBase_calculo_pis() {
-		return base_calculo_pis;
-	}
-	public void setBase_calculo_pis(float base_calculo_pis) {
-		this.base_calculo_pis = base_calculo_pis;
-	}
-	public float getAliquota_pis() {
-		return aliquota_pis;
-	}
-	public void setAliquota_pis(float aliquota_pis) {
-		this.aliquota_pis = aliquota_pis;
-	}
 	public float getValor_pis() {
 		return valor_pis;
 	}
 	public void setValor_pis(float valor_pis) {
 		this.valor_pis = valor_pis;
-	}
-	public float getBase_calculo_cofins() {
-		return base_calculo_cofins;
-	}
-	public void setBase_calculo_cofins(float base_calculo_cofins) {
-		this.base_calculo_cofins = base_calculo_cofins;
-	}
-	public float getAliquota_cofins() {
-		return aliquota_cofins;
-	}
-	public void setAliquota_cofins(float aliquota_cofins) {
-		this.aliquota_cofins = aliquota_cofins;
 	}
 	public float getValor_cofins() {
 		return valor_cofins;
