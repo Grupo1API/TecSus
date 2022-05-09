@@ -1,6 +1,7 @@
+import React, { useState } from 'react';
 import './style.css'
 import Menu from '../../components/menu'
-import { useState } from 'react';
+
 import NumberFormat from 'react-number-format';
 
 function ContratoEnergia(){

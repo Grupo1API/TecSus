@@ -80,9 +80,9 @@ public class CadastroUnidadeControle{
 		return new ResponseEntity<>(status);
 	}
 	
-	@DeleteMapping("/unidade/excluir")
-	public ResponseEntity<?> excluirCadastroUnidade(@RequestBody CadastroUnidade exclusao){
-		CadastroUnidade cadastroUnidade = repositorio.getById(exclusao.getId());
+	@DeleteMapping("/unidade/excluir/{id}")
+	public ResponseEntity<?> excluirCadastroUnidade(@PathVariable Long id){
+		CadastroUnidade cadastroUnidade = repositorio.getById(id);
 		repositorio.delete(cadastroUnidade);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

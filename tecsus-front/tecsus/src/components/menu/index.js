@@ -212,19 +212,22 @@ export default function Dashboard() {
             <Collapse in={openPainel} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
 
-                <ListItem  button className={classes.nested}>
-                  <ListItemIcon>
-                    <LayersIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Quadro Unidades" />
-                </ListItem>
-
-                <ListItem  button className={classes.nested}>
-                <ListItemIcon>
-                  <LayersIcon />
-                </ListItemIcon>
-                <ListItemText primary="Quadro Contratos" />
-                </ListItem>
+              <Link to='/quadro_unidades' className={classes.link} >
+                  <ListItem  button className={classes.nested}>
+                    <ListItemIcon>
+                      <LayersIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Quadro Unidades" />
+                  </ListItem>
+                </Link>
+                
+                  <ListItem  button className={classes.nested}>
+                    <ListItemIcon>
+                      <LayersIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Quadro Contratos" />
+                  </ListItem>
+                
 
                 <ListItem  button className={classes.nested}>
                   <ListItemIcon>
