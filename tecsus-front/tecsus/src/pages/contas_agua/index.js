@@ -272,19 +272,6 @@ function ContaAgua(){
                             </div> 
                             <div className='coluna'>  
                             <TextField
-                                id="cnpj_concessionaria" 
-                                className='input'
-                                type="text"
-                                label="CNPJ" 
-                                placeholder="CNPJ" 
-                                value={cnpj_concessionaria}
-                                onChange={(e) => setCnpj_concessionaria(e.target.value)}
-                                onBlur = {buscaConcessionaria}
-                                variant="outlined" 
-                                disabled
-                            />
-                           
-                            <TextField
                                 id="cep"
                                 className='input'
                                 type="number" 
@@ -295,11 +282,7 @@ function ContaAgua(){
                                 disabled
                             />    
                             </div>
-                            
-                             
-                           
-                         
-                        
+
 
                         <h2>Dados Conta</h2> 
                         <div className='coluna'> 
