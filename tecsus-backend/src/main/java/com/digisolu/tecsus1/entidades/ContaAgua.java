@@ -8,23 +8,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import org.springframework.hateoas.RepresentationModel;
 
-import com.digisolu.tecsus1.adaptadores.AdaptadorArquivo;
 
 @Entity
 public class ContaAgua extends RepresentationModel<ContaAgua>{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-
-	@OneToOne 
-	@JoinColumn (name = "conta_de_agua_arquivo_id",referencedColumnName = "adaptadorArquivo_id")
-	private AdaptadorArquivo conta_de_agua_arquivo_id;
 	
 	@ManyToOne
 	@JoinColumn(name = "contaagua_contrato_id", referencedColumnName = "contrato_agua_id")
@@ -62,16 +56,16 @@ public class ContaAgua extends RepresentationModel<ContaAgua>{
 	private float taxa_regulacao;
 	@Column
 	private LocalDate data_vencimento;
+	@Lob
+	@Column
+	private byte[] arquivo;
 	
-	
-	public AdaptadorArquivo getConta_de_agua_arquivo_id() {
-		return conta_de_agua_arquivo_id;
+	public byte[] getArquivo() {
+		return arquivo;
 	}
-	public void setConta_de_agua_arquivo_id(AdaptadorArquivo conta_de_agua_arquivo_id) {
-		this.conta_de_agua_arquivo_id = conta_de_agua_arquivo_id;
+	public void setArquivo(byte[] arquivo) {
+		this.arquivo = arquivo;
 	}
-	
-	
 	public ContratoAgua getContaagua_contrato_id() {
 		return contaagua_contrato_id;
 	}
