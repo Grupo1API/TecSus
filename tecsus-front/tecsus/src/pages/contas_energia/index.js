@@ -173,7 +173,6 @@ function ContaEnergia() {
           <form onSubmit={handleSubmit}>
             <h2>Dados Concessionaria</h2>
             <div className = 'coluna'>
-             {/* 1 */}
               <TextField
                 id="concessionaria" 
                 className='input'
@@ -185,7 +184,6 @@ function ContaEnergia() {
                 onChange={(e) => setConcessionaria(e.target.value)}
                 variant="outlined"
               />
-              {/* 2 */}
               <TextField
                 id="cnpj_concessionaria" 
                 className='input'
@@ -197,7 +195,6 @@ function ContaEnergia() {
                 onChange={(e) => setCnpj_concessionaria(e.target.value)}  
                 variant="outlined"
               />
-              {/* 3 */}
               <TextField
                 id="cep_concessionaria"
                 className='input'
@@ -211,7 +208,6 @@ function ContaEnergia() {
             </div>
 
             <div className = 'coluna'>
-              {/* 4 */}
               <TextField
                 id="endereco"
                 className='input' 
@@ -226,7 +222,7 @@ function ContaEnergia() {
 
             <h2>Dados Cliente</h2> 
             <div className = 'coluna'>
-               {/* 5 */}
+
                <TextField
                 id="nome_cliente" 
                 className='input'
@@ -238,7 +234,6 @@ function ContaEnergia() {
                 onChange={(e) => setNome_cliente(e.target.value)}
                 variant="outlined"
               />
-              {/* 6 */}
               <TextField
                 id="cnpj_cpf_cliente"
                 className='input'
@@ -249,7 +244,6 @@ function ContaEnergia() {
                 onChange={(e) => setCnpj_cpf_cliente(e.target.value)}
                 variant="outlined"
               />
-              {/* 7 */}
               <TextField
                 id="cep_cliente"
                 className='input'
@@ -264,7 +258,6 @@ function ContaEnergia() {
             </div> 
 
             <div className = 'coluna'>
-              {/* 8 */}
               <TextField
                 id="endereco_cliente" 
                 className='input'
@@ -275,22 +268,10 @@ function ContaEnergia() {
                 onChange={(e) => setEndereco_cliente(e.target.value)} 
                 variant="outlined" 
               />
-              {/* 9 */}
-              <TextField
-                id="endereco_cliente" 
-                className='input'
-                type="text" 
-                label="Endereço Cliente"
-                placeholder="Endereço Cliente"
-                value={endereco_cliente}
-                onChange={(e) => setEndereco_cliente(e.target.value)} 
-                variant="outlined" 
-              /> 
             </div> 
 
             <h2>Dados Conta</h2> 
             <div className = 'coluna'>
-              {/* 10 */}
               <TextField
                 id="nota_fiscal" 
                 className='input'
@@ -302,7 +283,6 @@ function ContaEnergia() {
                 onChange={(e) => setNota_fiscal(e.target.value)}
                 variant="outlined" 
               />
-              {/* 11 */}
               <NumberFormat 
                 prefix={'R$ '} 
                 id="valor_total"
@@ -319,7 +299,6 @@ function ContaEnergia() {
                 } }
                 variant="outlined"
               />
-              {/* 12 */}
               <TextField
                 id="numero_instalacao" 
                 className='input'
@@ -334,8 +313,6 @@ function ContaEnergia() {
             </div>
 
             <div className = 'coluna'>
-              
-              {/* 13 */}
               <NumberFormat 
                 id="data_vencimento"
                 className='input'
@@ -350,7 +327,6 @@ function ContaEnergia() {
                 onChange={(e) => setData_vencimento(e.target.value)}
                 variant="outlined"
               />
-              {/* 14 */}
               <TextField
                 id="conta_mes"
                 className='input'
@@ -362,7 +338,6 @@ function ContaEnergia() {
                 onChange={(e) => setConta_mes(e.target.value)}
                 variant="outlined"   
               />
-              {/* 15 */}
               <TextField
                 id="bandeiraTarifaria" 
                 className='input'
@@ -376,8 +351,7 @@ function ContaEnergia() {
               /> 
             </div>
 
-            <div className = 'coluna'>  
-              {/* 16 */}          
+            <div className = 'coluna'>         
               <NumberFormat 
                 id="emissao"
                 className='input'
@@ -392,7 +366,6 @@ function ContaEnergia() {
                 onChange={(e) => setEmissao(e.target.value)}
                 variant="outlined"
               />
-              {/* 17 */}
               <TextField
                 id="dias_faturamento" 
                 className='input'
@@ -409,7 +382,6 @@ function ContaEnergia() {
             <p>Descrição do Consumo</p>
 
             <div className = 'coluna'>
-              {/* 18 */}
               <TextField
                 id="descricao_consumo"
                 className='input'
@@ -420,7 +392,6 @@ function ContaEnergia() {
                 onChange={(e) => setDescricao_consumo(e.target.value)}
                 variant="outlined"    
               /> 
-              {/* 19 */}
               <TextField
                 id="numero_medidor"
                 className='input'
@@ -432,13 +403,12 @@ function ContaEnergia() {
                 onChange={(e) => setNumero_medidor(e.target.value)}
                 variant="outlined"   
               />
-              {/* 20 */}
               <TextField
-                id="const_multa"
+                id="const_multi."
                 className='input'
                 type="number" 
-                label="Const. Multa"  
-                placeholder="Const. Multa"
+                label="Const. Multi."  
+                placeholder="Const. Multi."
                 value={const_multa}
                 onChange={(e) => setConst_multa(e.target.value)}
                 variant="outlined"   
@@ -446,7 +416,6 @@ function ContaEnergia() {
             </div>
 
             <div className = 'coluna'>
-              {/* 21 */}
               <TextField
                 id="kwhMes"
                 className='input'
@@ -457,7 +426,6 @@ function ContaEnergia() {
                 onChange={(e) => setKwhMes(e.target.value)}
                 variant="outlined"   
               /> 
-               {/* 22 */}
                <NumberFormat 
                 id="valor_total_tusd" 
                 className='input'
@@ -473,7 +441,6 @@ function ContaEnergia() {
                 } }
                 variant="outlined"
               />
-              {/* 23 */}
               <NumberFormat 
                 id="valor_total_te"
                 className='input'
@@ -492,7 +459,6 @@ function ContaEnergia() {
             </div> 
 
             <div className = 'coluna'>
-              {/* 24 */}
               <NumberFormat 
                 id="valor_total_bandeira"
                 className='input'
@@ -513,7 +479,6 @@ function ContaEnergia() {
             <p>Itens Financeiros (Valores Totais)</p>
 
             <div className = 'coluna'>
-              {/* 25 */}
               <NumberFormat 
                 id="multa"
                 className='input'
@@ -529,7 +494,6 @@ function ContaEnergia() {
                 } }
                 variant="outlined"
               />
-              {/* 26 */}
               <NumberFormat 
                 id="cip" 
                 className='input'
@@ -550,8 +514,6 @@ function ContaEnergia() {
              <p>Tributos</p>
 
              <div className = 'coluna'>
-
-              {/* 27 */} 
               <NumberFormat 
                 id="valor_pis" 
                 className='input'
@@ -567,8 +529,6 @@ function ContaEnergia() {
                 } }
                 variant="outlined"
               />
-
-              {/* 28 */}
               <NumberFormat 
                 id="valor_cofins" 
                 className='input'
