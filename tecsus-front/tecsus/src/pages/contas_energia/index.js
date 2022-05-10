@@ -10,47 +10,33 @@ function ContaEnergia() {
   const [endereco_concessionaria, setEndereco_concessionaria] = useState('')
   const [cep_concessionaria, setCep_concessionaria] = useState('')
   const [cnpj_concessionaria, setCnpj_concessionaria] = useState('')
+
   const [nome_cliente, setNome_cliente] = useState('')
   const [cnpj_cpf_cliente, setCnpj_cpf_cliente] = useState('')
-  const [endereco_cliente, setEndereco_cliente] = useState('')
   const [cep_cliente, setCep_cliente] = useState('')
+  const [endereco_cliente, setEndereco_cliente] = useState('')
+  
   const [nota_fiscal, setNota_fiscal] = useState('')
   const [valor_total, setValor_total] = useState('')
   const [numero_instalacao, setNumero_instalacao] = useState('')
-  const [consumoKwh, setConsumoKwh] = useState('')
   const [data_vencimento, setData_vencimento] = useState('')
   const [conta_mes, setConta_mes] = useState('')
-  const [bandeiraTarifaria, setBandeiraTarifaria] = useState('')
+  const [bandeira_tarifaria_vigente, setBandeira_tarifaria_vigente] = useState('')
   const [emissao, setEmissao] = useState('')
   const [dias_faturamento, setDias_faturamento] = useState('')
+
   const [descricao_consumo, setDescricao_consumo] = useState('')
   const [numero_medidor, setNumero_medidor] = useState('')
   const [const_multa, setConst_multa] = useState('')
   const [kwhMes, setKwhMes] = useState('')
-
-  const [qtdKwh_tusd, setQtdKwh_tusd] = useState('')
-  const [tarifa_aplicada_tusd, setTarifa_aplicada_tusd] = useState('')
-  const [valor_fornecimento_tusd, setValor_fornecimento_tusd] = useState('')
   const [valor_total_tusd, setValor_total_tusd] = useState('')
-
-  const [qtdKwh_te, setQtdKwh_te] = useState('')
-  const [tarifa_aplicada_te, setTarifa_aplicada_te] = useState('')
-  const [valor_fornecimento_te, setValor_fornecimento_te] = useState('')
   const [valor_total_te, setValor_total_te] = useState('')
-
-  const [qtdKwh_bandeira, setQtdKwh_bandeira] = useState('')
-  const [tarifa_aplicada_bandeira, setTarifa_aplicada_bandeira] = useState('')
-  const [valor_fornecimento_bandeira, setValor_fornecimento_bandeira] = useState('')
   const [valor_total_bandeira, setValor_total_bandeira] = useState('')
 
   const [multa, setMulta] = useState('')
   const [cip, setCip] = useState('')
 
-  const [base_calculo_pis, setBase_calculo_pis] = useState('')
-  const [aliquota_pis, setAliquota_pis] = useState('')
   const [valor_pis, setValor_pis] = useState('')
-  const [base_calculo_cofins, setBase_calculo_cofins] = useState('')
-  const [aliquota_cofins, setAliquota_cofins] = useState('')
   const [valor_cofins, setValor_cofins] = useState('')
 
   async function handleSubmit(event){
@@ -62,40 +48,26 @@ function ContaEnergia() {
       cnpj_concessionaria:cnpj_concessionaria,
       nome_cliente:nome_cliente,
       cpf_cnpj_cliente:cnpj_cpf_cliente,
-      endereco_cliente:endereco_cliente,
       cep_cliente:cep_cliente,
+      endereco_cliente:endereco_cliente,
       nota_fiscal:nota_fiscal,
       valor_total:Number(valor_total),
       numero_instalacao:numero_instalacao,
-      consumo_kwh_mes:consumoKwh,
       data_vencimento:formatarData(data_vencimento),
       conta_mes:conta_mes,
-      bandeira_tarifaria:bandeiraTarifaria,
+      bandeira_tarifaria_vigente:bandeira_tarifaria_vigente,
       emissao:formatarData(emissao),
       num_dias_faturamento:dias_faturamento,
       descricao_consumo:descricao_consumo,
       numero_medidor:numero_medidor,
       const_mult:const_multa,
       quantidade_kwh_mes:kwhMes,
-      quantidade_kwh_tusd:qtdKwh_tusd,
-      tarifa_aplicada_tusd:tarifa_aplicada_tusd,
-      valor_fornecimento_tusd:valor_fornecimento_tusd,
       valor_total_tusd:valor_total_tusd,
-      quantidade_kwh_te:qtdKwh_te,
-      tarifa_aplicada_te:tarifa_aplicada_te,
-      valor_fornecimento_te:valor_fornecimento_te,
       valor_total_te:valor_total_te,
-      quantidade_kwh_abv:qtdKwh_bandeira,
-      tarifa_aplicada_abv:tarifa_aplicada_bandeira,
-      valor_fornecimento_abv:valor_fornecimento_bandeira,
       valor_total_abv:valor_total_bandeira,
       valor_multa:multa,
       valor_cip_contrib_municipal:cip,
-      base_calculo_pis:base_calculo_pis,
-      aliquota_pis:aliquota_pis,
       valor_pis:valor_pis,
-      base_calculo_cofins:base_calculo_cofins,
-      aliquota_cofins:aliquota_cofins,
       valor_cofins:valor_cofins,
     }
     function formatarData(data) {
@@ -117,45 +89,31 @@ function ContaEnergia() {
       })
       
       setConcessionaria('')
-      setEndereco_concessionaria('')
-      setCep_concessionaria('')
       setCnpj_concessionaria('')
+      setCep_concessionaria('')
+      setEndereco_concessionaria('')
       setNome_cliente('')
       setCnpj_cpf_cliente('')
-      setEndereco_cliente('')
       setCep_cliente('')
+      setEndereco_cliente('')
       setNota_fiscal('')
       setValor_total('')
       setNumero_instalacao('')
-      setConsumoKwh('')
       setData_vencimento('')
       setConta_mes('')
-      setBandeiraTarifaria('')
+      setBandeira_tarifaria_vigente('')
       setEmissao('')
       setDias_faturamento('')
       setDescricao_consumo('')
       setNumero_medidor('')
       setConst_multa('')
       setKwhMes('')
-      setQtdKwh_tusd('')
-      setTarifa_aplicada_tusd('')
-      setValor_fornecimento_tusd('')
       setValor_total_tusd('')
-      setQtdKwh_te('')
-      setTarifa_aplicada_te('')
-      setValor_fornecimento_te('')
       setValor_total_te('')
-      setQtdKwh_bandeira('')
-      setTarifa_aplicada_bandeira('')
-      setValor_fornecimento_bandeira('')
       setValor_total_bandeira('')
       setMulta('')
       setCip('')
-      setBase_calculo_pis('')
-      setAliquota_pis('')
       setValor_pis('')
-      setBase_calculo_cofins('')
-      setAliquota_cofins('')
       setValor_cofins('')
       return;
     } catch (error) {
@@ -339,14 +297,14 @@ function ContaEnergia() {
                 variant="outlined"   
               />
               <TextField
-                id="bandeiraTarifaria" 
+                id="bandeiraTarifariaVigente" 
                 className='input'
                 type="text" 
                 required={true}
                 label="Bandeira Tarifaria" 
-                placeholder="Bandeira Tarifaria"
-                value={bandeiraTarifaria}
-                onChange={(e) => setBandeiraTarifaria(e.target.value)}
+                placeholder="Bandeira Tarifaria Vigente"
+                value={bandeira_tarifaria_vigente}
+                onChange={(e) => setBandeira_tarifaria_vigente(e.target.value)}
                 variant="outlined"   
               /> 
             </div>

@@ -44,6 +44,9 @@ public class ContaEnergiaAtualizador {
 		if(!(atualizacao.getConta_mes()==null)) {
 			contaEnergia.setConta_mes(atualizacao.getConta_mes());
 		}
+		if(!(atualizacao.getBandeira_tarifaria_vigente()==null)) {
+			contaEnergia.setBandeira_tarifaria_vigente(atualizacao.getBandeira_tarifaria_vigente());
+		}
 		if(!(atualizacao.getBandeira_tarifaria()==null)) {
 			contaEnergia.setBandeira_tarifaria(atualizacao.getBandeira_tarifaria());
 		}

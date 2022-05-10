@@ -36,9 +36,7 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	private String cep_cliente;
 	@Column
 	private String endereco_cliente;
-	////enereço cliente  tem 2 vezes no front /////
-
-
+	
 	//Dados conta
 	
 	@Column
@@ -51,9 +49,8 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	private LocalDate data_vencimento;
 	@Column
 	private String conta_mes;
-	
-	//cade o bandeira tarifaria ?///
-	
+	@Column
+	private String bandeira_tarifaria_vigente;	
 	@Column
 	private LocalDate emissao;
 	@Column
@@ -107,6 +104,12 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	}
 	public void setEndereco_concessionaria(String endereco_concessionaria) {
 		this.endereco_concessionaria = endereco_concessionaria;
+	}
+	public String getBandeira_tarifaria_vigente() {
+		return bandeira_tarifaria_vigente;
+	}
+	public void setBandeira_tarifaria_vigente(String bandeira_tarifaria_vigente) {
+		this.bandeira_tarifaria_vigente = bandeira_tarifaria_vigente;
 	}
 	public String getCep_concessionaria() {
 		return cep_concessionaria;
