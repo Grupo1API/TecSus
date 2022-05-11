@@ -13,7 +13,7 @@ public class CadastroConcessionaria extends RepresentationModel<CadastroConcessi
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long concessionaria_id;
-	@Column
+	@Column(name="cnpj")
 	private String cnpj;
 	@Column
 	private String nome;

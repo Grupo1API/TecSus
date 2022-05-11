@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.digisolu.tecsus1.entidades.ContratoAgua;
 import com.digisolu.tecsus1.entidades.ContratoEnergia;
 import com.digisolu.tecsus1.modelos.AdicionadorLinkContratoEnergia;
 import com.digisolu.tecsus1.modelos.ContratoEnergiaAtualizador;
@@ -88,5 +89,14 @@ public class ContratoEnergiaControle {
 	repositorio.delete(contratoEnergia);
 	return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+    @GetMapping("/contratoenergia/{codigo_identificador}")
+    public ResponseEntity<ContratoEnergia> getFornecimento(@PathVariable("codigo_identificador") String codigo_identificador) {
+    	ContratoEnergia contratos_energia = repositorio.findByCodigoIdentificador(codigo_identificador);
+        if(contratos_energia == null) {
+            return new ResponseEntity<ContratoEnergia>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<ContratoEnergia>(contratos_energia, HttpStatus.OK);
+    }
 }
 
