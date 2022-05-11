@@ -3,6 +3,7 @@ import Menu from '../../components/menu'
 import { useState } from 'react';
 import NumberFormat from 'react-number-format';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 function ContaEnergia() {
 
@@ -39,6 +40,36 @@ function ContaEnergia() {
   const [valor_pis, setValor_pis] = useState('')
   const [valor_cofins, setValor_cofins] = useState('')
 
+  const[upload, setUpload]= useState('')
+
+  async function buscaUnidade(){
+    try {
+        const response = await fetch(`http://localhost:8080/unidades/${cnpj_cpf_cliente}`)
+        
+        const dados = await response.json()
+        setNome_cliente(dados.nome_cliente)
+        setEndereco_cliente(`${dados.rua} - ${dados.bairro}`)
+        setCep_cliente(dados.cep)
+        console.log(dados)
+
+    } catch (error) {
+        return console.log(error.message);
+    }
+  } 
+  async function buscaConcessionaria(){
+    try {
+        const response = await fetch(`http://localhost:8080/concessionaria/${cnpj_concessionaria}`)
+        const dados = await response.json()
+        setConcessionaria(dados.concessionaria)
+        setEndereco_concessionaria(`${dados.rua} - ${dados.bairro}`)
+        setCep_concessionaria(dados.cep)
+        console.log(dados)
+
+    } catch (error) {
+        return console.log(error.message);
+    }
+  }
+  
   async function handleSubmit(event){
     event.preventDefault()
     const dado ={
@@ -131,6 +162,7 @@ function ContaEnergia() {
           <form onSubmit={handleSubmit}>
             <h2>Dados Concessionaria</h2>
             <div className = 'coluna'>
+
               <TextField
                 id="concessionaria" 
                 className='input'
@@ -142,7 +174,10 @@ function ContaEnergia() {
                 onChange={(e) => setConcessionaria(e.target.value)}
                 variant="outlined"
               />
-              <TextField
+              
+
+             
+             <TextField
                 id="cnpj_concessionaria" 
                 className='input'
                 type="text" 
@@ -151,16 +186,17 @@ function ContaEnergia() {
                 value={cnpj_concessionaria}
                 required={true}
                 onChange={(e) => setCnpj_concessionaria(e.target.value)}  
+                onBlur = {buscaConcessionaria}
                 variant="outlined"
-              />
+              />             
+
               <TextField
                 id="cep_concessionaria"
                 className='input'
                 type="text"
                 label="CEP Concessionaria"
-                placeholder="CEP Concessionaria"
                 value={cep_concessionaria}
-                onChange={(e) => setCep_concessionaria(e.target.value)}  
+                disable
                 variant="outlined"
               />
             </div>
@@ -171,9 +207,8 @@ function ContaEnergia() {
                 className='input' 
                 type="text"
                 label="Endereço"
-                placeholder="Endereço"
+                disable
                 value={endereco_concessionaria}
-                onChange={(e) => setEndereco_concessionaria(e.target.value)} 
                 variant="outlined"
               />
             </div>
@@ -181,49 +216,50 @@ function ContaEnergia() {
             <h2>Dados Cliente</h2> 
             <div className = 'coluna'>
 
+              <TextField
+                id="cnpj_cpf_cliente"
+                className='input'
+                type="text" 
+                required={true}
+                label="CNPJ/CPF"
+                placeholder="CNPJ/CPF"
+                value={cnpj_cpf_cliente}
+                onChange={(e) => setCnpj_cpf_cliente(e.target.value)}
+                onBlur = {buscaUnidade}
+                variant="outlined"
+              />
+
                <TextField
                 id="nome_cliente" 
                 className='input'
                 type="text"
                 label="Nome Cliente"
-                placeholder="Nome Cliente"
+                disable
                 value={nome_cliente}
-                required={true}
-                onChange={(e) => setNome_cliente(e.target.value)}
                 variant="outlined"
               />
-              <TextField
-                id="cnpj_cpf_cliente"
-                className='input'
-                type="text" 
-                label="CNPJ/CPF"
-                placeholder="CNPJ/CPF"
-                value={cnpj_cpf_cliente}
-                onChange={(e) => setCnpj_cpf_cliente(e.target.value)}
-                variant="outlined"
-              />
+             
+
               <TextField
                 id="cep_cliente"
                 className='input'
                 type="text"
                 label="CEP Cliente"
-                placeholder="CEP Cliente"
+                disable
                 value={cep_cliente}
-                required={true}
-                onChange={(e) => setCep_cliente(e.target.value)}  
                 variant="outlined"
               />                               
             </div> 
 
             <div className = 'coluna'>
+
               <TextField
                 id="endereco_cliente" 
                 className='input'
                 type="text" 
                 label="Endereço Cliente"
-                placeholder="Endereço Cliente"
+                disable
                 value={endereco_cliente}
-                onChange={(e) => setEndereco_cliente(e.target.value)} 
                 variant="outlined" 
               />
             </div> 
@@ -505,7 +541,19 @@ function ContaEnergia() {
             </div> 
             
             <div className="bt-container">
-                <button type='button' className="cadastrar" id="upload">UPLOAD</button>
+              <input
+                accept="file/*"
+                className="btn-upload"
+                id="contained-button-file"
+                multiple
+                type="file"
+                onChange={e=>setUpload(e.target.value)}
+              />
+              <label htmlFor="contained-button-file">
+                <Button id="upload" variant="contained" color="primary" component="span">
+                  Upload
+                </Button>
+              </label>
                 <button type="submit" className="cadastrar" id="botao_cad">ENVIAR</button>
             </div>
 

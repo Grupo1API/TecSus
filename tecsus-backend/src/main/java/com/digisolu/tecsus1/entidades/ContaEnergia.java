@@ -7,8 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.springframework.hateoas.RepresentationModel;
+
+import com.digisolu.tecsus1.adaptadores.AdaptadorArquivo;
 
 @Entity
 public class ContaEnergia extends RepresentationModel<ContaEnergia> {
@@ -17,6 +22,7 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+
 	@Column
 	private String concessionaria;
 	@Column
@@ -34,6 +40,16 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	private String cpf_cnpj_consumo;
 	@Column
 	private String cep_cliente;
+
+	@ManyToOne
+	@JoinColumn(name = "contaenergia_contrato_id", referencedColumnName = "contrato_energia_id")
+	private ContratoEnergia contaenergia_contrato_id;
+	
+	@OneToOne 
+	@JoinColumn (name = "conta_de_luz_arquivo_id",referencedColumnName = "adaptadorArquivo_id")
+	private AdaptadorArquivo conta_de_luz_arquivo_id;
+
+
 	@Column
 	private String endereco_cliente;
 	
@@ -45,6 +61,7 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	private float valor_total;
 	@Column
 	private String numero_instalacao;
+	private float consumo_kwh_mes;
 	@Column
 	private LocalDate data_vencimento;
 	@Column
@@ -92,7 +109,7 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
+  }
 	public String getConcessionaria() {
 		return concessionaria;
 	}
@@ -137,15 +154,18 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	}
 	public String getEndereco_cliente() {
 		return endereco_cliente;
+	
+	public AdaptadorArquivo getConta_de_luz_arquivo_id() {
+		return conta_de_luz_arquivo_id;
 	}
-	public void setEndereco_cliente(String endereco_cliente) {
-		this.endereco_cliente = endereco_cliente;
+	public void setConta_de_luz_arquivo_id(AdaptadorArquivo conta_de_luz_arquivo_id) {
+		this.conta_de_luz_arquivo_id = conta_de_luz_arquivo_id;
 	}
-	public String getCep_cliente() {
-		return cep_cliente;
+	public ContratoEnergia getContaenergia_contrato_id() {
+		return contaenergia_contrato_id;
 	}
-	public void setCep_cliente(String cep_cliente) {
-		this.cep_cliente = cep_cliente;
+	public void setContaenergia_contrato_id(ContratoEnergia contaenergia_contrato_id) {
+		this.contaenergia_contrato_id = contaenergia_contrato_id;
 	}
 	public String getNota_fiscal() {
 		return nota_fiscal;
@@ -166,6 +186,13 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 		this.numero_instalacao = numero_instalacao;
 	}
 	
+	
+	public float getConsumo_kwh_mes() {
+		return consumo_kwh_mes;
+	}
+	public void setConsumo_kwh_mes(float consumo_kwh_mes) {
+		this.consumo_kwh_mes = consumo_kwh_mes;
+	}
 	public LocalDate getData_vencimento() {
 		return data_vencimento;
 	}

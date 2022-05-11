@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.springframework.hateoas.RepresentationModel;
 
@@ -12,15 +14,16 @@ import org.springframework.hateoas.RepresentationModel;
 public class ContratoAgua extends RepresentationModel<ContratoAgua>{
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private Long id;
-	@Column
-	private String concessionaria;
-	@Column
-	private String concessionaria_cnpj;
-	@Column
-	private String unidade_nome;
-	@Column 
-	private String unidade_cnpj;
+	private Long contrato_agua_id;
+	
+	@ManyToOne
+	@JoinColumn(name = "contrato_concessionaria_id", referencedColumnName = "concessionaria_id")
+	private CadastroConcessionaria contrato_concessionaria_id;
+	
+	@ManyToOne
+	@JoinColumn(name = "contrato_unidade_id", referencedColumnName = "unidade_id")
+	private CadastroUnidade contrato_unidade_id;
+	
 	@Column
 	private String codigo_cliente;
 	@Column
@@ -31,8 +34,8 @@ public class ContratoAgua extends RepresentationModel<ContratoAgua>{
 	private String tipo_ligacao;
 	@Column
 	private String tipo_fornecimento;
-	@Column
-	private String n_fornecimento;
+	@Column(name ="n_fornecimento")
+	private String numeroFornecimento;
 	@Column
 	private float valor_medio;
 	@Column
@@ -53,34 +56,23 @@ public class ContratoAgua extends RepresentationModel<ContratoAgua>{
 	private String local_estado;
 	
 	public Long getId() {
-		return id;
+		return contrato_agua_id;
 	}
 	public void setId(Long id) {
-		this.id = id;
+		this.contrato_agua_id = id;
 	}
-	public String getConcessionaria() {
-		return concessionaria;
+	
+	public CadastroConcessionaria getContrato_concessionaria_id() {
+		return contrato_concessionaria_id;
 	}
-	public void setConcessionaria(String concessionaria) {
-		this.concessionaria = concessionaria;
+	public void setContrato_concessionaria_id(CadastroConcessionaria contrato_concessionaria_id) {
+		this.contrato_concessionaria_id = contrato_concessionaria_id;
 	}
-	public String getConcessionaria_cnpj() {
-		return concessionaria_cnpj;
+	public CadastroUnidade getContrato_unidade_id() {
+		return contrato_unidade_id;
 	}
-	public void setConcessionaria_cnpj(String concessionaria_cnpj) {
-		this.concessionaria_cnpj = concessionaria_cnpj;
-	}
-	public String getUnidade_nome() {
-		return unidade_nome;
-	}
-	public void setUnidade_nome(String unidade_nome) {
-		this.unidade_nome = unidade_nome;
-	}
-	public String getUnidade_cnpj() {
-		return unidade_cnpj;
-	}
-	public void setUnidade_cnpj(String unidade_cnpj) {
-		this.unidade_cnpj = unidade_cnpj;
+	public void setContrato_unidade_id(CadastroUnidade contrato_unidade_id) {
+		this.contrato_unidade_id = contrato_unidade_id;
 	}
 	public String getCodigo_cliente() {
 		return codigo_cliente;
@@ -113,10 +105,10 @@ public class ContratoAgua extends RepresentationModel<ContratoAgua>{
 		this.tipo_fornecimento = tipo_fornecimento;
 	}
 	public String getN_fornecimento() {
-		return n_fornecimento;
+		return numeroFornecimento;
 	}
 	public void setN_fornecimento(String n_fornecimento) {
-		this.n_fornecimento = n_fornecimento;
+		this.numeroFornecimento = n_fornecimento;
 	}
 	public float getValor_medio() {
 		return valor_medio;

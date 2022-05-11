@@ -13,6 +13,9 @@
     margin-top: 10px;
     background-color: #ffffff;
 }
+.btn-upload{
+    display: none;
+}
 .coluna{
     display: flex;
     gap: 80px;

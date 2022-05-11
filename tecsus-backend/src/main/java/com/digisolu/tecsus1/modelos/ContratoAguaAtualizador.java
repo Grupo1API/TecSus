@@ -4,18 +4,7 @@ import com.digisolu.tecsus1.entidades.ContratoAgua;
 
 public class ContratoAguaAtualizador {
 	private void atualizarDados(ContratoAgua contratoAgua, ContratoAgua atualizacao) {
-	if(!(atualizacao.getUnidade_nome()==null)) {
-		contratoAgua.setUnidade_nome(atualizacao.getUnidade_nome());
-	}
-	if(!(atualizacao.getConcessionaria()==null)) {
-		contratoAgua.setConcessionaria(atualizacao.getConcessionaria());
-	}
-	if(!(atualizacao.getConcessionaria_cnpj()==null)) {
-		contratoAgua.setConcessionaria_cnpj(atualizacao.getConcessionaria_cnpj());
-	}
-	if(!(atualizacao.getUnidade_cnpj()==null)) {
-		contratoAgua.setUnidade_cnpj(atualizacao.getUnidade_cnpj());
-	}
+	
 	if(!(atualizacao.getCodigo_cliente()==null)) {
 		contratoAgua.setCodigo_cliente(atualizacao.getCodigo_cliente());
 	}

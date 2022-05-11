@@ -5,38 +5,20 @@ import com.digisolu.tecsus1.entidades.ContaEnergia;
 public class ContaEnergiaAtualizador {
 	
 	private void atualizarDados(ContaEnergia contaEnergia, ContaEnergia atualizacao) {
-		if(!(atualizacao.getConcessionaria()==null)) {
-			contaEnergia.setConcessionaria(atualizacao.getConcessionaria());
-		}
-		if(!(atualizacao.getEndereco_concessionaria()==null)) {
-			contaEnergia.setEndereco_concessionaria(atualizacao.getEndereco_concessionaria());
-		}
-		if(!(atualizacao.getCep_concessionaria()==null)) {
-			contaEnergia.setCep_concessionaria(atualizacao.getCep_concessionaria());
-		}
-		if(!(atualizacao.getCnpj_concessionaria()==null)) {
-			contaEnergia.setCnpj_concessionaria(atualizacao.getCnpj_concessionaria());
-		}
-		if(!(atualizacao.getNome_cliente()==null)) {
-			contaEnergia.setNome_cliente(atualizacao.getNome_cliente());
-		}
-		if(!(atualizacao.getCpf_cnpj_consumo()==null)) {
-			contaEnergia.setCpf_cnpj_consumo(atualizacao.getCpf_cnpj_consumo());
-		}
-		if(!(atualizacao.getEndereco_cliente()==null)) {
-			contaEnergia.setEndereco_cliente(atualizacao.getEndereco_cliente());
-		}
-		if(!(atualizacao.getCep_cliente()==null)) {
-			contaEnergia.setCep_cliente(atualizacao.getCep_cliente());
-		}
 		if(!(atualizacao.getNota_fiscal()==null)) {
 			contaEnergia.setNota_fiscal(atualizacao.getNota_fiscal());
 		}
 		if(!(atualizacao.getValor_total()==0)) {
 			contaEnergia.setValor_total(atualizacao.getValor_total());
 		}
+
 		if(!(atualizacao.getNumero_instalacao()==null)) {
 			contaEnergia.setNumero_instalacao(atualizacao.getNumero_instalacao());
+
+
+		if(!(atualizacao.getConsumo_kwh_mes()==0)) {
+			contaEnergia.setConsumo_kwh_mes(atualizacao.getConsumo_kwh_mes());
+
 		}
 		if(!(atualizacao.getData_vencimento()==null)) {
 			contaEnergia.setData_vencimento(atualizacao.getData_vencimento());

@@ -12,11 +12,11 @@ import org.springframework.hateoas.RepresentationModel;
 public class CadastroUnidade extends RepresentationModel<CadastroUnidade> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long unidade_id;
 	@Column
 	private String nome;
-	@Column
-	private String cpf_cnpj;
+	@Column(name = "cpf_cnpj")
+	private String cpfCnpj;
 	@Column
 	private String telefone;
 	@Column
@@ -35,10 +35,10 @@ public class CadastroUnidade extends RepresentationModel<CadastroUnidade> {
 	private String end_numero;
 	
 	public Long getId() {
-		return id;
+		return unidade_id;
 	}
 	public void setId(Long id) {
-		this.id = id;
+		this.unidade_id = id;
 	}
 	public String getNome() {
 		return nome;
@@ -47,10 +47,10 @@ public class CadastroUnidade extends RepresentationModel<CadastroUnidade> {
 		this.nome = nome;
 	}
 	public String getCpf_cnpj() {
-		return cpf_cnpj;
+		return cpfCnpj;
 	}
 	public void setCpf_cnpj(String cpf_cnpj) {
-		this.cpf_cnpj = cpf_cnpj;
+		this.cpfCnpj = cpf_cnpj;
 	}
 	public String getTelefone() {
 		return telefone;

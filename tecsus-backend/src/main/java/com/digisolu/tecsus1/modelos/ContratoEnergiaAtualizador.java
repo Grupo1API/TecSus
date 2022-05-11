@@ -5,18 +5,6 @@ import com.digisolu.tecsus1.entidades.ContratoEnergia;
 public class ContratoEnergiaAtualizador {
 	private void atualizarDados(ContratoEnergia contratoEnergia, ContratoEnergia atualizacao) {
 	
-	if(!(atualizacao.getNome_unidade()==null)) {
-		contratoEnergia.setNome_unidade(atualizacao.getNome_unidade());
-	}
-	if(!(atualizacao.getConcessionaria()==null)) {
-		contratoEnergia.setConcessionaria(atualizacao.getConcessionaria());
-	}
-	if(!(atualizacao.getConcessionaria_cnpj()==null)) {
-		contratoEnergia.setConcessionaria_cnpj(atualizacao.getConcessionaria_cnpj());
-	}
-	if(!(atualizacao.getCpf_cnpj()==null)) {
-		contratoEnergia.setCpf_cnpj(atualizacao.getCpf_cnpj());
-	}
 	if(!(atualizacao.getCodigo_identificador()==null)) {
 		contratoEnergia.setCodigo_identificador(atualizacao.getCodigo_identificador());
 	}

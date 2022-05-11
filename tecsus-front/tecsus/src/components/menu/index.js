@@ -215,10 +215,8 @@ export default function Dashboard() {
               <ListItemText primary="Painel de Controle" />
               {openPainel ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
-
             <Collapse in={openPainel} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
-
                 <ListItem  button className={classes.nested}>
                   <ListItemIcon>
                     <LayersIcon />
@@ -233,14 +231,18 @@ export default function Dashboard() {
                 <ListItemText primary="Quadro Contratos" />
                 </ListItem>
 
+
+                <Link to='/quadro_cons' className={classes.link} >
                 <ListItem  button className={classes.nested}>
                   <ListItemIcon>
                     <LayersIcon />
                   </ListItemIcon>
                   <ListItemText primary="Quadro Concessionária" />
                 </ListItem>
+                </Link>
               </List>
             </Collapse>
+            
             <ListItem button className={classes.itens}>
               <ListItemIcon>
                 <WarningIcon />
@@ -268,4 +270,3 @@ export default function Dashboard() {
     </div>
   );
 }
-

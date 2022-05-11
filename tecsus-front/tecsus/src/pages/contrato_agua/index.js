@@ -25,6 +25,44 @@ function ContratoAgua(){
     const [estado_consumo, setEstado_consumo] = useState('')
     const [nResidencial_empresarial, setNResidencial_empresarial] = useState('')
     
+    async function buscaCep(){
+        try {
+            const response = await fetch(`https://viacep.com.br/ws/${cep_consumo}/json/`)
+            const dados = await response.json()
+            setRua_consumo(dados.logradouro)
+            setBairro_consumo(dados.bairro)
+            setCidade_consumo(dados.localidade)
+            setEstado_consumo(dados.uf)
+            
+        } catch (error) {
+            return console.log(error.message);
+        }
+    }
+
+    async function buscaUnidade(){
+        try {
+            const response = await fetch(`http://localhost:8080/unidades/${cpf_cnpj_cliente}`)
+            
+            const dados = await response.json()
+            setNome_cliente(dados.nome_cliente)
+            console.log(dados)
+
+        } catch (error) {
+            return console.log(error.message);
+        }
+    }
+    async function buscaConcessionaria(){
+        try {
+            const response = await fetch(`http://localhost:8080/concessionaria/${cnpj_concessionaria}`)
+            const dados = await response.json()
+            setConcessionaria(dados.concessionaria)
+            console.log(dados)
+
+        } catch (error) {
+            return console.log(error.message);
+        }
+    }
+
     async function handleSubmit(event){
         event.preventDefault()
         const dado ={
@@ -92,17 +130,6 @@ function ContratoAgua(){
                     <form name="cadastro_contrato_agua" onSubmit={handleSubmit}>
                         <div className='coluna'>
                             <TextField
-                                id="concessionaria" 
-                                className='input'
-                                type="text"
-                                required={true}
-                                label="Concessionaria"  
-                                placeholder="Concessionaria" 
-                                value={concessionaria}
-                                onChange={(e) => setConcessionaria(e.target.value)}
-                                variant="outlined"  
-                            />
-                            <TextField
                                 id="cnpj_concessionaria" 
                                 className='input'
                                 type="text" 
@@ -111,31 +138,41 @@ function ContratoAgua(){
                                 placeholder="CNPJ Concessionaria" 
                                 value={cnpj_concessionaria}
                                 onChange={(e) => setCnpj_concessionaria(e.target.value)}
+                                onBlur = {buscaConcessionaria}
                                 variant="outlined" 
                             />
                             <TextField
-                                id="nome_cliente" 
+                                id="concessionaria" 
                                 className='input'
-                                type="text" 
-                                required={true}
-                                label="Nome Cliente" 
-                                placeholder="Nome Cliente" 
-                                value={nome_cliente}
-                                onChange={(e) => setNome_cliente(e.target.value)}
-                                variant="outlined" 
-                            />
-                        </div>
-                         
-                        <div className='coluna'>
+                                type="text"
+                                label="Concessionaria"  
+                                disable
+                                value={concessionaria}
+                                variant="outlined"  
+                            /> 
                             <TextField
                                 id="cnpj_cpf_cliente"
                                 className='input' 
                                 type="text"
                                 required={true} 
-                                label="CNPJ/CPF cliente" 
-                                placeholder="CNPJ/CPF cliente" 
+                                label="CNPJ/CPF Unidade" 
+                                placeholder="CNPJ/CPF Unidade" 
                                 value={cpf_cnpj_cliente}
                                 onChange={(e) => setCpf_cnpj_cliente(e.target.value)}
+                                onBlur = {buscaUnidade}
+                                variant="outlined" 
+                            />
+                            
+                        </div>
+                         
+                        <div className='coluna'>
+                            <TextField
+                                id="nome_cliente" 
+                                className='input'
+                                type="text" 
+                                label="Nome Cliente" 
+                                disable
+                                value={nome_cliente}
                                 variant="outlined" 
                             />
                             <TextField
@@ -207,17 +244,6 @@ function ContratoAgua(){
                                 onChange={(e) => setN_fornecimento(e.target.value)} 
                                 variant="outlined"
                             />
-                            <TextField
-                                id="valor_medio" 
-                                className='input' 
-                                type="number" 
-                                required={true}
-                                label="Valor Médio"
-                                placeholder="Valor Médio"
-                                value={valor_medio}
-                                onChange={(e) => setValor_medio(e.target.value)}  
-                                variant="outlined"
-                            /> 
                             <NumberFormat 
                                 prefix={'R$ '} 
                                 id="valor_medio" 
@@ -244,8 +270,8 @@ function ContratoAgua(){
                                 className='input'
                                 type="text" 
                                 required={true}
-                                label="Nome"
-                                placeholder="Nome"
+                                label="Nome Consumidor"
+                                placeholder="Nome Consumidor"
                                 value={nome_consumo}
                                 onChange={(e) => setNome_consumo(e.target.value)}
                                 variant="outlined" 
@@ -269,7 +295,8 @@ function ContratoAgua(){
                                 label="CEP"
                                 placeholder="CEP"
                                 value={cep_consumo}
-                                onChange={(e) => setCep_consumo(e.target.value)}
+                                onChange={e=>setCep_consumo(e.target.value)}
+                                onBlur = {buscaCep}
                                 variant="outlined"
                             />
                         </div> 
@@ -280,9 +307,8 @@ function ContratoAgua(){
                                 className='input'
                                 type="text" 
                                 label="Rua"
-                                placeholder="Rua"
+                                disabled
                                 value={rua_consumo}
-                                onChange={(e) => setRua_consumo(e.target.value)} 
                                 variant="outlined"
                             />
                             <TextField
@@ -290,19 +316,17 @@ function ContratoAgua(){
                                 className='input'
                                 type="text" 
                                 label="Bairro"
-                                placeholder="Bairro"
+                                disabled
                                 value={bairro_consumo}
-                                onChange={(e) => setBairro_consumo(e.target.value)} 
                                 variant="outlined"
                             />
                             <TextField
                                 id="cidade_consumo" 
                                 className='input'
                                 type="text" 
-                                label="Bairro"
-                                placeholder="Cidade"
+                                label="Cidade"
+                                disabled
                                 value={cidade_consumo}
-                                onChange={(e) => setCidade_consumo(e.target.value)}
                                 variant="outlined" 
                             />
                         </div> 
@@ -312,9 +336,8 @@ function ContratoAgua(){
                                 className='input'
                                 type="text" 
                                 label="Estado"
-                                placeholder="Estado"
+                                disabled
                                 value={estado_consumo}
-                                onChange={(e) => setEstado_consumo(e.target.value)}
                                 variant="outlined"
                             />                          
                             <TextField

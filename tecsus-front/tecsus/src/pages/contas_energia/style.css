@@ -7,7 +7,9 @@
     margin-top: 10px;
     background-color: #ffffff;
 }
-
+.btn-upload{
+    display: none;
+}
 .container_energia{
     display: flex;
     flex-direction: column;
