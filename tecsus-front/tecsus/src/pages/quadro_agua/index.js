@@ -9,7 +9,7 @@ import TableRow from "@material-ui/core/TableRow";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
-import EditClientes from "../../components/formulario/formCons";
+import EditClientes from "../../components/formulario/formAgua";
 import CloseIcon from "@material-ui/icons/Close";
 
 const StyledTableCell = withStyles((theme) => ({
@@ -62,7 +62,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function QuadroConcessionaria() {
+export default function QuadroAguak() {
   const classes = useStyles();
   const [listaClientes, setListaClientes] = useState([]);
   const [modalEdit, setModalEdit] = useState(false);
@@ -75,7 +75,7 @@ export default function QuadroConcessionaria() {
   async function listaCliente() {
     try {
       const response = await fetch(
-        "http://localhost:8080/cadastroconcessionaria",
+        "http://localhost:8080/contadeagua",
         {
           method: "GET",
         }
@@ -88,7 +88,7 @@ export default function QuadroConcessionaria() {
   }
 
   async function handleDelete(id) {
-    await fetch(`http://localhost:8080/concessionaria/excluir/${id}`, {
+    await fetch(`http://localhost:8080/contasdeagua/excluir/${id}`, {
       method: "DELETE",
     });
     listaCliente();
@@ -114,9 +114,24 @@ export default function QuadroConcessionaria() {
             <StyledTableCell align="left">Pde_Rgi</StyledTableCell>
             <StyledTableCell align="left">Hidrometro</StyledTableCell>
             <StyledTableCell align="left">Tipo de Ligação</StyledTableCell>
-            <StyledTableCell align="left">CNPJ</StyledTableCell>
-            <StyledTableCell align="left">CEP</StyledTableCell>
-            <StyledTableCell align="left">Inscrição Estadual</StyledTableCell>
+            <StyledTableCell align="left">Cep</StyledTableCell>
+            <StyledTableCell align="left">economia</StyledTableCell>
+            <StyledTableCell align="left">Data Apresentação</StyledTableCell>
+            <StyledTableCell align="left">Proxima Leitura</StyledTableCell>
+            <StyledTableCell align="left">Condição Leitura</StyledTableCell>
+            <StyledTableCell align="left">Consumo m3</StyledTableCell>
+            <StyledTableCell align="left">Periodo de Consumo</StyledTableCell>
+            <StyledTableCell align="left">Media de Consumo</StyledTableCell>
+            <StyledTableCell align="left">Valor total Esgoto</StyledTableCell>
+            <StyledTableCell align="left">Valor total de consumo</StyledTableCell>
+            <StyledTableCell align="left">Multa</StyledTableCell>
+            <StyledTableCell align="left">Valor tributos</StyledTableCell>
+            <StyledTableCell align="left">Juros Moradia</StyledTableCell>
+            <StyledTableCell align="left">Taxa de Regulação</StyledTableCell>
+            <StyledTableCell align="left">Data Vencimento</StyledTableCell>
+            <StyledTableCell align="left">Segmento</StyledTableCell>
+            <StyledTableCell align="left">N° do Documento</StyledTableCell>
+            <StyledTableCell align="left">Data Emissão</StyledTableCell>
             <StyledTableCell align="left"></StyledTableCell>
           </TableRow>
         </TableHead>
@@ -124,18 +139,34 @@ export default function QuadroConcessionaria() {
         <TableBody className={classes.body}>
           {listaClientes.map((x) => (
             <StyledTableRow key={x.id}>
-              <StyledTableCell >{x.cnpj}</StyledTableCell>
-              <StyledTableCell align="left" >{x.nome}</StyledTableCell>
-              <StyledTableCell align="left">{x.segmento}</StyledTableCell>
+              <StyledTableCell >{x.n_fornecimento}</StyledTableCell>
+              <StyledTableCell align="left" >{x.cnpj}</StyledTableCell>
+              <StyledTableCell align="left">{x.concessionaria}</StyledTableCell>
+              <StyledTableCell align="left" >{x.cpf_cnpj_cliente}</StyledTableCell>
+              <StyledTableCell align="left">{x.nome_cliente}</StyledTableCell>
+              <StyledTableCell align="left">{x.codigo_cliente}</StyledTableCell>
+              <StyledTableCell align="left">{x.pde_rgi}</StyledTableCell>
+              <StyledTableCell align="left">{x.hidrometro}</StyledTableCell>
+              <StyledTableCell align="left">{x.tipo_ligacao}</StyledTableCell>
               <StyledTableCell align="left" >{x.cep}</StyledTableCell>
-              <StyledTableCell align="left">{x.rua}</StyledTableCell>
-              <StyledTableCell align="left">{x.bairro}</StyledTableCell>
-              <StyledTableCell align="left">{x.cidade}</StyledTableCell>
-              <StyledTableCell align="left">{x.uf}</StyledTableCell>
-              <StyledTableCell align="left">{x.numero}</StyledTableCell>
-              <StyledTableCell align="left" >{x.telefone}</StyledTableCell>
-              <StyledTableCell align="left">{x.inscricao_estadual}</StyledTableCell>
-              <StyledTableCell align="left">{x.inscricao_especial}</StyledTableCell>
+              <StyledTableCell align="left">{x.economia}</StyledTableCell>
+              <StyledTableCell align="left">{x.data_apresentacao}</StyledTableCell>
+              <StyledTableCell align="left">{x.proxima_leitura}</StyledTableCell>
+              <StyledTableCell align="left">{x.condicao_leitura}</StyledTableCell>
+              <StyledTableCell align="left">{x.consumo_m3}</StyledTableCell>
+              <StyledTableCell align="left" >{x.periodo_consumo}</StyledTableCell>
+              <StyledTableCell align="left">{x.media_consumo}</StyledTableCell>
+              <StyledTableCell align="left">{x.subtotal_agua}</StyledTableCell>
+              <StyledTableCell align="left">{x.subtotal_esgoto}</StyledTableCell>
+              <StyledTableCell align="left">{x.vtConsumo}</StyledTableCell>
+              <StyledTableCell align="left">{x.multa}</StyledTableCell>
+              <StyledTableCell align="left">{x.at_monet}</StyledTableCell>
+              <StyledTableCell align="left" >{x.juros_moradia}</StyledTableCell>
+              <StyledTableCell align="left">{x.taxa_regulacao}</StyledTableCell>
+              <StyledTableCell align="left">{x.data_vencimento}</StyledTableCell>
+              <StyledTableCell align="left">{x.segmento}</StyledTableCell>
+              <StyledTableCell align="left">{x.documento}</StyledTableCell>
+              <StyledTableCell align="left">{x.dataEmissao}</StyledTableCell>
               <StyledTableCell align="left" className={classes.button}>
                 <IconButton
                   color="primary"

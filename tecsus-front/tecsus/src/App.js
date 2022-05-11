@@ -12,6 +12,7 @@ import ContratoAgua from './pages/contrato_agua';
 import ContratoEnergia from './pages/contrato_energia';
 import Unidade from './pages/unidade';
 import Quadro_cons from './pages/quadro_cons';
+import Quadro_agua1 from './pages/quadro_agua';
 
 
 function Main() {
@@ -27,6 +28,7 @@ function Main() {
               <Route path="/contrato_energia" element={<ContratoEnergia />}/>
               <Route path="/unidade" element={<Unidade />}/>
               <Route path="/quadro_cons" element={<Quadro_cons />}/> 
+              <Route path="/quadro_agua" element={<Quadro_agua1 />}/>
             </Routes>
         </Router>
     </div>
