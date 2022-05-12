@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.digisolu.tecsus1.entidades.ContratoAgua;
 import com.digisolu.tecsus1.entidades.ContratoEnergia;
 import com.digisolu.tecsus1.modelos.AdicionadorLinkContratoEnergia;
 import com.digisolu.tecsus1.modelos.ContratoEnergiaAtualizador;

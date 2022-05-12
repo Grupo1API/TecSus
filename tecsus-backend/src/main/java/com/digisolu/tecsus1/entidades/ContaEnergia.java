@@ -34,20 +34,21 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	//dados cliente
 	
 	@Column
-	private String nome_cliente;
-	@Column
 	private String cpf_cnpj_consumo;
 	@Column
+	private String nome_cliente;
+	@Column
 	private String cep_cliente;
-
+	@Column
+	private String endereco_cliente;
+	
 	@ManyToOne
 	@JoinColumn(name = "contaenergia_contrato_id", referencedColumnName = "contrato_energia_id")
 	private ContratoEnergia contaenergia_contrato_id;
 
 
 
-	@Column
-	private String endereco_cliente;
+	
 	
 	//Dados conta
 	
@@ -57,7 +58,6 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	private float valor_total;
 	@Column
 	private String numero_instalacao;
-	private float consumo_kwh_mes;
 	@Column
 	private LocalDate data_vencimento;
 	@Column
@@ -184,14 +184,6 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	}
 	public void setNumero_instalacao(String numero_instalacao) {
 		this.numero_instalacao = numero_instalacao;
-	}
-	
-	
-	public float getConsumo_kwh_mes() {
-		return consumo_kwh_mes;
-	}
-	public void setConsumo_kwh_mes(float consumo_kwh_mes) {
-		this.consumo_kwh_mes = consumo_kwh_mes;
 	}
 	public LocalDate getData_vencimento() {
 		return data_vencimento;

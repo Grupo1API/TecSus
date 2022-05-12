@@ -54,9 +54,46 @@ public class ContaAguaAtualizador {
 		if(!(atualizacao.getData_vencimento()==null)) {
 			contaAgua.setData_vencimento(atualizacao.getData_vencimento());
 		}
-			
-		
-	}
+		if(!(atualizacao.getCnpj()==null)) {
+			contaAgua.setCnpj(atualizacao.getCnpj());
+		}
+		if(!(atualizacao.getConcessionaria()==null)) {
+			contaAgua.setConcessionaria(atualizacao.getConcessionaria());
+		}
+		if(!(atualizacao.getN_fornecimento()==null)) {
+			contaAgua.setN_fornecimento(atualizacao.getN_fornecimento());
+		}
+		if(!(atualizacao.getSegmento()==null)) {
+			contaAgua.setSegmento(atualizacao.getSegmento());
+		}
+		if(!(atualizacao.getCnpj_cpf_unidade()==null)) {
+			contaAgua.setCnpj_cpf_unidade(atualizacao.getCnpj_cpf_unidade());
+		}
+		if(!(atualizacao.getNome_unidade()==null)) {
+			contaAgua.setNome_unidade(atualizacao.getNome_unidade());
+		}
+		if(!(atualizacao.getCep()==null)) {
+			contaAgua.setCep(atualizacao.getCep());
+		}
+		if(!(atualizacao.getCodigo_cliente()==null)) {
+			contaAgua.setCodigo_cliente(atualizacao.getCodigo_cliente());
+		}
+		if(!(atualizacao.getPde_rgi()==null)) {
+			contaAgua.setPde_rgi(atualizacao.getPde_rgi());
+		}
+
+		if(!(atualizacao.getHidrometro()==null)) {
+			contaAgua.setHidrometro(atualizacao.getHidrometro());
+		}
+
+		if(!(atualizacao.getEconomia()==null)) {
+			contaAgua.setEconomia(atualizacao.getEconomia());
+		}
+
+		if(!(atualizacao.getTipo_ligacao()==null)) {
+			contaAgua.setTipo_ligacao(atualizacao.getTipo_ligacao());
+		}
+ 	}
 	public void atualizar(ContaAgua contaAgua, ContaAgua atualizacao) {
 		atualizarDados(contaAgua,atualizacao);
 	}
