@@ -24,35 +24,11 @@ public class ContaAgua extends RepresentationModel<ContaAgua>{
 	@JoinColumn(name = "contaagua_contrato_id", referencedColumnName = "contrato_agua_id")
 	private ContratoAgua contaagua_contrato_id;
 	
-	//dados concessionaria
-	@Column
-	private String cnpj;
-	@Column
-	private String concessionaria;
-	@Column
-	private String n_fornecimento;
-	@Column
-	private String segmento;
 	@Column
 	private String n_documento;
 	@Column
 	private LocalDate data_emissao;
-	
-	//dados cliente
-	@Column
-	private String cnpj_cpf_unidade;
-	@Column
-	private String nome_unidade;
-	@Column
-	private String cep;
-	@Column
-	private String codigo_cliente;
-	@Column
-	private String pde_rgi;
-	@Column
-	private String hidrometro;
-	
-	//dados conta
+
 	@Column 
 	private String economia;	
 	@Column
@@ -204,78 +180,5 @@ public class ContaAgua extends RepresentationModel<ContaAgua>{
 	public void setData_vencimento(LocalDate data_vencimento) {
 		this.data_vencimento = data_vencimento;
 	}
-	
-	public String getCnpj() {
-		return cnpj;
-	}
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
-	}
-	public String getConcessionaria() {
-		return concessionaria;
-	}
-	public void setConcessionaria(String concessionaria) {
-		this.concessionaria = concessionaria;
-	}
-	public String getN_fornecimento() {
-		return n_fornecimento;
-	}
-	public void setN_fornecimento(String n_fornecimento) {
-		this.n_fornecimento = n_fornecimento;
-	}
-	public String getSegmento() {
-		return segmento;
-	}
-	public void setSegmento(String segmento) {
-		this.segmento = segmento;
-	}
-	public String getCnpj_cpf_unidade() {
-		return cnpj_cpf_unidade;
-	}
-	public void setCnpj_cpf_unidade(String cnpj_cpf_unidade) {
-		this.cnpj_cpf_unidade = cnpj_cpf_unidade;
-	}
-	public String getNome_unidade() {
-		return nome_unidade;
-	}
-	public void setNome_unidade(String nome_unidade) {
-		this.nome_unidade = nome_unidade;
-	}
-	public String getCep() {
-		return cep;
-	}
-	public void setCep(String cep) {
-		this.cep = cep;
-	}
-	public String getCodigo_cliente() {
-		return codigo_cliente;
-	}
-	public void setCodigo_cliente(String codigo_cliente) {
-		this.codigo_cliente = codigo_cliente;
-	}
-	public String getPde_rgi() {
-		return pde_rgi;
-	}
-	public void setPde_rgi(String pde_rgi) {
-		this.pde_rgi = pde_rgi;
-	}
-	public String getHidrometro() {
-		return hidrometro;
-	}
-	public void setHidrometro(String hidrometro) {
-		this.hidrometro = hidrometro;
-	}
-	public String getEconomia() {
-		return economia;
-	}
-	public void setEconomia(String economia) {
-		this.economia = economia;
-	}
-	public String getTipo_ligacao() {
-		return tipo_ligacao;
-	}
-	public void setTipo_ligacao(String tipo_ligacao) {
-		this.tipo_ligacao = tipo_ligacao;
-	}
-		
+			
 }

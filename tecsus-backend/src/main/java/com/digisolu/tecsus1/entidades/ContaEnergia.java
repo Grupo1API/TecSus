@@ -21,36 +21,11 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-
-	@Column
-	private String concessionaria;
-	@Column
-	private String cnpj_concessionaria;
-	@Column
-	private String cep_concessionaria; 
-	@Column
-	private String endereco_concessionaria;
-
-	//dados cliente
-	
-	@Column
-	private String cpf_cnpj_consumo;
-	@Column
-	private String nome_cliente;
-	@Column
-	private String cep_cliente;
-	@Column
-	private String endereco_cliente;
 	
 	@ManyToOne
 	@JoinColumn(name = "contaenergia_contrato_id", referencedColumnName = "contrato_energia_id")
 	private ContratoEnergia contaenergia_contrato_id;
 
-
-
-	
-	
-	//Dados conta
 	
 	@Column
 	private String nota_fiscal;
@@ -116,51 +91,14 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getConcessionaria() {
-		return concessionaria;
-	}
-	public void setConcessionaria(String concessionaria) {
-		this.concessionaria = concessionaria;
-	}
-	public String getEndereco_concessionaria() {
-		return endereco_concessionaria;
-	}
-	public void setEndereco_concessionaria(String endereco_concessionaria) {
-		this.endereco_concessionaria = endereco_concessionaria;
-	}
+	
 	public String getBandeira_tarifaria_vigente() {
 		return bandeira_tarifaria_vigente;
 	}
 	public void setBandeira_tarifaria_vigente(String bandeira_tarifaria_vigente) {
 		this.bandeira_tarifaria_vigente = bandeira_tarifaria_vigente;
 	}
-	public String getCep_concessionaria() {
-		return cep_concessionaria;
-	}
-	public void setCep_concessionaria(String cep_concessionaria) {
-		this.cep_concessionaria = cep_concessionaria;
-	}
-	public String getCnpj_concessionaria() {
-		return cnpj_concessionaria;
-	}
-	public void setCnpj_concessionaria(String cnpj_concessionaria) {
-		this.cnpj_concessionaria = cnpj_concessionaria;
-	}
-	public String getNome_cliente() {
-		return nome_cliente;
-	}
-	public void setNome_cliente(String nome_cliente) {
-		this.nome_cliente = nome_cliente;
-	}
-	public String getCpf_cnpj_consumo() {
-		return cpf_cnpj_consumo;
-	}
-	public void setCpf_cnpj_consumo(String cpf_cnpj_consumo) {
-		this.cpf_cnpj_consumo = cpf_cnpj_consumo;
-	}
-	public String getEndereco_cliente() {
-		return endereco_cliente;
-	}
+	
 	public ContratoEnergia getContaenergia_contrato_id() {
 		return contaenergia_contrato_id;
 	}
