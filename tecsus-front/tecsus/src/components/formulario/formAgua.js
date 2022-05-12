@@ -79,7 +79,7 @@ export default function EditClientes({ dados, modalEdit }) {
 
   return (
     <form className={classes.root} onSubmit={handleUpdate}>
-      <div>
+                <div>
                             <TextField
                                 id="outlined-required"
                                 className='input'
@@ -103,7 +103,8 @@ export default function EditClientes({ dados, modalEdit }) {
                                 fullWidth
                                 
                             />
-
+                    </div>
+                    <div>
                             <TextField
                                 id="outlined-required"
                                 className='input' 
@@ -114,9 +115,6 @@ export default function EditClientes({ dados, modalEdit }) {
                                 variant="outlined" 
                                 fullWidth
                             />                  
-
-                            </div> 
-                            <div >  
                             <TextField
                                 id="outlined-required"
                                 className='input'
@@ -128,6 +126,8 @@ export default function EditClientes({ dados, modalEdit }) {
                                 fullWidth
                                 variant="outlined"
                             />
+                    </div> 
+                     <div >  
                             <TextField
                                 id="outlined-required"
                                 className='input'
@@ -180,6 +180,8 @@ export default function EditClientes({ dados, modalEdit }) {
                                 variant="outlined"
                                 
                             />
+                            </div> 
+                            <div >  
                              
                               <TextField
                                 id="outlined-required"
@@ -193,8 +195,6 @@ export default function EditClientes({ dados, modalEdit }) {
                                 variant="outlined"   
                                 
                             />
-                            </div> 
-                            <div >  
                             <TextField
                                  id="outlined-required"
                                  fullWidth
@@ -207,9 +207,6 @@ export default function EditClientes({ dados, modalEdit }) {
                                 
                             />    
                             </div>
-
-
-                        <h2>Dados Conta</h2> 
                         <div > 
                             {/* 13 */}   
                             <TextField
@@ -239,6 +236,8 @@ export default function EditClientes({ dados, modalEdit }) {
                                 onChange={(e) => setData_apresentacao(e.target.value)}
                                 variant="outlined"
                             />
+                            </div> 
+                            <div >  
                             {/* 16 */}
                             <NumberFormat 
                                  id="outlined-required"
@@ -255,8 +254,6 @@ export default function EditClientes({ dados, modalEdit }) {
                                 onChange={(e) => setProxima_leitura(e.target.value)} 
                                 variant="outlined"
                             />
-                            </div> 
-                        <div className='coluna'>
                             {/* 17 */}
                             <TextField
                                  id="outlined-required"
@@ -269,6 +266,8 @@ export default function EditClientes({ dados, modalEdit }) {
                                 onChange={(e) => setCondicao_leitura(e.target.value)}
                                 variant="outlined"    
                             />
+                            </div> 
+                            <div >  
                             {/* 18 */}
                             <TextField
                                  id="outlined-required"
@@ -295,7 +294,7 @@ export default function EditClientes({ dados, modalEdit }) {
                             />   
                              </div> 
 
-                            <div className='coluna'> 
+                            <div> 
                             {/* 20 */}
                             <TextField
                                  id="outlined-required"
@@ -325,6 +324,8 @@ export default function EditClientes({ dados, modalEdit }) {
                                 } }
                                 variant="outlined"
                             />
+                            </div> 
+                            <div >  
                             {/* 22 */}
                             <NumberFormat 
                                  id="outlined-required"
@@ -342,8 +343,6 @@ export default function EditClientes({ dados, modalEdit }) {
                                 } }
                                 variant="outlined"
                             />
-                            </div> 
-                        <div className='coluna'>
                             {/* 23 */}
                             <NumberFormat 
                                  id="outlined-required"
@@ -362,6 +361,8 @@ export default function EditClientes({ dados, modalEdit }) {
                                 } }
                                 variant="outlined"
                             />
+                            </div> 
+                            <div >  
                             {/* 24 */}
                             <NumberFormat 
                                  id="outlined-required"
@@ -397,7 +398,7 @@ export default function EditClientes({ dados, modalEdit }) {
                                 variant="outlined"
                             /> 
                             </div>
-                        <div className='coluna'>  
+                        <div >  
                             {/* 26 */}                      
                             <NumberFormat
                                  id="outlined-required"
@@ -432,6 +433,8 @@ export default function EditClientes({ dados, modalEdit }) {
                                 } }
                                 variant="outlined"
                             />
+                            </div> 
+                            <div >  
                         
                             {/* 28 */}
                             <NumberFormat 
@@ -449,8 +452,7 @@ export default function EditClientes({ dados, modalEdit }) {
                                 variant="outlined"
                                 fullWidth
                             />
-                        </div>  
-                        <div >  
+                        
                         <TextField
                                  id="outlined-required"
                                 className='input'
