@@ -14,7 +14,7 @@ public class ContaEnergiaAtualizador {
 
 		if(!(atualizacao.getNumero_instalacao()==null)) {
 			contaEnergia.setNumero_instalacao(atualizacao.getNumero_instalacao());
-
+		}
 
 		if(!(atualizacao.getConsumo_kwh_mes()==0)) {
 			contaEnergia.setConsumo_kwh_mes(atualizacao.getConsumo_kwh_mes());

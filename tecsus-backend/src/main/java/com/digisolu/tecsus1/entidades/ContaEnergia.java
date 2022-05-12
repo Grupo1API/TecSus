@@ -104,7 +104,6 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	@Column
 	private byte[] arquivo;
 	
-		
 	public byte[] getArquivo() {
 		return arquivo;
 	}
@@ -116,7 +115,7 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	}
 	public void setId(Long id) {
 		this.id = id;
-  }
+	}
 	public String getConcessionaria() {
 		return concessionaria;
 	}
@@ -161,7 +160,7 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	}
 	public String getEndereco_cliente() {
 		return endereco_cliente;
-	
+	}
 	public ContratoEnergia getContaenergia_contrato_id() {
 		return contaenergia_contrato_id;
 	}
