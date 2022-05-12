@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
-import Menu from '../../components/menu'
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -9,8 +8,10 @@ import TableRow from "@material-ui/core/TableRow";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
-import EditClientes from "../../components/formulario/formCons";
+import EditConcessionarias from "../../components/formConcessionaria/formCons";
+import InfoIcon from '@material-ui/icons/Info';
 import CloseIcon from "@material-ui/icons/Close";
+import InfoConcessionaria from "../infoConcessionaria";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -25,15 +26,14 @@ const StyledTableCell = withStyles((theme) => ({
 const StyledTableRow = withStyles((theme) => ({
   root: {
     "&:nth-of-type(odd)": {
-      color: theme.palette.common.white,
+      color: theme.palette.hover,
     },
   },
 }))(TableRow);
 
 const useStyles = makeStyles({
   table: {
-    width: "90%",
-    marginLeft:'284px'
+    minWidth: 700,  
   },
   body: {
     backgroundColor: "#fff",
@@ -52,27 +52,28 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "100%",
+    height: "120vh",
   },
   close: {
     position: "absolute",
-    top: "5em",
-    right: "20em",
+    top: "1em",
+    right: "25em",
     color: "#fff",
   },
 });
 
-export default function QuadroConcessionaria() {
+export default function Quadro_concessionaria() {
   const classes = useStyles();
-  const [listaClientes, setListaClientes] = useState([]);
+  const [listaConcessionarias, setListaConcessionarias] = useState([]);
   const [modalEdit, setModalEdit] = useState(false);
+  const [modalInfo, setModalInfo] = useState(false)
   const [dados, setDados] = useState([]);
 
   useEffect(() => {
-    listaCliente();
+    listaConcessionaria();
   }, []);
 
-  async function listaCliente() {
+  async function listaConcessionaria() {
     try {
       const response = await fetch(
         "http://localhost:8080/cadastroconcessionaria",
@@ -81,62 +82,64 @@ export default function QuadroConcessionaria() {
         }
       );
       const data = await response.json();
-      setListaClientes(data);
+      setListaConcessionarias(data);
     } catch (error) {
       console.log(error.message);
     }
   }
 
   async function handleDelete(id) {
-    await fetch(`http://localhost:8080/concessionaria/excluir/${id}`, {
+    const data ={
+      id:id
+    }
+    await fetch(`http://localhost:8080/concessionaria/excluir`, {
       method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
     });
-    listaCliente();
+    listaConcessionaria();
   }
+  
 
   function handleClose(event) {
     event.preventDefault();
     setModalEdit(false);
+    setModalInfo(false)
   }
 
   return (
-    <>
-      <Menu/>
+    <div>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell align="left">CNPJ</StyledTableCell>
-            <StyledTableCell align="left">Nome</StyledTableCell>
-            <StyledTableCell align="left">Segmento</StyledTableCell>
+            <StyledTableCell align="left">ID</StyledTableCell>
+            <StyledTableCell align="left">Nome Concessionaria</StyledTableCell>
+            <StyledTableCell align="left">CPF/CNPJ</StyledTableCell>
             <StyledTableCell align="left">CEP</StyledTableCell>
-            <StyledTableCell align="left">Rua</StyledTableCell>
-            <StyledTableCell align="left">Bairro</StyledTableCell>
-            <StyledTableCell align="left">Cidade</StyledTableCell>
-            <StyledTableCell align="left">Estado</StyledTableCell>
-            <StyledTableCell align="left">Telefone</StyledTableCell>
-            <StyledTableCell align="left">CPF</StyledTableCell>
-            <StyledTableCell align="left">Insc.Uni.Reg.Esp.Proc</StyledTableCell>
-            <StyledTableCell align="left">Inscrição Estadual</StyledTableCell>
             <StyledTableCell align="left"></StyledTableCell>
           </TableRow>
         </TableHead>
 
         <TableBody className={classes.body}>
-          {listaClientes.map((x) => (
+          {listaConcessionarias.map((x) => (
             <StyledTableRow key={x.id}>
-              <StyledTableCell >{x.cnpj}</StyledTableCell>
-              <StyledTableCell align="left" >{x.nome}</StyledTableCell>
-              <StyledTableCell align="left">{x.segmento}</StyledTableCell>
+              <StyledTableCell >{x.id}</StyledTableCell>
+              <StyledTableCell component="th" scope="row" >{x.nome}</StyledTableCell>
+              <StyledTableCell align="left">{x.cnpj}</StyledTableCell>
               <StyledTableCell align="left" >{x.cep}</StyledTableCell>
-              <StyledTableCell align="left">{x.rua}</StyledTableCell>
-              <StyledTableCell align="left">{x.bairro}</StyledTableCell>
-              <StyledTableCell align="left">{x.cidade}</StyledTableCell>
-              <StyledTableCell align="left">{x.uf}</StyledTableCell>
-              <StyledTableCell align="left">{x.numero}</StyledTableCell>
-              <StyledTableCell align="left" >{x.telefone}</StyledTableCell>
-              <StyledTableCell align="left">{x.inscricao_estadual}</StyledTableCell>
-              <StyledTableCell align="left">{x.inscricao_especial}</StyledTableCell>
               <StyledTableCell align="left" className={classes.button}>
+                <IconButton
+                    color="primary"
+                    onClick={() => {
+                      setModalInfo(true);
+                      setDados(x);
+                    }}
+                  >
+                    <InfoIcon/>
+                </IconButton>
+
                 <IconButton
                   color="primary"
                   onClick={() => {
@@ -159,9 +162,17 @@ export default function QuadroConcessionaria() {
           <IconButton className={classes.close} onClick={handleClose}>
             <CloseIcon fontSize="large" color="#fff" />
           </IconButton>
-          <EditClientes dados={dados} modalEdit={modalEdit} />
+          <EditConcessionarias dados={dados} modalEdit={modalEdit} />
         </div>
       )}
-    </>
+      {modalInfo && (
+          <div className={classes.modal}>
+            <IconButton className={classes.close} onClick={handleClose}>
+              <CloseIcon fontSize="large" color="#fff" />
+            </IconButton>
+            <InfoConcessionaria dados={dados}/>
+          </div>
+        )}
+    </div>
   );
 }

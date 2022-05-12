@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import useStyles from "../../pages/quadro_cons/style";
+import useStyles from "../quadro_concessionaria/style";
 
-export default function EditClientes({ dados, modalEdit }) {
+export default function EditConcessionaria({ dados, modalEdit }) {
   const classes = useStyles();
   const [cnpj, setCnpj] = useState(dados.cnpj)
   const [nome, setNome] = useState(dados.nome)
@@ -185,10 +185,6 @@ export default function EditClientes({ dados, modalEdit }) {
           value={inscricao_unic}
         />
       </div>
-
-
-
-
       <Button
         onClick={()=>handleUpdate()}
         type="Submit"

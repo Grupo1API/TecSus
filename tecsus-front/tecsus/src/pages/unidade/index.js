@@ -124,9 +124,9 @@ function Unidade(){
                                 // style={{zIndex: }}
                                 className='input'
                                 id='email'
-                                type='text'
+                                type='email'
                                 label="email"
-                                placeholder='Email'
+                                placeholder='teste@teste.com'
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 variant="outlined"
