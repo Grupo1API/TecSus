@@ -11,7 +11,6 @@ public class ContaEnergiaAtualizador {
 		if(!(atualizacao.getValor_total()==0)) {
 			contaEnergia.setValor_total(atualizacao.getValor_total());
 		}
-
 		if(!(atualizacao.getNumero_instalacao()==null)) {
 			contaEnergia.setNumero_instalacao(atualizacao.getNumero_instalacao());
 		}

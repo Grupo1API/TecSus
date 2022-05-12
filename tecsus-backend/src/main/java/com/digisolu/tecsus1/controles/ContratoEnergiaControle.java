@@ -88,9 +88,9 @@ public class ContratoEnergiaControle {
 	return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-    @GetMapping("/contratoenergia/{codigo_identificador}")
-    public ResponseEntity<ContratoEnergia> getFornecimento(@PathVariable("codigo_identificador") String codigo_identificador) {
-    	ContratoEnergia contratos_energia = repositorio.findByCodigoIdentificador(codigo_identificador);
+    @GetMapping("/contratoenergia/{numero_instalacao}")
+    public ResponseEntity<ContratoEnergia> getNumInstalacao(@PathVariable("numero_instalacao") String numero_instalacao) {
+    	ContratoEnergia contratos_energia = repositorio.findByNumeroInstalacao(numero_instalacao);
         if(contratos_energia == null) {
             return new ResponseEntity<ContratoEnergia>(HttpStatus.BAD_REQUEST);
         }

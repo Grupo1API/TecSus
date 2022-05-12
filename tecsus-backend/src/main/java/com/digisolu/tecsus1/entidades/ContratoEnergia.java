@@ -26,7 +26,9 @@ public class ContratoEnergia extends RepresentationModel<ContratoEnergia> {
 	@JoinColumn(name = "contrato_unidade_id", referencedColumnName = "unidade_id")
 	private CadastroUnidade contrato_unidade_id;
 	
-	@Column(name= "codigo_identificador")
+	@Column(name= "numero_instalacao")
+	private String NumeroInstalacao;
+	@Column
 	private String codigoIdentificador; 
 	@Column
 	private String codigo_fiscal_operacao;
@@ -81,6 +83,12 @@ public class ContratoEnergia extends RepresentationModel<ContratoEnergia> {
 	}
 	public void setContrato_unidade_id(CadastroUnidade contrato_unidade_id) {
 		this.contrato_unidade_id = contrato_unidade_id;
+	}
+	public String getNumero_instalacao() {
+		return NumeroInstalacao;
+	}
+	public void setNumero_instalacao(String numero_instalacao) {
+		NumeroInstalacao = numero_instalacao;
 	}
 	public String getCodigo_identificador() {
 		return codigoIdentificador;
