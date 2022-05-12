@@ -43,7 +43,6 @@ function ContaEnergia() {
   const [tensao_nominal, setTensao_nominal] = useState('')
   const [roteiro_leitura, setRoteiro_leitura] = useState('')
   const [medidor, setMedidor] = useState('')
-  const [valor_medio, setValor_medio] = useState('')
   const [end_eletrico, setEnd_eletrico] = useState('')
   
 
@@ -136,7 +135,6 @@ function ContaEnergia() {
       tensao_nominal:tensao_nominal, 
       roteiro_leitura:roteiro_leitura, 
       num_medidor:medidor, 
-      valor_medio:valor_medio, 
       endereco_eletrico:end_eletrico, 
 
       // Esses estão dando erros no sistema
@@ -213,7 +211,6 @@ function ContaEnergia() {
       setTensao_nominal('')
       setRoteiro_leitura('')
       setMedidor('')
-      setValor_medio('')
       setEnd_eletrico('')
       /*
       setCpf_cnpj_ci('')
@@ -333,16 +330,6 @@ function ContaEnergia() {
 
 
               <TextField
-                  id="endereco"
-                  className='input' 
-                  type="text"
-                  label="Endereço Concessionaria"
-                  disable
-                  value={endereco_concessionaria}
-                  variant="outlined"
-              />
-
-              <TextField
                   id="cnpj_cpf_cliente"
                   className='input'
                   type="text" 
@@ -353,12 +340,7 @@ function ContaEnergia() {
                   onChange={(e) => setCpf_cnpj_cliente(e.target.value)}
                   onBlur = {buscaUnidade}
                   variant="outlined"
-              />                          
-
-            </div> 
-
-            <div className = 'coluna'>
-                           
+              />        
               <TextField
                   id="nome_cliente" 
                   className='input'
@@ -367,7 +349,13 @@ function ContaEnergia() {
                   disable 
                   value={nome_cliente}
                   variant="outlined"
-              />
+              />                  
+
+            </div> 
+
+            <div className = 'coluna'>
+                           
+
               <TextField
                   id="cep_cliente"
                   className='input'
@@ -376,21 +364,9 @@ function ContaEnergia() {
                   disable
                   value={cep_cliente}
                   variant="outlined"
-              />                               
-              <TextField
-                  id="endereco_cliente" 
-                  className='input'
-                  type="text" 
-                  label="Endereço Unidade"
-                  disable
-                  value={endereco_cliente}
-                  variant="outlined" 
               />
-            </div> 
-
-            <div className='coluna'>
-
-                <TextField 
+              
+              <TextField 
                     id="codigo_identificador" 
                     type="number" 
                     className='input' 
@@ -412,7 +388,11 @@ function ContaEnergia() {
                     value={codigo_fiscal}
                     onChange={(e) => setCodigo_fiscal(e.target.value)} 
                     variant="outlined"
-                />
+                />                               
+            </div> 
+
+            <div className='coluna'>
+
                 <TextField
                     id="grupo_sub" 
                     className='input'                             
@@ -423,12 +403,6 @@ function ContaEnergia() {
                     onChange={(e) => setGrupo_sub(e.target.value)}
                     variant="outlined"
                 />
-
-
-            </div>
-
-            <div className='coluna'>
-                 
                 <TextField
                     id="classe_sub"  
                     className='input'   
@@ -449,6 +423,13 @@ function ContaEnergia() {
                       onChange={(e) => setModalidade_taf(e.target.value)}  
                       variant="outlined" 
                   />
+
+
+            </div>
+
+            <div className='coluna'>
+                 
+                
                   <TextField
                     id="tensao_nominal"
                     className='input'  
@@ -459,12 +440,7 @@ function ContaEnergia() {
                     onChange={(e) => setTensao_nominal(e.target.value)} 
                     variant="outlined"   
                   />
-
-            </div>
-
-            <div className='coluna'>
-            
-                <TextField
+                  <TextField
                     id="roteiro_leitura" 
                     className='input' 
                     type="text" 
@@ -485,24 +461,9 @@ function ContaEnergia() {
                     onChange={(e) => setMedidor(e.target.value)}  
                     variant="outlined"
                 />
-                <NumberFormat 
-                    prefix={'R$ '} 
-                    id="valor_medio" 
-                    className='input'  
-                    floatValue = {true}
-                    value={valor_medio}
-                    required={true}
-                    label="Valor Medio (R$)"
-                    placeholder="Valor Medio (R$)"
-                    customInput={TextField}
-                    onValueChange = { ( valores )  =>  { 
-                    const  {floatValue}  =  valores ; 
-                    setValor_medio ( floatValue  ) ;                                 
-                    } }
-                    variant="outlined"
-                />
 
             </div>
+
 
             <h2>Dados Conta</h2> 
             <div className = 'coluna'>
