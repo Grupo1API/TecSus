@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
 import './style.css';
 import Menu from '../../components/menu'
-
+import { useState } from 'react';
 import NumberFormat from 'react-number-format';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 function ContaEnergia() {
 
-  const [concessionaria, setConcessionaria] = useState('')
-  const [endereco_concessionaria, setEndereco_concessionaria] = useState('')
-  const [cep_concessionaria, setCep_concessionaria] = useState('')
-  const [cnpj_concessionaria, setCnpj_concessionaria] = useState('')
-  const [nome_cliente, setNome_cliente] = useState('')
+  // Dados anteriores
   const [cnpj_cpf_cliente, setCnpj_cpf_cliente] = useState('')
   const [endereco_cliente, setEndereco_cliente] = useState('')
   const [cep_cliente, setCep_cliente] = useState('')
@@ -27,6 +24,28 @@ function ContaEnergia() {
   const [numero_medidor, setNumero_medidor] = useState('')
   const [const_multa, setConst_multa] = useState('')
   const [kwhMes, setKwhMes] = useState('')
+
+  // Dados que reperitram (Eu apaguei os repetidos)
+  const [concessionaria, setConcessionaria] = useState('')        //marcar como novo no cadastro 
+  const [endereco_concessionaria, setEndereco_concessionaria] = useState('')
+  const [cep_concessionaria, setCep_concessionaria] = useState('')
+
+  // Novos dados
+  const [cnpj_concessionaria, setCnpj_concessionaria] = useState('') //marcar como novo no cadastro
+  const [nome_cliente, setNome_cliente] = useState('')
+  const [cpf_cnpj_cliente, setCpf_cnpj_cliente] = useState('') 
+  const [codigo_identificador, setCodigo_identificador] = useState('')
+  const [codigo_fiscal, setCodigo_fiscal] = useState('')
+  const [grupo_sub, setGrupo_sub] = useState('')
+  const [classe_sub, setClase_sub] = useState('')
+  const [tp_fornecimento, setTp_fornecimento] = useState('')
+  const [modalidade_taf, setModalidade_taf] = useState('')
+  const [tensao_nominal, setTensao_nominal] = useState('')
+  const [roteiro_leitura, setRoteiro_leitura] = useState('')
+  const [medidor, setMedidor] = useState('')
+  const [valor_medio, setValor_medio] = useState('')
+  const [end_eletrico, setEnd_eletrico] = useState('')
+  
 
   const [qtdKwh_tusd, setQtdKwh_tusd] = useState('')
   const [tarifa_aplicada_tusd, setTarifa_aplicada_tusd] = useState('')
@@ -53,9 +72,41 @@ function ContaEnergia() {
   const [aliquota_cofins, setAliquota_cofins] = useState('')
   const [valor_cofins, setValor_cofins] = useState('')
 
+  const[upload, setUpload]= useState('')
+
+  async function buscaUnidade(){
+    try {
+        const response = await fetch(`http://localhost:8080/unidades/${cnpj_cpf_cliente}`)
+        
+        const dados = await response.json()
+        setNome_cliente(dados.nome_cliente)
+        setEndereco_cliente(`${dados.rua} - ${dados.bairro}`)
+        setCep_cliente(dados.cep)
+        console.log(dados)
+
+    } catch (error) {
+        return console.log(error.message);
+    }
+  } 
+  async function buscaConcessionaria(){
+    try {
+        const response = await fetch(`http://localhost:8080/concessionaria/${cnpj_concessionaria}`)
+        const dados = await response.json()
+        setConcessionaria(dados.concessionaria)
+        setEndereco_concessionaria(`${dados.rua} - ${dados.bairro}`)
+        setCep_concessionaria(dados.cep)
+        console.log(dados)
+
+    } catch (error) {
+        return console.log(error.message);
+    }
+  }
+  
   async function handleSubmit(event){
     event.preventDefault()
     const dado ={
+      
+      // Dados anteriores
       concessionaria:concessionaria,
       endereco_concessionaria:endereco_concessionaria,
       cep_concessionaria:cep_concessionaria,
@@ -68,6 +119,38 @@ function ContaEnergia() {
       valor_total:Number(valor_total),
       numero_instalacao:numero_instalacao,
       consumo_kwh_mes:consumoKwh,
+      
+      concessionaria_cnpj:cnpj_concessionaria,  
+
+      // Dados repetidos
+      nome_unidade:nome_cliente, // Aqui
+      cpf_cnpj:cpf_cnpj_cliente, // Aqui
+
+      // Dados novos
+      codigo_identificador:codigo_identificador, 
+      codigo_fiscal_operacao:codigo_fiscal, 
+      grupo_subgrupo:grupo_sub, 
+      classe_subclasse:classe_sub, 
+      tp_fornecimento:tp_fornecimento, 
+      modalidade_tarifaria:modalidade_taf, 
+      tensao_nominal:tensao_nominal, 
+      roteiro_leitura:roteiro_leitura, 
+      num_medidor:medidor, 
+      valor_medio:valor_medio, 
+      endereco_eletrico:end_eletrico, 
+
+      // Esses estão dando erros no sistema
+      
+      /*
+      cnpj_cpf_ci:cpf_cnpj_ci, 
+      local_cep:cep_consumo, 
+      local_rua:rua_consumo, 
+      local_bairro:bairro_consumo, 
+      local_cidade:cidade_consumo, 
+      local_estado:estado_consumo, 
+      local_numero:nResidencial_empresarial, 
+      */
+
       data_vencimento:formatarData(data_vencimento),
       conta_mes:conta_mes,
       bandeira_tarifaria:bandeiraTarifaria,
@@ -116,11 +199,38 @@ function ContaEnergia() {
         body: JSON.stringify(dado)
       })
       
+
+      // Implementação dos novos dados
+      setCnpj_concessionaria('')
+      setNome_cliente('')
+      setCpf_cnpj_cliente('')
+      setCodigo_identificador('')
+      setCodigo_fiscal('')
+      setGrupo_sub('')
+      setClase_sub('')
+      setTp_fornecimento('')
+      setModalidade_taf('')
+      setTensao_nominal('')
+      setRoteiro_leitura('')
+      setMedidor('')
+      setValor_medio('')
+      setEnd_eletrico('')
+      /*
+      setCpf_cnpj_ci('')
+      setCep_consumo('')
+      setRua_consumo('')
+      setBairro_consumo('')
+      setCidade_consumo('')
+      setEstado_consumo('')
+      setNResidencial_empresarial('')
+      */
+
+      // Dados que reperitram (Eu apaguei os repetidos)
       setConcessionaria('')
       setEndereco_concessionaria('')
       setCep_concessionaria('')
-      setCnpj_concessionaria('')
-      setNome_cliente('')
+
+      // Dados antigos
       setCnpj_cpf_cliente('')
       setEndereco_cliente('')
       setCep_cliente('')
@@ -171,431 +281,541 @@ function ContaEnergia() {
         <h1>Cadastro de Conta de Energia</h1>
         <div className = 'container-dados'>
           <form onSubmit={handleSubmit}>
-            <h2>Dados Concessionaria</h2>
-            <div className = 'coluna'>
-              <input 
-                type="text" 
-                id="numero_instalacao" 
-                placeholder="N° Instalação"
-                required={true}
-                value={numero_instalacao}
-                onChange={(e) => setNumero_instalacao(e.target.value)}  
+            <h2>Dados do Contrato</h2>
+
+              <div className='coluna'>
+              <TextField
+                  id="tp_fornecimento" 
+                  className='input' 
+                  type="text" 
+                  required={true}
+                  label="TP Fornecimencto"
+                  placeholder="TP Fornecimento"
+                  value={tp_fornecimento}
+                  onChange={(e) => setTp_fornecimento(e.target.value)} 
+                  variant="outlined" 
               />
-              <input 
-                type="text" 
-                id="concessionaria" 
-                placeholder="Concessionaria"
-                value={concessionaria}
-                required={true}
-                onChange={(e) => setConcessionaria(e.target.value)}  
+              <TextField
+                  id="cnpj_concessionaria" 
+                  className='input'
+                  type='text'
+                  required={true} 
+                  label="CNPJ Concessionária"
+                  placeholder="CNPJ Concessionaria" 
+                  value={cnpj_concessionaria}
+                  onChange={(e) => setCnpj_concessionaria(e.target.value)}
+                  onBlur = {buscaConcessionaria}
+                  variant="outlined"
               />
-              <input 
-                type="text" 
-                id="cnpj_concessionaria" 
-                placeholder="CNPJ Concessionaria"
-                value={cnpj_concessionaria}
-                required={true}
-                onChange={(e) => setCnpj_concessionaria(e.target.value)}  
-              />              
-            </div>
-            <div className = 'coluna'>
-              <input 
-                type="text" 
-                id="endereco" 
-                placeholder="Endereço"
-                value={endereco_concessionaria}
-                onChange={(e) => setEndereco_concessionaria(e.target.value)}  
-              />
-              <input 
-                type="text" 
-                id="cep_concessionaria" 
-                placeholder="CEP Concessionaria"
-                value={cep_concessionaria}
-                onChange={(e) => setCep_concessionaria(e.target.value)}  
-              />
-              <input 
-                type="text" 
-                id="nome_cliente" 
-                placeholder="Nome Cliente"
-                value={nome_cliente}
-                required={true}
-                onChange={(e) => setNome_cliente(e.target.value)}
-              />
-            </div>
-            <div className = 'coluna'>
-              <input 
-                type="text" 
-                id="cnpj_cpf_cliente"
-                placeholder="CNPJ/CPF"
-                value={cnpj_cpf_cliente}
-                onChange={(e) => setCnpj_cpf_cliente(e.target.value)}
-              />
-              <input 
-                type="text" 
-                id="cep_cliente" 
-                placeholder="CEP Cliente"
-                value={cep_cliente}
-                required={true}
-                onChange={(e) => setCep_cliente(e.target.value)}  
+              <TextField
+                  id="concessionaria" 
+                  className='input'
+                  type='text'
+                  disable
+                  label="Concessionária"                                
+                  value={concessionaria}
+                  variant="outlined"
               /> 
-              <input 
-              type="text" 
-              id="endereco_cliente" 
-              placeholder="Endereço Cliente"
-              value={endereco_cliente}
-              onChange={(e) => setEndereco_cliente(e.target.value)}  
-              />                                    
-            </div>          
+
+            </div> 
+
+            
+            <div className='coluna'>
+              <TextField
+                  id="cep_concessionaria"
+                  className='input'
+                  type="text"
+                  label="CEP Concessionaria"
+                  value={cep_concessionaria}
+                  disable
+                  variant="outlined"
+              />
+
+
+              <TextField
+                  id="endereco"
+                  className='input' 
+                  type="text"
+                  label="Endereço Concessionaria"
+                  disable
+                  value={endereco_concessionaria}
+                  variant="outlined"
+              />
+
+              <TextField
+                  id="cnpj_cpf_cliente"
+                  className='input'
+                  type="text" 
+                  required={true}
+                  label="CNPJ/CPF Unidade"
+                  placeholder="CNPJ/CPF cliente" 
+                  value={cpf_cnpj_cliente}
+                  onChange={(e) => setCpf_cnpj_cliente(e.target.value)}
+                  onBlur = {buscaUnidade}
+                  variant="outlined"
+              />                          
+
+            </div> 
+
+            <div className = 'coluna'>
+                           
+              <TextField
+                  id="nome_cliente" 
+                  className='input'
+                  type="text" 
+                  label="Nome Unidade"
+                  disable 
+                  value={nome_cliente}
+                  variant="outlined"
+              />
+              <TextField
+                  id="cep_cliente"
+                  className='input'
+                  type="text"
+                  label="CEP Unidade"
+                  disable
+                  value={cep_cliente}
+                  variant="outlined"
+              />                               
+              <TextField
+                  id="endereco_cliente" 
+                  className='input'
+                  type="text" 
+                  label="Endereço Unidade"
+                  disable
+                  value={endereco_cliente}
+                  variant="outlined" 
+              />
+            </div> 
+
+            <div className='coluna'>
+
+                <TextField 
+                    id="codigo_identificador" 
+                    type="number" 
+                    className='input' 
+                    required={true}
+                    label="Código Identificador"
+                    placeholder="Código Identificador" 
+                    value={codigo_identificador}
+                    variant="outlined"
+                    onChange={(e) => setCodigo_identificador(e.target.value)}
+                />
+
+                <TextField
+                    id="codigo_fiscal"  
+                    className='input'                            
+                    type="text"
+                    required={true} 
+                    label="Código Fiscal Operação"
+                    placeholder="Código Fiscal Operação"
+                    value={codigo_fiscal}
+                    onChange={(e) => setCodigo_fiscal(e.target.value)} 
+                    variant="outlined"
+                />
+                <TextField
+                    id="grupo_sub" 
+                    className='input'                             
+                    type="text" 
+                    label="Grupo/Subgrupo" 
+                    placeholder="Grupo/Subgrupo"  
+                    value={grupo_sub}
+                    onChange={(e) => setGrupo_sub(e.target.value)}
+                    variant="outlined"
+                />
+
+
+            </div>
+
+            <div className='coluna'>
+                 
+                <TextField
+                    id="classe_sub"  
+                    className='input'   
+                    type="text" 
+                    label="Classe/Subclasse"
+                    placeholder="Classe/Subclasse" 
+                    value={classe_sub}
+                    onChange={(e) => setClase_sub(e.target.value)} 
+                    variant="outlined"
+                  />
+                  <TextField
+                      id="modalidade_taf" 
+                      className='input' 
+                      type="text" 
+                      label="Modalidade Tarifaria"
+                      placeholder="Modalidade Tarifaria"
+                      value={modalidade_taf}
+                      onChange={(e) => setModalidade_taf(e.target.value)}  
+                      variant="outlined" 
+                  />
+                  <TextField
+                    id="tensao_nominal"
+                    className='input'  
+                    type="text" 
+                    label="Tensão Nominal"
+                    placeholder="Tensão Nominal"
+                    value={tensao_nominal}
+                    onChange={(e) => setTensao_nominal(e.target.value)} 
+                    variant="outlined"   
+                  />
+
+            </div>
+
+            <div className='coluna'>
+            
+                <TextField
+                    id="roteiro_leitura" 
+                    className='input' 
+                    type="text" 
+                    label="Roteiro de Leitura"
+                    placeholder="Roteiro de Leitura"
+                    value={roteiro_leitura}
+                    onChange={(e) => setRoteiro_leitura(e.target.value)} 
+                    variant="outlined"  
+                />
+                
+                <TextField
+                    id="medidor" 
+                    className='input' 
+                    type="text" 
+                    label="Nª Medidor"
+                    placeholder="Nª Medidor"
+                    value={medidor}
+                    onChange={(e) => setMedidor(e.target.value)}  
+                    variant="outlined"
+                />
+                <NumberFormat 
+                    prefix={'R$ '} 
+                    id="valor_medio" 
+                    className='input'  
+                    floatValue = {true}
+                    value={valor_medio}
+                    required={true}
+                    label="Valor Medio (R$)"
+                    placeholder="Valor Medio (R$)"
+                    customInput={TextField}
+                    onValueChange = { ( valores )  =>  { 
+                    const  {floatValue}  =  valores ; 
+                    setValor_medio ( floatValue  ) ;                                 
+                    } }
+                    variant="outlined"
+                />
+
+            </div>
+
             <h2>Dados Conta</h2> 
             <div className = 'coluna'>
-              <input 
-                type="text" 
+              {/* 10 */}
+              <TextField
                 id="nota_fiscal" 
+                className='input'
+                type="text"
+                label="Nota fiscal"
                 placeholder="Nota fiscal"
                 value={nota_fiscal}
                 required={true}
                 onChange={(e) => setNota_fiscal(e.target.value)}
+                variant="outlined" 
               />
+              {/* 11 */}
               <NumberFormat 
                 prefix={'R$ '} 
                 id="valor_total"
+                className='input'
                 floatValue = {true}
                 value={valor_total}
                 required={true}
+                label="Valor total (R$)"
                 placeholder="Valor total (R$)"
+                customInput={TextField}
                 onValueChange = { ( valores )  =>  { 
                   const  {floatValue}  =  valores ; 
                   setValor_total ( floatValue  ) ; 
                 } }
+                variant="outlined"
               />
-               <input 
-                type="number" 
-                id="consumoKwh"
-                required={true} 
-                placeholder="Consumo Kwh"
-                value={consumoKwh}
-                onChange={(e) => setConsumoKwh(e.target.value)}
-              />              
-
-            </div>
-            <div className = 'coluna'>
-              <NumberFormat 
+              {/* 12 */}
+              <TextField
+                id="numero_instalacao" 
+                className='input'
                 type="text" 
-                id="data_vencimento"
+                label="N° Instalação"
+                placeholder="N° Instalação"
                 required={true}
-                format="##/##/####" 
-                value={data_vencimento}
-                onChange={(e) => setData_vencimento(e.target.value)}
-                placeholder="Data Vencimento" 
-                mask={['D', 'D', 'M', 'M', 'Y', 'Y', 'Y', 'Y']}
+                value={numero_instalacao}
+                onChange={(e) => setNumero_instalacao(e.target.value)}  
+                variant="outlined"  
               />
-              <input 
+            </div>
+
+            <div className = 'coluna'>
+              
+              {/* 13 */}
+              <NumberFormat 
+                id="data_vencimento"
+                className='input'
                 type="text" 
+                required={true}
+                format="##/##/####"  
+                mask={['D', 'D', 'M', 'M', 'Y', 'Y', 'Y', 'Y']}
+                value={data_vencimento}
+                label="Data Vencimento" 
+                placeholder="Data Vencimento" 
+                customInput={TextField}
+                onChange={(e) => setData_vencimento(e.target.value)}
+                variant="outlined"
+              />
+              {/* 14 */}
+              <TextField
                 id="conta_mes"
+                className='input'
+                type="text" 
                 required={true} 
+                label="Conta Mês" 
                 placeholder="Conta Mês"
                 value={conta_mes}
                 onChange={(e) => setConta_mes(e.target.value)}
+                variant="outlined"   
               />
-              <input 
-                type="text" 
+              {/* 15 */}
+              <TextField
                 id="bandeiraTarifaria" 
+                className='input'
+                type="text" 
                 required={true}
+                label="Bandeira Tarifaria" 
                 placeholder="Bandeira Tarifaria"
                 value={bandeiraTarifaria}
                 onChange={(e) => setBandeiraTarifaria(e.target.value)}
-              />      
+                variant="outlined"   
+              /> 
             </div>
-            <div className = 'coluna'>        
+
+            <div className = 'coluna'>  
+              {/* 16 */}          
               <NumberFormat 
-                type="text" 
                 id="emissao"
+                className='input'
+                type="text" 
                 required={true}
                 format="##/##/####" 
-                value={emissao}
-                onChange={(e) => setEmissao(e.target.value)}
-                placeholder="Data Emissão" 
                 mask={['D', 'D', 'M', 'M', 'Y', 'Y', 'Y', 'Y']}
+                value={emissao}
+                label="Data Emissão"
+                placeholder="Data Emissão" 
+                customInput={TextField}
+                onChange={(e) => setEmissao(e.target.value)}
+                variant="outlined"
               />
-              <input 
+              {/* 17 */}
+              <TextField
+                id="dias_faturamento" 
+                className='input'
                 type="number" 
                 required={true}
-                id="dias_faturamento" 
+                label="N° Dias Faturamento" 
                 placeholder="N° Dias Faturamento"
                 value={dias_faturamento}
                 onChange={(e) => setDias_faturamento(e.target.value)}
-              />              
+                variant="outlined"   
+              />            
             </div>
 
             <p>Descrição do Consumo</p>
 
             <div className = 'coluna'>
-              <input 
+              {/* 18 */}
+              <TextField
+                id="descricao_consumo"
+                className='input'
                 type="text" 
-                id="descricao_consumo" 
+                label="Descrição"
                 placeholder="Descrição"
                 value={descricao_consumo}
                 onChange={(e) => setDescricao_consumo(e.target.value)}
-              />
-              <input 
+                variant="outlined"    
+              /> 
+              {/* 19 */}
+              <TextField
+                id="numero_medidor"
+                className='input'
                 type="text" 
-                id="numero_medidor" 
                 required={true}
+                label="N° medidor" 
                 placeholder="N° medidor"
                 value={numero_medidor}
                 onChange={(e) => setNumero_medidor(e.target.value)}
+                variant="outlined"   
               />
-              <input 
+              {/* 20 */}
+              <TextField
+                id="const_multa"
+                className='input'
                 type="number" 
-                id="const_multa" 
+                label="Const. Multa"  
                 placeholder="Const. Multa"
                 value={const_multa}
                 onChange={(e) => setConst_multa(e.target.value)}
-              />              
+                variant="outlined"   
+              />            
             </div>
+
             <div className = 'coluna'>
-              <input 
+              {/* 21 */}
+              <TextField
+                id="kwhMes"
+                className='input'
                 type="number" 
-                id="kwhMes" 
+                label="Qtd Kwh Mês" 
                 placeholder="Qtd Kwh Mês"
                 value={kwhMes}
                 onChange={(e) => setKwhMes(e.target.value)}
-              />
-            </div>           
-            <p>Descrição do Produto TUSD - Consumo </p>
-
-            <div className = 'coluna'>
-              <input 
-                type="number" 
-                id="qtdKwh_tusd" 
-                placeholder="Quantidades kWh"
-                value={qtdKwh_tusd}
-                onChange={(e) => setQtdKwh_tusd(e.target.value)}
-              />
-              <NumberFormat 
-                prefix={'R$ '} 
-                id="tarifa_aplicada_tusd"
-                floatValue = {true}
-                value={tarifa_aplicada_tusd}
-                placeholder="Taria Aplicada (R$)"
-                onValueChange = { ( valores )  =>  { 
-                  const  {floatValue}  =  valores ; 
-                  setTarifa_aplicada_tusd ( floatValue  ) ; 
-                } }
-              />
-              <NumberFormat 
-                prefix={'R$ '} 
-                id="valor_fornecimento_tusd" 
-                floatValue = {true}
-                value={valor_fornecimento_tusd}
-                placeholder="Valor do Fornecimento (R$)"
-                onValueChange = { ( valores )  =>  { 
-                  const  {floatValue}  =  valores ; 
-                  setValor_fornecimento_tusd ( floatValue  ) ; 
-                } }
-              />
-              
-              
-            </div>
-            <div className = 'coluna'>
-              <NumberFormat 
-                prefix={'R$ '} 
+                variant="outlined"   
+              /> 
+               {/* 22 */}
+               <NumberFormat 
                 id="valor_total_tusd" 
+                className='input'
+                prefix={'R$ '} 
                 floatValue = {true}
                 value={valor_total_tusd}
-                placeholder="Valor Total (R$)"
+                label="Valor Total TUSD"
+                placeholder="R$ "
+                customInput={TextField}
                 onValueChange = { ( valores )  =>  { 
                   const  {floatValue}  =  valores ; 
                   setValor_total_tusd ( floatValue  ) ; 
                 } }
+                variant="outlined"
               />
-            </div>
-
-            <p>Descrição do Produto TE - Consumo </p>
-
-            <div className = 'coluna'>
-              <input 
-                type="number" 
-                id="qtdKwh_te" 
-                placeholder="Quantidades kWh"
-                value={qtdKwh_te}
-                onChange={(e) => setQtdKwh_te(e.target.value)}
-              />
+              {/* 23 */}
               <NumberFormat 
-                prefix={'R$ '} 
-                id="tarifa_aplicada_te"  
-                floatValue = {true}
-                value={tarifa_aplicada_te}
-                placeholder="Taria Aplicada (R$)"
-                onValueChange = { ( valores )  =>  { 
-                  const  {floatValue}  =  valores ; 
-                  setTarifa_aplicada_te ( floatValue  ) ; 
-                } }
-              />
-              <NumberFormat 
-                prefix={'R$ '} 
-                id="valor_fornecimento_te"  
-                floatValue = {true}
-                value={valor_fornecimento_te}
-                placeholder="Valor do Fornecimento (R$)"
-                onValueChange = { ( valores )  =>  { 
-                  const  {floatValue}  =  valores ; 
-                  setValor_fornecimento_te ( floatValue  ) ; 
-                } }
-              />
-              
-            </div>
-            <div className = 'coluna'>
-              <NumberFormat 
-                prefix={'R$ '} 
                 id="valor_total_te"
+                className='input'
+                prefix={'R$ '} 
                 floatValue = {true}
                 value={valor_total_te}
-                placeholder="Valor Total (R$)"
+                label="Valor Total TE"
+                placeholder="R$"
+                customInput={TextField}
                 onValueChange = { ( valores )  =>  { 
                   const  {floatValue}  =  valores ; 
                   setValor_total_te ( floatValue  ) ; 
                 } }
+                variant="outlined"
               />
-            </div>
-
-            <p>Descrição do Produto Adicional bandeiras vigentes </p>
+            </div> 
 
             <div className = 'coluna'>
-              <input 
-                type="number" 
-                id="qtdKwh_bandeira" 
-                placeholder="Quantidades kWh"
-                value={qtdKwh_bandeira}
-                onChange={(e) => setQtdKwh_bandeira(e.target.value)}
-              />
+              {/* 24 */}
               <NumberFormat 
-                prefix={'R$ '} 
-                id="tarifa_aplicada_bandeira"
-                floatValue = {true}
-                value={tarifa_aplicada_bandeira}
-                placeholder="Taria Aplicada (R$)"
-                onValueChange = { ( valores )  =>  { 
-                  const  {floatValue}  =  valores ; 
-                  setTarifa_aplicada_bandeira ( floatValue  ) ; 
-                } }
-              />
-              <NumberFormat 
-                prefix={'R$ '} 
-                id="valor_fornecimento_bandeira"
-                floatValue = {true}
-                value={valor_fornecimento_bandeira}
-                placeholder="Valor do Fornecimento (R$)"
-                onValueChange = { ( valores )  =>  { 
-                  const  {floatValue}  =  valores ; 
-                  setValor_fornecimento_bandeira ( floatValue  ) ; 
-                } }
-              />
-              
-            </div>
-            <div className = 'coluna'>
-              <NumberFormat 
-                prefix={'R$ '} 
                 id="valor_total_bandeira"
+                className='input'
+                prefix={'R$ '} 
                 floatValue = {true}
                 value={valor_total_bandeira}
-                placeholder="Valor Total (R$)"
+                label="Valor Bandeira Tarifária"
+                placeholder="R$ "
+                customInput={TextField}
                 onValueChange = { ( valores )  =>  { 
                   const  {floatValue}  =  valores ; 
                   setValor_total_bandeira ( floatValue  ) ; 
                 } }
-              />
+                variant="outlined"
+              /> 
             </div>
 
             <p>Itens Financeiros (Valores Totais)</p>
 
             <div className = 'coluna'>
+              {/* 25 */}
               <NumberFormat 
+                id="multa"
+                className='input'
                 prefix={'R$ '} 
-                id="multa" 
                 floatValue = {true}
                 value={multa}
+                label="Multa (R$)"
                 placeholder="Multa (R$)"
+                customInput={TextField}
                 onValueChange = { ( valores )  =>  { 
                   const  {floatValue}  =  valores ; 
                   setMulta ( floatValue  ) ; 
                 } }
+                variant="outlined"
               />
-                <NumberFormat 
-                prefix={'R$ '} 
+              {/* 26 */}
+              <NumberFormat 
                 id="cip" 
+                className='input'
+                prefix={'R$ '} 
                 floatValue = {true}
                 value={cip}
+                label="CIP"
                 placeholder="CIP-Contribuição Municipal (R$)"
+                customInput={TextField}
                 onValueChange = { ( valores )  =>  { 
                   const  {floatValue}  =  valores ; 
                   setCip ( floatValue  ) ; 
                 } }
+                variant="outlined"
               />      
             </div>
 
-            <p>Tributos (PIS)</p>
+             <p>Tributos</p>
 
-            <div className = 'coluna'>
-              <input 
-                type="number" 
-                id="base_calculo_pis" 
-                placeholder="Base de Calculo"
-                value={base_calculo_pis}
-                onChange={(e) => setBase_calculo_pis(e.target.value)}
-              />
-              <input 
-                type="number" 
-                id="aliquota_pis" 
-                placeholder="Aliquota"
-                value={aliquota_pis}
-                onChange={(e) => setAliquota_pis(e.target.value)}
-              />
+             <div className = 'coluna'>
+
+              {/* 27 */} 
               <NumberFormat 
-                prefix={'R$ '} 
                 id="valor_pis" 
+                className='input'
+                prefix={'R$ '} 
                 floatValue = {true}
                 value={valor_pis}
-                placeholder="Valor (R$)"
+                label="Valor PIS"
+                placeholder="R$ "
+                customInput={TextField}
                 onValueChange = { ( valores )  =>  { 
                   const  {floatValue}  =  valores ; 
                   setValor_pis ( floatValue  ) ; 
                 } }
+                variant="outlined"
               />
-            </div>
 
-            <p>Tributos (COFINS)</p>
-
-            <div className = 'coluna'>
-              <input 
-                type="number" 
-                id="base_calculo_cofins" 
-                placeholder="Base de Calculo"
-                value={base_calculo_cofins}
-                onChange={(e) => setBase_calculo_cofins(e.target.value)}
-              />
-              <input 
-                type="number" 
-                id="aliquota_cofins" 
-                placeholder="Aliquota"
-                value={aliquota_cofins}
-                onChange={(e) => setAliquota_cofins(e.target.value)}
-              />
+              {/* 28 */}
               <NumberFormat 
+                id="valor_cofins" 
+                className='input'
                 prefix={'R$ '} 
-                id="valor_cofins"  
                 floatValue = {true}
                 value={valor_cofins}
-                placeholder="Valor (R$)"
+                label="Valor COFINS"
+                placeholder="R$ "
+                customInput={TextField}
                 onValueChange = { ( valores )  =>  { 
                   const  {floatValue}  =  valores ; 
                   setValor_cofins ( floatValue  ) ; 
                 } }
+                variant="outlined"
               />
-            </div>
+            </div> 
             
             <div className="bt-container">
-                <button type='button' className="cadastrar" id="upload">UPLOAD</button>
+              <input
+                accept="file/*"
+                className="btn-upload"
+                id="contained-button-file"
+                multiple
+                type="file"
+                onChange={e=>setUpload(e.target.value)}
+              />
+              <label htmlFor="contained-button-file">
+                <Button id="upload" variant="contained" color="primary" component="span">
+                  Upload
+                </Button>
+              </label>
                 <button type="submit" className="cadastrar" id="botao_cad">ENVIAR</button>
             </div>
 
