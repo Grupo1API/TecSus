@@ -21,6 +21,7 @@ function ContaAgua(){
     const [hidrometro, setHidrometro] = useState('')
     const [economia, setEconomia] = useState('')
     const [tipo_ligacao, setTipo_ligacao] = useState('')
+    const [cep_unidade,setCep_unidade] = useState('')
     const [data_apresentacao, setData_apresentacao] = useState('')
     const [proxima_leitura, setProxima_leitura] = useState('')
     const [condicao_leitura, setCondicao_leitura] = useState('')
@@ -80,6 +81,7 @@ function ContaAgua(){
             pde_rgi:pde_rgi,
             hidrometro:hidrometro,
             economia:economia,
+            cep_unidade:cep_unidade,
             tipo_ligacao:tipo_ligacao,
             data_apresentacao:formatarData(data_apresentacao),
             proxima_leitura:formatarData(proxima_leitura),
@@ -120,6 +122,7 @@ function ContaAgua(){
             setPde_rgi('')
             setHidrometro('')
             setEconomia('')
+            setCep_unidade('')
             setTipo_ligacao('')
             setData_apresentacao('')
             setProxima_leitura('')
@@ -188,6 +191,7 @@ function ContaAgua(){
                                 id="concessionaria"
                                 className='input' 
                                 type="text" 
+                                onChange={(e) => setConcessionaria(e.target.value)}
                                 label="Concessionaria" 
                                 disabled
                                 value={concessionaria}
@@ -197,6 +201,18 @@ function ContaAgua(){
 
                             </div> 
                             <div className='coluna'>  
+                            <TextField
+                                id="cep"
+                                className='input'
+                                type="number" 
+                                label="CEP Concessionaria"
+                                disable
+                                onChange={(e) => setCep(e.target.value)}
+                                value={cep}
+                                variant="outlined"
+                                disabled
+                            />    
+                           
                             <TextField
                                 id="cnpj_cpf_cliente"
                                 className='input'
@@ -214,13 +230,27 @@ function ContaAgua(){
                                 className='input'
                                 type="text"
                                 label="Nome Unidade"
+                                onChange={(e) => setNome_cliente(e.target.value)}
                                 disabled
                                 value={nome_cliente}
                                 variant="outlined"
+
+                                
                             />
 
-
-
+                            </div> 
+                            <div className='coluna'>  
+                            <TextField
+                                id="cep_unidade" 
+                                className='input'  
+                                type="text" 
+                                label="Cep Unidade" 
+                                placeholder="Cep unidade" 
+                                value={cep_unidade}
+                                onChange={(e) => setCep_unidade(e.target.value)}
+                                variant="outlined"   
+                                disabled
+                            />
                             <TextField
                                 id="codigo_cliente" 
                                 className='input'
@@ -232,8 +262,6 @@ function ContaAgua(){
                                 variant="outlined" 
                                 disabled
                             />
-                            </div> 
-                            <div className='coluna'>  
                             <TextField
                                 id="pde_rgi" 
                                 className='input'
@@ -246,7 +274,9 @@ function ContaAgua(){
                                 disabled
                             />
                              
-                             <TextField
+                            </div> 
+                            <div className='coluna'>  
+                            <TextField
                                 id="hidrometro"
                                 className='input' 
                                 type="text" 
@@ -257,8 +287,7 @@ function ContaAgua(){
                                 variant="outlined"
                                 disabled 
                             />
-                             
-                              <TextField
+                            <TextField
                                 id="tipo_ligação" 
                                 className='input'  
                                 type="text" 
@@ -269,18 +298,6 @@ function ContaAgua(){
                                 variant="outlined"   
                                 disabled
                             />
-                            </div> 
-                            <div className='coluna'>  
-                            <TextField
-                                id="cep"
-                                className='input'
-                                type="number" 
-                                label="CEP"
-                                disable
-                                value={cep}
-                                variant="outlined"
-                                disabled
-                            />    
                             </div>
 
 
