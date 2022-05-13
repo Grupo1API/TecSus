@@ -42,10 +42,8 @@ function ContaAgua(){
             const response = await fetch(`http://localhost:8080/unidades/${cpf_cnpj_cliente}`)
             
             const dados = await response.json()
-            setNome_cliente(dados.nome_cliente)
-            setCep(dados.cep)
-            setEndereco(`${dados.rua} - ${dados.bairro}`)
-            console.log(dados)
+            setNome_cliente(dados.nome)
+            setCep(dados.end_cep)            
     
         } catch (error) {
             return console.log(error.message);
@@ -55,9 +53,8 @@ function ContaAgua(){
         try {
             const response = await fetch(`http://localhost:8080/concessionaria/${cnpj_concessionaria}`)
             const dados = await response.json()
-            setConcessionaria(dados.concessionaria)
-            setSegmento(dados.segmento)
-            console.log(dados)
+            setConcessionaria(dados.nome)
+            setSegmento(dados.segmento)            
     
         } catch (error) {
             return console.log(error.message);
@@ -94,7 +91,9 @@ function ContaAgua(){
             at_monet:at_monet,
             juros_mora:juros_moradia,
             taxa_regulacao:taxa_regulacao,
-            data_vencimento:formatarData(data_vencimento)
+            data_vencimento:formatarData(data_vencimento),
+            conta_de_agua_arquivo_id:upload,
+            // contaagua_contrato_id:
         }
 
 
@@ -175,7 +174,7 @@ function ContaAgua(){
                                 className='input' 
                                 type="text" 
                                 label="Concessionaria" 
-                                disable
+                                disabled
                                 value={concessionaria}
                                 variant="outlined" 
                             />                                                               
@@ -192,8 +191,12 @@ function ContaAgua(){
                              <TextField
                                 id= 'segmento'
                                 label="Segmento"
+
+                                disabled
+
                                 className='input'                                
                                 type="text" 
+
                                 value={segmento}
                                 variant="outlined" 
                             />
@@ -249,7 +252,7 @@ function ContaAgua(){
                                 className='input'
                                 type="text"
                                 label="Nome Unidade"
-                                disable
+                                disabled
                                 value={nome_cliente}
                                 variant="outlined"
                             />     
@@ -259,7 +262,7 @@ function ContaAgua(){
                                 className='input'
                                 type="number" 
                                 label="CEP"
-                                disable
+                                disabled
                                 value={cep}
                                 variant="outlined"
                             />                        
