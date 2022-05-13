@@ -179,11 +179,24 @@ function ContaAgua(){
                                 variant="outlined" 
                             />                                                               
                             <TextField
-                                id="segmento" 
+                                id="N° do Fornecimento" 
                                 className='input'
                                 type="text" 
+                                label="N° do Fornecimento"
+                                placeholder="N° do Fornecimento" 
+                                value={fornecimento}
+                                onChange={(e) => setFornecimento(e.target.value)}
+                            />
+
+                             <TextField
+                                id= 'segmento'
                                 label="Segmento"
+
                                 disabled
+
+                                className='input'                                
+                                type="text" 
+
                                 value={segmento}
                                 variant="outlined" 
                             />
