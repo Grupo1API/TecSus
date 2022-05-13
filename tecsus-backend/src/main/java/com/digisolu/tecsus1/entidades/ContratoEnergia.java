@@ -27,7 +27,7 @@ public class ContratoEnergia extends RepresentationModel<ContratoEnergia> {
 	private CadastroUnidade contrato_unidade_id;
 	
 	@Column(name= "numero_instalacao")
-	private String NumeroInstalacao;
+	private String numeroInstalacao;
 	@Column
 	private String codigoIdentificador; 
 	@Column
@@ -65,6 +65,24 @@ public class ContratoEnergia extends RepresentationModel<ContratoEnergia> {
 	@Column
 	private String local_numero;
 		
+	public Long getContrato_energia_id() {
+		return contrato_energia_id;
+	}
+	public void setContrato_energia_id(Long contrato_energia_id) {
+		this.contrato_energia_id = contrato_energia_id;
+	}
+	public String getNumeroInstalacao() {
+		return numeroInstalacao;
+	}
+	public void setNumeroInstalacao(String numeroInstalacao) {
+		this.numeroInstalacao = numeroInstalacao;
+	}
+	public String getCodigoIdentificador() {
+		return codigoIdentificador;
+	}
+	public void setCodigoIdentificador(String codigoIdentificador) {
+		this.codigoIdentificador = codigoIdentificador;
+	}
 	public Long getId() {
 		return contrato_energia_id;
 	}
@@ -85,10 +103,10 @@ public class ContratoEnergia extends RepresentationModel<ContratoEnergia> {
 		this.contrato_unidade_id = contrato_unidade_id;
 	}
 	public String getNumero_instalacao() {
-		return NumeroInstalacao;
+		return numeroInstalacao;
 	}
 	public void setNumero_instalacao(String numero_instalacao) {
-		NumeroInstalacao = numero_instalacao;
+		numeroInstalacao = numero_instalacao;
 	}
 	public String getCodigo_identificador() {
 		return codigoIdentificador;
