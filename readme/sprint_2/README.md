@@ -2,7 +2,7 @@
 
 ## :ballot_box_with_check: SPRINT 2
 
-Nesta sprint mantivemos o foco na a implementação da igação entre as tabelas do banco e na disponibilização dos dados cadastrados para leitura, edições e deleção diretamente pela interface do software. Serão implementadas também funcionalidade de upload de arquivos e atalhos para preencimento de campos no formulário que já possuem dados préviamente cadastrados em nosso banco.
+Nesta sprint mantivemos o foco na a implementação da ligação entre as tabelas do banco de dados, na implementação de atalhos para preenchimento de campos do formulário, upload para aquivos (contas de água e energia) e na disponibilização dos dados cadastrados atráves de um quadro que possibilita edições e deleção diretamente pela interface do software.
 <br>
 
 <h1 align="center"> 
