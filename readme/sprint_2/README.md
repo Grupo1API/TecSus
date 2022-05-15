@@ -11,24 +11,30 @@ Nesta sprint mantivemos o foco na a implementação da igação entre as tabelas
 
 ## Burndown da Sprints
 
-<h1 align="center"> <img src = ""/></h1>
+<h1 align="center"> <img src = "./midias/burndownSprint2.png"/></h1>
 
 <br> 
 
 ## 🖥️ Funcionalidades da Sprint
 #
 
-<!-- <h3 align="center">Cadastro para conta de água</h3>
-<h1 align="center"> <img src = "./midias/cadastro_conta_agua.gif"/></h1>
+<h3 align="center">Banco de Dados Relacional</h3>
+<h1 align="center"> <img src = "./midias/bancoDados.gif"/></h1>
 
-<h3 align="center">Cadastro para conta de energia</h3>
-<h1 align="center"> <img src = "./midias/cadastro_conta_energia.gif"/></h1>
-
-<h3 align="center">Cadastro para contrato de fornecimento de água</h3>
-<h1 align="center"> <img src = "./midias/cadastro_contrato_agua.gif"/></h1>
+<h3 align="center">Cadastro para concessionária</h3>
+<h1 align="center"> <img src = "./midias/cadastro_concessionaria.gif"/></h1>
 
 <h3 align="center">Cadastro para unidade</h3>
 <h1 align="center"> <img src = "./midias/cadastro_unidade.gif"/></h1>
 
-<h3 align="center">Cadastro para concessionária</h3>
-<h1 align="center"> <img src = "./midias/cadastro_concessionaria.gif"/></h1> -->
+<h3 align="center">Cadastro contrato fornecimento energia</h3>
+<h1 align="center"> <img src = "./midias/contrato_energia.gif"/></h1>
+
+<h3 align="center">Cadastro contrato fornecimento água</h3>
+<h1 align="center"> <img src = "./midias/contrato_agua.gif"/></h1>
+
+<h3 align="center">Quadros para edição e deleção de dados cadastrados</h3>
+<h1 align="center"> <img src = "./midias/quadros.gif"/></h1>
+
+
+
