@@ -39,7 +39,7 @@
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Registro de log de operações (cadastro e deleção);
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Relatório de consumo total de água mensal, anual e média;
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" />  Relatório de consumo total de energia mensal, anual e média;
-- <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Painel adminitrativo para alterações;
+- <img src = "./readme/grupoAPI/feito.jpeg" /> Painel adminitrativo para alterações;
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Emissão de relatorios;
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Geração de alertas de consumo acima da média (a média pode ser definida no cadastro
 do contrato);
@@ -49,8 +49,8 @@ do contrato);
 ### **Requisitos não funcionais**    
 
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Prezar pelo UX da tela de digitação das contas;
-- <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Incluir atalhos no teclado;
-- <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Permitir navegação entre campos por TAB ou seta;
+- <img src = "./readme/grupoAPI/feito.jpeg" /> Incluir atalhos no nos formmulários de casdastro;
+- <img src = "./readme/grupoAPI/feito.jpeg" /> Permitir navegação entre campos por TAB ou seta;
 <h1> 
 
 <br id="cronograma-das-sprints">  
@@ -58,8 +58,8 @@ do contrato);
 ## 📆 Cronograma das Sprints
 
 - <img src = "./readme/grupoAPI/feito.jpeg" />Kick-Off - 15/03/2022
-- <img src = "./readme/grupoAPI/a_fazer.jpeg" /> <a href="https://github.com/Grupo1API/TecSus/tree/main/readme/sprint_1">Sprint 1</a> - 25/03/2022 a 14/04/2022   
-- <img src = "./readme/grupoAPI/a_fazer.jpeg" /> [ Sprint 2 ]( ) - 25/04/2022 a 15/05/2022  
+- <img src = "./readme/grupoAPI/feito.jpeg" /> <a href="https://github.com/Grupo1API/TecSus/tree/main/readme/sprint_1">Sprint 1</a> - 25/03/2022 a 14/04/2022 
+- <img src = "./readme/grupoAPI/feito.jpeg" /> <a href="https://github.com/Grupo1API/TecSus/tree/main/readme/sprint_2">Sprint 2</a> - 04/2022 a 15/05/2022   
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" /> [ Sprint 3 ]( ) - 16/05/2022 a 05/06/2022  
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" /> [Feira de Soluções](https://youtu.be/xGE51h8fBuY) - 15/06/2022
 
