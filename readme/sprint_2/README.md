@@ -21,16 +21,16 @@ Nesta sprint mantivemos o foco na a implementação da igação entre as tabelas
 <h3 align="center">Banco de Dados Relacional</h3>
 <h1 align="center"> <img src = "./midias/bancoDados.gif"/></h1>
 
-<h3 align="center">Cadastro para concessionária</h3>
+<h3 align="center">Atalhos para preencimento dos campos no formulário para cadastro de Concessionário</h3>
 <h1 align="center"> <img src = "./midias/cadastro_concessionaria.gif"/></h1>
 
-<h3 align="center">Cadastro para unidade</h3>
+<h3 align="center">Atalhos para preencimento dos campos no formulário para cadastro de Unidades</h3>
 <h1 align="center"> <img src = "./midias/cadastro_unidade.gif"/></h1>
 
-<h3 align="center">Cadastro contrato fornecimento energia</h3>
+<h3 align="center">Atalhos para preencimento dos campos no formulário para cadastro de contrato para fornecimento de energia</h3>
 <h1 align="center"> <img src = "./midias/contrato_energia.gif"/></h1>
 
-<h3 align="center">Cadastro contrato fornecimento água</h3>
+<h3 align="center">Atalhos para preencimento dos campos no formulário para cadastro de contrato fornecimento água</h3>
 <h1 align="center"> <img src = "./midias/contrato_agua.gif"/></h1>
 
 <h3 align="center">Quadros para edição e deleção de dados cadastrados</h3>
