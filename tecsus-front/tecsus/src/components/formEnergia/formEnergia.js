@@ -2,63 +2,78 @@ import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import useStyles from "../quadro_concessionaria/style";
-import NumberFormat from 'react-number-format';
+import NumberFormat from "react-number-format";
 
 export default function EditEnergia({ dados, modalEdit }) {
   const classes = useStyles();
-  
-    const [concessionaria, setConcessionaria] = useState(dados.concessionaria)        //marcar como novo no cadastro 
-    const [cnpj_concessionaria, setCnpj_concessionaria] = useState(dados.cnpj_concessionaria) //marcar como novo no cadastro
-    const [nome_cliente, setNome_cliente] = useState(dados.nome_cliente)
-    const [cpf_cnpj_cliente, setCpf_cnpj_cliente] = useState(dados.cpf_cnpj_cliente)
-    const [codigo_identificador, setCodigo_identificador] = useState(dados.codigo_identificador)
-    const [codigo_fiscal, setCodigo_fiscal] = useState(dados.codigo_fiscal)
-    const [grupo_sub, setGrupo_sub] = useState(dados.grupo_sub)
-    const [classe_sub, setClasse_sub] = useState(dados.classe_sub)
-    const [tp_fornecimento, setTp_fornecimento] = useState(dados.tp_fornecimento)
-    const [modalidade_taf, setModalidade_taf] = useState(dados.modalidade_taf)
-    const [tensao_nominal, setTensao_nominal] = useState(dados.tensao_nominal)
-    const [roteiro_leitura, setRoteiro_leitura] = useState(dados.roteiro_leitura)
-    const [medidor, setMedidor] = useState(dados.medidor)
-    const [valor_medio, setValor_medio] = useState(dados.valor_medio)
-    const [end_eletrico, setEnd_eletrico] = useState(dados.end_eletrico)
-    const [cpf_cnpj_ci, setCpf_cnpj_ci] = useState(dados.cpf_cnpj_ci)
-    const [cep_consumo, setCep_consumo] = useState(dados.cep_consumo)
-    const [rua_consumo, setRua_consumo] = useState(dados.rua_consumo)
-    const [bairro_consumo, setBairro_consumo] = useState(dados.bairro_consumo)
-    const [cidade_consumo, setCidade_consumo] = useState(dados.cidade_consumo)
-    const [estado_consumo, setEstado_consumo] = useState(dados.estado_consumo)
-    const [nResidencial_empresarial, setNResidencial_empresarial] = useState(dados.nResidencial_empresarial)
- 
+
+  const [concessionaria, setConcessionaria] = useState(
+    dados.contrato_concessionaria_id.nome
+  );
+  const [cnpj_concessionaria, setCnpj_concessionaria] = useState(
+    dados.contrato_concessionaria_id.cnpj
+  );
+  const [nome_cliente, setNome_cliente] = useState(
+    dados.contrato_unidade_id.nome
+  );
+  const [cpf_cnpj_cliente, setCpf_cnpj_cliente] = useState(
+    dados.contrato_unidade_id.cpf_cnpj
+  );
+  const [codigo_identificador, setCodigo_identificador] = useState(
+    dados.codigo_identificador
+  );
+  const [codigo_fiscal, setCodigo_fiscal] = useState(
+    dados.codigo_fiscal_operacao
+  );
+  const [grupo_sub, setGrupo_sub] = useState(dados.grupo_subgrupo);
+  const [classe_sub, setClasse_sub] = useState(dados.classe_subclasse);
+  const [tp_fornecimento, setTp_fornecimento] = useState(dados.tp_fornecimento);
+  const [modalidade_taf, setModalidade_taf] = useState(
+    dados.modalidade_tarifaria
+  );
+  const [tensao_nominal, setTensao_nominal] = useState(dados.tensao_nominal);
+  const [roteiro_leitura, setRoteiro_leitura] = useState(dados.roteiro_leitura);
+  const [medidor, setMedidor] = useState(dados.num_medidor);
+  const [valor_medio, setValor_medio] = useState(dados.valor_medio);
+  const [end_eletrico, setEnd_eletrico] = useState(dados.endereco_eletrico);
+  const [cpf_cnpj_ci, setCpf_cnpj_ci] = useState(dados.cnpj_cpf_ci);
+  const [cep_consumo, setCep_consumo] = useState(dados.local_cep);
+  const [rua_consumo, setRua_consumo] = useState(dados.local_rua);
+  const [bairro_consumo, setBairro_consumo] = useState(dados.local_bairro);
+  const [cidade_consumo, setCidade_consumo] = useState(dados.local_cidade);
+  const [estado_consumo, setEstado_consumo] = useState(dados.local_estado);
+  const [nResidencial_empresarial, setNResidencial_empresarial] = useState(
+    dados.local_numero
+  );
 
   async function handleUpdate() {
     const data = {
-            id:dados.id,
-            concessionaria:concessionaria,          
-            concessionaria_cnpj:cnpj_concessionaria,  
-            nome_unidade:nome_cliente, 
-            cpf_cnpj:cpf_cnpj_cliente, 
-            codigo_identificador:codigo_identificador, 
-            codigo_fiscal_operacao:codigo_fiscal, 
-            grupo_subgrupo:grupo_sub, 
-            classe_subclasse:classe_sub, 
-            tp_fornecimento:tp_fornecimento, 
-            modalidade_tarifaria:modalidade_taf, 
-            tensao_nominal:tensao_nominal, 
-            roteiro_leitura:roteiro_leitura, 
-            num_medidor:medidor, 
-            valor_medio:valor_medio, 
-            endereco_eletrico:end_eletrico, 
-            cnpj_cpf_ci:cpf_cnpj_ci, 
-            local_cep:cep_consumo, 
-            local_rua:rua_consumo, 
-            local_bairro:bairro_consumo, 
-            local_cidade:cidade_consumo, 
-            local_estado:estado_consumo, 
-            local_numero:nResidencial_empresarial, 
-  };
+      id: dados.id,
+      concessionaria: concessionaria,
+      concessionaria_cnpj: cnpj_concessionaria,
+      nome_unidade: nome_cliente,
+      cpf_cnpj: cpf_cnpj_cliente,
+      codigo_identificador: codigo_identificador,
+      codigo_fiscal_operacao: codigo_fiscal,
+      grupo_subgrupo: grupo_sub,
+      classe_subclasse: classe_sub,
+      tp_fornecimento: tp_fornecimento,
+      modalidade_tarifaria: modalidade_taf,
+      tensao_nominal: tensao_nominal,
+      roteiro_leitura: roteiro_leitura,
+      num_medidor: medidor,
+      valor_medio: valor_medio,
+      endereco_eletrico: end_eletrico,
+      cnpj_cpf_ci: cpf_cnpj_ci,
+      local_cep: cep_consumo,
+      local_rua: rua_consumo,
+      local_bairro: bairro_consumo,
+      local_cidade: cidade_consumo,
+      local_estado: estado_consumo,
+      local_numero: nResidencial_empresarial,
+    };
 
-    await fetch(`http://localhost:8080/contratoenergia/atualizar`,{
+    await fetch(`http://localhost:8080/contratoenergia/atualizar`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -66,7 +81,7 @@ export default function EditEnergia({ dados, modalEdit }) {
       body: JSON.stringify(data),
     });
   }
-  
+
   return (
     <form className={classes.root} onSubmit={handleUpdate}>
       <div>
@@ -76,40 +91,38 @@ export default function EditEnergia({ dados, modalEdit }) {
           label="CNPJ concessionaria"
           variant="outlined"
           fullWidth
-          onChange={(e) => setCnpj_concessionaria(e.target.value)}
+          disabled
           value={cnpj_concessionaria}
         />
         <TextField
-          className={classes.text}        
+          className={classes.text}
           id="outlined"
           label="Concessionaria"
           variant="outlined"
           fullWidth
-          onChange={(e) => setConcessionaria(e.target.value)}
+          disabled
           value={concessionaria}
         />
       </div>
       <div>
         <TextField
           className={classes.text}
-        
           id="outlined"
           type="number"
           label="CNPJ/CPF Unidade"
           variant="outlined"
           fullWidth
-          onChange={(e) => setCpf_cnpj_cliente(e.target.value)}
+          disabled
           value={cpf_cnpj_cliente}
         />
         <TextField
           className={classes.text}
-        
           id="outlined-password-input"
           type="text"
           label="Nome Unidade"
           variant="outlined"
           fullWidth
-          onChange={(e) => setNome_cliente(e.target.value)}
+          disabled
           value={nome_cliente}
         />
       </div>
@@ -124,7 +137,7 @@ export default function EditEnergia({ dados, modalEdit }) {
           value={codigo_identificador}
         />
         <TextField
-          className={classes.text}        
+          className={classes.text}
           id="outlined"
           label="Codigo Fiscal"
           variant="outlined"
@@ -133,10 +146,10 @@ export default function EditEnergia({ dados, modalEdit }) {
           value={codigo_fiscal}
         />
       </div>
-      
+
       <div>
         <TextField
-          className={classes.text}       
+          className={classes.text}
           id="outlined"
           label="Grupo/Subgrupo"
           variant="outlined"
@@ -145,7 +158,7 @@ export default function EditEnergia({ dados, modalEdit }) {
           value={grupo_sub}
         />
         <TextField
-          className={classes.text}       
+          className={classes.text}
           id="outlined"
           label="Classe/Subclasse"
           variant="outlined"
@@ -156,7 +169,7 @@ export default function EditEnergia({ dados, modalEdit }) {
       </div>
       <div>
         <TextField
-          className={classes.text}       
+          className={classes.text}
           id="outlined"
           label="TP Fornecimento"
           variant="outlined"
@@ -165,7 +178,7 @@ export default function EditEnergia({ dados, modalEdit }) {
           value={tp_fornecimento}
         />
         <TextField
-          className={classes.text}        
+          className={classes.text}
           id="outlined"
           type="text"
           label="Modalidade Tarifaria"
@@ -177,7 +190,7 @@ export default function EditEnergia({ dados, modalEdit }) {
       </div>
       <div>
         <TextField
-          className={classes.text}       
+          className={classes.text}
           id="outlined"
           label="Tensao Nominal"
           variant="outlined"
@@ -186,7 +199,7 @@ export default function EditEnergia({ dados, modalEdit }) {
           value={tensao_nominal}
         />
         <TextField
-          className={classes.text}        
+          className={classes.text}
           id="outlined"
           type="text"
           label="Roteiro Leitura"
@@ -198,7 +211,7 @@ export default function EditEnergia({ dados, modalEdit }) {
       </div>
       <div>
         <TextField
-          className={classes.text}       
+          className={classes.text}
           id="outlined"
           label="Nª Medidor"
           variant="outlined"
@@ -206,25 +219,25 @@ export default function EditEnergia({ dados, modalEdit }) {
           onChange={(e) => setMedidor(e.target.value)}
           value={medidor}
         />
-        <NumberFormat 
-          prefix={'R$ '} 
+        <NumberFormat
+          prefix={"R$ "}
           id="outlined"
-          className={classes.text}  
-          floatValue = {true}
+          className={classes.text}
+          floatValue={true}
           value={valor_medio}
           label="Valor Medio (R$)"
           customInput={TextField}
-          onValueChange = { ( valores )  =>  { 
-          const  {floatValue}  =  valores ; 
-          setValor_medio ( floatValue  ) ;                                 
-          } }
+          onValueChange={(valores) => {
+            const { floatValue } = valores;
+            setValor_medio(floatValue);
+          }}
           fullWidth
           variant="outlined"
-      />
+        />
       </div>
       <div>
         <TextField
-          className={classes.text}       
+          className={classes.text}
           id="outlined"
           label="Endereço Eletrico"
           variant="outlined"
@@ -233,7 +246,7 @@ export default function EditEnergia({ dados, modalEdit }) {
           value={end_eletrico}
         />
         <TextField
-          className={classes.text}        
+          className={classes.text}
           id="outlined"
           type="text"
           label="CPF/CNPJ/CI"
@@ -245,7 +258,7 @@ export default function EditEnergia({ dados, modalEdit }) {
       </div>
       <div>
         <TextField
-          className={classes.text}       
+          className={classes.text}
           id="outlined"
           label="Cep Consumo"
           variant="outlined"
@@ -254,7 +267,7 @@ export default function EditEnergia({ dados, modalEdit }) {
           value={cep_consumo}
         />
         <TextField
-          className={classes.text}        
+          className={classes.text}
           id="outlined"
           type="text"
           label="Rua"
@@ -266,7 +279,7 @@ export default function EditEnergia({ dados, modalEdit }) {
       </div>
       <div>
         <TextField
-          className={classes.text}       
+          className={classes.text}
           id="outlined"
           label="Bairro Consumo"
           variant="outlined"
@@ -275,7 +288,7 @@ export default function EditEnergia({ dados, modalEdit }) {
           value={bairro_consumo}
         />
         <TextField
-          className={classes.text}        
+          className={classes.text}
           id="outlined"
           type="text"
           label="Cidade Consumo"
@@ -287,7 +300,7 @@ export default function EditEnergia({ dados, modalEdit }) {
       </div>
       <div>
         <TextField
-          className={classes.text}       
+          className={classes.text}
           id="outlined"
           label="Estado Consumo"
           variant="outlined"
@@ -296,7 +309,7 @@ export default function EditEnergia({ dados, modalEdit }) {
           value={estado_consumo}
         />
         <TextField
-          className={classes.text}        
+          className={classes.text}
           id="outlined"
           type="text"
           label="Nª Residencial/Empresarial"

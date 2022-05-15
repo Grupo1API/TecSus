@@ -24,6 +24,8 @@ function ContratoAgua(){
     const [cidade_consumo, setCidade_consumo] = useState('')
     const [estado_consumo, setEstado_consumo] = useState('')
     const [nResidencial_empresarial, setNResidencial_empresarial] = useState('')
+    const [concessionariaId, setConcessionariaId] = useState('')
+    const [unidadeId, setUnidadeId] = useState('')
     
     async function buscaCep(){
         try {
@@ -44,7 +46,8 @@ function ContratoAgua(){
             const response = await fetch(`http://localhost:8080/unidades/${cpf_cnpj_cliente}`)
             
             const dados = await response.json()
-            setNome_cliente(dados.nome_cliente)
+            setNome_cliente(dados.nome)
+            setUnidadeId(dados.id)
             console.log(dados)
 
         } catch (error) {
@@ -55,7 +58,8 @@ function ContratoAgua(){
         try {
             const response = await fetch(`http://localhost:8080/concessionaria/${cnpj_concessionaria}`)
             const dados = await response.json()
-            setConcessionaria(dados.concessionaria)
+            setConcessionaria(dados.nome)
+            setConcessionariaId(dados.id)
             console.log(dados)
 
         } catch (error) {
@@ -84,7 +88,9 @@ function ContratoAgua(){
             local_bairro:bairro_consumo, 
             local_cidade:cidade_consumo, 
             local_estado:estado_consumo, 
-            local_numero:nResidencial_empresarial, 
+            local_numero:nResidencial_empresarial,
+            contrato_concessionaria_id:{id:concessionariaId},
+            contrato_unidade_id: {id:unidadeId} 
         }
 
         try {
@@ -133,7 +139,7 @@ function ContratoAgua(){
                                 id="cnpj_concessionaria" 
                                 className='input'
                                 type="text" 
-                                required={true}
+                                required
                                 label="CNPJ Concessionaria" 
                                 placeholder="CNPJ Concessionaria" 
                                 value={cnpj_concessionaria}

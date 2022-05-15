@@ -14,8 +14,9 @@ export default function EditAgua({ dados, modalEdit }) {
             className={classes.text}
             type="text" 
             label="CNPJ Concessionaria"  
-            value={dados.cnpj_concessionaria}
+            value={dados.contrato_concessionaria_id.cnpj}
             fullWidth
+            disabled
             variant="outlined" 
         />
         <TextField
@@ -23,8 +24,9 @@ export default function EditAgua({ dados, modalEdit }) {
             className={classes.text}
             type="text"
             label="Concessionaria"             
-            value={dados.concessionaria}
+            value={dados.contrato_concessionaria_id.nome}
             fullWidth
+            disabled
             variant="outlined"  
         /> 
         </div>
@@ -34,8 +36,9 @@ export default function EditAgua({ dados, modalEdit }) {
             className={classes.text} 
             type="text" 
             label="CNPJ/CPF Unidade"
-            value={dados.cpf_cnpj_cliente}
+            value={dados.contrato_unidade_id.cpf_cnpj}
             fullWidth
+            disabled
             variant="outlined" 
         />
         <TextField
@@ -43,8 +46,9 @@ export default function EditAgua({ dados, modalEdit }) {
             className={classes.text}
             type="text" 
             label="Nome Cliente" 
-            value={dados.nome_cliente}
+            value={dados.contrato_unidade_id.nome}
             fullWidth
+            disabled
             variant="outlined" 
         />       
     </div>
@@ -58,6 +62,7 @@ export default function EditAgua({ dados, modalEdit }) {
             label="Cod.Cliente"  
             value={dados.codigo_cliente}
             fullWidth
+            disabled
             variant="outlined" 
         />
         <TextField
@@ -67,6 +72,7 @@ export default function EditAgua({ dados, modalEdit }) {
             label="PDE/RGI"
             value={dados.pde_rgi} 
             fullWidth
+            disabled
             variant="outlined" 
         />                            
     </div> 
@@ -79,6 +85,7 @@ export default function EditAgua({ dados, modalEdit }) {
             label="Hidrometro" 
             value={dados.hidrometro}
             fullWidth
+            disabled
             variant="outlined" 
         />
         <TextField
@@ -88,6 +95,7 @@ export default function EditAgua({ dados, modalEdit }) {
             label="Tipo de Ligação"  
             value={dados.tipo_ligacao}
             fullWidth
+            disabled
             variant="outlined" 
         />
     </div>
@@ -99,6 +107,7 @@ export default function EditAgua({ dados, modalEdit }) {
             label="Tipo de Fornecimento"
             value={dados.tipo_fornecimento} 
             fullWidth
+            disabled
             variant="outlined" 
         />   
         <TextField
@@ -108,6 +117,7 @@ export default function EditAgua({ dados, modalEdit }) {
             label="Numero de Fornecimento"
             value={dados.n_fornecimento} 
             fullWidth
+            disabled
             variant="outlined"
         />                       
     </div> 
@@ -122,6 +132,7 @@ export default function EditAgua({ dados, modalEdit }) {
             label="Valor Medio (R$)"
             customInput={TextField} 
             fullWidth
+            disabled
             variant="outlined"
         />
         <TextField
@@ -129,8 +140,9 @@ export default function EditAgua({ dados, modalEdit }) {
             className={classes.text}
             type="text" 
             label="Nome Consumidor"
-            value={dados.nome_consumo}
+            value={dados.local_nome}
             fullWidth
+            disabled
             variant="outlined" 
         />
     </div>
@@ -140,8 +152,9 @@ export default function EditAgua({ dados, modalEdit }) {
             className={classes.text}
             type="text"  
             label="CPF/CNPJ/CI"
-            value={dados.cpf_cnpj_ci} 
+            value={dados.local_cnpj} 
             fullWidth
+            disabled
             variant="outlined"  
         />
         <TextField
@@ -149,9 +162,10 @@ export default function EditAgua({ dados, modalEdit }) {
             className={classes.text}
             type="text"  
             label="CEP"
-            value={dados.cep_consumo}
+            value={dados.local_cep}
             
             fullWidth
+            disabled
             variant="outlined"
         />
     </div> 
@@ -160,10 +174,10 @@ export default function EditAgua({ dados, modalEdit }) {
             id="outlined" 
             className={classes.text}
             type="text" 
-            label="Rua"
-            
-            value={dados.rua_consumo}
+            label="Rua"            
+            value={dados.local_rua}
             fullWidth
+            disabled
             variant="outlined"
         />
         <TextField
@@ -172,8 +186,9 @@ export default function EditAgua({ dados, modalEdit }) {
             type="text" 
             label="Bairro"
             
-            value={dados.bairro_consumo}
+            value={dados.local_bairro}
             fullWidth
+            disabled
             variant="outlined"
         />
     </div>
@@ -184,8 +199,9 @@ export default function EditAgua({ dados, modalEdit }) {
             type="text" 
             label="Cidade"
             
-            value={dados.cidade_consumo}
+            value={dados.local_cidade}
             fullWidth
+            disabled
             variant="outlined" 
         />
         <TextField
@@ -194,8 +210,9 @@ export default function EditAgua({ dados, modalEdit }) {
             type="text" 
             label="Estado"
             
-            value={dados.estado_consumo}
+            value={dados.local_estado}
             fullWidth
+            disabled
             variant="outlined"
         />
     </div> 
@@ -205,9 +222,10 @@ export default function EditAgua({ dados, modalEdit }) {
             className={classes.text}                            
             type="text" 
             label="Nª Residencial/Empresarial"
-            value={dados.nResidencial_empresarial}
+            value={dados.local_numero}
             
             fullWidth
+            disabled
             variant="outlined"
         />
     </div>

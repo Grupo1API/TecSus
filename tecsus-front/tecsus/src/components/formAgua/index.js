@@ -6,10 +6,10 @@ import NumberFormat from 'react-number-format';
 
 export default function EditAgua({ dados, modalEdit }) {
     const classes = useStyles();
-    const [concessionaria, setConcessionaria] = useState(dados.concessionaria)        //marcar como novo no cadastro 
-    const [cnpj_concessionaria, setCnpj_concessionaria] = useState(dados.cnpj_concessionaria) //marcar como novo no cadastro
-    const [nome_cliente, setNome_cliente] = useState(dados.nome_cliente)
-    const [cpf_cnpj_cliente, setCpf_cnpj_cliente] = useState(dados.cpf_cnpj_cliente)    
+    const [concessionaria, setConcessionaria] = useState(dados.contrato_concessionaria_id.nome)        //marcar como novo no cadastro 
+    const [cnpj_concessionaria, setCnpj_concessionaria] = useState(dados.contrato_concessionaria_id.cnpj) //marcar como novo no cadastro
+    const [nome_cliente, setNome_cliente] = useState(dados.contrato_unidade_id.nome)
+    const [cpf_cnpj_cliente, setCpf_cnpj_cliente] = useState(dados.contrato_unidade_id.cpf_cnpj)    
     const [codigo_cliente, setCodigo_cliente] = useState(dados.codigo_cliente)
     const [pde_rgi, setPde_rgi] = useState(dados.pde_rgi)
     const [hidrometro, setHidrometro] = useState(dados.hidrometro)
@@ -17,14 +17,14 @@ export default function EditAgua({ dados, modalEdit }) {
     const [tipo_fornecimento, setTipo_fornecimento] = useState(dados.tipo_fornecimento)
     const [n_fornecimento, setN_fornecimento] = useState(dados.n_fornecimento)
     const [valor_medio, setValor_medio] = useState(dados.valor_medio)
-    const [nome_consumo, setNome_consumo] = useState(dados.nome_consumo)
-    const [cpf_cnpj_ci, setCpf_cnpj_ci] = useState(dados.cpf_cnpj_ci)
-    const [cep_consumo, setCep_consumo] = useState(dados.cep_consumo)
-    const [rua_consumo, setRua_consumo] = useState(dados.rua_consumo)
-    const [bairro_consumo, setBairro_consumo] = useState(dados.bairro_consumo)
-    const [cidade_consumo, setCidade_consumo] = useState(dados.cidade_consumo)
-    const [estado_consumo, setEstado_consumo] = useState(dados.estado_consumo)
-    const [nResidencial_empresarial, setNResidencial_empresarial] = useState(dados.nResidencial_empresarial)
+    const [nome_consumo, setNome_consumo] = useState(dados.local_nome)
+    const [cpf_cnpj_ci, setCpf_cnpj_ci] = useState(dados.local_cnpj)
+    const [cep_consumo, setCep_consumo] = useState(dados.local_cep)
+    const [rua_consumo, setRua_consumo] = useState(dados.local_rua)
+    const [bairro_consumo, setBairro_consumo] = useState(dados.local_bairro)
+    const [cidade_consumo, setCidade_consumo] = useState(dados.local_cidade)
+    const [estado_consumo, setEstado_consumo] = useState(dados.local_estado)
+    const [nResidencial_empresarial, setNResidencial_empresarial] = useState(dados.local_numero)
  
 
   async function handleUpdate() {
@@ -70,6 +70,7 @@ export default function EditAgua({ dados, modalEdit }) {
             value={cnpj_concessionaria}
             onChange={(e) => setCnpj_concessionaria(e.target.value)}
             fullWidth
+            disabled
             variant="outlined" 
         />
         <TextField
@@ -78,6 +79,7 @@ export default function EditAgua({ dados, modalEdit }) {
             type="text"
             label="Concessionaria"             
             value={concessionaria}
+            disabled
             onChange={(e) => setConcessionaria(e.target.value)}
             fullWidth
             variant="outlined"  
@@ -92,6 +94,7 @@ export default function EditAgua({ dados, modalEdit }) {
             value={cpf_cnpj_cliente}
             onChange={(e) => setCpf_cnpj_cliente(e.target.value)}
             fullWidth
+            disabled
             variant="outlined" 
         />
         <TextField
@@ -102,6 +105,7 @@ export default function EditAgua({ dados, modalEdit }) {
             onChange={(e) => setNome_cliente(e.target.value)}
             value={nome_cliente}
             fullWidth
+            disabled
             variant="outlined" 
         />       
     </div>

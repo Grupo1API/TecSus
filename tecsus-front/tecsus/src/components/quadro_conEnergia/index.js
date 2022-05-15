@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
-import Menu from '../../components/menu'
+import Menu from "../../components/menu";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -11,7 +11,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 import EditEnergia from "../../components/formEnergia/formEnergia";
 import CloseIcon from "@material-ui/icons/Close";
-import InfoIcon from '@material-ui/icons/Info';
+import InfoIcon from "@material-ui/icons/Info";
 import InfoEnergia from "../infoEnergia";
 
 const StyledTableCell = withStyles((theme) => ({
@@ -34,7 +34,7 @@ const StyledTableRow = withStyles((theme) => ({
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 500,  
+    minWidth: 500,
   },
   body: {
     backgroundColor: "#fff",
@@ -68,7 +68,7 @@ export default function Quadro_contrato_energia() {
   const [listaEnergias, setListaEnergias] = useState([]);
   const [modalEdit, setModalEdit] = useState(false);
   const [dados, setDados] = useState([]);
-  const [modalInfo, setModalInfo] = useState(false)
+  const [modalInfo, setModalInfo] = useState(false);
 
   useEffect(() => {
     listaEnergia();
@@ -76,12 +76,9 @@ export default function Quadro_contrato_energia() {
 
   async function listaEnergia() {
     try {
-      const response = await fetch(
-        "http://localhost:8080/contratoenergia",
-        {
-          method: "GET",
-        }
-      );
+      const response = await fetch("http://localhost:8080/contratoenergia", {
+        method: "GET",
+      });
       const data = await response.json();
       setListaEnergias(data);
     } catch (error) {
@@ -91,8 +88,8 @@ export default function Quadro_contrato_energia() {
 
   async function handleDelete(id) {
     const data = {
-      id:id
-    }
+      id: id,
+    };
     await fetch(`http://localhost:8080/contratoenergia/excluir`, {
       method: "DELETE",
       headers: {
@@ -106,21 +103,24 @@ export default function Quadro_contrato_energia() {
   function handleClose(event) {
     event.preventDefault();
     setModalEdit(false);
-    setModalInfo(false)
+    setModalInfo(false);
   }
 
   return (
     <div>
-      <Menu/>
+      <Menu />
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell align="left">ID</StyledTableCell>
-            <StyledTableCell align="left">Número de Fornecimento</StyledTableCell>
-            <StyledTableCell align="left">Concessionária</StyledTableCell>
-            <StyledTableCell align="left">CNPJ/CPF Concessionaria</StyledTableCell>
-            <StyledTableCell align="left">Nome do Cliente</StyledTableCell>
-            <StyledTableCell align="left">CNPJ/CPF Unidade</StyledTableCell>   
+            <StyledTableCell align="left">Numero Instalação</StyledTableCell>
+            <StyledTableCell align="left">
+              CNPJ/CPF Concessionaria
+            </StyledTableCell>
+            <StyledTableCell align="left">Concessionaria</StyledTableCell>
+            <StyledTableCell align="left">Nome Unidade</StyledTableCell>
+            <StyledTableCell align="left">CNPJ/CPF Unidade</StyledTableCell>
+            <StyledTableCell align="left">Valor Médio</StyledTableCell>
             <StyledTableCell align="left"></StyledTableCell>
           </TableRow>
         </TableHead>
@@ -129,22 +129,33 @@ export default function Quadro_contrato_energia() {
           {listaEnergias.map((x) => (
             <StyledTableRow key={x.id}>
               <StyledTableCell>{x.id}</StyledTableCell>
-              <StyledTableCell align="left">{x.tp_fornecimento}</StyledTableCell>
-              <StyledTableCell align="left">{x.concessionaria}</StyledTableCell>
-              <StyledTableCell align="left">{x.cnpj_concessionaria}</StyledTableCell>
-              <StyledTableCell align="left">{x.nome_cliente}</StyledTableCell>
-              <StyledTableCell align="left">{x.cpf_cnpj_cliente}</StyledTableCell>
+              <StyledTableCell align="left">
+                {x.numero_instalacao}
+              </StyledTableCell>
+              <StyledTableCell align="left">
+                {x.contrato_concessionaria_id.cnpj}
+              </StyledTableCell>
+              <StyledTableCell align="left">
+                {x.contrato_concessionaria_id.nome}
+              </StyledTableCell>
+              <StyledTableCell align="left">
+                {x.contrato_unidade_id.nome}
+              </StyledTableCell>
+              <StyledTableCell align="left">
+                {x.contrato_unidade_id.cpf_cnpj}
+              </StyledTableCell>
+              <StyledTableCell align="left">R$ {x.valor_medio}</StyledTableCell>
               <StyledTableCell align="left" className={classes.button}>
                 <IconButton
-                    color="primary"
-                    onClick={() => {
-                      setModalInfo(true);
-                      setDados(x);
-                    }}
-                  >
-                    <InfoIcon/>
+                  color="primary"
+                  onClick={() => {
+                    setModalInfo(true);
+                    setDados(x);
+                  }}
+                >
+                  <InfoIcon />
                 </IconButton>
-                
+
                 <IconButton
                   color="primary"
                   onClick={() => {
@@ -175,7 +186,7 @@ export default function Quadro_contrato_energia() {
           <IconButton className={classes.close} onClick={handleClose}>
             <CloseIcon fontSize="large" color="#fff" />
           </IconButton>
-          <InfoEnergia dados={dados} modalInfo={modalInfo}/>
+          <InfoEnergia dados={dados} modalInfo={modalInfo} />
         </div>
       )}
     </div>

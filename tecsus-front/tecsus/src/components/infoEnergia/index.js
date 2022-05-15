@@ -1,12 +1,12 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import useStyles from "../quadro_concessionaria/style";
-import NumberFormat from 'react-number-format';
+import NumberFormat from "react-number-format";
 
 export default function EditEnergia({ dados }) {
-  const classes = useStyles();  
+  const classes = useStyles();
   return (
-    <form className={classes.root} >
+    <form className={classes.root}>
       <div>
         <TextField
           className={classes.text}
@@ -15,40 +15,38 @@ export default function EditEnergia({ dados }) {
           variant="outlined"
           fullWidth
           disabled
-          value={dados.cnpj_concessionaria}
+          value={dados.contrato_concessionaria_id.cnpj}
         />
         <TextField
-          className={classes.text}        
+          className={classes.text}
           id="outlined"
           label="Concessionaria"
           variant="outlined"
           fullWidth
           disabled
-          value={dados.concessionaria}
+          value={dados.contrato_concessionaria_id.nome}
         />
       </div>
       <div>
         <TextField
           className={classes.text}
-        
           id="outlined"
           type="number"
           label="CNPJ/CPF Unidade"
           variant="outlined"
           fullWidth
           disabled
-          value={dados.cpf_cnpj_cliente}
+          value={dados.contrato_unidade_id.cpf_cnpj}
         />
         <TextField
           className={classes.text}
-        
           id="outlined-password-input"
           type="text"
           label="Nome Unidade"
           variant="outlined"
           fullWidth
           disabled
-          value={dados.nome_cliente}
+          value={dados.contrato_unidade_id.nome}
         />
       </div>
       <div>
@@ -62,39 +60,39 @@ export default function EditEnergia({ dados }) {
           value={dados.codigo_identificador}
         />
         <TextField
-          className={classes.text}        
+          className={classes.text}
           id="outlined"
           label="Codigo Fiscal"
           variant="outlined"
           fullWidth
           disabled
-          value={dados.codigo_fiscal}
+          value={dados.codigo_fiscal_operacao}
         />
       </div>
-      
+
       <div>
         <TextField
-          className={classes.text}       
+          className={classes.text}
           id="outlined"
           label="Grupo/Subgrupo"
           variant="outlined"
           fullWidth
           disabled
-          value={dados.grupo_sub}
+          value={dados.grupo_subgrupo}
         />
         <TextField
-          className={classes.text}       
+          className={classes.text}
           id="outlined"
           label="Classe/Subclasse"
           variant="outlined"
           fullWidth
           disabled
-          value={dados.classe_sub}
+          value={dados.classe_subclasse}
         />
       </div>
       <div>
         <TextField
-          className={classes.text}       
+          className={classes.text}
           id="outlined"
           label="TP Fornecimento"
           variant="outlined"
@@ -103,19 +101,19 @@ export default function EditEnergia({ dados }) {
           value={dados.tp_fornecimento}
         />
         <TextField
-          className={classes.text}        
+          className={classes.text}
           id="outlined"
           type="text"
           label="Modalidade Tarifaria"
           variant="outlined"
           fullWidth
           disabled
-          value={dados.modalidade_taf}
+          value={dados.modalidade_tarifaria}
         />
       </div>
       <div>
         <TextField
-          className={classes.text}       
+          className={classes.text}
           id="outlined"
           label="Tensao Nominal"
           variant="outlined"
@@ -124,7 +122,7 @@ export default function EditEnergia({ dados }) {
           value={dados.tensao_nominal}
         />
         <TextField
-          className={classes.text}        
+          className={classes.text}
           id="outlined"
           type="text"
           label="Roteiro Leitura"
@@ -136,108 +134,109 @@ export default function EditEnergia({ dados }) {
       </div>
       <div>
         <TextField
-          className={classes.text}       
+          className={classes.text}
           id="outlined"
           label="Nª Medidor"
           variant="outlined"
           fullWidth
           disabled
-          value={dados.medidor}
+          value={dados.num_medidor}
         />
-        <NumberFormat 
-          prefix={'R$ '} 
+        <NumberFormat
+          prefix={"R$ "}
           id="outlined"
-          className={classes.text}  
-          floatValue = {true}
+          className={classes.text}
+          floatValue={true}
+          disabled
           value={dados.valor_medio}
           label="Valor Medio (R$)"
           customInput={TextField}
           fullWidth
           variant="outlined"
-      />
+        />
       </div>
       <div>
         <TextField
-          className={classes.text}       
+          className={classes.text}
           id="outlined"
           label="Endereço Eletrico"
           variant="outlined"
           fullWidth
           disabled
-          value={dados.end_eletrico}
+          value={dados.endereco_eletrico}
         />
         <TextField
-          className={classes.text}        
+          className={classes.text}
           id="outlined"
           type="text"
           label="CPF/CNPJ/CI"
           variant="outlined"
           fullWidth
           disabled
-          value={dados.cpf_cnpj_ci}
+          value={dados.cnpj_cpf_ci}
         />
       </div>
       <div>
         <TextField
-          className={classes.text}       
+          className={classes.text}
           id="outlined"
           label="Cep Consumo"
           variant="outlined"
           fullWidth
           disabled
-          value={dados.cep_consumo}
+          value={dados.local_cep}
         />
         <TextField
-          className={classes.text}        
+          className={classes.text}
           id="outlined"
           type="text"
           label="Rua"
           variant="outlined"
           fullWidth
           disabled
-          value={dados.rua_consumo}
+          value={dados.local_rua}
         />
       </div>
       <div>
         <TextField
-          className={classes.text}       
+          className={classes.text}
           id="outlined"
           label="Bairro Consumo"
           variant="outlined"
           fullWidth
           disabled
-          value={dados.bairro_consumo}
+          value={dados.local_bairro}
         />
         <TextField
-          className={classes.text}        
+          className={classes.text}
           id="outlined"
           type="text"
           label="Cidade Consumo"
           variant="outlined"
           fullWidth
           disabled
-          value={dados.cidade_consumo}
+          value={dados.local_cidade}
         />
       </div>
       <div>
         <TextField
-          className={classes.text}       
+          className={classes.text}
           id="outlined"
           label="Estado Consumo"
           variant="outlined"
           fullWidth
           disabled
-          value={dados.estado_consumo}
+          value={dados.local_estado}
         />
         <TextField
-          className={classes.text}        
+          className={classes.text}
           id="outlined"
           type="text"
           label="Nª Residencial/Empresarial"
           variant="outlined"
           fullWidth
           disabled
-          value={dados.nResidencial_empresarial}
+          value={dados.local_numero}
         />
       </div>
     </form>
