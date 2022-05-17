@@ -42,7 +42,6 @@
 - <img src = "./readme/grupoAPI/feito.jpeg" /> Cadastros de Unidades, Concessionárias, Contratos;
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Cadastro do usuário e seus perfis (administrador, gestor e digitador);
 - <img src = "./readme/grupoAPI/feito.jpeg" /> Cadastro (digitação) da conta de água e energia;
-- <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Registro de log de operações (cadastro e deleção);
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Relatório de consumo total de água mensal, anual e média;
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" />  Relatório de consumo total de energia mensal, anual e média;
 - <img src = "./readme/grupoAPI/feito.jpeg" /> Painel adminitrativo para alterações;
