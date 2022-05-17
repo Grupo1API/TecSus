@@ -16,13 +16,21 @@
 
 <br>
 
-
 # O Projeto
 
 <h1 align="center"> 
-<img src = "./readme/framesFigma/objetivoProjeto.png"/></h1>
+<img src = "./readme/framesFigma/objetivoProjeto.png" width="350"/></h1>
 
-<br>
+<br id="product-backlog">
+
+## 📋 Product Backlog
+
+<!--add product backlog figma figma-->
+<h1 align="center">
+<img src = "./readme/framesFigma/productBacklog.png" width="300"/></h1>
+
+<br id="sprints-backlog">
+
 
 ### **Status do Projeto: Em progresso.**
 
@@ -48,7 +56,7 @@ do contrato);
 
 ### **Requisitos não funcionais**    
 
-- <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Prezar pelo UX da tela de digitação das contas;
+- <img src = "./readme/grupoAPI/feito.jpeg" /> Prezar pelo UX da tela de digitação das contas;
 - <img src = "./readme/grupoAPI/feito.jpeg" /> Incluir atalhos no nos formmulários de casdastro;
 - <img src = "./readme/grupoAPI/feito.jpeg" /> Permitir navegação entre campos por TAB ou seta;
 <h1> 
@@ -57,7 +65,7 @@ do contrato);
 
 ## 📆 Cronograma das Sprints
 
-- <img src = "./readme/grupoAPI/feito.jpeg" />Kick-Off - 15/03/2022
+- <img src = "./readme/grupoAPI/feito.jpeg" />  Kick-Off - 15/03/2022
 - <img src = "./readme/grupoAPI/feito.jpeg" /> <a href="https://github.com/Grupo1API/TecSus/tree/main/readme/sprint_1">Sprint 1</a> - 25/03/2022 a 14/04/2022 
 - <img src = "./readme/grupoAPI/feito.jpeg" /> <a href="https://github.com/Grupo1API/TecSus/tree/main/readme/sprint_2">Sprint 2</a> - 04/2022 a 15/05/2022   
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" /> [ Sprint 3 ]( ) - 16/05/2022 a 05/06/2022  
@@ -66,7 +74,7 @@ do contrato);
 <br>
 <!--add cronograma sprints figma-->
 <h1 align="center"> 
-<img src = "./readme/framesFigma/cronogramaSprints.png"/></h1>
+<img src = "./readme/framesFigma/cronogramaSprints.png" width="350"/></h1>
 
 <br id="tecnologias-utilizadas"> 
 
@@ -79,35 +87,9 @@ do contrato);
 
 <!--add stacks figma-->
 <h1 align="center"> 
-<img src = "./readme/framesFigma/stacksDoProjeto.png"/></h1>
+<img src = "./readme/framesFigma/stacksDoProjeto.png" width="350"/></h1>
 
 <br id="metodologia-utilizada">   
-
-## 💡 Metodologia Utilizada   
-
-- **Metodologia Ágil: SCRUM**
-<!--add scrum figma-->
-<img src = "./readme/framesFigma/metodologiaScrum.png" />
-
-<h1></h1>
-<br id="product-backlog">
-
-## 📋 Product Backlog
-
-<!--add product backlog figma figma-->
-<h1 align="center">
-<img src = "./readme/framesFigma/productBacklog.png" /></h1>
-
-<br id="sprints-backlog">
-
-## 📝 Sprints Backlog
-
-<h1 align="center"> <img src = "./readme/framesFigma/sprintsBacklogs.png"/></h1>
-
-<br id="equipe">
-
-## 👨‍💻 Equipe
-<!-- ![Equipe Ditial Solutions](/readme/time.gif "Apresentação Equipe Digital Solutions") -->
 
 <br>
 

@@ -6,7 +6,7 @@ Nesta sprint mantivemos o foco na implementação da ligação entre as tabelas 
 <br>
 
 <h1 align="center"> 
-<img src = "./midias/sprint2BacklogPrioridades.png"/></h1>
+<img src = "./midias/sprint2BacklogPrioridades.png" width="300"/></h1>
 <br>
 
 ## Burndown da Sprints
@@ -32,6 +32,9 @@ Nesta sprint mantivemos o foco na implementação da ligação entre as tabelas 
 
 <h3 align="center">Atalhos para preencimento dos campos no formulário para cadastro de contrato fornecimento água</h3>
 <h1 align="center"> <img src = "./midias/contrato_agua.gif"/></h1>
+
+<h3 align="center">Demo dos atalhos de preenchimento nos campos do formulário de cadastro das contas (água e energia)</h3>
+<h1 align="center"> <img src = "./midias/atalhos.gif"/></h1>
 
 <h3 align="center">Quadros para edição e deleção de dados cadastrados</h3>
 <h1 align="center"> <img src = "./midias/quadros.gif"/></h1>
