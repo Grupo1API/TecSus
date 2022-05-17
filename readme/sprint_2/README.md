@@ -6,7 +6,7 @@ Nesta sprint mantivemos o foco na implementação da ligação entre as tabelas 
 <br>
 
 <h1 align="center"> 
-<img src = "./midias/sprint2BacklogPrioridades.png" width="300"/></h1>
+<img src = "./midias/sprint2BacklogPrioridades.png" width="500"/></h1>
 <br>
 
 ## Burndown da Sprints

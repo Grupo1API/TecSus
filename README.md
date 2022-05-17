@@ -19,7 +19,7 @@
 # O Projeto
 
 <h1 align="center"> 
-<img src = "./readme/framesFigma/objetivoProjeto.png" width="350"/></h1>
+<img src = "./readme/framesFigma/objetivoProjeto.png" width="600"/></h1>
 
 <br id="product-backlog">
 
@@ -27,7 +27,7 @@
 
 <!--add product backlog figma figma-->
 <h1 align="center">
-<img src = "./readme/framesFigma/productBacklog.png" width="300"/></h1>
+<img src = "./readme/framesFigma/productBacklog.png" width="550"/></h1>
 
 <br id="sprints-backlog">
 
@@ -74,7 +74,7 @@ do contrato);
 <br>
 <!--add cronograma sprints figma-->
 <h1 align="center"> 
-<img src = "./readme/framesFigma/cronogramaSprints.png" width="350"/></h1>
+<img src = "./readme/framesFigma/cronogramaSprints.png" width="600"/></h1>
 
 <br id="tecnologias-utilizadas"> 
 
@@ -87,7 +87,7 @@ do contrato);
 
 <!--add stacks figma-->
 <h1 align="center"> 
-<img src = "./readme/framesFigma/stacksDoProjeto.png" width="350"/></h1>
+<img src = "./readme/framesFigma/stacksDoProjeto.png" width="600"/></h1>
 
 <br id="metodologia-utilizada">   
 
