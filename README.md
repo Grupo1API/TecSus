@@ -91,7 +91,7 @@ do contrato);
 
 <br id="metodologia-utilizada">   
 
-<h1 align="center" width="500"> 
+<div id="tabela_equipe" align="center" width="400"> 
 
 | Nome                  | Função        | Linkedin                                                                 | GitHub                                         | Avatar                                                          |
 | --------------------- | ------------- | ------------------------------------------------------------------------ | ---------------------------------------------- | --------------------------------------------------------------- |
@@ -103,4 +103,4 @@ do contrato);
 | **Marcelo Uchoas**    | Desenvolvedor | [@LinkedIn](https://www.linkedin.com/in/marcelo-uch%C3%B4as-de-oliveira-b2536a18b/)  |  [@GitHub](https://github.com/marcelouchoas)    | <img src = "./readme/integrantes/marcelo.jpeg" width="40">                                   |
 | **Richard Rafael**    | Desenvolvedor |  [@LinkedIn](https://www.linkedin.com/mwlite/in/richard-soares-002195221) | [@GitHub](https://github.com/Richardrafael)    | <img src = "./readme/integrantes/richard.jpeg" width="40">                                   |
 
-</h1>
+</div>
