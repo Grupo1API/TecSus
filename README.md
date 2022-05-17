@@ -4,12 +4,10 @@
 <br>
 <p align="center">
   <a href ="#o-projeto"> Projeto </a>  • 
+  <a href ="#product-backlog">Product Backlog </a>  •
   <a href ="#proposta"> Proposta </a>  • 
   <a href ="#cronograma-das-sprints"> Sprints </a>  • 
-  <a href ="#tecnologias-utilizadas"> Tecnologias </a>  • 
-  <a href ="#metodologia-utilizada"> Metodologia </a>  • 
-  <a href ="#product-backlog">Product Backlog </a>  •
-  <a href ="#sprints-backlog">Sprints Backlog </a>  •
+  <a href ="#tecnologias-utilizadas"> Tecnologias </a>  •
   <a href ="#equipe"> Equipe </a> 
  
 </p>
