@@ -8,7 +8,7 @@
   <a href ="#proposta"> Proposta </a>  • 
   <a href ="#cronograma-das-sprints"> Sprints </a>  • 
   <a href ="#tecnologias-utilizadas"> Tecnologias </a>  •
-  <a href ="#equipe"> Equipe </a> 
+  <a href ="#tabela_equipe"> Equipe </a> 
  
 </p>
 
@@ -72,16 +72,18 @@ do contrato);
 <br>
 <!--add cronograma sprints figma-->
 <h1 align="center"> 
-<img src = "./readme/framesFigma/cronogramaSprints.png" width="600"/></h1>
+<img src = "./readme/framesFigma/cronogramaSprints.png" width="700"/></h1>
 
-<br id="tecnologias-utilizadas"> 
+<div id="tecnologias-utilizadas"> 
 
-## 🖥️ Tecnologias Utilizadas
+  ## 🖥️ Tecnologias Utilizadas
 
 - **Banco de Dados:** MySQL;
 - **Back-end:** Spring, Java;
 - **Front-end:** HTML, CSS, JavaScript, React;
 - **Ferramentas:** Visual Studio Code, Eclipse, Figma, Git e Github;   
+
+<div>
 
 <!--add stacks figma-->
 <h1 align="center"> 
