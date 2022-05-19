@@ -22,8 +22,8 @@ Após o cliente aprovar o protótipo apresentado, o desenvolvimento do projeto s
 
 <br>
 
-<h2 id="modelo_de_dados" align="center">Modelo de dados<h2>
-<img align="center" src="./midias/dor/modelo_de_dados.jpeg" width="600"/></h2>
+<h2 id="modelo_de_dados" align="center">Modelo de dados
+<img src="./midias/dor/modelo_de_dados.jpeg" width="600"/></h2>
 
 <br>
 
