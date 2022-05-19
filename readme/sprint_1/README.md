@@ -6,37 +6,37 @@ Após o cliente aprovar o protótipo apresentado, o desenvolvimento do projeto s
 
 <br>
 
-<h1>Definition of Ready
+<h1 align="center">Definition of Ready
 <img align="center" src="./midias/dor/backlog1Sprint.png" width="700"></h1>
 
 <br>
 
-<h2 align="center">Modelo de dados<h2>
+<!-- <h2 align="center">Modelo de dados<h2>
 <img align="center" src="./midias/dor/modelo_de_dados.jpeg" width="600"/></h2>
 
-<br>
+<br> -->
 
 <h2>Wire frames</h2>
 
 <h3 align="center">Formulário para cadastro de concessionárias
-<img align="center" src="./midias/dor/form_concessionaria.png" width="800">
+<img src="./midias/dor/form_concessionaria.png" width="800">
 
-<h3 align="center">Formulário para cadastro de unidades</h3>
-<img align="center" src="./midias/dor/form_unidade.png" width="800">
+<h3 align="center">Formulário para cadastro de unidades>
+<img src="./midias/dor/form_unidade.png" width="800"></h3>
 
-<h3 align="center">Formulário para cadastro de contrato de fornecimento de água</h3>
-<img align="center" src="./midias/dor/contrato_agua.png" width="800">
+<h3 align="center">Formulário para cadastro de contrato de fornecimento de água>
+<img src="./midias/dor/contrato_agua.png" width="800"></h3>
 
-<h3 align="center">Formulário para cadastro de contrato de fornecimento de energia</h3>
-<img align="center" src="./midias/dor/contrato_energia.png" width="800">
+<h3 align="center">Formulário para cadastro de contrato de fornecimento de energia>
+<img src="./midias/dor/contrato_energia.png" width="800"></h3>
 
-<h3 align="center">Formulário para cadastro conta/fatura de água</h3>
-<img align="center" src="./midias/dor/pt1_conta_agua.png" width="800">
-<img align="center" src="./midias/dor/pt2_conta_agua.png" width="800">
+<h3 align="center">Formulário para cadastro conta/fatura de água>
+<img src="./midias/dor/pt1_conta_agua.png" width="800">
+<img src="./midias/dor/pt2_conta_agua.png" width="800"></h3>
 
-<h3 align="center">Formulário para cadastro conta/fatura de energia</h3>
-<img align="center" src="./midias/dor/pt1_conta_energia.png" width="800">
-<img align="center" src="./midias/dor/pt2_conta_energia.png" width="800">
+<h3 align="center">Formulário para cadastro conta/fatura de energia>
+<img src="./midias/dor/pt1_conta_energia.png" width="800">
+<img src="./midias/dor/pt2_conta_energia.png" width="800"></h3>
 
 <br>
 
