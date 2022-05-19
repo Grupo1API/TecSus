@@ -59,7 +59,7 @@ Após o cliente aprovar o protótipo apresentado, o desenvolvimento do projeto s
 
 <br>
 
-<h1 id="dor">Definition of Done<h1>
+<h1 id="dod">Definition of Done<h1>
 
 <h2 id="funcionalidades_sprint_1">Funcionalidades da Sprint</h2>
 
