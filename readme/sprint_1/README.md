@@ -6,19 +6,30 @@ Após o cliente aprovar o protótipo apresentado, o desenvolvimento do projeto s
 
 <br>
 
-<h1>Definition of Ready</h1>
+<h1>Sumário</h1>
+<a href="#dod">DOR (Definition od Ready)</a>
+<a href="#backlog_sprint_1">Backlog Sprint 1</a>
+<!-- <a href="#modelo_de_dados">Modelo de dados</a> -->
+<a href="#wireframes">Wireframes</a>
+<a href="#burndown_sprint_1">Burndowm Sprint 1</a>
+<a href="#dod">DOD (Definition of Done)</a>
+<a href="#funcionalidades_sprint_1">Funcionalidades implementadas</a>
+
 <br>
 
-<div id="so_pra_alinhar" align="center"><img src="./midias/dor/backlog1Sprint.png" width="700"></h1></div>
+<h1 id="dod">Definition of Ready</h1>
+<br>
+
+<div id="backlog_sprint_1" align="center"><img src="./midias/dor/backlog1Sprint.png" width="700"></h1></div>
 
 <br>
 
-<!-- <h2 align="center">Modelo de dados<h2>
+<!-- <h2 id="modelo_de_dados" align="center">Modelo de dados<h2>
 <img align="center" src="./midias/dor/modelo_de_dados.jpeg" width="600"/></h2>
 
 <br> -->
 
-<h2>Wire frames</h2>
+<h2 id="wireframes">Wireframes</h2>
 
 <h3 align="center">Formulário para cadastro de concessionárias
 <img src="./midias/dor/form_concessionaria.png" width="800">
@@ -42,16 +53,16 @@ Após o cliente aprovar o protótipo apresentado, o desenvolvimento do projeto s
 
 <br>
 
-<h2>Burndown da Sprint<h2>
+<h2 id="burndown_sprint_1">Burndown da Sprint<h2>
 
 <h3 align="center">
 <img align="center" src="./midias/burndownSprint_1.jpeg" width="600"/></h3>
 
 <br>
 
-<h1>Definition of Done<h1>
+<h1 id="dod">Definition of Done<h1>
 
-<h2>Funcionalidades da Sprint</h2>
+<h2 id="funcionalidades_sprint_1>Funcionalidades da Sprint</h2>
 
 <br>
 
