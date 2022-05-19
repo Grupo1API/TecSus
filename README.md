@@ -71,7 +71,7 @@ do contrato);
 <br>
 <!--add cronograma sprints figma-->
 <h1 align="center"> 
-<img src = "./readme/framesFigma/cronogramaSprints.png" width="700"/></h1>
+<img src = "./readme/framesFigma/cronogramaSprints.png" width="800"/></h1>
 
 <div id="tecnologias-utilizadas"> 
 
