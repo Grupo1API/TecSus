@@ -7,12 +7,12 @@ Após o cliente aprovar o protótipo apresentado, o desenvolvimento do projeto s
 <br>
 
 <h1>Sumário</h1>
-<a href="#dod">DOR (Definition od Ready)</a>
-<a href="#backlog_sprint_1">Backlog Sprint 1</a>
-<!-- <a href="#modelo_de_dados">Modelo de dados</a> -->
-<a href="#wireframes">Wireframes</a>
-<a href="#burndown_sprint_1">Burndowm Sprint 1</a>
-<a href="#dod">DOD (Definition of Done)</a>
+<a href="#dod">DOR (Definition od Ready)</a><br>
+<a href="#backlog_sprint_1">Backlog Sprint 1</a><br>
+<!-- <a href="#modelo_de_dados">Modelo de dados</a><br> -->
+<a href="#wireframes">Wireframes</a><br>
+<a href="#burndown_sprint_1">Burndowm Sprint 1</a><br>
+<a href="#dod">DOD (Definition of Done)</a><br>
 <a href="#funcionalidades_sprint_1">Funcionalidades implementadas</a>
 
 <br>
