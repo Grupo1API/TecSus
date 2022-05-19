@@ -151,16 +151,3 @@ do contrato);
       </tr>
     </table>
   </div>
-
-<!-- <div id="tabela_equipe" align="center" width="400"> 
-
-| Nome                  | Função        | Linkedin                                                                 | GitHub                                         | Avatar                                                          |
-| --------------------- | ------------- | ------------------------------------------------------------------------ | ---------------------------------------------- | --------------------------------------------------------------- |
-| **Vitória Moura**     |  Scrum Master | [@LinkedIn](https://www.linkedin.com/in/vit%C3%B3ria-moura-6393391b0/)   | [@GitHub](https://github.com/vitoriasaturnino)    | <img src = "./readme/integrantes/vitoria.jpeg" width="40" >                                   |
-| **Julio Cesar**       | Product Owner | [@LinkedIn](https://www.linkedin.com/in/juliocesar2811/)                 | [@GitHub](https://github.com/juliocesar1316)   | <img src = "./readme/integrantes/julio.jpeg" width="40" >                   |
-| **Douglas Queiroz**   | Desenvolvedor | [@LinkedIn](https://www.linkedin.com/in/douglas-queiroz-3b9a72212/)      | [@GitHub](https://github.com/douglaswe)        | <img src = "./readme/integrantes/douglas.jpeg" width="40">
-| **Francisco Quirino** | Desenvolvedor | [@LinkedIn](https://www.linkedin.com/in/francisco-quirino-4087281b1)     | [@GitHub](https://github.com/ciscoquirino)     | <img src = "./readme/integrantes/francisco.jpeg" alt="drawing" width="40" > |
-| **Juliana Maria**     | Desenvolvedora | [@LinkedIn](https://www.linkedin.com/in/juliana-maria-a0b0a0124)         | [@GitHub](https://github.com/JulianaMaria-Lab) | <img src = "./readme/integrantes/juliana maria.jpeg" width="40">                                   |
-| **Marcelo Uchoas**    | Desenvolvedor | [@LinkedIn](https://www.linkedin.com/in/marcelo-uch%C3%B4as-de-oliveira-b2536a18b/)  |  [@GitHub](https://github.com/marcelouchoas)    | <img src = "./readme/integrantes/marcelo.jpeg" width="40">                                   |
-| **Richard Rafael**    | Desenvolvedor |  [@LinkedIn](https://www.linkedin.com/mwlite/in/richard-soares-002195221) | [@GitHub](https://github.com/Richardrafael)    | <img src = "./readme/integrantes/richard.jpeg" width="40">                                   |
-</div> -->
