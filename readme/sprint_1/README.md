@@ -5,7 +5,7 @@
 Após o cliente aprovar o protótipo apresentado, o desenvolvimento do projeto se baseou em focar no principal objetivo do sistema, que é o cadastro e gerenciam de dados, desenvolvendo a princípio as principais funções: Cadastro de conta de energia e água, contratos de fornecimento para energia e água, cadastro para concessionárias responsáveis pela distriuição e unidades que recebem esses serviços.
 
 <h1>Sumário</h1>
-<a href="#dod">DOR (Definition od Ready)</a>   <br>
+<a href="#dor">DOR (Definition od Ready)</a>   <br>
 <a href="#backlog_sprint_1">Backlog Sprint 1</a>   <br>
 <a href="#modelo_de_dados">Modelo de dados</a><br>
 <a href="#wireframes">Wireframes</a>   <br>
@@ -15,7 +15,7 @@ Após o cliente aprovar o protótipo apresentado, o desenvolvimento do projeto s
 
 <br>
 
-<h1 id="dod">Definition of Ready</h1>
+<h1 id="dor">Definition of Ready</h1>
 <br>
 
 <div id="backlog_sprint_1" align="center"><img src="./midias/dor/backlog1Sprint.png" width="700"></h1></div>
@@ -59,9 +59,9 @@ Após o cliente aprovar o protótipo apresentado, o desenvolvimento do projeto s
 
 <br>
 
-<h1 id="dod">Definition of Done<h1>
+<h1 id="dor">Definition of Done<h1>
 
-<h2 id="funcionalidades_sprint_1>Funcionalidades da Sprint</h2>
+<h2 id="funcionalidades_sprint_1">Funcionalidades da Sprint</h2>
 
 <br>
 
