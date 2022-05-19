@@ -8,7 +8,7 @@
   <a href ="#proposta"> Proposta </a>  • 
   <a href ="#cronograma-das-sprints"> Sprints </a>  • 
   <a href ="#tecnologias-utilizadas"> Tecnologias </a>  •
-  <a href ="#tabela_equipe"> Equipe </a> 
+  <a href ="#table_equipe"> Equipe </a> 
  
 </p>
 
@@ -91,7 +91,68 @@ do contrato);
 
 ## 👨‍💻 Equipe
 
-<div id="tabela_equipe" align="center" width="400"> 
+<div id="table_equipe" align="center" width="400">
+    <table border="2">
+      <tr id="head_table">
+        <th>Nome</th>
+        <th>Função</th>
+        <th>LinkedIn</th>
+        <th>GitHub</th>
+        <th>Avatar</th>
+      </tr>
+      <tr id="linha_table">
+        <td>Vitória Moura</td>
+        <td>Scrum Master</td>
+        <td><a href="https://www.linkedin.com/in/vit%C3%B3ria-moura-6393391b0/">@LinkedIn</a></td>
+        <td><a href="https://github.com/vitoriasaturnino">@GitHub</a></td>
+        <td><img src = "./readme/integrantes/vitoria.jpeg" width="40"></td>
+    </tr>
+      <tr id="linha_table">
+        <td>Julio Cesar</td>
+        <td>Product Owner</td>
+        <td><a href="https://www.linkedin.com/in/juliocesar2811/">@LinkedIn</a></td>
+        <td><a href="https://github.com/juliocesar1316">@GitHub</a></td>
+        <td><img src = "./readme/integrantes/julio.jpeg" width="40"></td>
+      </tr>
+      <tr id="linha_table">
+        <td>Douglas Queiroz</td>
+        <td>Desenvolvedor</td>
+        <td><a href="https://www.linkedin.com/in/douglas-queiroz-3b9a72212/">@LinkedIn</a></td>
+        <td><a href="https://github.com/douglaswe">@GitHub</a></td>
+        <td> <img src = "./readme/integrantes/douglas.jpeg" width="40"></td>
+      </tr>
+      <tr id="linha_table">
+        <td>Francisco Quirino</td>
+        <td>Desenvolvedor</td>
+        <td><a href="https://www.linkedin.com/in/francisco-quirino-4087281b1">@LinkedIn</a></td>
+        <td><a href="https://github.com/ciscoquirino">@GitHub</a></td>
+        <td><img src = "./readme/integrantes/francisco.jpeg" width="40"></td>
+      </tr>
+      <tr id="linha_table">
+        <td>Juliana Maria</td>
+        <td>Desenvolvedora</td>
+        <td><a href="https://www.linkedin.com/in/juliana-maria-a0b0a0124">@LinkedIn</a></td>
+        <td><a href="https://github.com/JulianaMaria-Lab">@GitHub</a></td>
+        <td><img src = "./readme/integrantes/juliana maria.jpeg" width="40"></td>
+      </tr>
+      <tr id="linha_table">
+        <td>Marcelo Uchoas</td>
+        <td>Desenvolvedor</td>
+        <td><a href="https://www.linkedin.com/in/marcelo-uch%C3%B4as-de-oliveira-b2536a18b/">@LinkedIn</a></td>
+        <td><a href="https://github.com/marcelouchoas">@GitHub</a></td>
+        <td><img src = "./readme/integrantes/marcelo.jpeg" width="40"></td>
+      </tr>
+      <tr id="linha_table">
+        <td>Richard Rafael</td>
+        <td>Desenvolvedor</td>
+        <td><a href="https://www.linkedin.com/mwlite/in/richard-soares-002195221">@LinkedIn</a></td>
+        <td><a href="https://github.com/Richardrafael">@GitHub</a></td>
+        <td><img src = "./readme/integrantes/richard.jpeg" width="40"></td>
+      </tr>
+    </table>
+  </div>
+
+<!-- <div id="tabela_equipe" align="center" width="400"> 
 
 | Nome                  | Função        | Linkedin                                                                 | GitHub                                         | Avatar                                                          |
 | --------------------- | ------------- | ------------------------------------------------------------------------ | ---------------------------------------------- | --------------------------------------------------------------- |
@@ -102,4 +163,4 @@ do contrato);
 | **Juliana Maria**     | Desenvolvedora | [@LinkedIn](https://www.linkedin.com/in/juliana-maria-a0b0a0124)         | [@GitHub](https://github.com/JulianaMaria-Lab) | <img src = "./readme/integrantes/juliana maria.jpeg" width="40">                                   |
 | **Marcelo Uchoas**    | Desenvolvedor | [@LinkedIn](https://www.linkedin.com/in/marcelo-uch%C3%B4as-de-oliveira-b2536a18b/)  |  [@GitHub](https://github.com/marcelouchoas)    | <img src = "./readme/integrantes/marcelo.jpeg" width="40">                                   |
 | **Richard Rafael**    | Desenvolvedor |  [@LinkedIn](https://www.linkedin.com/mwlite/in/richard-soares-002195221) | [@GitHub](https://github.com/Richardrafael)    | <img src = "./readme/integrantes/richard.jpeg" width="40">                                   |
-</div>
+</div> -->
