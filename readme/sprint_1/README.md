@@ -7,7 +7,7 @@ Após o cliente aprovar o protótipo apresentado, o desenvolvimento do projeto s
 <h1>Sumário</h1>
 <a href="#dod">DOR (Definition od Ready)</a>   <br>
 <a href="#backlog_sprint_1">Backlog Sprint 1</a>   <br>
-<!-- <a href="#modelo_de_dados">Modelo de dados</a><br> -->
+<a href="#modelo_de_dados">Modelo de dados</a><br>
 <a href="#wireframes">Wireframes</a>   <br>
 <a href="#burndown_sprint_1">Burndowm Sprint 1</a>   <br>
 <a href="#dod">DOD (Definition of Done)</a>   <br>
@@ -22,10 +22,10 @@ Após o cliente aprovar o protótipo apresentado, o desenvolvimento do projeto s
 
 <br>
 
-<!-- <h2 id="modelo_de_dados" align="center">Modelo de dados<h2>
+<h2 id="modelo_de_dados" align="center">Modelo de dados<h2>
 <img align="center" src="./midias/dor/modelo_de_dados.jpeg" width="600"/></h2>
 
-<br> -->
+<br>
 
 <h2 id="wireframes">Wireframes</h2>
 
