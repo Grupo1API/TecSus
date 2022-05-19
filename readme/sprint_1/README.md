@@ -6,7 +6,7 @@ Após o cliente aprovar o protótipo apresentado, o desenvolvimento do projeto s
 
 <br>
 
-<h1 align="center">Definition of Ready
+<h1 align="center">Definition of Ready>
 <img align="center" src="./midias/dor/backlog1Sprint.png" width="700"></h1>
 
 <br>
