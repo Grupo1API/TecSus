@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.digisolu.tecsus1.entidades.ContratoAgua;
@@ -97,5 +99,13 @@ public class ContratoAguaControle {
         }
         return new ResponseEntity<ContratoAgua>(contratos_agua, HttpStatus.OK);
     }
+    @RequestMapping ("/contrato/agua/{unidade_id}")
+    public @ResponseBody ResponseEntity<ContratoAgua> findAllContratoAgua(){
+    List<ContratoAgua> contratosAgua = repositorio.findAllContratoAgua();
+    if(contratosAgua == null) {
+        return new ResponseEntity<ContratoAgua>(HttpStatus.BAD_REQUEST);
+    }
+    return new ResponseEntity<ContratoAgua>(HttpStatus.OK);
+    }  
 }
 

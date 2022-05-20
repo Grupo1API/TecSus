@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.digisolu.tecsus1.entidades.ContaEnergia;
@@ -89,4 +91,15 @@ public ResponseEntity<?> excluirEnergia(@RequestBody ContaEnergia exclusao) {
 	repositorio.delete(contaEnergia);
 	return new ResponseEntity<>(HttpStatus.OK);
 }
+
+@RequestMapping ("/conta/energia/{contaenergia_contrato_id}")
+public @ResponseBody ResponseEntity<ContaEnergia> findAllContaEnergia(){
+List<ContaEnergia> contasEnergia = repositorio.findAllContaEnergia();
+if(contasEnergia == null) {
+    return new ResponseEntity<ContaEnergia>(HttpStatus.BAD_REQUEST);
+}
+return new ResponseEntity<ContaEnergia>(HttpStatus.OK);
+}  
+
+
 }
