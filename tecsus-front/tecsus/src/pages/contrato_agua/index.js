@@ -139,7 +139,7 @@ function ContratoAgua(){
                                 id="cnpj_concessionaria" 
                                 className='input'
                                 type="text" 
-                                required
+                                required={true}
                                 label="CNPJ Concessionaria" 
                                 placeholder="CNPJ Concessionaria" 
                                 value={cnpj_concessionaria}
@@ -194,7 +194,7 @@ function ContratoAgua(){
                             />
                             <TextField
                                 id="pde_rgi"       
-                                className='input'                        
+                                className='input'    
                                 type="text" 
                                 required={true}
                                 label="PDE/RGI"
@@ -208,7 +208,7 @@ function ContratoAgua(){
                         <div className='coluna'>
                             <TextField
                                 id="hidrometro"
-                                className='input'                                
+                                className='input'        
                                 type="text" 
                                 required={true}
                                 label="Hidrometro" 
@@ -221,6 +221,7 @@ function ContratoAgua(){
                                 id="tipo_ligacao"
                                 className='input'  
                                 type="text" 
+                                required={true}
                                 label="Tipo de Ligação" 
                                 placeholder="Tipo de Ligação" 
                                 value={tipo_ligacao}
@@ -231,6 +232,7 @@ function ContratoAgua(){
                                 id="Tipo_fornecimento" 
                                 className='input' 
                                 type="text" 
+                                required={true}
                                 label="Tipo de Fornecimento"
                                 placeholder="Tipo de Fornecimento"
                                 value={tipo_fornecimento}
@@ -244,6 +246,7 @@ function ContratoAgua(){
                                 id="n_fornecimento" 
                                 className='input' 
                                 type="text" 
+                                required={true}
                                 label="Numero de Fornecimento"
                                 placeholder="Numero de Fornecimento"
                                 value={n_fornecimento}
@@ -253,10 +256,10 @@ function ContratoAgua(){
                             <NumberFormat 
                                 prefix={'R$ '} 
                                 id="valor_medio" 
-                                className='input'  
+                                className='input' 
+                                required={true} 
                                 floatValue = {true}
                                 value={valor_medio}
-                                required={true}
                                 label="Valor Medio (R$)"
                                 placeholder="Valor Medio (R$)"
                                 customInput={TextField} 
@@ -347,9 +350,10 @@ function ContratoAgua(){
                                 variant="outlined"
                             />                          
                             <TextField
-                                id="nResidencial_Empresarial" 
-                                className='input'                            
+                                id="nResidencial_Empresarial"
+                                className='input'    
                                 type="text" 
+                                required={true}
                                 label="Nª Residencial/Empresarial"
                                 placeholder="Nª Residencial/Empresarial" 
                                 value={nResidencial_empresarial}

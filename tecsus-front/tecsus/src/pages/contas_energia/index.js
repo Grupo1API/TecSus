@@ -176,8 +176,8 @@ function ContaEnergia() {
                 id="numero_instalacao"
                 className="input"
                 type="text"
+                required={true}
                 label="Nª Instalacao"
-                required
                 placeholder="Nª Instalacao"
                 value={numero_instalacao}
                 onChange={(e) => setNumero_instalacao(e.target.value)}
@@ -336,10 +336,10 @@ function ContaEnergia() {
                 id="nota_fiscal"
                 className="input"
                 type="text"
+                required={true}
                 label="Nota fiscal"
                 placeholder="Nota fiscal"
                 value={nota_fiscal}
-                required={true}
                 onChange={(e) => setNota_fiscal(e.target.value)}
                 variant="outlined"
               />
@@ -438,6 +438,7 @@ function ContaEnergia() {
                 id="descricao_consumo"
                 className="input"
                 type="text"
+                required={true}
                 label="Descrição"
                 placeholder="Descrição"
                 value={descricao_consumo}
@@ -459,6 +460,7 @@ function ContaEnergia() {
                 id="const_multa"
                 className="input"
                 type="number"
+                required={true}
                 label="Const. Multa"
                 placeholder="Const. Multa"
                 value={const_multa}
@@ -472,6 +474,7 @@ function ContaEnergia() {
                 id="kwhMes"
                 className="input"
                 type="number"
+                required={true}
                 label="Qtd Kwh Mês"
                 placeholder="Qtd Kwh Mês"
                 value={kwhMes}
@@ -481,6 +484,7 @@ function ContaEnergia() {
               <NumberFormat
                 id="valor_total_tusd"
                 className="input"
+                required={true}
                 prefix={"R$ "}
                 floatValue={true}
                 value={valor_total_tusd}
@@ -496,6 +500,7 @@ function ContaEnergia() {
               <NumberFormat
                 id="valor_total_te"
                 className="input"
+                required={true}
                 prefix={"R$ "}
                 floatValue={true}
                 value={valor_total_te}
@@ -514,6 +519,7 @@ function ContaEnergia() {
               <NumberFormat
                 id="valor_total_bandeira"
                 className="input"
+                required={true}
                 prefix={"R$ "}
                 floatValue={true}
                 value={valor_total_bandeira}
@@ -534,6 +540,7 @@ function ContaEnergia() {
               <NumberFormat
                 id="multa"
                 className="input"
+                required={true}
                 prefix={"R$ "}
                 floatValue={true}
                 value={multa}
@@ -549,6 +556,7 @@ function ContaEnergia() {
               <NumberFormat
                 id="cip"
                 className="input"
+                required={true}
                 prefix={"R$ "}
                 floatValue={true}
                 value={cip}
@@ -569,6 +577,7 @@ function ContaEnergia() {
               <NumberFormat
                 id="valor_pis"
                 className="input"
+                required={true}
                 prefix={"R$ "}
                 floatValue={true}
                 value={valor_pis}
@@ -585,6 +594,7 @@ function ContaEnergia() {
               <NumberFormat
                 id="valor_cofins"
                 className="input"
+                required={true}
                 prefix={"R$ "}
                 floatValue={true}
                 value={valor_cofins}

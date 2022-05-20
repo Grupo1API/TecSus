@@ -209,7 +209,7 @@ function ContaAgua() {
                 id="n_fornecimento"
                 className="input"
                 type="text"
-                required
+                required={true}
                 label="Numero de fornecimento"
                 placeholder="N° Fornecimento"
                 value={n_fornecimento}
@@ -232,9 +232,9 @@ function ContaAgua() {
                 className="input"
                 type="text"
                 label="Concessionaria"
-                disabled
                 value={concessionaria}
                 variant="outlined"
+                disabled
               />
             </div>
             <div className="coluna">
@@ -243,29 +243,29 @@ function ContaAgua() {
                 className="input"
                 type="number"
                 label="CEP Concessionaria"
-                disabled
                 value={cepConcessionaria}
                 variant="outlined"
+                disabled
               />
 
               <TextField
                 id="cnpj_cpf_cliente"
                 className="input"
                 type="text"
-                disabled
                 label="CNPJ/CPF Unidade"
                 placeholder="CNPJ/CPF cliente"
                 value={cpf_cnpj_cliente}
                 variant="outlined"
+                disabled
               />
               <TextField
                 id="nome"
                 className="input"
                 type="text"
                 label="Nome Unidade"
-                disabled
                 value={nome_cliente}
                 variant="outlined"
+                disabled
               />
             </div>
             <div className="coluna">
@@ -321,9 +321,9 @@ function ContaAgua() {
                 className="input"
                 type="text"
                 label="Segmento"
-                disabled
                 value={segmento}
                 variant="outlined"
+                disabled
               />
             </div>
 
@@ -333,6 +333,7 @@ function ContaAgua() {
                 id="economia"
                 className="input"
                 type="text"
+                required={true}
                 label="Economia"
                 placeholder="Economia"
                 value={economia}
@@ -343,7 +344,7 @@ function ContaAgua() {
                 id="data_apresentacao"
                 className="input"
                 type="text"
-                required
+                required={true}
                 format="##/##/####"
                 mask={["D", "D", "M", "M", "Y", "Y", "Y", "Y"]}
                 label="Data Apresentação"
@@ -357,7 +358,7 @@ function ContaAgua() {
                 id="proxima_leitura"
                 className="input"
                 type="text"
-                required
+                required={true}
                 format="##/##/####"
                 mask={["D", "D", "M", "M", "Y", "Y", "Y", "Y"]}
                 label="Proxima leitura"
@@ -372,6 +373,7 @@ function ContaAgua() {
                 id="condicao_leitura"
                 className="input"
                 type="text"
+                required={true}
                 label="Condição Leitura"
                 placeholder="Condição Leitura"
                 value={condicao_leitura}
@@ -382,6 +384,7 @@ function ContaAgua() {
                 id="consumo_m3"
                 className="input"
                 type="number"
+                required={true}
                 label="Consumo m3 "
                 placeholder="m3"
                 value={consumo_m3}
@@ -392,6 +395,7 @@ function ContaAgua() {
                 id="periodo_consumo"
                 className="input"
                 type="number"
+                required={true}
                 label="Periodo de Consumo"
                 placeholder="Periodo de Consumo"
                 value={periodo_consumo}
@@ -405,6 +409,7 @@ function ContaAgua() {
                 id="media_consumo"
                 className="input"
                 type="number"
+                required={true}
                 label="Media de Consumo"
                 placeholder="Media de Consumo"
                 value={media_consumo}
@@ -414,6 +419,7 @@ function ContaAgua() {
               <NumberFormat
                 id="subtotal_agua"
                 className="input"
+                required={true}
                 prefix={"R$ "}
                 floatValue={true}
                 value={subtotal_agua}
@@ -429,6 +435,7 @@ function ContaAgua() {
               <NumberFormat
                 id="subtotal_esgoto"
                 className="input"
+                required={true}
                 prefix={"R$ "}
                 floatValue={true}
                 value={subtotal_esgoto}
@@ -446,6 +453,7 @@ function ContaAgua() {
               <NumberFormat
                 id="vtConsumo"
                 className="input"
+                required={true}
                 prefix={"R$ "}
                 floatValue={true}
                 value={vtConsumo}
@@ -461,6 +469,7 @@ function ContaAgua() {
               <NumberFormat
                 id="multa"
                 className="input"
+                required={true}
                 floatValue={true}
                 prefix={"R$ "}
                 value={multa}
@@ -476,6 +485,7 @@ function ContaAgua() {
               <NumberFormat
                 id="at_monet"
                 className="input"
+                required={true}
                 floatValue={true}
                 prefix={"R$ "}
                 value={at_monet}
@@ -493,6 +503,7 @@ function ContaAgua() {
               <NumberFormat
                 id="juros_moradia"
                 className="input"
+                required={true}
                 floatValue={true}
                 prefix={"R$"}
                 value={juros_moradia}
@@ -508,6 +519,7 @@ function ContaAgua() {
               <NumberFormat
                 id="taxa_regulacao"
                 className="input"
+                required={true}
                 floatValue={true}
                 prefix={"R$"}
                 value={taxa_regulacao}
@@ -524,9 +536,9 @@ function ContaAgua() {
                 id="data_vencimento"
                 className="input"
                 type="text"
+                required={true}
                 format="##/##/####"
                 mask={["D", "D", "M", "M", "Y", "Y", "Y", "Y"]}
-                required
                 value={data_vencimento}
                 label="Data Vencimento"
                 placeholder="Data Vencimento"
@@ -540,6 +552,7 @@ function ContaAgua() {
                 id="documento"
                 className="input"
                 type="number"
+                required={true}
                 label="Nª do Documento"
                 placeholder="Nª do Documento"
                 value={documento}
@@ -550,9 +563,9 @@ function ContaAgua() {
                 id="data_emissao"
                 className="input"
                 type="text"
+                required={true}
                 format="##/##/####"
                 mask={["D", "D", "M", "M", "Y", "Y", "Y", "Y"]}
-                required
                 label="Data Emissão"
                 placeholder="Data Emissão"
                 customInput={TextField}

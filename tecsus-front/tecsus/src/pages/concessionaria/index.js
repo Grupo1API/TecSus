@@ -96,6 +96,7 @@ function Concessionaria(){
                             <TextField
                                 id='cnpj'
                                 type='text'
+                                required={true}
                                 placeholder='XX.XXX.XXX/XXXX-XX'
                                 value={cnpj}
                                 onChange={(e) => setCnpj(e.target.value)}
@@ -106,6 +107,7 @@ function Concessionaria(){
                              <TextField
                                 id='nome'
                                 type='text'
+                                required={true}
                                 placeholder='Nome Concessionaria'
                                 value={nome}
                                 label="Nome"
@@ -113,7 +115,7 @@ function Concessionaria(){
                                 className='input'
                                 onChange={(e) => setNome(e.target.value)}
                             /> 
-                            <FormControl variant="outlined" className='select'>
+                            <FormControl variant="outlined" className='select input'>
                                 <InputLabel id="demo-simple-select-outlined-label">Segmento</InputLabel>
                                 <Select
                                 labelId="demo-simple-select-outlined-label"
@@ -132,6 +134,7 @@ function Concessionaria(){
                         <div className='coluna'>
                             <TextField
                                 id='cep'
+                                required={true}
                                 variant="outlined"
                                 className='input'
                                 type='text'
@@ -169,7 +172,7 @@ function Concessionaria(){
                                 className='input'
                                 type='text'
                                 label="Cidade"
-                                disabled                               
+                                disabled                  
                                 value={cidade}
                                 
                             />
@@ -184,6 +187,7 @@ function Concessionaria(){
                             />
                              <TextField
                                 id='num_resid'
+                                required={true}
                                 variant="outlined"
                                 className='input'
                                 type='string'
@@ -197,6 +201,7 @@ function Concessionaria(){
                             <NumberFormat 
                                 format="(##) #####-####" 
                                 variant="outlined"
+                                required={true}
                                 className='input'
                                 id='telefone'
                                 mask="_"
@@ -213,6 +218,7 @@ function Concessionaria(){
                                 id='inscricao_est'
                                 variant="outlined"
                                 className='input'
+                                required={true}
                                 type='text'
                                 label="Inscrição Estadual"
                                 placeholder='XXX.XXX.XXX.XXX'
@@ -223,6 +229,7 @@ function Concessionaria(){
                                 id='inscricao_unic'
                                 variant="outlined"
                                 className='input'
+                                required={true}
                                 type='text'
                                 label="Inscrição Única Regime Especial Processo"
                                 placeholder='Inscrição Única Regime Especial Processo'
