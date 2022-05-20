@@ -68,6 +68,17 @@ function ContaEnergia() {
     }
   }
 
+  async function carregarArquivo(file) {
+    if (file !== undefined) {
+      const dado = new FormData();
+      dado.append("file", file);
+      await fetch("http://localhost:8080/contadeagua/cadastro", {
+        method: "POST",
+        body: dado,
+      }); // rota para fazer o upload no back end
+    }
+  }
+
   async function handleSubmit(event) {
     event.preventDefault();
     const dado = {
@@ -590,12 +601,11 @@ function ContaEnergia() {
 
             <div className="bt-container">
               <input
-                accept="file/*"
                 className="btn-upload"
                 id="contained-button-file"
                 multiple
                 type="file"
-                onChange={(e) => setUpload(e.target.value)}
+                onChange={(e) => carregarArquivo(e.target.files[0])}
               />
               <label htmlFor="contained-button-file">
                 <Button
