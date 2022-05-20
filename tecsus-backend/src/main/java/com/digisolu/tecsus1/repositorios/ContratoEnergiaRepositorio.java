@@ -6,5 +6,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.digisolu.tecsus1.entidades.ContratoEnergia;
 
 public interface ContratoEnergiaRepositorio extends JpaRepository<ContratoEnergia, Long> { 
-	ContratoEnergia findByCodigoIdentificador(@RequestParam("codigo_identificador") String codigo_identificador);
+	ContratoEnergia findByNumeroInstalacao(@RequestParam("numero_instalacao") String numero_instalacao);
 }

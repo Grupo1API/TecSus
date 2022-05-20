@@ -9,14 +9,16 @@
 .cadastro{
     margin-top: 40px;
 }
-input{
-    padding: 15px;
-    display: inline-block;
-    border: 1px solid #f8f8f8;
-    border-radius: 4px;
-    box-sizing: border-box;
-
+.input{
     margin-top: 10px;
+    
+    background-color: #ffffff;
+}
+.select{
+    width:223px;
+    margin-top: 10px;
+    background-color: #ffffff;
+
 }
 .coluna{
     display: flex;

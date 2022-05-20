@@ -1,23 +1,24 @@
-input{
-    padding: 15px;
-    display: inline-block;
-    border: 1px solid #f8f8f8;
-    border-radius: 4px;
-    box-sizing: border-box;
-
-    margin-top: 10px;
-}
 .coluna{
     display: flex;
     gap: 80px;
     margin-bottom: 40px;
+}
+.input{
+    margin-top: 10px;
+    background-color: #ffffff;
+}
+.btn-upload{
+    display: none;
+}
+.tituloSpace{
+    margin-top:20px ;
 }
 .container_energia{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-left: 284px;
-    height: 308vh;
+    height: 228vh;
     padding-top:20px ;
 }
 .container-dados{
@@ -29,7 +30,6 @@ input{
     flex-direction: column;
     margin-top: 20px;
 } */
-
 
 #upload,
 #botao_cad {
@@ -55,4 +55,14 @@ input{
     flex-direction: column;
     align-items: center;
     gap: 20px;
+}
+
+h2 {
+    padding: 10px;
+    
+}
+
+p {
+    padding: 8px;
+    margin-top: -20px;
 }

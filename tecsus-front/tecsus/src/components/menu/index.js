@@ -20,7 +20,6 @@ import ApartmentIcon from '@material-ui/icons/Apartment';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import BusinessIcon from '@material-ui/icons/Business';
 import LaptopIcon from '@material-ui/icons/Laptop';
-import StorageIcon from '@material-ui/icons/Storage';
 import WarningIcon from '@material-ui/icons/Warning';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import BuildIcon from '@material-ui/icons/Build';
@@ -63,6 +62,10 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     color: '#000'
  },
+ button:{
+   background:"#191a1a66",
+   color:"#fff"
+ }
 }));
 
 export default function Dashboard() {
@@ -106,6 +109,9 @@ export default function Dashboard() {
                 <ListItemText primary="Usuario" style={{marginRight:'12px'}} />
                 <ListItemText secondary="(Administrador)"/>
               </div>
+              <Link to='/' className={classes.link} style={{width: '100px', margin: '1px auto', textAlign:'center'}}>
+                <Button variant="contained" size="small" className={classes.button} >Sair</Button>
+              </Link>
             </ListItem>
             <Divider />
             <Link to='/' className={classes.link} > 
@@ -208,44 +214,54 @@ export default function Dashboard() {
               <ListItemText primary="Painel de Controle" />
               {openPainel ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
-
             <Collapse in={openPainel} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
+                
+                <Link to='/quadro_unidade' className={classes.link} >
+                  <ListItem  button className={classes.nested}>
+                    <ListItemIcon>
+                      <LayersIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Quadro Unidades" />
+                  </ListItem>
+                </Link>
 
-                <ListItem  button className={classes.nested}>
+                <Link to='/quadro_contratoEnergia' className={classes.link} >
+                  <ListItem  button className={classes.nested}>
                   <ListItemIcon>
                     <LayersIcon />
                   </ListItemIcon>
-                  <ListItemText primary="Quadro Unidades" />
-                </ListItem>
+                  <ListItemText primary="Quadro Contrato Energia" />
+                  </ListItem>
+                </Link>
 
-                <ListItem  button className={classes.nested}>
-                <ListItemIcon>
-                  <LayersIcon />
-                </ListItemIcon>
-                <ListItemText primary="Quadro Contratos" />
-                </ListItem>
-
-                <ListItem  button className={classes.nested}>
+                <Link to='/quadro_contratoAgua' className={classes.link} >
+                  <ListItem  button className={classes.nested}>
                   <ListItemIcon>
                     <LayersIcon />
                   </ListItemIcon>
-                  <ListItemText primary="Quadro Concessionária" />
-                </ListItem>
+                  <ListItemText primary="Quadro Contrato Água" />
+                  </ListItem>
+                </Link>
+
+
+                <Link to='/quadro_concessionaria' className={classes.link} >
+                  <ListItem  button className={classes.nested}>
+                    <ListItemIcon>
+                      <LayersIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Quadro Concessionária" />
+                  </ListItem>
+                </Link>
+
               </List>
             </Collapse>
+            
             <ListItem button className={classes.itens}>
               <ListItemIcon>
                 <WarningIcon />
               </ListItemIcon>
               <ListItemText primary="Alertas" />
-            </ListItem>
-
-            <ListItem button className={classes.itens}>
-              <ListItemIcon>
-                <StorageIcon />
-              </ListItemIcon>
-              <ListItemText primary="Log" />
             </ListItem>
 
             <ListItem button className={classes.itens}>
@@ -256,11 +272,8 @@ export default function Dashboard() {
             </ListItem>
             
         </List>
-        <Link to='/' className={classes.link} style={{width: '100px', margin: '1px auto', textAlign:'center'}}>
-          <Button size="small" color="#000" >Sair</Button>
-        </Link>
+        
       </Drawer>
     </div>
   );
 }
-

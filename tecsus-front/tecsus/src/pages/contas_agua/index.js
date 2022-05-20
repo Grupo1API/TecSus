@@ -2,22 +2,25 @@ import './style.css'
 import Menu from '../../components/menu'
 import { useState } from 'react';
 import NumberFormat from 'react-number-format';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 function ContaAgua(){
+    const [n_fornecimento, setN_fornecimento] = useState('')
     const [concessionaria, setConcessionaria] = useState('')
     const [cnpj_concessionaria, setCnpj_concessionaria] = useState('')
     const [segmento, setSegmento] = useState('')
-    const [fornecimento, setFornecimento] = useState('')
+    const [cpf_cnpj_cliente, setCpf_cnpj_cliente] = useState('')
     const [documento, setDocumento] = useState('')
     const [dataEmissao, setDataEmissao] = useState()
     const [nome_cliente, setNome_cliente] = useState('')
-    const [cep, setCep] = useState('')
-    const [endereco, setEndereco] = useState('')
+    const [cepConcessionaria, setCepConcessionaria] = useState('')
     const [codigo_cliente, setCodigo_cliente] = useState('')
     const [pde_rgi, setPde_rgi] = useState('')
     const [hidrometro, setHidrometro] = useState('')
     const [economia, setEconomia] = useState('')
     const [tipo_ligacao, setTipo_ligacao] = useState('')
+    const [cep_unidade,setCep_unidade] = useState('')
     const [data_apresentacao, setData_apresentacao] = useState('')
     const [proxima_leitura, setProxima_leitura] = useState('')
     const [condicao_leitura, setCondicao_leitura] = useState('')
@@ -32,41 +35,57 @@ function ContaAgua(){
     const [juros_moradia, setJuros_moradia] = useState('')
     const [taxa_regulacao, setTaxa_regulacao] = useState('')
     const [data_vencimento, setData_vencimento] = useState('')
+    const [upload, setUpload]= useState('')
+    const [contratoId, setContratoId] = useState('')
 
+    async function buscaContrato(){
+        try {
+            const response = await fetch(`http://localhost:8080/contratoagua/${n_fornecimento}`)
+            const dados = await response.json()
+            setCnpj_concessionaria(dados.contrato_concessionaria_id.cnpj)
+            setConcessionaria(dados.contrato_concessionaria_id.nome)
+            setCepConcessionaria(dados.contrato_concessionaria_id.cep)
+            setCpf_cnpj_cliente(dados.contrato_unidade_id.cpf_cnpj)
+            setNome_cliente(dados.contrato_unidade_id.nome)
+            setCep_unidade(dados.contrato_unidade_id.end_cep)
+            setCodigo_cliente(dados.codigo_cliente)
+            setPde_rgi(dados.pde_rgi)
+            setHidrometro(dados.hidrometro)
+            setTipo_ligacao(dados.tipo_ligacao)
+            setSegmento(dados.contrato_concessionaria_id.segmento)
+            setContratoId(dados.id)
+            
+    
+        } catch (error) {
+            return console.log(error.message);
+        }
+      } 
+      
     async function handleSubmit(event){
         event.preventDefault()
         const dados = {
-            concessionaria:concessionaria,
-            cnpj:cnpj_concessionaria,
-            segmento:segmento,
-            n_fornecimento:fornecimento,
             n_documento:documento,
-            data_emissao:formatarData(dataEmissao),
-            nome_cliente:nome_cliente,
-            cep:cep,
-            endereco:endereco,
-            codigo_cliente:codigo_cliente,
-            pde_rgi:pde_rgi,
-            hidrometro:hidrometro,
-            economia:economia,
-            tipo_ligacao:tipo_ligacao,
-            data_apresentacao:formatarData(data_apresentacao),
-            proxima_leitura:formatarData(proxima_leitura),
+            at_monet:at_monet,
             condicao_leitura:condicao_leitura,
             consumo_m3:consumo_m3,
-            periodo:periodo_consumo,
-            media_m3:media_consumo,
-            subtotal_agua:subtotal_agua,
-            subtotal_esgoto:subtotal_esgoto,
-            valor_total:vtConsumo,
-            multa:multa,
-            at_monet:at_monet,
+            data_apresentacao:formatarData(data_apresentacao),
+            data_emissao:formatarData(dataEmissao),
+            data_vencimento:formatarData(data_vencimento),
+            economia:economia,
             juros_mora:juros_moradia,
+            media_consumo:media_consumo,
+            multa:multa,
+            periodo:periodo_consumo,
+            proxima_leitura:formatarData(proxima_leitura),
             taxa_regulacao:taxa_regulacao,
-            data_vencimento:formatarData(data_vencimento)
+            tipo_ligacao:tipo_ligacao,            
+            total_agua:subtotal_agua,
+            total_esgoto:subtotal_esgoto,
+            valor_total:vtConsumo,            
+            arquivo:upload,
+            contaagua_contrato_id:{id:contratoId}
         }
-
-
+        
         try {
             await fetch("http://localhost:8080/contadeagua/cadastro", {
                 method: "POST",
@@ -79,16 +98,16 @@ function ContaAgua(){
             setConcessionaria('')
             setCnpj_concessionaria('')
             setSegmento('')
-            setFornecimento('')
+            setN_fornecimento('')
             setDocumento('')
             setDataEmissao('')
             setNome_cliente('')
-            setCep('')
-            setEndereco('')
+            setCepConcessionaria('')
             setCodigo_cliente('')
             setPde_rgi('')
             setHidrometro('')
             setEconomia('')
+            setCep_unidade('')
             setTipo_ligacao('')
             setData_apresentacao('')
             setProxima_leitura('')
@@ -125,283 +144,388 @@ function ContaAgua(){
                 <h1 className="titulo">Cadastro de Conta de Água</h1>
                 <div className= "cadastro">
                     <form name="cadastro_agua" onSubmit={handleSubmit}>
-                        <h2>Dados Concessionaria</h2>
-                        <div className='coluna'>
-                            <input 
-                                id="concessionaria" 
-                                type="text" 
-                                required={true}
-                                placeholder="Concessionaria " 
-                                value={concessionaria}
-                                onChange={(e) => setConcessionaria(e.target.value)}
-                            />
-                            <input 
-                                id="cnpj_concessionaria" 
-                                type="text" 
-                                placeholder="CNPJ " 
-                                value={cnpj_concessionaria}
-                                onChange={(e) => setCnpj_concessionaria(e.target.value)}
-                            />
-                            <input 
-                                id="segmento" 
-                                type="text" 
-                                placeholder="Segmento " 
-                                value={segmento}
-                                onChange={(e) => setSegmento(e.target.value)}
-                            />
-                            
-                            
-                        </div> 
-                        <div className='coluna'>
-                            <input 
-                                id="fornecimento" 
-                                type="number"
-                                required={true} 
-                                placeholder="Fornecimento" 
-                                value={fornecimento}
-                                onChange={(e) => setFornecimento(e.target.value)}
-                            />
-                            <input 
-                                id="documento"                              
-                                type="number"
-                                required={true} 
-                                placeholder="Nª do Documento"  
-                                value={documento}
-                                onChange={(e) => setDocumento(e.target.value)}
-                            />
-                            <NumberFormat 
-                                type="text" 
-                                format="##/##/####" 
-                                required={true}
-                                value={dataEmissao}
-                                onChange={(e) => setDataEmissao(e.target.value)}
-                                placeholder="Data Emissão " 
-                                mask={['D', 'D', 'M', 'M', 'Y', 'Y', 'Y', 'Y']}
-                            />
-                        </div>
+                        <h2>Dados Contrato</h2>
+                        <div className='coluna'>    
 
-                        <h2>Dados Cliente</h2> 
-                        <div className='coluna'>                            
-                            <input 
-                                id="nome" 
+                        <TextField
+                                id="n_fornecimento" 
+                                className='input'
                                 type="text"
-                                required={true} 
-                                placeholder="Nome Cliente "
+                                required                                
+                                label="Numero de fornecimento" 
+                                placeholder="N° Fornecimento" 
+                                value={n_fornecimento}
+                                onChange={(e) => setN_fornecimento(e.target.value)}
+                                onBlur = {buscaContrato}
+                                variant="outlined" 
+                            />
+                            <TextField
+                                id="cnpj_concessionaria" 
+                                className='input'
+                                type="text"
+                                label="CNPJ Concessionaria"  
+                                value={cnpj_concessionaria}
+                                variant="outlined" 
+                                disabled
+                            />
+
+                            <TextField
+                                id="concessionaria"
+                                className='input' 
+                                type="text"                                
+                                label="Concessionaria" 
+                                disabled
+                                value={concessionaria}
+                                variant="outlined"                                
+                            />                  
+
+                            </div> 
+                            <div className='coluna'>  
+                            <TextField
+                                id="cep"
+                                className='input'
+                                type="number" 
+                                label="CEP Concessionaria"
+                                disabled
+                                value={cepConcessionaria}
+                                variant="outlined"
+                            />    
+                           
+                            <TextField
+                                id="cnpj_cpf_cliente"
+                                className='input'
+                                type="text" 
+                                disabled
+                                label="CNPJ/CPF Unidade"
+                                placeholder="CNPJ/CPF cliente" 
+                                value={cpf_cnpj_cliente}
+                                variant="outlined"
+                            />
+                            <TextField
+                                id="nome" 
+                                className='input'
+                                type="text"
+                                label="Nome Unidade"
+                                disabled
                                 value={nome_cliente}
-                                onChange={(e) => setNome_cliente(e.target.value)}  
+                                variant="outlined"    
                             />
-                            <input 
-                                id="cep" 
-                                type="number" 
-                                placeholder="CEP"
-                                value={cep}
-                                onChange={(e) => setCep(e.target.value)}  
-                            />
-                            <input 
-                                id="endereco" 
+
+                            </div> 
+                            <div className='coluna'>  
+                            <TextField
+                                id="cep_unidade" 
+                                className='input'  
                                 type="text" 
-                                placeholder="Endereço"
-                                value={endereco}
-                                onChange={(e) => setEndereco(e.target.value)}  
+                                label="Cep Unidade"
+                                value={cep_unidade}
+                                variant="outlined"   
+                                disabled
                             />
-                        </div> 
-                        <div className='coluna'>
-                            <input 
+                            <TextField
                                 id="codigo_cliente" 
+                                className='input'
                                 type="number" 
-                                required={true}
-                                placeholder="Codigo do Cliente"
+                                label="Codigo do Cliente"
                                 value={codigo_cliente}
-                                onChange={(e) => setCodigo_cliente(e.target.value)}  
+                                variant="outlined" 
+                                disabled
                             />
-                            <input 
+                            <TextField
                                 id="pde_rgi" 
-                                required={true}
+                                className='input'
                                 type="number" 
-                                placeholder="pde_rgi"
+                                label="pde_rgi"
                                 value={pde_rgi}
-                                onChange={(e) => setPde_rgi(e.target.value)}  
+                                variant="outlined"
+                                disabled
                             />
-                            <input 
-                                id="hidrometro" 
+                             
+                            </div> 
+                            <div className='coluna'>  
+                            <TextField
+                                id="hidrometro"
+                                className='input' 
                                 type="text" 
-                                required={true}
-                                placeholder="Hidrometro"
+                                label="Hidrometro" 
                                 value={hidrometro}
-                                onChange={(e) => setHidrometro(e.target.value)}  
+                                variant="outlined"
+                                disabled 
                             />
-                            
-                        </div>
-                        <h2>Dados Conta</h2> 
-                        <div className='coluna'>                           
-                            <input 
-                                id="economia" 
+                            <TextField
+                                id="tipo_ligação" 
+                                className='input'  
                                 type="text" 
+                                label="Tipo de ligação" 
+                                value={tipo_ligacao}
+                                variant="outlined"   
+                                disabled
+                            />
+                            <TextField
+                                id="segmento" 
+                                className='input'
+                                type="text" 
+                                label="Segmento"
+                                disabled
+                                value={segmento}
+                                variant="outlined"                                
+                            /> 
+                            </div>
+
+
+                        <h2>Dados Conta</h2> 
+                        <div className='coluna'>    
+                            <TextField
+                                id="economia"
+                                className='input'  
+                                type="text"
+                                label="Economia" 
                                 placeholder="Economia"
                                 value={economia}
-                                onChange={(e) => setEconomia(e.target.value)}   
-                            />
-                            <input 
-                                id="tipo_ligação" 
-                                type="text" 
-                                placeholder="Tipo de ligação" 
-                                value={tipo_ligacao}
-                                onChange={(e) => setTipo_ligacao(e.target.value)} 
-                            />
+                                onChange={(e) => setEconomia(e.target.value)} 
+                                variant="outlined"   
+                            />                      
                             <NumberFormat 
-                                type="text"
-                                id="data_apresentacao"  
+                                id="data_apresentacao" 
+                                className='input' 
+                                type="text"  
+                                required                             
                                 format="##/##/####" 
-                                required={true}
+                                mask={['D', 'D', 'M', 'M', 'Y', 'Y', 'Y', 'Y']}
+                                label="Data Apresentação"
+                                placeholder="Data Apresentação"
+                                customInput={TextField}
                                 value={data_apresentacao}
                                 onChange={(e) => setData_apresentacao(e.target.value)}
-                                placeholder="Data Apresentação" 
-                                mask={['D', 'D', 'M', 'M', 'Y', 'Y', 'Y', 'Y']}
+                                variant="outlined"
                             />
-                        </div> 
-                        <div className='coluna'>
                             <NumberFormat 
-                                type="text"
-                                id="proxima_leitura"  
+                                id="proxima_leitura"
+                                className='input'
+                                type="text" 
+                                required                               
                                 format="##/##/####"
-                                required={true} 
-                                value={proxima_leitura}
-                                onChange={(e) => setProxima_leitura(e.target.value)}
-                                placeholder="Proxima leitura" 
                                 mask={['D', 'D', 'M', 'M', 'Y', 'Y', 'Y', 'Y']}
+                                label="Proxima leitura"
+                                customInput={TextField}
+                                value={proxima_leitura}
+                                onChange={(e) => setProxima_leitura(e.target.value)} 
+                                variant="outlined"
                             />
-                            
-                            <input 
+                            </div> 
+                        <div className='coluna'>
+                            <TextField
                                 id="condicao_leitura" 
+                                className='input'
                                 type="text"  
+                                label="Condição Leitura" 
                                 placeholder="Condição Leitura"
                                 value={condicao_leitura}
                                 onChange={(e) => setCondicao_leitura(e.target.value)}
+                                variant="outlined"    
                             />
-                            <input 
-                                id="consumo_m3" 
+                            <TextField
+                                id="consumo_m3"
+                                className='input' 
                                 type="number" 
-                                placeholder="Consumo(m3)"
+                                label="Consumo m3 " 
+                                placeholder="m3"
                                 value={consumo_m3}
                                 onChange={(e) => setConsumo_m3(e.target.value)} 
-                            />
-                        </div> 
-                        <div className='coluna'>                           
-                            <input 
-                                id="periodo_consumo" 
+                                variant="outlined"     
+                            />  
+                            <TextField
+                                id="periodo_consumo"
+                                className='input' 
                                 type="number" 
+                                label="Periodo de Consumo"
                                 placeholder="Periodo de Consumo"
                                 value={periodo_consumo}
-                                onChange={(e) => setPeriodo_consumo(e.target.value)} 
-                            />
-                            <input 
+                                onChange={(e) => setPeriodo_consumo(e.target.value)}
+                                variant="outlined"    
+                            />   
+                             </div> 
+
+                            <div className='coluna'> 
+                            <TextField
                                 id="media_consumo" 
+                                className='input' 
                                 type="number"  
+                                label="Media de Consumo"
                                 placeholder="Media de Consumo"
                                 value={media_consumo}
                                 onChange={(e) => setMedia_consumo(e.target.value)} 
-                            />
+                                variant="outlined"    
+                            /> 
                             <NumberFormat 
+                                id="subtotal_agua" 
+                                className='input'
                                 prefix={'R$ '} 
-                                id="subtotal_agua"  
                                 floatValue = {true}
                                 value={subtotal_agua}
-                                required={true}
-                                placeholder="Valor total da água (R$)"
+                                label="Valor total da água" 
+                                placeholder="R$ "
+                                customInput={TextField}
                                 onValueChange = { ( valores )  =>  { 
                                 const  {floatValue}  =  valores ; 
                                 setSubtotal_agua ( floatValue  ) ;                                 
                                 } }
+                                variant="outlined"
                             />
-                        </div> 
-                        <div className='coluna'>
                             <NumberFormat 
+                                id="subtotal_esgoto"
+                                className='input'
                                 prefix={'R$ '} 
-                                id="subtotal_esgoto"   
                                 floatValue = {true}
                                 value={subtotal_esgoto}
-                                required={true}
-                                placeholder="Valor total esgoto (R$)"
+                                label="Valor total esgoto"
+                                placeholder="R$"
+                                customInput={TextField}
                                 onValueChange = { ( valores )  =>  { 
                                 const  {floatValue}  =  valores ; 
                                 setSubtotal_esgoto ( floatValue  ) ; 
                                 } }
+                                variant="outlined"
                             />
-                            
+                            </div> 
+                        <div className='coluna'>
                             <NumberFormat 
+                                id="vtConsumo" 
+                                className='input'
                                 prefix={'R$ '} 
-                                id="vtConsumo"   
                                 floatValue = {true}
                                 value={vtConsumo}
-                                required={true}
-                                placeholder="Valor total de Consumo (R$)"
+                                label="Valor total de Consumo"
+                                placeholder="R$"
+                                customInput={TextField}
                                 onValueChange = { ( valores )  =>  { 
                                 const  {floatValue}  =  valores ; 
                                 setVtConsumo ( floatValue  ) ; 
                                 } }
+                                variant="outlined"
                             />
                             <NumberFormat 
-                                prefix={'R$ '} 
-                                id="multa"    
+                                id="multa"
+                                className='input'  
                                 floatValue = {true}
+                                prefix={'R$ '}
                                 value={multa}
-                                placeholder="Multa (R$)"
+                                label="Multa"
+                                placeholder="R$"
+                                customInput={TextField}
                                 onValueChange = { ( valores )  =>  { 
                                 const  {floatValue}  =  valores ; 
                                 setMulta ( floatValue  ) ; 
                                 } }
+                                variant="outlined"
                             />
-                        </div> 
-                        <div className='coluna'>   
                             <NumberFormat 
-                                prefix={'R$ '} 
                                 id="at_monet"    
+                                className='input'
                                 floatValue = {true}
+                                prefix={'R$ '}
                                 value={at_monet}
-                                placeholder="Valor tributos (R$)"
+                                label="Valor tributos"
+                                placeholder="R$"
+                                customInput={TextField}
                                 onValueChange = { ( valores )  =>  { 
                                 const  {floatValue}  =  valores ; 
                                 setAt_monet ( floatValue  ) ; 
                                 } }
-                            />                       
-                            <NumberFormat 
-                                prefix={'R$ '} 
-                                id="juros_moradia"    
+                                variant="outlined"
+                            /> 
+                            </div>
+                        <div className='coluna'>                       
+                            <NumberFormat
+                                id="juros_moradia"
+                                className='input'    
                                 floatValue = {true}
+                                prefix={'R$'}
                                 value={juros_moradia}
-                                placeholder="Juros Moradia (R$)"
+                                label="Juros Moradia"
+                                placeholder="R$"
+                                customInput={TextField}
                                 onValueChange = { ( valores )  =>  { 
                                 const  {floatValue}  =  valores ; 
                                 setJuros_moradia ( floatValue  ) ; 
                                 } }
+                                variant="outlined"
                             />
                             <NumberFormat 
-                                prefix={'R$ '} 
-                                id="taxa_regulacao"    
+                                id="taxa_regulacao"
+                                className='input'    
                                 floatValue = {true}
+                                prefix={'R$'}
                                 value={taxa_regulacao}
-                                placeholder="Taxa de Regulação (R$)"
+                                label="Taxa de Regulação"
+                                placeholder="R$"
+                                customInput={TextField}
                                 onValueChange = { ( valores )  =>  { 
                                 const  {floatValue}  =  valores ; 
                                 setTaxa_regulacao ( floatValue  ) ; 
                                 } }
+                                variant="outlined"
                             />
-                        </div>
-                        <div className='coluna'>  
                             <NumberFormat 
+                                id="data_vencimento"
+                                className='input'   
                                 type="text"
-                                id="data_vencimento"  
                                 format="##/##/####" 
-                                required={true}
-                                value={data_vencimento}
-                                onChange={(e) => setData_vencimento(e.target.value)}
-                                placeholder="Data Vencimento" 
                                 mask={['D', 'D', 'M', 'M', 'Y', 'Y', 'Y', 'Y']}
+                                required
+                                value={data_vencimento}
+                                label="Data Vencimento"
+                                placeholder="Data Vencimento" 
+                                customInput={TextField}
+                                onChange={(e) => setData_vencimento(e.target.value)}
+                                variant="outlined"
                             />
                         </div>  
+                        <div className='coluna'>  
+                                                            
+                            <TextField
+                                id="documento" 
+                                className='input'                             
+                                type="number"
+                                label="Nª do Documento"
+                                placeholder="Nª do Documento"  
+                                value={documento}
+                                onChange={(e) => setDocumento(e.target.value)}
+                                variant="outlined" 
+                                
+                            />
+                            <NumberFormat 
+                                id="data_emissao"
+                                className='input'
+                                type="text" 
+                                format="##/##/####" 
+                                mask={['D', 'D', 'M', 'M', 'Y', 'Y', 'Y', 'Y']}
+                                required
+                                label="Data Emissão"
+                                placeholder="Data Emissão"
+                                customInput={TextField}
+                                value={dataEmissao}
+                                onChange={(e) => setDataEmissao(e.target.value)}
+                                variant="outlined" 
+                                
+                            />
+                            </div>
                                
                         <div className="bt-container">
-                            <button type='button' className="cadastrar" id="upload">UPLOAD</button>
+                            <input
+                                accept="file/*"
+                                className="btn-upload"
+                                id="contained-button-file"
+                                multiple
+                                type="file"
+                                value={upload}
+                                onChange={e=>setUpload(e.target.value)}
+                            />
+                            <label htmlFor="contained-button-file">
+                                <Button id="upload" variant="contained" color="primary" component="span">
+                                Upload
+                                </Button>
+                            </label>
                             <button type="submit" className="cadastrar" id="botao_cad">ENVIAR</button>
                             {/* <p>Cadastro realizado com exito</p> */}
                         </div>

@@ -47,14 +47,14 @@ public class ContratoAgua extends RepresentationModel<ContratoAgua>{
 	@Column
 	private String local_rua;
 	@Column
-	private String local_numero;
-	@Column
 	private String local_bairro;
 	@Column
 	private String local_cidade;
 	@Column
 	private String local_estado;
-	
+	@Column
+	private String local_numero;
+
 	public Long getId() {
 		return contrato_agua_id;
 	}
