@@ -1,6 +1,7 @@
 package com.digisolu.tecsus1.controles;
 
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.digisolu.tecsus1.entidades.ContaAgua;
 import com.digisolu.tecsus1.modelos.AdicionadorLinkContaAgua;
@@ -59,6 +62,21 @@ public ResponseEntity<ContaAgua> obterContaAgua(@PathVariable long id) {
 		return resposta;
 	}
 }
+
+@PostMapping("/contadeagua/upload")
+	public ContaAgua salvarConta( ContaAgua contaAgua, @RequestParam("file") MultipartFile file ) {
+
+		try {
+		
+			contaAgua.setArquivo(file.getBytes());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return repositorio.save(contaAgua);
+	}
+
+
 
 @PostMapping("/contadeagua/cadastro")
 public ResponseEntity<?> cadastrarContaAgua(@RequestBody ContaAgua contaAgua) {

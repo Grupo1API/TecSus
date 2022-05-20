@@ -36,6 +36,7 @@ function ContaAgua() {
   const [taxa_regulacao, setTaxa_regulacao] = useState("");
   const [data_vencimento, setData_vencimento] = useState("");
   const [contratoId, setContratoId] = useState("");
+  const [file, setFile] = useState()
 
   async function buscaContrato() {
     try {
@@ -110,16 +111,36 @@ function ContaAgua() {
   //     };
   //   }
 
-  async function carregarArquivo(file) {
-    if (file !== undefined) {
-      const dado = new FormData();
-      dado.append("file", file);
-      await fetch("http://localhost:8080/contadeagua/cadastro", {
-        method: "POST",
-        body: dado,
-      }); // rota para fazer o upload no back end
+  // async function carregarArquivo(file) {
+  //   if (file !== undefined) {
+  //     const dado = new FormData();
+  //     dado.append("file", file);
+  //     await fetch("http://localhost:8080/contadeagua/cadastro", {
+  //       method: "POST",
+  //       body: dado,
+  //     }); // rota para fazer o upload no back end
+  //   }
+  // }
+
+
+  
+
+  function carregarArquivo(event) {
+      event.preventDefault()
+      setFile(event.target.files[0])
+      const url = 'http://localhost:8080/contadeagua/upload';
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('fileName', file.name);
+      const config = {
+        headers: {
+          'content-type': 'multipart/form-data',
+        },
+      };
+      axios.post(url, formData, config).then((response) => {
+        console.log(response.data);
+      });
     }
-  }
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -581,7 +602,7 @@ function ContaAgua() {
                 id="contained-button-file"
                 multiple
                 type="file"
-                onChange={(e) => carregarArquivo(e.target.files[0])}
+                onChange={carregarArquivo}
               />
               <label htmlFor="contained-button-file">
                 <Button
