@@ -14,6 +14,12 @@
     
     background-color: #ffffff;
 }
+.select{
+    width:223px;
+    margin-top: 10px;
+    background-color: #ffffff;
+
+}
 .coluna{
     display: flex;
     gap: 80px;

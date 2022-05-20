@@ -11,9 +11,16 @@ import Concessionaria from './pages/concessionaria';
 import ContratoAgua from './pages/contrato_agua';
 import ContratoEnergia from './pages/contrato_energia';
 import Unidade from './pages/unidade';
+<<<<<<< HEAD
 import Quadro_cons from './pages/quadro_cons';
 import Quadro_agua1 from './pages/quadro_agua';
 
+=======
+import QuadroConcessionaria from './pages/quadro_concessionaria'
+import QuadroUnidade from './pages/quadro_unidades/quadroUnidade';
+import QuadroContratoAgua from './pages/quadro_contrato_agua/quadroContratoAgua';
+import QuadroContratoEnergia from './pages/quadro_contrato_energia/quadroContratoEnergia';
+>>>>>>> main
 
 function Main() {
   return (
@@ -27,8 +34,15 @@ function Main() {
               <Route path="/contrato_agua" element={<ContratoAgua />}/>
               <Route path="/contrato_energia" element={<ContratoEnergia />}/>
               <Route path="/unidade" element={<Unidade />}/>
+<<<<<<< HEAD
               <Route path="/quadro_cons" element={<Quadro_cons />}/> 
               <Route path="/quadro_agua" element={<Quadro_agua1 />}/>
+=======
+              <Route path="/quadro_concessionaria" element={<QuadroConcessionaria />}/>
+              <Route path="/quadro_unidade" element={<QuadroUnidade />}/> 
+              <Route path="/quadro_contratoAgua" element={<QuadroContratoAgua />}/> 
+              <Route path="/quadro_contratoEnergia" element={<QuadroContratoEnergia />}/> 
+>>>>>>> main
             </Routes>
         </Router>
     </div>

@@ -3,6 +3,10 @@ import Menu from '../../components/menu'
 import { useState } from 'react';
 import NumberFormat from 'react-number-format';
 import TextField from '@material-ui/core/TextField';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 function Concessionaria(){
 
@@ -108,17 +112,22 @@ function Concessionaria(){
                                 variant="outlined"
                                 className='input'
                                 onChange={(e) => setNome(e.target.value)}
-                            />
-                             <TextField
-                                id='segmento'
-                                type='text'
-                                variant="outlined"
-                                className='input'
-                                label="Segmento"
-                                placeholder='Agua/Esgosto ou Eletrica'
+                            /> 
+                            <FormControl variant="outlined" className='select'>
+                                <InputLabel id="demo-simple-select-outlined-label">Segmento</InputLabel>
+                                <Select
+                                labelId="demo-simple-select-outlined-label"
+                                id="demo-simple-select-outlined"
                                 value={segmento}
                                 onChange={(e) => setSegmento(e.target.value)}
-                            />                        
+                                label="Segmento"
+                                >
+                                <MenuItem value={'Água'}>Água</MenuItem>
+                                <MenuItem value={'Esgoto'}>Esgoto</MenuItem>
+                                <MenuItem value={'Água/Esgoto'}>Água/Esgoto</MenuItem>
+                                <MenuItem value={'Eletrica'}>Eletrica</MenuItem>
+                                </Select>
+                            </FormControl>                       
                         </div>
                         <div className='coluna'>
                             <TextField
