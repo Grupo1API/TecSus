@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import useStyles from "../../pages/quadro_unidades/style";
+import useStyles from "../quadro_unidade/style";
 
 export default function EditClientes({ dados, modalEdit }) {
   const classes = useStyles();
@@ -45,8 +45,8 @@ export default function EditClientes({ dados, modalEdit }) {
       <div>
         <TextField
           className={classes.text}
-          required
-          id="outlined-required"
+        
+          id="outlined"
           label="Nome"
           variant="outlined"
           fullWidth
@@ -55,8 +55,8 @@ export default function EditClientes({ dados, modalEdit }) {
         />
         <TextField
           className={classes.text}
-          required
-          id="outlined-required"
+        
+          id="outlined"
           label="CPF/CNPJ"
           variant="outlined"
           fullWidth
@@ -67,8 +67,8 @@ export default function EditClientes({ dados, modalEdit }) {
       <div>
         <TextField
           className={classes.text}
-          required
-          id="outlined-required"
+        
+          id="outlined"
           type="number"
           label="Telefone"
           variant="outlined"
@@ -78,7 +78,7 @@ export default function EditClientes({ dados, modalEdit }) {
         />
         <TextField
           className={classes.text}
-          required
+        
           id="outlined-password-input"
           type="email"
           label="Email"
@@ -91,8 +91,8 @@ export default function EditClientes({ dados, modalEdit }) {
       <div>
         <TextField
           className={classes.text}
-          required
-          id="outlined-required"
+        
+          id="outlined"
           label="CEP"
           variant="outlined"
           fullWidth
@@ -101,8 +101,8 @@ export default function EditClientes({ dados, modalEdit }) {
         />
         <TextField
           className={classes.text}
-          required
-          id="outlined-required"
+        
+          id="outlined"
           label="Rua"
           variant="outlined"
           fullWidth
@@ -114,8 +114,8 @@ export default function EditClientes({ dados, modalEdit }) {
       <div>
         <TextField
           className={classes.text}
-          required
-          id="outlined-required"
+        
+          id="outlined"
           label="Bairro"
           variant="outlined"
           fullWidth
@@ -124,8 +124,8 @@ export default function EditClientes({ dados, modalEdit }) {
         />
         <TextField
           className={classes.text}
-          required
-          id="outlined-required"
+        
+          id="outlined"
           label="Estado"
           variant="outlined"
           fullWidth
@@ -136,8 +136,8 @@ export default function EditClientes({ dados, modalEdit }) {
       <div>
         <TextField
           className={classes.text}
-          required
-          id="outlined-required"
+        
+          id="outlined"
           label="Cidade"
           variant="outlined"
           fullWidth
@@ -146,8 +146,8 @@ export default function EditClientes({ dados, modalEdit }) {
         />
         <TextField
           className={classes.text}
-          required
-          id="outlined-required"
+        
+          id="outlined"
           type="number"
           label="Numero Residencial"
           variant="outlined"

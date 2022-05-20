@@ -27,14 +27,14 @@ public class ContaAguaAtualizador {
 		if(!(atualizacao.getPeriodo()==0)) {
 			contaAgua.setPeriodo(atualizacao.getPeriodo());
 		}
-		if(!(atualizacao.getMedia_m3()==0)) {
-			contaAgua.setMedia_m3(atualizacao.getMedia_m3());
+		if(!(atualizacao.getMedia_consumo()==0)) {
+			contaAgua.setMedia_consumo(atualizacao.getMedia_consumo());
 		}
-		if(!(atualizacao.getSubtotal_agua()==0)) {
-			contaAgua.setSubtotal_agua(atualizacao.getSubtotal_agua());
+		if(!(atualizacao.getTotal_agua()==0)) {
+			contaAgua.setTotal_agua(atualizacao.getTotal_agua());
 		}
-		if(!(atualizacao.getSubtotal_esgoto()==0)) {
-			contaAgua.setSubtotal_esgoto(atualizacao.getSubtotal_esgoto());
+		if(!(atualizacao.getTotal_esgoto()==0)) {
+			contaAgua.setTotal_esgoto(atualizacao.getTotal_esgoto());
 		}
 		if(!(atualizacao.getValor_total()==0)) {
 			contaAgua.setValor_total(atualizacao.getValor_total());
@@ -54,8 +54,6 @@ public class ContaAguaAtualizador {
 		if(!(atualizacao.getData_vencimento()==null)) {
 			contaAgua.setData_vencimento(atualizacao.getData_vencimento());
 		}
-			
-		
 	}
 	public void atualizar(ContaAgua contaAgua, ContaAgua atualizacao) {
 		atualizarDados(contaAgua,atualizacao);

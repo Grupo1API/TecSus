@@ -12,9 +12,10 @@ import Concessionaria from './pages/concessionaria';
 import ContratoAgua from './pages/contrato_agua';
 import ContratoEnergia from './pages/contrato_energia';
 import Unidade from './pages/unidade';
-import QuadroUnidades from './pages/quadro_unidades';
-import QuadroEnergia from './pages/quadro_energia';
-
+import QuadroConcessionaria from './pages/quadro_concessionaria'
+import QuadroUnidade from './pages/quadro_unidades/quadroUnidade';
+import QuadroContratoAgua from './pages/quadro_contrato_agua/quadroContratoAgua';
+import QuadroContratoEnergia from './pages/quadro_contrato_energia/quadroContratoEnergia';
 
 function Main() {
   return (
@@ -28,8 +29,10 @@ function Main() {
               <Route path="/contrato_agua" element={<ContratoAgua />}/>
               <Route path="/contrato_energia" element={<ContratoEnergia />}/>
               <Route path="/unidade" element={<Unidade />}/>
-              <Route path="/quadro_unidades" element={<QuadroUnidades/>}/>
-              <Route path="/quadro_energia" element={<QuadroEnergia/>}/>
+              <Route path="/quadro_concessionaria" element={<QuadroConcessionaria />}/>
+              <Route path="/quadro_unidade" element={<QuadroUnidade />}/> 
+              <Route path="/quadro_contratoAgua" element={<QuadroContratoAgua />}/> 
+              <Route path="/quadro_contratoEnergia" element={<QuadroContratoEnergia />}/> 
             </Routes>
         </Router>
     </div>

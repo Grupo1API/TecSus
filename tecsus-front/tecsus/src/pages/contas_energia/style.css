@@ -10,6 +10,9 @@
 .btn-upload{
     display: none;
 }
+.tituloSpace{
+    margin-top:20px ;
+}
 .container_energia{
     display: flex;
     flex-direction: column;
@@ -56,8 +59,10 @@
 
 h2 {
     padding: 10px;
+    
 }
 
 p {
     padding: 8px;
+    margin-top: -20px;
 }

@@ -6,21 +6,21 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 function ContaAgua(){
+    const [n_fornecimento, setN_fornecimento] = useState('')
     const [concessionaria, setConcessionaria] = useState('')
     const [cnpj_concessionaria, setCnpj_concessionaria] = useState('')
     const [segmento, setSegmento] = useState('')
     const [cpf_cnpj_cliente, setCpf_cnpj_cliente] = useState('')
-    const [fornecimento, setFornecimento] = useState('')
     const [documento, setDocumento] = useState('')
     const [dataEmissao, setDataEmissao] = useState()
     const [nome_cliente, setNome_cliente] = useState('')
-    const [cep, setCep] = useState('')
-    const [endereco, setEndereco] = useState('')
+    const [cepConcessionaria, setCepConcessionaria] = useState('')
     const [codigo_cliente, setCodigo_cliente] = useState('')
     const [pde_rgi, setPde_rgi] = useState('')
     const [hidrometro, setHidrometro] = useState('')
     const [economia, setEconomia] = useState('')
     const [tipo_ligacao, setTipo_ligacao] = useState('')
+    const [cep_unidade,setCep_unidade] = useState('')
     const [data_apresentacao, setData_apresentacao] = useState('')
     const [proxima_leitura, setProxima_leitura] = useState('')
     const [condicao_leitura, setCondicao_leitura] = useState('')
@@ -35,69 +35,57 @@ function ContaAgua(){
     const [juros_moradia, setJuros_moradia] = useState('')
     const [taxa_regulacao, setTaxa_regulacao] = useState('')
     const [data_vencimento, setData_vencimento] = useState('')
-    const[upload, setUpload]= useState('')
+    const [upload, setUpload]= useState('')
+    const [contratoId, setContratoId] = useState('')
 
-    async function buscaUnidade(){
+    async function buscaContrato(){
         try {
-            const response = await fetch(`http://localhost:8080/unidades/${cpf_cnpj_cliente}`)
-            
+            const response = await fetch(`http://localhost:8080/contratoagua/${n_fornecimento}`)
             const dados = await response.json()
-            setNome_cliente(dados.nome_cliente)
-            setCep(dados.cep)
-            setEndereco(`${dados.rua} - ${dados.bairro}`)
-            console.log(dados)
+            setCnpj_concessionaria(dados.contrato_concessionaria_id.cnpj)
+            setConcessionaria(dados.contrato_concessionaria_id.nome)
+            setCepConcessionaria(dados.contrato_concessionaria_id.cep)
+            setCpf_cnpj_cliente(dados.contrato_unidade_id.cpf_cnpj)
+            setNome_cliente(dados.contrato_unidade_id.nome)
+            setCep_unidade(dados.contrato_unidade_id.end_cep)
+            setCodigo_cliente(dados.codigo_cliente)
+            setPde_rgi(dados.pde_rgi)
+            setHidrometro(dados.hidrometro)
+            setTipo_ligacao(dados.tipo_ligacao)
+            setSegmento(dados.contrato_concessionaria_id.segmento)
+            setContratoId(dados.id)
+            
     
         } catch (error) {
             return console.log(error.message);
         }
       } 
-      async function buscaConcessionaria(){
-        try {
-            const response = await fetch(`http://localhost:8080/concessionaria/${cnpj_concessionaria}`)
-            const dados = await response.json()
-            setConcessionaria(dados.concessionaria)
-            setSegmento(dados.segmento)
-            console.log(dados)
-    
-        } catch (error) {
-            return console.log(error.message);
-        }
-      }
-    
+      
     async function handleSubmit(event){
         event.preventDefault()
         const dados = {
-            concessionaria:concessionaria,
-            cnpj:cnpj_concessionaria,
-            segmento:segmento,
-            n_fornecimento:fornecimento,
             n_documento:documento,
-            data_emissao:formatarData(dataEmissao),
-            nome_cliente:nome_cliente,
-            cep:cep,
-            endereco:endereco,
-            codigo_cliente:codigo_cliente,
-            pde_rgi:pde_rgi,
-            hidrometro:hidrometro,
-            economia:economia,
-            tipo_ligacao:tipo_ligacao,
-            data_apresentacao:formatarData(data_apresentacao),
-            proxima_leitura:formatarData(proxima_leitura),
+            at_monet:at_monet,
             condicao_leitura:condicao_leitura,
             consumo_m3:consumo_m3,
-            periodo:periodo_consumo,
-            media_m3:media_consumo,
-            subtotal_agua:subtotal_agua,
-            subtotal_esgoto:subtotal_esgoto,
-            valor_total:vtConsumo,
-            multa:multa,
-            at_monet:at_monet,
+            data_apresentacao:formatarData(data_apresentacao),
+            data_emissao:formatarData(dataEmissao),
+            data_vencimento:formatarData(data_vencimento),
+            economia:economia,
             juros_mora:juros_moradia,
+            media_consumo:media_consumo,
+            multa:multa,
+            periodo:periodo_consumo,
+            proxima_leitura:formatarData(proxima_leitura),
             taxa_regulacao:taxa_regulacao,
-            data_vencimento:formatarData(data_vencimento)
+            tipo_ligacao:tipo_ligacao,            
+            total_agua:subtotal_agua,
+            total_esgoto:subtotal_esgoto,
+            valor_total:vtConsumo,            
+            arquivo:upload,
+            contaagua_contrato_id:{id:contratoId}
         }
-
-
+        
         try {
             await fetch("http://localhost:8080/contadeagua/cadastro", {
                 method: "POST",
@@ -110,16 +98,16 @@ function ContaAgua(){
             setConcessionaria('')
             setCnpj_concessionaria('')
             setSegmento('')
-            setFornecimento('')
+            setN_fornecimento('')
             setDocumento('')
             setDataEmissao('')
             setNome_cliente('')
-            setCep('')
-            setEndereco('')
+            setCepConcessionaria('')
             setCodigo_cliente('')
             setPde_rgi('')
             setHidrometro('')
             setEconomia('')
+            setCep_unidade('')
             setTipo_ligacao('')
             setData_apresentacao('')
             setProxima_leitura('')
@@ -156,83 +144,61 @@ function ContaAgua(){
                 <h1 className="titulo">Cadastro de Conta de Água</h1>
                 <div className= "cadastro">
                     <form name="cadastro_agua" onSubmit={handleSubmit}>
-                        <h2>Dados Concessionaria</h2>
-                        <div className='coluna'>                           
+                        <h2>Dados Contrato</h2>
+                        <div className='coluna'>    
+
+                        <TextField
+                                id="n_fornecimento" 
+                                className='input'
+                                type="text"
+                                required                                
+                                label="Numero de fornecimento" 
+                                placeholder="N° Fornecimento" 
+                                value={n_fornecimento}
+                                onChange={(e) => setN_fornecimento(e.target.value)}
+                                onBlur = {buscaContrato}
+                                variant="outlined" 
+                            />
                             <TextField
                                 id="cnpj_concessionaria" 
                                 className='input'
                                 type="text"
-                                required={true} 
-                                label="CNPJ" 
-                                placeholder="CNPJ" 
+                                label="CNPJ Concessionaria"  
                                 value={cnpj_concessionaria}
-                                onChange={(e) => setCnpj_concessionaria(e.target.value)}
-                                onBlur = {buscaConcessionaria}
                                 variant="outlined" 
+                                disabled
                             />
+
                             <TextField
                                 id="concessionaria"
                                 className='input' 
-                                type="text" 
+                                type="text"                                
                                 label="Concessionaria" 
-                                disable
+                                disabled
                                 value={concessionaria}
-                                variant="outlined" 
-                            />                                                               
-                            <TextField
-                                id="segmento" 
-                                className='input'
-                                type="text" 
-                                label="Segmento"
-                                disable
-                                value={segmento}
-                                variant="outlined" 
-                            />
-                        </div> 
+                                variant="outlined"                                
+                            />                  
 
-                        <div className='coluna'>                                         
-                            
+                            </div> 
+                            <div className='coluna'>  
                             <TextField
-                                id="documento" 
-                                className='input'                             
-                                type="number"
-                                required={true}
-                                label="Nª do Documento"
-                                placeholder="Nª do Documento"  
-                                value={documento}
-                                onChange={(e) => setDocumento(e.target.value)}
-                                variant="outlined" 
-                            />
-                            
-                            <NumberFormat 
-                                id="data_emissao"
+                                id="cep"
                                 className='input'
-                                type="text" 
-                                format="##/##/####" 
-                                mask={['D', 'D', 'M', 'M', 'Y', 'Y', 'Y', 'Y']}
-                                required={true}
-                                label="Data Emissão"
-                                placeholder="Data Emissão"
-                                customInput={TextField}
-                                value={dataEmissao}
-                                onChange={(e) => setDataEmissao(e.target.value)}
-                                variant="outlined" 
-                            />
-                        </div>
-
-                        <h2>Dados Cliente</h2> 
-                        <div className='coluna'> 
+                                type="number" 
+                                label="CEP Concessionaria"
+                                disabled
+                                value={cepConcessionaria}
+                                variant="outlined"
+                            />    
                            
                             <TextField
                                 id="cnpj_cpf_cliente"
                                 className='input'
                                 type="text" 
-                                required={true}
+                                disabled
                                 label="CNPJ/CPF Unidade"
                                 placeholder="CNPJ/CPF cliente" 
                                 value={cpf_cnpj_cliente}
-                                onChange={(e) => setCpf_cnpj_cliente(e.target.value)}
-                                onBlur = {buscaUnidade}
                                 variant="outlined"
                             />
                             <TextField
@@ -240,64 +206,75 @@ function ContaAgua(){
                                 className='input'
                                 type="text"
                                 label="Nome Unidade"
-                                disable
+                                disabled
                                 value={nome_cliente}
-                                variant="outlined"
-                            />     
-                            
-                            <TextField
-                                id="cep"
-                                className='input'
-                                type="number" 
-                                label="CEP"
-                                disable
-                                value={cep}
-                                variant="outlined"
-                            />                        
-                        </div>
+                                variant="outlined"    
+                            />
 
-                        <div className='coluna'>
-                            
+                            </div> 
+                            <div className='coluna'>  
+                            <TextField
+                                id="cep_unidade" 
+                                className='input'  
+                                type="text" 
+                                label="Cep Unidade"
+                                value={cep_unidade}
+                                variant="outlined"   
+                                disabled
+                            />
                             <TextField
                                 id="codigo_cliente" 
                                 className='input'
                                 type="number" 
-                                required={true}
                                 label="Codigo do Cliente"
-                                placeholder="Codigo do Cliente"
                                 value={codigo_cliente}
-                                onChange={(e) => setCodigo_cliente(e.target.value)} 
                                 variant="outlined" 
+                                disabled
                             />
-                            {/* 11 */}
                             <TextField
                                 id="pde_rgi" 
                                 className='input'
                                 type="number" 
-                                required={true}
                                 label="pde_rgi"
-                                placeholder="pde_rgi"
                                 value={pde_rgi}
-                                onChange={(e) => setPde_rgi(e.target.value)}  
                                 variant="outlined"
+                                disabled
                             />
-                            {/* 12 */}
+                             
+                            </div> 
+                            <div className='coluna'>  
                             <TextField
                                 id="hidrometro"
                                 className='input' 
                                 type="text" 
-                                required={true}
                                 label="Hidrometro" 
-                                placeholder="Hidrometro"
                                 value={hidrometro}
-                                onChange={(e) => setHidrometro(e.target.value)} 
-                                variant="outlined" 
+                                variant="outlined"
+                                disabled 
                             />
-                        </div>
+                            <TextField
+                                id="tipo_ligação" 
+                                className='input'  
+                                type="text" 
+                                label="Tipo de ligação" 
+                                value={tipo_ligacao}
+                                variant="outlined"   
+                                disabled
+                            />
+                            <TextField
+                                id="segmento" 
+                                className='input'
+                                type="text" 
+                                label="Segmento"
+                                disabled
+                                value={segmento}
+                                variant="outlined"                                
+                            /> 
+                            </div>
+
 
                         <h2>Dados Conta</h2> 
-                        <div className='coluna'> 
-                            {/* 13 */}   
+                        <div className='coluna'>    
                             <TextField
                                 id="economia"
                                 className='input'  
@@ -307,24 +284,12 @@ function ContaAgua(){
                                 value={economia}
                                 onChange={(e) => setEconomia(e.target.value)} 
                                 variant="outlined"   
-                            />                       
-                            {/* 14 */}
-                            <TextField
-                                id="tipo_ligação" 
-                                className='input'  
-                                type="text" 
-                                label="Tipo de ligação" 
-                                placeholder="Tipo de ligação" 
-                                value={tipo_ligacao}
-                                onChange={(e) => setTipo_ligacao(e.target.value)}
-                                variant="outlined"   
-                            />
-                            {/* 15 */}
+                            />                      
                             <NumberFormat 
                                 id="data_apresentacao" 
                                 className='input' 
-                                type="text"
-                                required={true}
+                                type="text"  
+                                required                             
                                 format="##/##/####" 
                                 mask={['D', 'D', 'M', 'M', 'Y', 'Y', 'Y', 'Y']}
                                 label="Data Apresentação"
@@ -334,24 +299,21 @@ function ContaAgua(){
                                 onChange={(e) => setData_apresentacao(e.target.value)}
                                 variant="outlined"
                             />
-                        </div> 
-                        <div className='coluna'>
-                            {/* 16 */}
                             <NumberFormat 
                                 id="proxima_leitura"
                                 className='input'
-                                type="text"
-                                required={true}
+                                type="text" 
+                                required                               
                                 format="##/##/####"
                                 mask={['D', 'D', 'M', 'M', 'Y', 'Y', 'Y', 'Y']}
                                 label="Proxima leitura"
-                                placeholder="Proxima leitura"
                                 customInput={TextField}
                                 value={proxima_leitura}
                                 onChange={(e) => setProxima_leitura(e.target.value)} 
                                 variant="outlined"
                             />
-                            {/* 17 */}
+                            </div> 
+                        <div className='coluna'>
                             <TextField
                                 id="condicao_leitura" 
                                 className='input'
@@ -362,7 +324,6 @@ function ContaAgua(){
                                 onChange={(e) => setCondicao_leitura(e.target.value)}
                                 variant="outlined"    
                             />
-                            {/* 18 */}
                             <TextField
                                 id="consumo_m3"
                                 className='input' 
@@ -372,11 +333,7 @@ function ContaAgua(){
                                 value={consumo_m3}
                                 onChange={(e) => setConsumo_m3(e.target.value)} 
                                 variant="outlined"     
-                            />
-                        </div> 
-
-                        <div className='coluna'> 
-                            {/* 19 */}   
+                            />  
                             <TextField
                                 id="periodo_consumo"
                                 className='input' 
@@ -387,7 +344,9 @@ function ContaAgua(){
                                 onChange={(e) => setPeriodo_consumo(e.target.value)}
                                 variant="outlined"    
                             />   
-                            {/* 20 */}
+                             </div> 
+
+                            <div className='coluna'> 
                             <TextField
                                 id="media_consumo" 
                                 className='input' 
@@ -398,11 +357,9 @@ function ContaAgua(){
                                 onChange={(e) => setMedia_consumo(e.target.value)} 
                                 variant="outlined"    
                             /> 
-                            {/* 21 */}
                             <NumberFormat 
                                 id="subtotal_agua" 
                                 className='input'
-                                required={true} 
                                 prefix={'R$ '} 
                                 floatValue = {true}
                                 value={subtotal_agua}
@@ -415,13 +372,9 @@ function ContaAgua(){
                                 } }
                                 variant="outlined"
                             />
-                        </div> 
-                        <div className='coluna'>
-                            {/* 22 */}
                             <NumberFormat 
                                 id="subtotal_esgoto"
                                 className='input'
-                                required={true}   
                                 prefix={'R$ '} 
                                 floatValue = {true}
                                 value={subtotal_esgoto}
@@ -434,11 +387,11 @@ function ContaAgua(){
                                 } }
                                 variant="outlined"
                             />
-                            {/* 23 */}
+                            </div> 
+                        <div className='coluna'>
                             <NumberFormat 
                                 id="vtConsumo" 
                                 className='input'
-                                required={true}
                                 prefix={'R$ '} 
                                 floatValue = {true}
                                 value={vtConsumo}
@@ -451,7 +404,6 @@ function ContaAgua(){
                                 } }
                                 variant="outlined"
                             />
-                            {/* 24 */}
                             <NumberFormat 
                                 id="multa"
                                 className='input'  
@@ -467,9 +419,6 @@ function ContaAgua(){
                                 } }
                                 variant="outlined"
                             />
-                        </div> 
-                        <div className='coluna'>  
-                            {/* 25 */}
                             <NumberFormat 
                                 id="at_monet"    
                                 className='input'
@@ -485,7 +434,8 @@ function ContaAgua(){
                                 } }
                                 variant="outlined"
                             /> 
-                            {/* 26 */}                      
+                            </div>
+                        <div className='coluna'>                       
                             <NumberFormat
                                 id="juros_moradia"
                                 className='input'    
@@ -501,7 +451,6 @@ function ContaAgua(){
                                 } }
                                 variant="outlined"
                             />
-                            {/* 27 */}
                             <NumberFormat 
                                 id="taxa_regulacao"
                                 className='input'    
@@ -517,16 +466,13 @@ function ContaAgua(){
                                 } }
                                 variant="outlined"
                             />
-                        </div>
-                        <div className='coluna'>  
-                            {/* 28 */}
                             <NumberFormat 
                                 id="data_vencimento"
                                 className='input'   
                                 type="text"
                                 format="##/##/####" 
                                 mask={['D', 'D', 'M', 'M', 'Y', 'Y', 'Y', 'Y']}
-                                required={true}
+                                required
                                 value={data_vencimento}
                                 label="Data Vencimento"
                                 placeholder="Data Vencimento" 
@@ -535,6 +481,35 @@ function ContaAgua(){
                                 variant="outlined"
                             />
                         </div>  
+                        <div className='coluna'>  
+                                                            
+                            <TextField
+                                id="documento" 
+                                className='input'                             
+                                type="number"
+                                label="Nª do Documento"
+                                placeholder="Nª do Documento"  
+                                value={documento}
+                                onChange={(e) => setDocumento(e.target.value)}
+                                variant="outlined" 
+                                
+                            />
+                            <NumberFormat 
+                                id="data_emissao"
+                                className='input'
+                                type="text" 
+                                format="##/##/####" 
+                                mask={['D', 'D', 'M', 'M', 'Y', 'Y', 'Y', 'Y']}
+                                required
+                                label="Data Emissão"
+                                placeholder="Data Emissão"
+                                customInput={TextField}
+                                value={dataEmissao}
+                                onChange={(e) => setDataEmissao(e.target.value)}
+                                variant="outlined" 
+                                
+                            />
+                            </div>
                                
                         <div className="bt-container">
                             <input
@@ -543,6 +518,7 @@ function ContaAgua(){
                                 id="contained-button-file"
                                 multiple
                                 type="file"
+                                value={upload}
                                 onChange={e=>setUpload(e.target.value)}
                             />
                             <label htmlFor="contained-button-file">
