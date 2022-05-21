@@ -4,7 +4,7 @@ import { useState } from "react";
 import NumberFormat from "react-number-format";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import axios from 'axios';
+import axios from "axios";
 
 function ContaAgua() {
   const [n_fornecimento, setN_fornecimento] = useState("");
@@ -37,7 +37,7 @@ function ContaAgua() {
   const [taxa_regulacao, setTaxa_regulacao] = useState("");
   const [data_vencimento, setData_vencimento] = useState("");
   const [contratoId, setContratoId] = useState("");
-  const [file, setFile] = useState()
+  const [file, setFile] = useState();
 
   async function buscaContrato() {
     try {
@@ -123,48 +123,47 @@ function ContaAgua() {
   //   }
   // }
 
-
-  
-
-  function carregarArquivo(event) {
-      event.preventDefault()
-      setFile(event.target.files[0])
-      const url = 'http://localhost:8080/contadeagua/upload';
-      const formData = new FormData();
-      formData.append('file', file);
-   
-      const config = {
-        headers: {
-          'content-type': 'multipart/form-data',
-        },
-      };
-      axios.post(url, formData, config).then((response) => {
-        console.log(response.data);
-      });
-    }
+  // function carregarArquivo(event) {
+  //   setFile(event.target.files[0]);
+  //   console.log(file);
+  //   console.log("chgeuei aqui");
+  // }
 
   async function handleSubmit(event) {
     event.preventDefault();
+    console.log(file);
+    const url = "http://localhost:8080/contadeagua/upload";
+    const formData = new FormData();
+    formData.append("file", file);
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    };
+    axios.post(url, formData, config).then((response) => {
+      console.log(response.data);
+    });
+
     const dados = {
       n_documento: documento,
-      at_monet: at_monet,
-      condicao_leitura: condicao_leitura,
-      consumo_m3: consumo_m3,
-      data_apresentacao: formatarData(data_apresentacao),
-      data_emissao: formatarData(dataEmissao),
-      data_vencimento: formatarData(data_vencimento),
-      economia: economia,
-      juros_mora: juros_moradia,
-      media_consumo: media_consumo,
-      multa: multa,
-      periodo: periodo_consumo,
-      proxima_leitura: formatarData(proxima_leitura),
-      taxa_regulacao: taxa_regulacao,
-      tipo_ligacao: tipo_ligacao,
-      total_agua: subtotal_agua,
-      total_esgoto: subtotal_esgoto,
-      valor_total: vtConsumo,
-      contaagua_contrato_id: { id: contratoId },
+      // at_monet: at_monet,
+      // condicao_leitura: condicao_leitura,
+      // consumo_m3: consumo_m3,
+      // data_apresentacao: formatarData(data_apresentacao),
+      // data_emissao: formatarData(dataEmissao),
+      // data_vencimento: formatarData(data_vencimento),
+      // economia: economia,
+      // juros_mora: juros_moradia,
+      // media_consumo: media_consumo,
+      // multa: multa,
+      // periodo: periodo_consumo,
+      // proxima_leitura: formatarData(proxima_leitura),
+      // taxa_regulacao: taxa_regulacao,
+      // tipo_ligacao: tipo_ligacao,
+      // total_agua: subtotal_agua,
+      // total_esgoto: subtotal_esgoto,
+      // valor_total: vtConsumo,
+      // contaagua_contrato_id: { id: contratoId },
     };
 
     try {
@@ -204,6 +203,7 @@ function ContaAgua() {
       setJuros_moradia("");
       setTaxa_regulacao("");
       setData_vencimento("");
+      setFile(null);
       return;
     } catch (error) {
       return console.log(error.message);
@@ -349,9 +349,9 @@ function ContaAgua() {
               />
             </div>
 
-            <h2>Dados Conta</h2>
-            <div className="coluna">
-              <TextField
+            {/* <h2>Dados Conta</h2>
+            <div className="coluna"> */}
+            {/* <TextField
                 id="economia"
                 className="input"
                 type="text"
@@ -568,7 +568,7 @@ function ContaAgua() {
                 onChange={(e) => setData_vencimento(e.target.value)}
                 variant="outlined"
               />
-            </div>
+            </div> */}
             <div className="coluna">
               <TextField
                 id="documento"
@@ -581,7 +581,7 @@ function ContaAgua() {
                 onChange={(e) => setDocumento(e.target.value)}
                 variant="outlined"
               />
-              <NumberFormat
+              {/* <NumberFormat
                 id="data_emissao"
                 className="input"
                 type="text"
@@ -594,28 +594,15 @@ function ContaAgua() {
                 value={dataEmissao}
                 onChange={(e) => setDataEmissao(e.target.value)}
                 variant="outlined"
-              />
+              />*/}
             </div>
 
             <div className="bt-container">
               <input
-                className="btn-upload"
-                id="contained-button-file"
-                multiple
                 type="file"
-               // onChange={(e) => carregarArquivo(e.target.files[0])}
-                onChange={carregarArquivo}
+                name="file"
+                onChange={(e) => setFile(e.target.files[0])}
               />
-              <label htmlFor="contained-button-file">
-                <Button
-                  id="upload"
-                  variant="contained"
-                  color="primary"
-                  component="span"
-                >
-                  Upload
-                </Button>
-              </label>
               <button type="submit" className="cadastrar" id="botao_cad">
                 ENVIAR
               </button>
