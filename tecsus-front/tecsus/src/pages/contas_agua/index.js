@@ -116,7 +116,7 @@ function ContaAgua() {
   //   if (file !== undefined) {
   //     const dado = new FormData();
   //     dado.append("file", file);
-  //     await fetch("http://localhost:8080/contadeagua/cadastro", {
+  //     await fetch("http://localhost:8080/contadeagua/upload", {
   //       method: "POST",
   //       body: dado,
   //     }); // rota para fazer o upload no back end
@@ -132,7 +132,7 @@ function ContaAgua() {
       const url = 'http://localhost:8080/contadeagua/upload';
       const formData = new FormData();
       formData.append('file', file);
-      formData.append('fileName', file.name);
+   
       const config = {
         headers: {
           'content-type': 'multipart/form-data',
@@ -603,6 +603,7 @@ function ContaAgua() {
                 id="contained-button-file"
                 multiple
                 type="file"
+               // onChange={(e) => carregarArquivo(e.target.files[0])}
                 onChange={carregarArquivo}
               />
               <label htmlFor="contained-button-file">

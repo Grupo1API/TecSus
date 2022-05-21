@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.digisolu.tecsus1.entidades.ContaAgua;
 import com.digisolu.tecsus1.modelos.AdicionadorLinkContaAgua;
 import com.digisolu.tecsus1.repositorios.ContaAguaRepositorio;
+import com.digisolu.tecsus1.servicos.ArmazemArquivo;
 import com.digisolu.tecsus1.modelos.ContaAguaAtualizador;
 import com.digisolu.tecsus1.modelos.ContaAguaSelecionador;
 
@@ -35,7 +36,9 @@ public class ContaAguaControle {
 	private ContaAguaSelecionador selecionador;
 	@Autowired
 	private AdicionadorLinkContaAgua adicionadorLink;
-
+	@Autowired
+	private ArmazemArquivo armazem;
+	
 	@GetMapping("/contadeagua")
 	public ResponseEntity<List<ContaAgua>> obterContaAgua() {
 		List<ContaAgua> contasAgua= repositorio.findAll();
@@ -49,6 +52,20 @@ public class ContaAguaControle {
 		}
 	}
 
+
+
+	@PostMapping("/contadeagua/upload")
+	public ResponseEntity<String> receberArquivo(@RequestParam("file") MultipartFile arquivoEnviado)
+			throws IOException {
+		ContaAgua contaAgua = new ContaAgua();
+		contaAgua.setBytes(arquivoEnviado.getBytes());
+		Long tamanho = arquivoEnviado.getSize();
+		contaAgua.setTamanho(tamanho.toString());
+		contaAgua.setTipo(arquivoEnviado.getContentType());
+		armazem.armazenarArquivo(contaAgua);
+		return new ResponseEntity<String>("arquivo enviado", HttpStatus.ACCEPTED);
+	}
+	
 @GetMapping("/contadeagua{id}")
 public ResponseEntity<ContaAgua> obterContaAgua(@PathVariable long id) {
 	List<ContaAgua> contasAgua = repositorio.findAll();
@@ -63,18 +80,19 @@ public ResponseEntity<ContaAgua> obterContaAgua(@PathVariable long id) {
 	}
 }
 
-@PostMapping("/contadeagua/upload")
-	public ContaAgua salvarConta( ContaAgua contaAgua, @RequestParam("file") MultipartFile file ) {
+// @PostMapping("/contadeagua/upload")
+// 	public ContaAgua salvarConta( ContaAgua contaAgua, @RequestParam("contaAgua") MultipartFile file ) {
 
-		try {
+// 		try {
 		
-			contaAgua.setArquivo(file.getBytes());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+// 			contaAgua.setBytes(file.getBytes());
 		
-		return repositorio.save(contaAgua);
-	}
+// 		} catch (IOException e) {
+// 			e.printStackTrace();
+// 		}
+		
+// 		return repositorio.save(contaAgua);
+// 	}
 
 
 

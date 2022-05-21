@@ -61,15 +61,44 @@ public class ContaAgua extends RepresentationModel<ContaAgua>{
 	private float taxa_regulacao;
 	@Column
 	private LocalDate data_vencimento;
+	@Column
+	private String tamanho;
+	@Column
+	private String tipo;
 	@Lob
 	@Column
-	private byte[] arquivo;
+	private byte[] bytes;
 	
-	public byte[] getArquivo() {
-		return arquivo;
+	
+	public String getEconomia() {
+		return economia;
 	}
-	public void setArquivo(byte[] arquivo) {
-		this.arquivo = arquivo;
+	public void setEconomia(String economia) {
+		this.economia = economia;
+	}
+	public String getTipo_ligacao() {
+		return tipo_ligacao;
+	}
+	public void setTipo_ligacao(String tipo_ligacao) {
+		this.tipo_ligacao = tipo_ligacao;
+	}
+	public String getTamanho() {
+		return tamanho;
+	}
+	public void setTamanho(String tamanho) {
+		this.tamanho = tamanho;
+	}
+	public String getTipo() {
+		return tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	public byte[] getBytes() {
+		return bytes;
+	}
+	public void setBytes(byte[] bytes) {
+		this.bytes = bytes;
 	}
 	public ContratoAgua getContaagua_contrato_id() {
 		return contaagua_contrato_id;
@@ -180,5 +209,6 @@ public class ContaAgua extends RepresentationModel<ContaAgua>{
 	public void setData_vencimento(LocalDate data_vencimento) {
 		this.data_vencimento = data_vencimento;
 	}
+	
 			
 }
