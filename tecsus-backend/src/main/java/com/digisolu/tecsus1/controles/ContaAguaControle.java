@@ -53,8 +53,8 @@ public class ContaAguaControle {
 	}
 
 
-
-	@PostMapping("/contadeagua/upload")
+    //teste1
+	@PostMapping("/contadeagua/cadastrogeral")
 	public ResponseEntity<String> receberArquivo(@RequestParam("file") MultipartFile arquivoEnviado)
 			throws IOException {
 		ContaAgua contaAgua = new ContaAgua();
@@ -63,9 +63,26 @@ public class ContaAguaControle {
 		contaAgua.setTamanho(tamanho.toString());
 		contaAgua.setTipo(arquivoEnviado.getContentType());
 		armazem.armazenarArquivo(contaAgua);
+		
+		if (contaAgua.getId() == null) {
+		 	repositorio.save(contaAgua);
+		}
 		return new ResponseEntity<String>("arquivo enviado", HttpStatus.ACCEPTED);
 	}
 	
+
+// 	@PostMapping("/contadeagua/cadastro")
+// public ResponseEntity<?> cadastrarContaAgua(@RequestBody ContaAgua contaAgua) {
+// 	HttpStatus status = HttpStatus.CONFLICT;
+// 	if (contaAgua.getId() == null) {
+// 		repositorio.save(contaAgua);
+// 		status = HttpStatus.OK;
+// 	}
+// 	return new ResponseEntity<>(status);
+
+// }
+
+
 @GetMapping("/contadeagua{id}")
 public ResponseEntity<ContaAgua> obterContaAgua(@PathVariable long id) {
 	List<ContaAgua> contasAgua = repositorio.findAll();
@@ -96,16 +113,7 @@ public ResponseEntity<ContaAgua> obterContaAgua(@PathVariable long id) {
 
 
 
-@PostMapping("/contadeagua/cadastro")
-public ResponseEntity<?> cadastrarContaAgua(@RequestBody ContaAgua contaAgua) {
-	HttpStatus status = HttpStatus.CONFLICT;
-	if (contaAgua.getId() == null) {
-		repositorio.save(contaAgua);
-		status = HttpStatus.OK;
-	}
-	return new ResponseEntity<>(status);
 
-}
 
 @PutMapping("/contadeagua/atualizar")
 public ResponseEntity<?> atualizarContaAgua(@RequestBody ContaAgua atualizacao) {
