@@ -89,40 +89,41 @@ Nesta sprint mantivemos o foco na implementação da ligação entre as tabelas 
 <h2 id="wireframes">Wireframes</h2>
 
 <h3 align="center">Quadro de controle para concessionárias cadastradas</h3>
-<img src="./midias/dor/wireframes/quadro_concessionaria.png" width="800">
+<img align="center" src="./midias/dor/wireframes/quadro_concessionaria.png" width="800">
 <h4> • Leitura</h4>
-<img src="./midias/dor/wireframes/quadro_concessionaria_read.png" width="800">
+<img align="center" src="./midias/dor/wireframes/quadro_concessionaria_read.png" width="800">
 <h4> • Edição</h4>
-<img src="./midias/dor/wireframes/quadro_concessionaria_update.png" width="800">
+<img align="center" src="./midias/dor/wireframes/quadro_concessionaria_update.png" width="800">
 
 <br>
 
 <h3 align="center">Quadro de controle para unidades cadastradas</h3>
-<img src="./midias/dor/wireframes/quadro_unidade.png" width="800">
+<img align="center" src="./midias/dor/wireframes/quadro_unidade.png" width="800">
 <h4> • Leitura</h4>
-<img src="./midias/dor/wireframes/quadro_unidade_read.png" width="800">
+<img align="center" src="./midias/dor/wireframes/quadro_unidade_read.png" width="800">
 <h4> • Edição</h4>
-<img src="./midias/dor/wireframes/quadro_unidade_update.png" width="800">
+<img align="center" src="./midias/dor/wireframes/quadro_unidade_update.png" width="800">
 
 <br>
 
 <!-- <h3 align="center">Quadro de controle para contratos de água</h3>
 <img src="./midias/dor/wireframes/quadro_unidade.png" width="800">
 <h4> • Leitura</h4>
-<img src="./midias/dor/wireframes/quadro_unidade_read.png" width="800">
+<img align="center" src="./midias/dor/wireframes/quadro_unidade_read.png" width="800">
 <h4> • Edição</h4>
-<img src="./midias/dor/wireframes/quadro_unidade_update.png" width="800">
+<img align="center" src="./midias/dor/wireframes/quadro_unidade_update.png" width="800">
 
 <br>
 
 <h3 align="center">Quadro de controle para contratos de energia</h3>
-<img src="./midias/dor/wireframes/quadro_unidade.png" width="800">
+<img align="center" src="./midias/dor/wireframes/quadro_unidade.png" width="800">
 <h4> • Leitura</h4>
-<img src="./midias/dor/wireframes/quadro_unidade_read.png" width="800">
+<img align="center" src="./midias/dor/wireframes/quadro_unidade_read.png" width="800">
 <h4> • Edição</h4>
-<img src="./midias/dor/wireframes/quadro_unidade_update.png" width="800">
+<img align="center" src="./midias/dor/wireframes/quadro_unidade_update.png" width="800">
 
-<br> -->
+<br>
+-->
 
 <h2 id="burndown_sprint_2">Burndown da Sprint<h2>
 
