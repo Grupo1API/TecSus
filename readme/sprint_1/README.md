@@ -26,6 +26,68 @@ Após o cliente aprovar o protótipo apresentado, o desenvolvimento do projeto s
 
 <div align="center"><img src="./midias/dor/modelo_de_dados.jpeg" width="800"/></div>
 
+<h2 id="use_cases">Use Cases</h2>
+
+<div id="table_use_cases" align="center" width="400">
+  <table>
+    <tr>
+      <th>User Story id</th>
+      <th>Como um (ator)</th>
+      <th>Eu quero (ação)</th>
+      <th>Para que seja possível (funcionalidade)</th>
+      <th>Prioridade</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Digitador</td>
+      <td>Guardar no sistema os dados das contas de água para analises, relatorios e ter um controle de sistema</td>
+      <td>Criar um cadastro de conta de agua de maneira funcional e pratico </td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Digitador</td>
+      <td>Guardar no sistema os dados das contas de energia para analises, relatorios e ter um controle de sistema</td>
+      <td>Criar um cadastro de conta de energia de maneira funcional e pratico </td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Digitador</td>
+      <td>Guardar no sistema dados de unidades e ou empresas para analises, relatorios e ter um controle de sistema</td>
+      <td>Criar um cadastro de unidades de maneira funcional e pratico </td>
+      <td>3</td>
+    </tr>
+    <tr> 
+      <td>4</td>
+      <td>Digitador</td>
+      <td>Guardar no sistema dados de concessionaria que faz o fornecimento para tais unidades  para analises, relatorios e ter um controle de sistema</td>
+      <td>Criar um cadastro de concessionarias de maneira funcional e pratico </td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Digitador</td>
+      <td>Cadastrar os contratos acordado com os clientes e unidade com sua respectiva concessionaria do segmento de agua/esgoto</td>
+      <td>Criar um cadastro de contrato para contas de agua/esgoto</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Digitador</td>
+      <td>Cadastrar os contratos acordado com os clientes e unidade com sua respectiva concessionaria do segmento de energia</td>
+      <td>Criar um cadastro de contrato para contas de energia</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Gestor, Digitador e Adminnistrador</td>
+      <td>Um sistema com bastante atalhos, que fique bem usual para os usuarios e de facil entendimento</td>
+      <td>O sistema deve ser montado com menu lateral esquerdo com as abas de acesso totalmente limpo e de facil acesso e para areas externas do menu vao ser utilizados mais ou menos 100% da tela</td>
+      <td>23</td>
+    </tr>
+  </table>
+</div>
 <br>
 
 <h2 id="wireframes">Wireframes</h2>
