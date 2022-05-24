@@ -11,7 +11,7 @@ Nesta sprint mantivemos o foco na implementação da ligação entre as tabelas 
 <a href="#modelo_de_dados">Modelo de dados</a>   <br>
 <a href="#use_cases">Use Cases</a>   <br>
 <a href="#wireframes">Wireframes</a>   <br>
-<a href="#burndown_sprint_1">Burndowm Sprint 2</a>   <br>
+<a href="#burndown_sprint_2">Burndowm Sprint 2</a>   <br>
 <a href="#dod">DOD (Definition of Done)</a>   <br>
 <a href="#funcionalidades_sprint_1">Funcionalidades implementadas</a>
 
@@ -96,7 +96,7 @@ Nesta sprint mantivemos o foco na implementação da ligação entre as tabelas 
 <h2 id="burndown_sprint_2">Burndown da Sprint<h2>
 
 <h3 align="center">
-<img align="center" src="./midias/burndownSprint_2.jpeg" width="600"/></h3>
+<img align="center" src="./midias/burndownSprint2.jpeg" width="600"/></h3>
 
 <br> 
 
