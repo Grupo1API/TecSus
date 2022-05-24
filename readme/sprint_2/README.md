@@ -26,7 +26,7 @@ Nesta sprint mantivemos o foco na implementação da ligação entre as tabelas 
 
 <h2 id="modelo_de_dados" align="center">Modelo de dados</h2>
 
-<div align="center"><img src="./midias/dor/modelo_de_dados_sprint2.jpeg" width="800"/></div>
+<div align="center"><img src="./midias/dor/modelo_de_dados.png" width="800"/></div>
 
 <h2 id="use_cases">Use Cases</h2>
 
