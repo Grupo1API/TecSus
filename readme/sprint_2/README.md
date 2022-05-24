@@ -88,15 +88,46 @@ Nesta sprint mantivemos o foco na implementação da ligação entre as tabelas 
 
 <h2 id="wireframes">Wireframes</h2>
 
-<h3 align="center">ex padrao
-<img src="./midias/dor/form_concessionaria.png" width="800">
+<h3 align="center">Quadro de controle para concessionárias cadastradas</h3>
+<img src="./midias/dor/wireframes/quadro_concessionaria.png" width="800">
+<h4> • Leitura</h4>
+<img src="./midias/dor/wireframes/quadro_concessionaria_read.png" width="800">
+<h4> • Edição</h4>
+<img src="./midias/dor/wireframes/quadro_concessionaria_update.png" width="800">
 
 <br>
+
+<h3 align="center">Quadro de controle para unidades cadastradas</h3>
+<img src="./midias/dor/wireframes/quadro_unidade.png" width="800">
+<h4> • Leitura</h4>
+<img src="./midias/dor/wireframes/quadro_unidade_read.png" width="800">
+<h4> • Edição</h4>
+<img src="./midias/dor/wireframes/quadro_unidade_update.png" width="800">
+
+<br>
+
+<!-- <h3 align="center">Quadro de controle para contratos de água</h3>
+<img src="./midias/dor/wireframes/quadro_unidade.png" width="800">
+<h4> • Leitura</h4>
+<img src="./midias/dor/wireframes/quadro_unidade_read.png" width="800">
+<h4> • Edição</h4>
+<img src="./midias/dor/wireframes/quadro_unidade_update.png" width="800">
+
+<br>
+
+<h3 align="center">Quadro de controle para contratos de energia</h3>
+<img src="./midias/dor/wireframes/quadro_unidade.png" width="800">
+<h4> • Leitura</h4>
+<img src="./midias/dor/wireframes/quadro_unidade_read.png" width="800">
+<h4> • Edição</h4>
+<img src="./midias/dor/wireframes/quadro_unidade_update.png" width="800">
+
+<br> -->
 
 <h2 id="burndown_sprint_2">Burndown da Sprint<h2>
 
 <h3 align="center">
-<img align="center" src="./midias/burndownSprint2.jpeg" width="600"/></h3>
+<img align="center" src="./midias/burndownSprint2.png" width="600"/></h3>
 
 <br> 
 
@@ -107,37 +138,37 @@ Nesta sprint mantivemos o foco na implementação da ligação entre as tabelas 
 <br>
 
 <h3 align="center">Banco de Dados Relacional</h3>
-<img align="center" src = "./midias/bancoDados.gif"/>
+<img align="center" src = "./midias/dod/bancoDados.gif"/>
 
 <br>
 
 <h3 align="center">Atalhos para preencimento dos campos no formulário para cadastro de Concessionário</h3>
-<img align="center" src = "./midias/cadastro_concessionaria.gif"/>
+<img align="center" src = "./midias/dod/cadastro_concessionaria.gif"/>
 
 <br>
 
 <h3 align="center">Atalhos para preencimento dos campos no formulário para cadastro de Unidades</h3>
-<img src = "./midias/cadastro_unidade.gif"/>
+<img src = "./midias/dod/cadastro_unidade.gif"/>
 
 <br>
 
 <h3 align="center">Atalhos para preencimento dos campos no formulário para cadastro de contrato para fornecimento de energia</h3>
-<img align="center"  src = "./midias/contrato_energia.gif"/>
+<img align="center"  src = "./midias/dod/contrato_energia.gif"/>
 
 <br>
 
 <h3 align="center"> Atalhos para preencimento dos campos no formulário para cadastro de contrato fornecimento água</h3>
-<img align="center"  src = "./midias/contrato_agua.gif"/>
+<img align="center"  src = "./midias/dod/contrato_agua.gif"/>
 
 <br>
 
 <h3 align="center"> Demo dos atalhos de preenchimento nos campos do formulário de cadastro das contas (água e energia)</h3>
-<img align="center"  src = "./midias/atalhos.gif"/>
+<img align="center"  src = "./midias/dod/atalhos.gif"/>
 
 <br>
 
 <h3 align="center"> Quadros para edição e deleção de dados cadastrados</h3>
-<img align="center"  src = "./midias/quadros.gif"/>
+<img align="center"  src = "./midias/dod/quadros.gif"/>
 
 
 

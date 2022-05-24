@@ -95,31 +95,31 @@ Após o cliente aprovar o protótipo apresentado, o desenvolvimento do projeto s
 <h2 id="wireframes">Wireframes</h2>
 
 <h3 align="center">Formulário para cadastro de concessionárias
-<img src="./midias/dor/form_concessionaria.png" width="800">
+<img src="./midias/dor/wireframes/form_concessionaria.png" width="800">
 
-<h3 align="center">Formulário para cadastro de unidades>
-<img src="./midias/dor/form_unidade.png" width="800"></h3>
+<h3 align="center">Formulário para cadastro de unidades
+<img src="./midias/dor/wireframes/form_unidade.png" width="800"></h3>
 
-<h3 align="center">Formulário para cadastro de contrato de fornecimento de água>
-<img src="./midias/dor/contrato_agua.png" width="800"></h3>
+<h3 align="center">Formulário para cadastro de contrato de fornecimento de água
+<img src="./midias/dor/wireframes/contrato_agua.png" width="800"></h3>
 
-<h3 align="center">Formulário para cadastro de contrato de fornecimento de energia>
-<img src="./midias/dor/contrato_energia.png" width="800"></h3>
+<h3 align="center">Formulário para cadastro de contrato de fornecimento de energia
+<img src="./midias/dor/wireframes/contrato_energia.png" width="800"></h3>
 
-<h3 align="center">Formulário para cadastro conta/fatura de água>
-<img src="./midias/dor/pt1_conta_agua.png" width="800">
-<img src="./midias/dor/pt2_conta_agua.png" width="800"></h3>
+<h3 align="center">Formulário para cadastro conta/fatura de água
+<img src="./midias/dor/wireframes/pt1_conta_agua.png" width="800">
+<img src="./midias/dor/wireframes/pt2_conta_agua.png" width="800"></h3>
 
-<h3 align="center">Formulário para cadastro conta/fatura de energia>
-<img src="./midias/dor/pt1_conta_energia.png" width="800">
-<img src="./midias/dor/pt2_conta_energia.png" width="800"></h3>
+<h3 align="center">Formulário para cadastro conta/fatura de energia
+<img src="./midias/dor/wireframes/pt1_conta_energia.png" width="800">
+<img src="./midias/dor/wireframes/pt2_conta_energia.png" width="800"></h3>
 
 <br>
 
 <h2 id="burndown_sprint_1">Burndown da Sprint<h2>
 
 <h3 align="center">
-<img align="center" src="./midias/burndownSprint_1.jpeg" width="600"/></h3>
+<img align="center" src="./midias/dod/burndownSprint_1.jpeg" width="600"/></h3>
 
 <br>
 
