@@ -88,21 +88,29 @@ Nesta sprint mantivemos o foco na implementação da ligação entre as tabelas 
 
 <h2 id="wireframes">Wireframes</h2>
 
-<h3 align="center">Quadro de controle para concessionárias cadastradas</h3>
-<img align="center" src="./midias/dor/wireframes/quadro_concessionaria.png" width="800">
+<h3 align="center">Quadro de controle para concessionárias ,cadastradas</h3>
+
+<!-- divs abaixo usadas somente para centralizar as imagens, o align center não estava funciionando na tag img -->
+<div align="center">
+<img src="./midias/dor/wireframes/quadro_concessionaria.png" width="800"></div>
 <h4> • Leitura</h4>
-<img align="center" src="./midias/dor/wireframes/quadro_concessionaria_read.png" width="800">
+<div align="center">
+<img src="./midias/dor/wireframes/quadro_concessionaria_read.png" width="800"></div>
 <h4> • Edição</h4>
-<img align="center" src="./midias/dor/wireframes/quadro_concessionaria_update.png" width="800">
+<div align="center">
+<img align="center" src="./midias/dor/wireframes/quadro_concessionaria_update.png" width="800"></div>
 
 <br>
 
 <h3 align="center">Quadro de controle para unidades cadastradas</h3>
-<img align="center" src="./midias/dor/wireframes/quadro_unidade.png" width="800">
+<div align="center">
+<img src="./midias/dor/wireframes/quadro_unidade.png" width="800"></div>
 <h4> • Leitura</h4>
-<img align="center" src="./midias/dor/wireframes/quadro_unidade_read.png" width="800">
+<div align="center">
+<img src="./midias/dor/wireframes/quadro_unidade_read.png" width="800"></div>
 <h4> • Edição</h4>
-<img align="center" src="./midias/dor/wireframes/quadro_unidade_update.png" width="800">
+<div align="center">
+<img src="./midias/dor/wireframes/quadro_unidade_update.png" width="800"></div>
 
 <br>
 
