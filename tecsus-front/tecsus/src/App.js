@@ -11,11 +11,15 @@ import Concessionaria from './pages/concessionaria';
 import ContratoAgua from './pages/contrato_agua';
 import ContratoEnergia from './pages/contrato_energia';
 import Unidade from './pages/unidade';
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 import Quadro_cons from './pages/quadro_cons';
 import Quadro_agua1 from './pages/quadro_agua';
 
 =======
+=======
+import GraficoAgua from './pages/grafico_agua';
+>>>>>>> Stashed changes
 import QuadroConcessionaria from './pages/quadro_concessionaria'
 import QuadroUnidade from './pages/quadro_unidades/quadroUnidade';
 import QuadroContratoAgua from './pages/quadro_contrato_agua/quadroContratoAgua';
@@ -33,6 +37,7 @@ function Main() {
               <Route path="/concessionaria" element={<Concessionaria />}/>
               <Route path="/contrato_agua" element={<ContratoAgua />}/>
               <Route path="/contrato_energia" element={<ContratoEnergia />}/>
+              <Route path="/grafico_agua" element={<GraficoAgua />}/>
               <Route path="/unidade" element={<Unidade />}/>
 <<<<<<< HEAD
               <Route path="/quadro_cons" element={<Quadro_cons />}/> 
