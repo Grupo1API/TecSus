@@ -92,13 +92,13 @@ public ResponseEntity<?> excluirEnergia(@RequestBody ContaEnergia exclusao) {
 	return new ResponseEntity<>(HttpStatus.OK);
 }
 
-@RequestMapping ("/conta/energia/{contaenergia_contrato_id}")
-public @ResponseBody ResponseEntity<ContaEnergia> findAllContaEnergia(){
+@RequestMapping ("/conta/energia/{unidade_id}")
+public @ResponseBody ResponseEntity<List<ContaEnergia>> findAllContaEnergia(){
 List<ContaEnergia> contasEnergia = repositorio.findAllContaEnergia();
 if(contasEnergia == null) {
-    return new ResponseEntity<ContaEnergia>(HttpStatus.BAD_REQUEST);
+    return new ResponseEntity<List<ContaEnergia>>(HttpStatus.BAD_REQUEST);
 }
-return new ResponseEntity<ContaEnergia>(HttpStatus.OK);
+return new ResponseEntity<List<ContaEnergia>>(contasEnergia,HttpStatus.OK);
 }  
 
 
