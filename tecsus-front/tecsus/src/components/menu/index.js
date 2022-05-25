@@ -73,22 +73,32 @@ export default function Dashboard() {
   const [openContas, setOpenContas] = useState(false)
   const [openContratos, setOpenContratos] = useState(false)
   const [openPainel, setOpenPainel] = useState(false)
+  const[openrelatorios, setOpenrelatorios] = useState(false)
 
   const handleClickContas= () => {
     setOpenContas(!openContas);
     setOpenContratos(false);
     setOpenPainel(false);
+    setOpenrelatorios(false);
 
   };
   const handleClickContratos= () => {
     setOpenContratos(!openContratos);
     setOpenContas(false);
     setOpenPainel(false);
+    setOpenrelatorios(false);
   };
   const handleClickPainel= () => {
     setOpenPainel(!openPainel);
     setOpenContratos(false);
     setOpenContas(false);
+    setOpenrelatorios(false);
+  };
+  const handleClickRelatorios= () => {
+    setOpenrelatorios(!openrelatorios);
+    setOpenContratos(false);
+    setOpenContas(false);
+    setOpenPainel(false);
   };
 
   return (
@@ -200,12 +210,34 @@ export default function Dashboard() {
               </ListItem>
             </Link>
 
-            <ListItem button className={classes.itens}>
+            {/* <ListItem button className={classes.itens}>
               <ListItemIcon>
                 <AssessmentIcon />
               </ListItemIcon>
               <ListItemText primary="Relátorios" />
+            </ListItem> */}
+
+            <ListItem button onClick={handleClickRelatorios} className={classes.itens}>
+              <ListItemIcon>
+              <AssessmentIcon />
+              </ListItemIcon>
+              <ListItemText primary="Relatorios" />
+              {openrelatorios ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
+            <Collapse in={openrelatorios} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                
+                <Link to='/grafico_agua' className={classes.link} >
+                  <ListItem  button className={classes.nested}>
+                    <ListItemIcon>
+                    <AssessmentIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Relatório Água" />
+                  </ListItem>
+                </Link>
+
+              </List>
+            </Collapse>
 
             <ListItem button onClick={handleClickPainel} className={classes.itens}>
               <ListItemIcon>

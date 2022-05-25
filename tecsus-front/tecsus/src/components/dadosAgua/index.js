@@ -12,12 +12,12 @@ import {
   import "./style.css";
   
   function Grafico() {
-    const [dadosUsina, setDadosUsina] = useState([]);
+    const [dadosAgua, setDadosAgua] = useState([]);
     const [variavelY, setVariavelY] = useState();
     const [legenda, setLegenda] = useState();
   
     useEffect(() => {
-      async function dadosUsina() {
+      async function dadosAgua() {
         const response = await fetch(
           "http://localhost:8080/contadeagua",
           {
@@ -26,11 +26,11 @@ import {
         );
   
         const data = await response.json();
-        setDadosUsina(data);
+        setDadosAgua(data);
       }
-      dadosUsina();
+      dadosAgua();
     }, []);
-    const  dataConsumo = dadosUsina.map((x) => {
+    const  dataConsumo = dadosAgua.map((x) => {
       let dataNovo = new Date(x.data_emissao)
       console.log(dataNovo)
       return {
@@ -50,7 +50,7 @@ import {
     // });
 
 
-    const daTaValorTotal = dadosUsina.map((x) => {
+    const daTaValorTotal = dadosAgua.map((x) => {
       let dataNovo = new Date(x.data_emissao)
       console.log(dataNovo)
       return {
