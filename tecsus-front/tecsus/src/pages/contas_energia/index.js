@@ -431,7 +431,7 @@ function ContaEnergia() {
               />
             </div>
 
-            <p>Descrição do Consumo</p>
+            <h4>Descrição do Consumo</h4>
 
             <div className="coluna">
               <TextField
@@ -534,7 +534,7 @@ function ContaEnergia() {
               />
             </div>
 
-            <p>Itens Financeiros (Valores Totais)</p>
+            <h4>Itens Financeiros (Valores Totais)</h4>
 
             <div className="coluna">
               <NumberFormat
@@ -571,7 +571,7 @@ function ContaEnergia() {
               />
             </div>
 
-            <p>Tributos</p>
+            <h4>Tributos</h4>
 
             <div className="coluna">
               <NumberFormat

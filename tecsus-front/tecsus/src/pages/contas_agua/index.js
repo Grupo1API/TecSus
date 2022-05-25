@@ -4,6 +4,7 @@ import { useState } from "react";
 import NumberFormat from "react-number-format";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import axios from "axios";
 
 function ContaAgua() {
   const [n_fornecimento, setN_fornecimento] = useState("");
@@ -36,6 +37,7 @@ function ContaAgua() {
   const [taxa_regulacao, setTaxa_regulacao] = useState("");
   const [data_vencimento, setData_vencimento] = useState("");
   const [contratoId, setContratoId] = useState("");
+  const [file, setFile] = useState();
 
   async function buscaContrato() {
     try {
@@ -60,69 +62,19 @@ function ContaAgua() {
     }
   }
 
-  //   // function constructor(props) {
-  //   //     super(props);
-  //   //     this.state = {
-  //   //         open: false,
-  //   //         files: []
-  //   //     };
-  //   // }
-  //   const b64toBlob = (b64Data, contentType = "", sliceSize = 512) => {
-  //     const byteCharacters = atob(b64Data);
-  //     const byteArrays = [];
-
-  //     for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-  //       const slice = byteCharacters.slice(offset, offset + sliceSize);
-
-  //       const byteNumbers = new Array(slice.length);
-  //       for (let i = 0; i < slice.length; i++) {
-  //         byteNumbers[i] = slice.charCodeAt(i);
-  //       }
-
-  //       const byteArray = new Uint8Array(byteNumbers);
-  //       byteArrays.push(byteArray);
-  //     }
-
-  //     const blob = new Blob(byteArrays, { type: contentType });
-  //     return blob;
-  //   };
-
-  //   function onChange(e) {
-  //     let files = e.target.files;
-  //     const blobb = new Blob(files, { type: "application/pdf" });
-  //     const blobUrl = URL.createObjectURL(blobb);
-  //     console.log(blobUrl);
-  //     setUpload(blobUrl);
-  //     // const contentType = "application/pdf";
-  //     // const blobb = b64toBlob(files.name, contentType);
-  //     // const blobUrl = URL.createObjectURL(blobb);
-
-  //     let reader = new FileReader();
-  //     reader.readAsDataURL(files[0]);
-
-  //     reader.onload = (e) => {
-  //       const formData = e.target.result;
-  //       const blobb = new Blob(formData, { type: "application/pdf" });
-  //       //   const contentType = "application/pdf";
-  //       //    = b64toBlob(formData, contentType);
-  //       //   setUpload(URL.createObjectURL(blobb));
-  //       console.log(blobb);
-  //     };
-  //   }
-
-  async function carregarArquivo(file) {
-    if (file !== undefined) {
-      const dado = new FormData();
-      dado.append("file", file);
-      await fetch("http://localhost:8080/contadeagua/cadastro", {
-        method: "POST",
-        body: dado,
-      }); // rota para fazer o upload no back end
-    }
-  }
-
   async function handleSubmit(event) {
     event.preventDefault();
+    const url = "http://localhost:8080/contadeagua/upload";
+    const formData = new FormData();
+    formData.append("file", file);
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    };
+    axios.post(url, formData, config).then((response) => {
+      console.log(response.data);
+    });
     const dados = {
       n_documento: documento,
       at_monet: at_monet,
@@ -182,6 +134,7 @@ function ContaAgua() {
       setJuros_moradia("");
       setTaxa_regulacao("");
       setData_vencimento("");
+      setFile("");
       return;
     } catch (error) {
       return console.log(error.message);
@@ -581,7 +534,7 @@ function ContaAgua() {
                 id="contained-button-file"
                 multiple
                 type="file"
-                onChange={(e) => carregarArquivo(e.target.files[0])}
+                onChange={(e) => setFile(e.target.files[0])}
               />
               <label htmlFor="contained-button-file">
                 <Button
@@ -596,7 +549,7 @@ function ContaAgua() {
               <button type="submit" className="cadastrar" id="botao_cad">
                 ENVIAR
               </button>
-              {/* <p>Cadastro realizado com exito</p> */}
+              {/* <h4>Cadastro realizado com exito</h4> */}
             </div>
           </form>
         </div>
