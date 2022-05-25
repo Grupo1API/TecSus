@@ -93,13 +93,13 @@ public ResponseEntity<?> excluirContaAgua(@RequestBody ContaAgua exclusao) {
 	return new ResponseEntity<>(HttpStatus.OK);
 }
 
-@RequestMapping ("/conta/agua/{contaagua_contrato_id}")
-public @ResponseBody ResponseEntity<ContaAgua> findAllContaAgua(){
+@RequestMapping ("/conta/agua/{unidade_id}")
+public @ResponseBody ResponseEntity<List<ContaAgua>> findAllContaAgua(){
 List<ContaAgua> contasAgua = repositorio.findAllContaAgua();
 if(contasAgua == null) {
-    return new ResponseEntity<ContaAgua>(HttpStatus.BAD_REQUEST);
+    return new ResponseEntity<List<ContaAgua>>(HttpStatus.BAD_REQUEST);
 }
-return new ResponseEntity<ContaAgua>(HttpStatus.OK);
+return new ResponseEntity<List<ContaAgua>>(contasAgua, HttpStatus.OK);
 }  
 
 }
