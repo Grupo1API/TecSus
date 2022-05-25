@@ -8,7 +8,7 @@
   <a href ="#proposta"> Proposta </a>  • 
   <a href ="#cronograma-das-sprints"> Sprints </a>  • 
   <a href ="#tecnologias-utilizadas"> Tecnologias </a>  •
-  <a href ="#equipe"> Equipe </a> 
+  <a href ="#table_equipe"> Equipe </a> 
  
 </p>
 
@@ -42,7 +42,6 @@
 - <img src = "./readme/grupoAPI/feito.jpeg" /> Cadastros de Unidades, Concessionárias, Contratos;
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Cadastro do usuário e seus perfis (administrador, gestor e digitador);
 - <img src = "./readme/grupoAPI/feito.jpeg" /> Cadastro (digitação) da conta de água e energia;
-- <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Registro de log de operações (cadastro e deleção);
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Relatório de consumo total de água mensal, anual e média;
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" />  Relatório de consumo total de energia mensal, anual e média;
 - <img src = "./readme/grupoAPI/feito.jpeg" /> Painel adminitrativo para alterações;
@@ -72,16 +71,18 @@ do contrato);
 <br>
 <!--add cronograma sprints figma-->
 <h1 align="center"> 
-<img src = "./readme/framesFigma/cronogramaSprints.png" width="600"/></h1>
+<img src = "./readme/framesFigma/cronogramaSprints.png" width="800"/></h1>
 
-<br id="tecnologias-utilizadas"> 
+<div id="tecnologias-utilizadas"> 
 
-## 🖥️ Tecnologias Utilizadas
+  ## 🖥️ Tecnologias Utilizadas
 
 - **Banco de Dados:** MySQL;
 - **Back-end:** Spring, Java;
 - **Front-end:** HTML, CSS, JavaScript, React;
 - **Ferramentas:** Visual Studio Code, Eclipse, Figma, Git e Github;   
+
+<div>
 
 <!--add stacks figma-->
 <h1 align="center"> 
@@ -90,15 +91,63 @@ do contrato);
 
 ## 👨‍💻 Equipe
 
-<div id="tabela_equipe" align="center" width="400"> 
-
-| Nome                  | Função        | Linkedin                                                                 | GitHub                                         | Avatar                                                          |
-| --------------------- | ------------- | ------------------------------------------------------------------------ | ---------------------------------------------- | --------------------------------------------------------------- |
-| **Vitória Moura**     |  Scrum Master | [@LinkedIn](https://www.linkedin.com/in/vit%C3%B3ria-moura-6393391b0/)   | [@GitHub](https://github.com/vitoriasaturnino)    | <img src = "./readme/integrantes/vitoria.jpeg" width="40" >                                   |
-| **Julio Cesar**       | Product Owner | [@LinkedIn](https://www.linkedin.com/in/juliocesar2811/)                 | [@GitHub](https://github.com/juliocesar1316)   | <img src = "./readme/integrantes/julio.jpeg" width="40" >                   |
-| **Douglas Queiroz**   | Desenvolvedor | [@LinkedIn](https://www.linkedin.com/in/douglas-queiroz-3b9a72212/)      | [@GitHub](https://github.com/douglaswe)        | <img src = "./readme/integrantes/douglas.jpeg" width="40">
-| **Francisco Quirino** | Desenvolvedor | [@LinkedIn](https://www.linkedin.com/in/francisco-quirino-4087281b1)     | [@GitHub](https://github.com/ciscoquirino)     | <img src = "./readme/integrantes/francisco.jpeg" alt="drawing" width="40" > |
-| **Juliana Maria**     | Desenvolvedora | [@LinkedIn](https://www.linkedin.com/in/juliana-maria-a0b0a0124)         | [@GitHub](https://github.com/JulianaMaria-Lab) | <img src = "./readme/integrantes/juliana maria.jpeg" width="40">                                   |
-| **Marcelo Uchoas**    | Desenvolvedor | [@LinkedIn](https://www.linkedin.com/in/marcelo-uch%C3%B4as-de-oliveira-b2536a18b/)  |  [@GitHub](https://github.com/marcelouchoas)    | <img src = "./readme/integrantes/marcelo.jpeg" width="40">                                   |
-| **Richard Rafael**    | Desenvolvedor |  [@LinkedIn](https://www.linkedin.com/mwlite/in/richard-soares-002195221) | [@GitHub](https://github.com/Richardrafael)    | <img src = "./readme/integrantes/richard.jpeg" width="40">                                   |
-</div>
+<div id="table_equipe" align="center" width="400">
+    <table>
+      <tr id="head_table">
+        <th>Nome</th>
+        <th>Função</th>
+        <th>LinkedIn</th>
+        <th>GitHub</th>
+        <th>Avatar</th>
+      </tr>
+      <tr id="linha_table">
+        <td>Vitória Moura</td>
+        <td>Scrum Master</td>
+        <td><a href="https://www.linkedin.com/in/vit%C3%B3ria-moura-6393391b0/">@LinkedIn</a></td>
+        <td><a href="https://github.com/vitoriasaturnino">@GitHub</a></td>
+        <td><img src = "./readme/integrantes/vitoria.jpeg" width="40"></td>
+    </tr>
+      <tr id="linha_table">
+        <td>Julio Cesar</td>
+        <td>Product Owner</td>
+        <td><a href="https://www.linkedin.com/in/juliocesar2811/">@LinkedIn</a></td>
+        <td><a href="https://github.com/juliocesar1316">@GitHub</a></td>
+        <td><img src = "./readme/integrantes/julio.jpeg" width="40"></td>
+      </tr>
+      <tr id="linha_table">
+        <td>Douglas Queiroz</td>
+        <td>Desenvolvedor</td>
+        <td><a href="https://www.linkedin.com/in/douglas-queiroz-3b9a72212/">@LinkedIn</a></td>
+        <td><a href="https://github.com/douglaswe">@GitHub</a></td>
+        <td> <img src = "./readme/integrantes/douglas.jpeg" width="40"></td>
+      </tr>
+      <tr id="linha_table">
+        <td>Francisco Quirino</td>
+        <td>Desenvolvedor</td>
+        <td><a href="https://www.linkedin.com/in/francisco-quirino-4087281b1">@LinkedIn</a></td>
+        <td><a href="https://github.com/ciscoquirino">@GitHub</a></td>
+        <td><img src = "./readme/integrantes/francisco.jpeg" width="40"></td>
+      </tr>
+      <tr id="linha_table">
+        <td>Juliana Maria</td>
+        <td>Desenvolvedora</td>
+        <td><a href="https://www.linkedin.com/in/juliana-maria-a0b0a0124">@LinkedIn</a></td>
+        <td><a href="https://github.com/JulianaMaria-Lab">@GitHub</a></td>
+        <td><img src = "./readme/integrantes/juliana maria.jpeg" width="40"></td>
+      </tr>
+      <tr id="linha_table">
+        <td>Marcelo Uchoas</td>
+        <td>Desenvolvedor</td>
+        <td><a href="https://www.linkedin.com/in/marcelo-uch%C3%B4as-de-oliveira-b2536a18b/">@LinkedIn</a></td>
+        <td><a href="https://github.com/marcelouchoas">@GitHub</a></td>
+        <td><img src = "./readme/integrantes/marcelo.jpeg" width="40"></td>
+      </tr>
+      <tr id="linha_table">
+        <td>Richard Rafael</td>
+        <td>Desenvolvedor</td>
+        <td><a href="https://www.linkedin.com/mwlite/in/richard-soares-002195221">@LinkedIn</a></td>
+        <td><a href="https://github.com/Richardrafael">@GitHub</a></td>
+        <td><img src = "./readme/integrantes/richard.jpeg" width="40"></td>
+      </tr>
+    </table>
+  </div>

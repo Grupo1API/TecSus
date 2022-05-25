@@ -85,6 +85,7 @@ function Unidade(){
                                 id='nome'
                                 className='input'
                                 type='text'
+                                required={true}
                                 placeholder='Nome'
                                 label="Nome"
                                 value={nome}
@@ -96,6 +97,7 @@ function Unidade(){
                                 id='cpf_cnpj'
                                 className='input'
                                 type='text'
+                                required={true}
                                 placeholder='CPF/CNPJ'
                                 label="CPF/CNPJ"
                                 value={cpf_cnpj}
@@ -106,6 +108,7 @@ function Unidade(){
                                 format="(##) #####-####" 
                                 id='telefone'
                                 className='input'
+                                required={true}
                                 mask="_"
                                 value={telefone}
                                 label="Telefone/Celular"
@@ -125,6 +128,7 @@ function Unidade(){
                                 className='input'
                                 id='email'
                                 type='email'
+                                required={true}
                                 label="email"
                                 placeholder='teste@teste.com'
                                 value={email}
@@ -136,6 +140,7 @@ function Unidade(){
                                 id='cep' 
                                 className='input'
                                 type='text'
+                                required={true}
                                 placeholder='CEP'
                                 label="CEP"
                                 value={cep}
@@ -198,6 +203,7 @@ function Unidade(){
                                 id='num_resid'
                                 className='input'
                                 type='text'
+                                required={true}
                                 placeholder='N° Residencial/Empresarial'
                                 label="N° Residencial/Empresarial"
                                 value={num_resid}

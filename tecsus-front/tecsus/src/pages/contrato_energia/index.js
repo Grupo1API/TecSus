@@ -221,6 +221,7 @@ function ContratoEnergia() {
                 id="grupo_sub"
                 className="input"
                 type="text"
+                required={true}
                 label="Grupo/Subgrupo"
                 placeholder="Grupo/Subgrupo"
                 value={grupo_sub}
@@ -231,6 +232,7 @@ function ContratoEnergia() {
                 id="classe_sub"
                 className="input"
                 type="text"
+                required={true}
                 label="Classe/Subclasse"
                 placeholder="Classe/Subclasse"
                 value={classe_sub}
@@ -255,6 +257,7 @@ function ContratoEnergia() {
                 id="modalidade_taf"
                 className="input"
                 type="text"
+                required={true}
                 label="Modalidade Tarifaria"
                 placeholder="Modalidade Tarifaria"
                 value={modalidade_taf}
@@ -265,6 +268,7 @@ function ContratoEnergia() {
                 id="tensao_nominal"
                 className="input"
                 type="text"
+                required={true}
                 label="Tensão Nominal"
                 placeholder="Tensão Nominal"
                 value={tensao_nominal}
@@ -274,6 +278,7 @@ function ContratoEnergia() {
               <TextField
                 id="roteiro_leitura"
                 className="input"
+                required={true}
                 type="text"
                 label="Roteiro de Leitura"
                 placeholder="Roteiro de Leitura"
@@ -288,6 +293,7 @@ function ContratoEnergia() {
                 id="medidor"
                 className="input"
                 type="text"
+                required={true}
                 label="Nª Medidor"
                 placeholder="Nª Medidor"
                 value={medidor}
@@ -298,9 +304,9 @@ function ContratoEnergia() {
                 prefix={"R$ "}
                 id="valor_medio"
                 className="input"
+                required={true}
                 floatValue={true}
                 value={valor_medio}
-                required={true}
                 label="Valor Medio (R$)"
                 placeholder="Valor Medio (R$)"
                 customInput={TextField}
@@ -314,8 +320,8 @@ function ContratoEnergia() {
                 id="numero_instalacao"
                 className="input"
                 type="text"
+                required={true}
                 label="Nª Instalacao"
-                required
                 placeholder="Nª Instalacao"
                 value={numero_instalacao}
                 onChange={(e) => setNumero_instalacao(e.target.value)}
@@ -406,6 +412,7 @@ function ContratoEnergia() {
                 id="nResidencial_Empresarial"
                 className="input"
                 type="text"
+                required={true}
                 label="Nª Residencial/Empresarial"
                 placeholder="Nª Residencial/Empresarial"
                 value={nResidencial_empresarial}

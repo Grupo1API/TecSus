@@ -8,16 +8,17 @@ export default function EditEnergia({ dados, modalEdit }) {
   const classes = useStyles();
 
   const [concessionaria, setConcessionaria] = useState(
-    dados.contrato_concessionaria_id.nome
+    dados.contrato_concessionaria_id
   );
+  
   const [cnpj_concessionaria, setCnpj_concessionaria] = useState(
-    dados.contrato_concessionaria_id.cnpj
+    dados.contrato_concessionaria_id
   );
   const [nome_cliente, setNome_cliente] = useState(
-    dados.contrato_unidade_id.nome
+    dados.contrato_unidade_id
   );
   const [cpf_cnpj_cliente, setCpf_cnpj_cliente] = useState(
-    dados.contrato_unidade_id.cpf_cnpj
+    dados.contrato_unidade_id
   );
   const [codigo_identificador, setCodigo_identificador] = useState(
     dados.codigo_identificador

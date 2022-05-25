@@ -92,7 +92,7 @@ export default function Quadro_concessionaria() {
     const data ={
       id:id
     }
-    await fetch(`http://localhost:8080/concessionaria/excluir`, {
+    await fetch(`http://localhost:8080/contasdeenergia/excluir`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

@@ -1,43 +1,204 @@
-# [Digital Solutions](/readme/grupoAPI/Logo.png)
+<a href="/readme/grupoAPI/Logo.png">Digital Solutions</a>
 
-## :ballot_box_with_check: SPRINT 2
+<h1>:ballot_box_with_check: SPRINT 2</h1>
 
 Nesta sprint mantivemos o foco na implementação da ligação entre as tabelas do banco de dados, na implementação de atalhos para preenchimento de campos do formulário, upload para aquivos (contas de água e energia) e na disponibilização dos dados cadastrados atráves de um quadro que possibilita edições e deleção diretamente pela interface do software.
 <br>
 
-<h1 align="center"> 
-<img src = "./midias/sprint2BacklogPrioridades.png" width="500"/></h1>
+<h1>Sumário</h1>
+<a href="#dor">DOR (Definition od Ready)</a>   <br>
+<a href="#backlog_sprint_2">Backlog Sprint 2</a>   <br>
+<a href="#modelo_de_dados">Modelo de dados</a>   <br>
+<a href="#use_cases">Use Cases</a>   <br>
+<a href="#wireframes">Wireframes</a>   <br>
+<a href="#burndown_sprint_2">Burndowm Sprint 2</a>   <br>
+<a href="#dod">DOD (Definition of Done)</a>   <br>
+<a href="#funcionalidades_sprint_1">Funcionalidades implementadas</a>
+
 <br>
 
-## Burndown da Sprints
+<h1 id="dor">Definition of Ready</h1>
 
-<h1 align="center"> <img src = "./midias/burndownSprint2.png"/></h1>
+<br>
+
+<div id="backlog_sprint_2" align="center"><img src="./midias/dor/backlog2Sprint.png" width="700"></h1></div>
+
+<br>
+
+<h2 id="modelo_de_dados" align="center">Modelo de dados</h2>
+
+<div align="center">
+  <img src="./midias/dor/modelo_de_dados.png" width="800"/>
+</div>
+
+<h2 id="use_cases">Use Cases</h2>
+
+<div id="table_use_cases" align="center" width="400">
+  <table>
+    <tr>
+      <th>User Story id</th>
+      <th>Como um (ator)</th>
+      <th>Eu quero (ação)</th>
+      <th>Para que seja possível (funcionalidade)</th>
+      <th>Prioridade</th>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Administrador</td>
+      <td>Os dados de unidade, concessionaria e contratos devem ser interligados para melhor controle e busca de dados</td>
+      <td>Criar bancos de dados relacional ligando uma unidade para um ou varios contratos e os contratos ligados a uma concessionaria</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Gestor</td>
+      <td>Visualizar todas as unidades cadastradas e poder editar e excluir se for preciso</td>
+      <td>Criar uma aba de controle de dados onde vai ter uma tabela com todas as unidades cadastradas com icones para excluir e editrar</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Gestor</td>
+      <td>Visualizar todas as unidades cadastradas e poder editar e excluir se for preciso</td>
+      <td>Criar uma aba de controle de dados onde vai ter uma tabela com todas as concessionarias cadastradas com icones para excluir e editrar </td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Gestor</td>
+      <td>Visualizar todos os contratos cadastrados e poder editar e excluir se for preciso</td>
+      <td>Criar uma aba de controle de dados onde vai ter uma tabela com todos os contratos cadastradas com icones para excluir e editrar</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Digitador</td>
+      <td>Atalhos para que a digitação das contas e os cadstros sejam mais rapidos e facil </td>
+      <td>Criar atalhos como buscar cpf onde retorna os dados sobre aquele cpf digitado, metodo de tabs e setas do teclado</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Digitador</td>
+      <td>Armazenar o arquivo da conta que acabou de ser digitada</td>
+      <td>Criar um metodo que possa fazer o upload do pdf, imagem, etc da conta para armazenar no banco de dados</td>
+      <td>21</td>
+    </tr>
+  </table>
+</div>
+
+<br>
+
+<h2 id="wireframes">Wireframes</h2>
+
+<h3 align="center">Quadro de controle para concessionárias cadastradas</h3>
+
+<!-- divs abaixo usadas somente para centralizar as imagens, o align center não estava funciionando na tag img -->
+<div align="center">
+  <img src="./midias/dor/wireframes/concessionaria/quadro_concessionaria.png" width="800">
+</div>
+<h4> • Leitura</h4>
+<div align="center">
+  <img src="./midias/dor/wireframes/concessionaria/quadro_concessionaria_read.png" width="800">
+</div>
+<h4> • Edição</h4>
+<div align="center">
+  <img align="center" src="./midias/dor/wireframes/concessionaria/quadro_concessionaria_update.png" width="800">
+</div>
+
+<br>
+
+<h3 align="center">Quadro de controle para unidades cadastradas</h3>
+<div align="center">
+  <img src="./midias/dor/wireframes/unidade/quadro_unidade.png" width="800">
+</div>
+<h4> • Leitura</h4>
+<div align="center">
+  <img src="./midias/dor/wireframes/unidade/quadro_unidade_read.png" width="800">
+</div>
+<h4> • Edição</h4>
+<div align="center">
+  <img src="./midias/dor/wireframes/unidade/quadro_unidade_update.png" width="800">
+</div>
+
+<br>
+
+<h3 align="center">Quadro de controle para contratos de água</h3>
+<div align="center">
+  <img src="./midias/dor/wireframes/contrato_agua/quadro_contrato_agua.png" width="800">
+</div>
+<h4> • Leitura</h4>
+<div align="center">
+  <img src="./midias/dor/wireframes/contrato_agua/quadro_contrato_agua_read.png" width="800">
+</div>
+<h4> • Edição</h4>
+<div align="center">
+  <img src="./midias/dor/wireframes/contrato_agua/quadro_contrato_agua_update.png" width="800">
+</div>
+
+<br>
+
+<h3 align="center">Quadro de controle para contratos de energia</h3>
+<div align="center">
+  <img src="./midias/dor/wireframes/contrato_energia/quadro_contrato_energia.png" width="800">
+</div>
+<h4> • Leitura</h4>
+<div align="center">
+  <img src="./midias/dor/wireframes/contrato_energia/quadro_contrato_energia_read.png" width="800">
+</div>
+<h4> • Edição</h4>
+<div align="center">
+  <img src="./midias/dor/wireframes/contrato_energia/quadro_contrato_energia_update.png" width="800">
+</div>
+
+<br>
+
+<h2 id="burndown_sprint_2">Burndown da Sprint<h2>
+
+<h3 align="center">
+  <img align="center" src="./midias/dod/burndownSprint2.png" width="600"/>
+</h3>
 
 <br> 
 
-## 🖥️ Funcionalidades da Sprint
-#
+<h1 id="dod">Definition of Done<h1>
+
+<h2 id="funcionalidades_sprint_1">Funcionalidades da Sprint</h2>
+
+<br>
 
 <h3 align="center">Banco de Dados Relacional</h3>
-<h1 align="center"> <img src = "./midias/bancoDados.gif"/></h1>
+<img align="center" src = "./midias/dod/bancoDados.gif"/>
+
+<br>
 
 <h3 align="center">Atalhos para preencimento dos campos no formulário para cadastro de Concessionário</h3>
-<h1 align="center"> <img src = "./midias/cadastro_concessionaria.gif"/></h1>
+<img align="center" src = "./midias/dod/cadastro_concessionaria.gif"/>
+
+<br>
 
 <h3 align="center">Atalhos para preencimento dos campos no formulário para cadastro de Unidades</h3>
-<h1 align="center"> <img src = "./midias/cadastro_unidade.gif"/></h1>
+<img src = "./midias/dod/cadastro_unidade.gif"/>
+
+<br>
 
 <h3 align="center">Atalhos para preencimento dos campos no formulário para cadastro de contrato para fornecimento de energia</h3>
-<h1 align="center"> <img src = "./midias/contrato_energia.gif"/></h1>
+<img align="center"  src = "./midias/dod/contrato_energia.gif"/>
 
-<h3 align="center">Atalhos para preencimento dos campos no formulário para cadastro de contrato fornecimento água</h3>
-<h1 align="center"> <img src = "./midias/contrato_agua.gif"/></h1>
+<br>
 
-<h3 align="center">Demo dos atalhos de preenchimento nos campos do formulário de cadastro das contas (água e energia)</h3>
-<h1 align="center"> <img src = "./midias/atalhos.gif"/></h1>
+<h3 align="center"> Atalhos para preencimento dos campos no formulário para cadastro de contrato fornecimento água</h3>
+<img align="center"  src = "./midias/dod/contrato_agua.gif"/>
 
-<h3 align="center">Quadros para edição e deleção de dados cadastrados</h3>
-<h1 align="center"> <img src = "./midias/quadros.gif"/></h1>
+<br>
+
+<h3 align="center"> Demo dos atalhos de preenchimento nos campos do formulário de cadastro das contas (água e energia)</h3>
+<img align="center"  src = "./midias/dod/atalhos.gif"/>
+
+<br>
+
+<h3 align="center"> Quadros para edição e deleção de dados cadastrados</h3>
+<img align="center"  src = "./midias/dod/quadros.gif"/>
 
 
 
