@@ -112,7 +112,7 @@ import {
             variant="outlined"
             onClick={() => {
               setVariavelY(dataConsumo);
-              setLegenda("Consumo");
+              setLegenda("Consumo Mensal");
             }}
           >
             Consumo(M3)
