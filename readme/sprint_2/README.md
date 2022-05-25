@@ -18,6 +18,7 @@ Nesta sprint mantivemos o foco na implementação da ligação entre as tabelas 
 <br>
 
 <h1 id="dor">Definition of Ready</h1>
+
 <br>
 
 <div id="backlog_sprint_2" align="center"><img src="./midias/dor/backlog2Sprint.png" width="700"></h1></div>
@@ -26,7 +27,9 @@ Nesta sprint mantivemos o foco na implementação da ligação entre as tabelas 
 
 <h2 id="modelo_de_dados" align="center">Modelo de dados</h2>
 
-<div align="center"><img src="./midias/dor/modelo_de_dados.png" width="800"/></div>
+<div align="center">
+  <img src="./midias/dor/modelo_de_dados.png" width="800"/>
+</div>
 
 <h2 id="use_cases">Use Cases</h2>
 
@@ -88,55 +91,73 @@ Nesta sprint mantivemos o foco na implementação da ligação entre as tabelas 
 
 <h2 id="wireframes">Wireframes</h2>
 
-<h3 align="center">Quadro de controle para concessionárias ,cadastradas</h3>
+<h3 align="center">Quadro de controle para concessionárias cadastradas</h3>
 
 <!-- divs abaixo usadas somente para centralizar as imagens, o align center não estava funciionando na tag img -->
 <div align="center">
-<img src="./midias/dor/wireframes/quadro_concessionaria.png" width="800"></div>
+  <img src="./midias/dor/wireframes/concessionaria/quadro_concessionaria.png" width="800">
+</div>
 <h4> • Leitura</h4>
 <div align="center">
-<img src="./midias/dor/wireframes/quadro_concessionaria_read.png" width="800"></div>
+  <img src="./midias/dor/wireframes/concessionaria/quadro_concessionaria_read.png" width="800">
+</div>
 <h4> • Edição</h4>
 <div align="center">
-<img align="center" src="./midias/dor/wireframes/quadro_concessionaria_update.png" width="800"></div>
+  <img align="center" src="./midias/dor/wireframes/concessionaria/quadro_concessionaria_update.png" width="800">
+</div>
 
 <br>
 
 <h3 align="center">Quadro de controle para unidades cadastradas</h3>
 <div align="center">
-<img src="./midias/dor/wireframes/quadro_unidade.png" width="800"></div>
+  <img src="./midias/dor/wireframes/unidade/quadro_unidade.png" width="800">
+</div>
 <h4> • Leitura</h4>
 <div align="center">
-<img src="./midias/dor/wireframes/quadro_unidade_read.png" width="800"></div>
+  <img src="./midias/dor/wireframes/unidade/quadro_unidade_read.png" width="800">
+</div>
 <h4> • Edição</h4>
 <div align="center">
-<img src="./midias/dor/wireframes/quadro_unidade_update.png" width="800"></div>
+  <img src="./midias/dor/wireframes/unidade/quadro_unidade_update.png" width="800">
+</div>
 
 <br>
 
-<!-- <h3 align="center">Quadro de controle para contratos de água</h3>
-<img src="./midias/dor/wireframes/quadro_unidade.png" width="800">
+<h3 align="center">Quadro de controle para contratos de água</h3>
+<div align="center">
+  <img src="./midias/dor/wireframes/contrato_agua/quadro_contrato_agua.png" width="800">
+</div>
 <h4> • Leitura</h4>
-<img align="center" src="./midias/dor/wireframes/quadro_unidade_read.png" width="800">
+<div align="center">
+  <img src="./midias/dor/wireframes/contrato_agua/quadro_contrato_agua_read.png" width="800">
+</div>
 <h4> • Edição</h4>
-<img align="center" src="./midias/dor/wireframes/quadro_unidade_update.png" width="800">
+<div align="center">
+  <img src="./midias/dor/wireframes/contrato_agua/quadro_contrato_agua_update.png" width="800">
+</div>
 
 <br>
 
 <h3 align="center">Quadro de controle para contratos de energia</h3>
-<img align="center" src="./midias/dor/wireframes/quadro_unidade.png" width="800">
+<div align="center">
+  <img src="./midias/dor/wireframes/contrato_energia/quadro_contrato_energia.png" width="800">
+</div>
 <h4> • Leitura</h4>
-<img align="center" src="./midias/dor/wireframes/quadro_unidade_read.png" width="800">
+<div align="center">
+  <img src="./midias/dor/wireframes/contrato_energia/quadro_contrato_energia_read.png" width="800">
+</div>
 <h4> • Edição</h4>
-<img align="center" src="./midias/dor/wireframes/quadro_unidade_update.png" width="800">
+<div align="center">
+  <img src="./midias/dor/wireframes/contrato_energia/quadro_contrato_energia_update.png" width="800">
+</div>
 
 <br>
--->
 
 <h2 id="burndown_sprint_2">Burndown da Sprint<h2>
 
 <h3 align="center">
-<img align="center" src="./midias/burndownSprint2.png" width="600"/></h3>
+  <img align="center" src="./midias/dod/burndownSprint2.png" width="600"/>
+</h3>
 
 <br> 
 
