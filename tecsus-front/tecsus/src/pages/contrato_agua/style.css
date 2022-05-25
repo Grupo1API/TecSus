@@ -6,22 +6,12 @@
     height: 120vh;
     padding-top:20px ;
 }
-
-/* Não sei a função desse trecho de codigo e não apaguei por esse motivo. Vitória
-input[type=number]::-webkit-inner-spin-button { 
-    -webkit-appearance: none;
-    
-}
-input[type=number] { 
-   -moz-appearance: textfield;
-   appearance: textfield;
-} */
-
 .cadastro{
     margin-top: 40px;
 }
 .input{
     margin-top: 10px;
+    width: 15rem;
     background-color: #ffffff;
 }
 .coluna{
