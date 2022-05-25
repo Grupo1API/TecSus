@@ -21,7 +21,6 @@ import AssignmentTurnedInIcon from "@material-ui/icons/AssignmentTurnedIn";
 import BusinessIcon from "@material-ui/icons/Business";
 import LaptopIcon from "@material-ui/icons/Laptop";
 import WarningIcon from "@material-ui/icons/Warning";
-import AssessmentIcon from "@material-ui/icons/Assessment";
 import BuildIcon from "@material-ui/icons/Build";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
@@ -97,10 +96,10 @@ export default function Dashboard() {
     removeDado();
   };
 
-  const acesso = () => {
-    if (dado.usuario === 1) {
+  const nivel = () => {
+    if (dado.acesso === 1) {
       return "Administrador";
-    } else if (dado.usuario === 2) {
+    } else if (dado.acesso === 2) {
       return "Gestor";
     } else {
       return "Digitador";
@@ -127,7 +126,7 @@ export default function Dashboard() {
                 style={{ textTransform: "capitalize" }}
               />
               <ListItemText
-                secondary={dado ? acesso() : ""}
+                secondary={dado ? nivel() : ""}
                 style={{ padding: 0 }}
               />
             </div>
@@ -152,171 +151,354 @@ export default function Dashboard() {
             </Link>
           </ListItem>
           <Divider />
-          <Link to="/" className={classes.link}>
-            <ListItem button className={classes.itens}>
-              <ListItemIcon>
-                <DashboardIcon />
-              </ListItemIcon>
-              <ListItemText primary="Dashboard" />
-            </ListItem>
-          </Link>
 
-          <ListItem
-            button
-            onClick={handleClickContas}
-            className={classes.itens}
-          >
-            <ListItemIcon>
-              <PostAddIcon />
-            </ListItemIcon>
-            <ListItemText primary="Cadastro Contas" />
-            {openContas ? <ExpandLess /> : <ExpandMore />}
-          </ListItem>
-          <Collapse in={openContas} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
+          {dado.acesso === 2 && (
+            <>
+              <Link to="/" className={classes.link}>
+                <ListItem button className={classes.itens}>
+                  <ListItemIcon>
+                    <DashboardIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Dashboard" />
+                </ListItem>
+              </Link>
+
+              <ListItem
+                button
+                onClick={handleClickContas}
+                className={classes.itens}
+              >
+                <ListItemIcon>
+                  <PostAddIcon />
+                </ListItemIcon>
+                <ListItemText primary="Cadastro Contas" />
+                {openContas ? <ExpandLess /> : <ExpandMore />}
+              </ListItem>
+              <Collapse in={openContas} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <Link to="/contas_energia" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <FlashOnIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Energia" />
+                    </ListItem>
+                  </Link>
+
+                  <Link to="/contas_agua" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <WavesIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Água" />
+                    </ListItem>
+                  </Link>
+                </List>
+              </Collapse>
+
+              <Link to="/unidade" className={classes.link}>
+                <ListItem button className={classes.itens}>
+                  <ListItemIcon>
+                    <ApartmentIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Cadastro Unidades" />
+                </ListItem>
+              </Link>
+
+              <ListItem
+                button
+                onClick={handleClickContratos}
+                className={classes.itens}
+              >
+                <ListItemIcon>
+                  <AssignmentTurnedInIcon />
+                </ListItemIcon>
+                <ListItemText primary="Cadastro Contratos" />
+                {openContratos ? <ExpandLess /> : <ExpandMore />}
+              </ListItem>
+
+              <Collapse in={openContratos} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <Link to="/contrato_energia" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <FlashOnIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Energia" />
+                    </ListItem>
+                  </Link>
+
+                  <Link to="/contrato_agua" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <WavesIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Água" />
+                    </ListItem>
+                  </Link>
+                </List>
+              </Collapse>
+
+              <Link to="/concessionaria" className={classes.link}>
+                <ListItem button className={classes.itens}>
+                  <ListItemIcon>
+                    <BusinessIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Cadastro Concessionária" />
+                </ListItem>
+              </Link>
+
+              <ListItem
+                button
+                onClick={handleClickPainel}
+                className={classes.itens}
+              >
+                <ListItemIcon>
+                  <LaptopIcon />
+                </ListItemIcon>
+                <ListItemText primary="Painel de Controle" />
+                {openPainel ? <ExpandLess /> : <ExpandMore />}
+              </ListItem>
+              <Collapse in={openPainel} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <Link to="/quadro_unidade" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <LayersIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Quadro Unidades" />
+                    </ListItem>
+                  </Link>
+
+                  <Link to="/quadro_contratoEnergia" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <LayersIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Quadro Contrato Energia" />
+                    </ListItem>
+                  </Link>
+
+                  <Link to="/quadro_contratoAgua" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <LayersIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Quadro Contrato Água" />
+                    </ListItem>
+                  </Link>
+
+                  <Link to="/quadro_concessionaria" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <LayersIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Quadro Concessionária" />
+                    </ListItem>
+                  </Link>
+                </List>
+              </Collapse>
+
+              <ListItem button className={classes.itens}>
+                <ListItemIcon>
+                  <WarningIcon />
+                </ListItemIcon>
+                <ListItemText primary="Alertas" />
+              </ListItem>
+            </>
+          )}
+
+          {dado.acesso === 1 && (
+            <>
+              <Link to="/" className={classes.link}>
+                <ListItem button className={classes.itens}>
+                  <ListItemIcon>
+                    <DashboardIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Dashboard" />
+                </ListItem>
+              </Link>
+
+              <ListItem
+                button
+                onClick={handleClickContas}
+                className={classes.itens}
+              >
+                <ListItemIcon>
+                  <PostAddIcon />
+                </ListItemIcon>
+                <ListItemText primary="Cadastro Contas" />
+                {openContas ? <ExpandLess /> : <ExpandMore />}
+              </ListItem>
+              <Collapse in={openContas} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <Link to="/contas_energia" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <FlashOnIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Energia" />
+                    </ListItem>
+                  </Link>
+
+                  <Link to="/contas_agua" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <WavesIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Água" />
+                    </ListItem>
+                  </Link>
+                </List>
+              </Collapse>
+
+              <Link to="/unidade" className={classes.link}>
+                <ListItem button className={classes.itens}>
+                  <ListItemIcon>
+                    <ApartmentIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Cadastro Unidades" />
+                </ListItem>
+              </Link>
+
+              <ListItem
+                button
+                onClick={handleClickContratos}
+                className={classes.itens}
+              >
+                <ListItemIcon>
+                  <AssignmentTurnedInIcon />
+                </ListItemIcon>
+                <ListItemText primary="Cadastro Contratos" />
+                {openContratos ? <ExpandLess /> : <ExpandMore />}
+              </ListItem>
+
+              <Collapse in={openContratos} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <Link to="/contrato_energia" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <FlashOnIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Energia" />
+                    </ListItem>
+                  </Link>
+
+                  <Link to="/contrato_agua" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <WavesIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Água" />
+                    </ListItem>
+                  </Link>
+                </List>
+              </Collapse>
+
+              <Link to="/concessionaria" className={classes.link}>
+                <ListItem button className={classes.itens}>
+                  <ListItemIcon>
+                    <BusinessIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Cadastro Concessionária" />
+                </ListItem>
+              </Link>
+
+              <ListItem
+                button
+                onClick={handleClickPainel}
+                className={classes.itens}
+              >
+                <ListItemIcon>
+                  <LaptopIcon />
+                </ListItemIcon>
+                <ListItemText primary="Painel de Controle" />
+                {openPainel ? <ExpandLess /> : <ExpandMore />}
+              </ListItem>
+              <Collapse in={openPainel} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <Link to="/quadro_unidade" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <LayersIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Quadro Unidades" />
+                    </ListItem>
+                  </Link>
+
+                  <Link to="/quadro_contratoEnergia" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <LayersIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Quadro Contrato Energia" />
+                    </ListItem>
+                  </Link>
+
+                  <Link to="/quadro_contratoAgua" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <LayersIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Quadro Contrato Água" />
+                    </ListItem>
+                  </Link>
+
+                  <Link to="/quadro_concessionaria" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <LayersIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Quadro Concessionária" />
+                    </ListItem>
+                  </Link>
+                </List>
+              </Collapse>
+
+              <ListItem button className={classes.itens}>
+                <ListItemIcon>
+                  <WarningIcon />
+                </ListItemIcon>
+                <ListItemText primary="Alertas" />
+              </ListItem>
+              <Link to="/cadastro_usuario" className={classes.link}>
+                <ListItem button className={classes.itens}>
+                  <ListItemIcon>
+                    <BuildIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Cadastro Usuario" />
+                </ListItem>
+              </Link>
+            </>
+          )}
+          {dado.acesso === 3 && (
+            <>
+              <Link to="/" className={classes.link}>
+                <ListItem button className={classes.itens}>
+                  <ListItemIcon>
+                    <DashboardIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Dashboard" />
+                </ListItem>
+              </Link>
               <Link to="/contas_energia" className={classes.link}>
-                <ListItem button className={classes.nested}>
+                <ListItem button>
                   <ListItemIcon>
                     <FlashOnIcon />
                   </ListItemIcon>
-                  <ListItemText primary="Energia" />
+                  <ListItemText primary="Conta Energia" />
                 </ListItem>
               </Link>
-
               <Link to="/contas_agua" className={classes.link}>
-                <ListItem button className={classes.nested}>
+                <ListItem button>
                   <ListItemIcon>
                     <WavesIcon />
                   </ListItemIcon>
-                  <ListItemText primary="Água" />
+                  <ListItemText primary="Conta Água" />
                 </ListItem>
               </Link>
-            </List>
-          </Collapse>
-
-          <Link to="/unidade" className={classes.link}>
-            <ListItem button className={classes.itens}>
-              <ListItemIcon>
-                <ApartmentIcon />
-              </ListItemIcon>
-              <ListItemText primary="Cadastro Unidades" />
-            </ListItem>
-          </Link>
-
-          <ListItem
-            button
-            onClick={handleClickContratos}
-            className={classes.itens}
-          >
-            <ListItemIcon>
-              <AssignmentTurnedInIcon />
-            </ListItemIcon>
-            <ListItemText primary="Cadastro Contratos" />
-            {openContratos ? <ExpandLess /> : <ExpandMore />}
-          </ListItem>
-
-          <Collapse in={openContratos} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <Link to="/contrato_energia" className={classes.link}>
-                <ListItem button className={classes.nested}>
-                  <ListItemIcon>
-                    <FlashOnIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Energia" />
-                </ListItem>
-              </Link>
-
-              <Link to="/contrato_agua" className={classes.link}>
-                <ListItem button className={classes.nested}>
-                  <ListItemIcon>
-                    <WavesIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Água" />
-                </ListItem>
-              </Link>
-            </List>
-          </Collapse>
-
-          <Link to="/concessionaria" className={classes.link}>
-            <ListItem button className={classes.itens}>
-              <ListItemIcon>
-                <BusinessIcon />
-              </ListItemIcon>
-              <ListItemText primary="Cadastro Concessionária" />
-            </ListItem>
-          </Link>
-
-          <ListItem button className={classes.itens}>
-            <ListItemIcon>
-              <AssessmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Relátorios" />
-          </ListItem>
-
-          <ListItem
-            button
-            onClick={handleClickPainel}
-            className={classes.itens}
-          >
-            <ListItemIcon>
-              <LaptopIcon />
-            </ListItemIcon>
-            <ListItemText primary="Painel de Controle" />
-            {openPainel ? <ExpandLess /> : <ExpandMore />}
-          </ListItem>
-          <Collapse in={openPainel} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <Link to="/quadro_unidade" className={classes.link}>
-                <ListItem button className={classes.nested}>
-                  <ListItemIcon>
-                    <LayersIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Quadro Unidades" />
-                </ListItem>
-              </Link>
-
-              <Link to="/quadro_contratoEnergia" className={classes.link}>
-                <ListItem button className={classes.nested}>
-                  <ListItemIcon>
-                    <LayersIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Quadro Contrato Energia" />
-                </ListItem>
-              </Link>
-
-              <Link to="/quadro_contratoAgua" className={classes.link}>
-                <ListItem button className={classes.nested}>
-                  <ListItemIcon>
-                    <LayersIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Quadro Contrato Água" />
-                </ListItem>
-              </Link>
-
-              <Link to="/quadro_concessionaria" className={classes.link}>
-                <ListItem button className={classes.nested}>
-                  <ListItemIcon>
-                    <LayersIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Quadro Concessionária" />
-                </ListItem>
-              </Link>
-            </List>
-          </Collapse>
-
-          <ListItem button className={classes.itens}>
-            <ListItemIcon>
-              <WarningIcon />
-            </ListItemIcon>
-            <ListItemText primary="Alertas" />
-          </ListItem>
-
-          <ListItem button className={classes.itens}>
-            <ListItemIcon>
-              <BuildIcon />
-            </ListItemIcon>
-            <ListItemText primary="Configuração" />
-          </ListItem>
+            </>
+          )}
         </List>
       </Drawer>
     </div>

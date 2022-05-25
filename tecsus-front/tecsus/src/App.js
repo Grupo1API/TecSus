@@ -14,6 +14,7 @@ import QuadroContratoEnergia from "./pages/quadro_contrato_energia/quadroContrat
 import Login from "./pages/login/index";
 import { AuthProvider } from "./context/AuthContext/AuthContext";
 import RotasProtegidas from "./components/rotasProtegidas";
+import CadastroUsuario from "./pages/cadastro_usuario";
 
 function Main() {
   return (
@@ -30,6 +31,7 @@ function Main() {
               <Route path="/contrato_agua" element={<ContratoAgua />} />
               <Route path="/contrato_energia" element={<ContratoEnergia />} />
               <Route path="/unidade" element={<Unidade />} />
+              <Route path="/cadastro_usuario" element={<CadastroUsuario />} />
               <Route
                 path="/quadro_concessionaria"
                 element={<QuadroConcessionaria />}

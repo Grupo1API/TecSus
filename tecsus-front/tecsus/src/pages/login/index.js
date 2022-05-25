@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: "100%", // Fix IE 11 issue.
-    height: "100vh",
+    height: "50vh",
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -37,10 +37,11 @@ export default function Login() {
   const { logar, setUsuario, setSenha, token } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     try {
       logar();
-      token ? navigate("/") : navigate("/login");
+      return token ? navigate("/") : navigate("/login");
     } catch (error) {
       return console.log(error.message);
     }
