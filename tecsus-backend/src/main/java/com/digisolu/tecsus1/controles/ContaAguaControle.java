@@ -4,8 +4,16 @@ package com.digisolu.tecsus1.controles;
 import java.io.IOException;
 import java.util.List;
 
+import com.digisolu.tecsus1.entidades.ContaAgua;
+import com.digisolu.tecsus1.modelos.AdicionadorLinkContaAgua;
+import com.digisolu.tecsus1.modelos.ContaAguaAtualizador;
+import com.digisolu.tecsus1.modelos.ContaAguaSelecionador;
+import com.digisolu.tecsus1.repositorios.ContaAguaRepositorio;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,16 +22,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.digisolu.tecsus1.entidades.ContaAgua;
-import com.digisolu.tecsus1.modelos.AdicionadorLinkContaAgua;
-import com.digisolu.tecsus1.repositorios.ContaAguaRepositorio;
-import com.digisolu.tecsus1.servicos.ArmazemArquivo;
-import com.digisolu.tecsus1.modelos.ContaAguaAtualizador;
-import com.digisolu.tecsus1.modelos.ContaAguaSelecionador;
 
 
 @CrossOrigin
@@ -36,8 +37,8 @@ public class ContaAguaControle {
 	private ContaAguaSelecionador selecionador;
 	@Autowired
 	private AdicionadorLinkContaAgua adicionadorLink;
-	@Autowired
-	private ArmazemArquivo armazem;
+	
+
 	
 	@GetMapping("/contadeagua")
 	public ResponseEntity<List<ContaAgua>> obterContaAgua() {
@@ -53,35 +54,29 @@ public class ContaAguaControle {
 	}
 
 
-    //teste1
-	@PostMapping("/contadeagua/cadastrogeral")
-	public ResponseEntity<String> receberArquivo(@RequestParam("file") MultipartFile arquivoEnviado)
-			throws IOException {
-		ContaAgua contaAgua = new ContaAgua();
-		contaAgua.setBytes(arquivoEnviado.getBytes());
-		Long tamanho = arquivoEnviado.getSize();
-		contaAgua.setTamanho(tamanho.toString());
-		contaAgua.setTipo(arquivoEnviado.getContentType());
-		armazem.armazenarArquivo(contaAgua);
-		
-		if (contaAgua.getId() == null) {
-		 	repositorio.save(contaAgua);
-		}
-		return new ResponseEntity<String>("arquivo enviado", HttpStatus.ACCEPTED);
-	}
+    
+	 
 	
-
-// 	@PostMapping("/contadeagua/cadastro")
-// public ResponseEntity<?> cadastrarContaAgua(@RequestBody ContaAgua contaAgua) {
-// 	HttpStatus status = HttpStatus.CONFLICT;
-// 	if (contaAgua.getId() == null) {
-// 		repositorio.save(contaAgua);
-// 		status = HttpStatus.OK;
-// 	}
-// 	return new ResponseEntity<>(status);
-
-// }
-
+	 @PostMapping(value = "/contadeagua/geral",consumes={MediaType.APPLICATION_JSON_VALUE,MediaType.MULTIPART_FORM_DATA_VALUE})
+	public ResponseEntity<?> receberArquivo(@RequestPart ("contaAgua") ContaAgua contaAgua,@RequestPart("file") MultipartFile arquivoEnviado )
+			 {
+				
+		try {
+			
+			contaAgua.setTipo(arquivoEnviado.getContentType());
+			contaAgua.setArquivo(arquivoEnviado.getBytes());
+			repositorio.save(contaAgua);
+			
+		} catch (IOException e) {
+		
+			e.printStackTrace();
+		}
+	
+	
+	return new ResponseEntity<String>("foi", HttpStatus.ACCEPTED);
+		}
+		
+	
 
 @GetMapping("/contadeagua{id}")
 public ResponseEntity<ContaAgua> obterContaAgua(@PathVariable long id) {
@@ -96,20 +91,6 @@ public ResponseEntity<ContaAgua> obterContaAgua(@PathVariable long id) {
 		return resposta;
 	}
 }
-
-// @PostMapping("/contadeagua/upload")
-// 	public ContaAgua salvarConta( ContaAgua contaAgua, @RequestParam("contaAgua") MultipartFile file ) {
-
-// 		try {
-		
-// 			contaAgua.setBytes(file.getBytes());
-		
-// 		} catch (IOException e) {
-// 			e.printStackTrace();
-// 		}
-		
-// 		return repositorio.save(contaAgua);
-// 	}
 
 
 
