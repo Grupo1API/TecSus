@@ -136,7 +136,6 @@ function ContaAgua() {
     options = Object.assign({}, defaults, options);
     await fetch('http://localhost:8080/contadeagua/geral', options)
 
-    console.log(file)
 
 
     setConcessionaria("");

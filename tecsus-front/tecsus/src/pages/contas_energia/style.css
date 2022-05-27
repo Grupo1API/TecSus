@@ -67,3 +67,12 @@ p {
     padding: 8px;
     margin-top: -20px;
 }
+
+#file_name{
+    position: relative; 
+    width: 500px;
+    height: 10px;
+    top: -35px;         
+    left: 340px;  
+    font-family: sans-serif;
+  }
