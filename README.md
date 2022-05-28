@@ -92,7 +92,7 @@ do contrato);
 ## 👨‍💻 Equipe
 
 <div id="table_equipe" align="center" width="400">
-    <table border="2">
+    <table>
       <tr id="head_table">
         <th>Nome</th>
         <th>Função</th>
