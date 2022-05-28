@@ -10,7 +10,7 @@ public interface ContaEnergiaRepositorio extends JpaRepository<ContaEnergia, Lon
     @Query(value = "SELECT unidade_id, "
     		+ "contrato_energia_id,contrato_concessionaria_id,contrato_unidade_id ,"
     		+ "id, arquivo, bandeira_tarifaria, bandeira_tarifaria_vigente, const_mult, conta_mes, data_vencimento, "
-    		+ "descricao_consumo, emissao, nota_fiscal, num_dias_faturamento, conta_energia.numero_instalacao, num_medidor, quantidade_kwh_mes, "
+    		+ "descricao_consumo, emissao, nota_fiscal, num_dias_faturamento, conta_energia.numero_instalacao, numero_medidor, quantidade_kwh_mes, "
     		+ "valor_cip_contrib_municipal,valor_cofins, valor_multa, valor_pis, valor_total, valor_total_te, valor_total_tusd, "
     		+ "contaenergia_contrato_id  "
     		+ "FROM conta_energia "

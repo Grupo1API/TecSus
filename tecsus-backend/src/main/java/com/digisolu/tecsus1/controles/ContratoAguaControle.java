@@ -32,7 +32,8 @@ public class ContratoAguaControle {
 	private ContratoAguaSelecionador selecionador;
 	@Autowired
 	private AdicionadorLinkContratoAgua adicionadorLink;
-
+	
+	
 	@GetMapping("/contratoagua")
 	public ResponseEntity<List<ContratoAgua>> obterContratoAgua() {
 		List<ContratoAgua> contratosAgua= repositorio.findAll();
@@ -99,13 +100,18 @@ public class ContratoAguaControle {
         }
         return new ResponseEntity<ContratoAgua>(contratos_agua, HttpStatus.OK);
     }
+    
+    
+    
     @RequestMapping ("/contrato/agua/{unidade_id}")
-    public @ResponseBody ResponseEntity<ContratoAgua> findAllContratoAgua(){
+    public @ResponseBody ResponseEntity<List<ContratoAgua>> findAllContratoAgua(){
     List<ContratoAgua> contratosAgua = repositorio.findAllContratoAgua();
     if(contratosAgua == null) {
-        return new ResponseEntity<ContratoAgua>(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<List<ContratoAgua>>(HttpStatus.BAD_REQUEST);
     }
-    return new ResponseEntity<ContratoAgua>(HttpStatus.OK);
-    }  
+    return new ResponseEntity<List<ContratoAgua>>(contratosAgua,HttpStatus.OK);
+    }
+    
+    
 }
 
