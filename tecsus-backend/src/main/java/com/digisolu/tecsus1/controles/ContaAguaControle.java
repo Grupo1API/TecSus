@@ -12,6 +12,7 @@ import com.digisolu.tecsus1.repositorios.ContaAguaRepositorio;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -53,14 +54,18 @@ public class ContaAguaControle {
 		}
 	}
 
-
+	@GetMapping("/download/contadeagua/{id}")
+	public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable long id){
+		ContaAgua contaAgua  = repositorio.findById(id).get();
+		return ResponseEntity.ok()
+				.contentType(MediaType.parseMediaType(contaAgua.getTipo()))
+				.body(new ByteArrayResource(contaAgua.getArquivo()));
+	}
     
 	 
 	
 	 @PostMapping(value = "/contadeagua/geral",consumes={MediaType.APPLICATION_JSON_VALUE,MediaType.MULTIPART_FORM_DATA_VALUE})
-	public ResponseEntity<?> receberArquivo(@RequestPart ("contaAgua") ContaAgua contaAgua,@RequestPart("file") MultipartFile arquivoEnviado )
-			 {
-				
+	public ResponseEntity<?> receberArquivo(@RequestPart ("contaAgua") ContaAgua contaAgua,@RequestPart("file") MultipartFile arquivoEnviado ) {
 		try {
 			
 			contaAgua.setTipo(arquivoEnviado.getContentType());
@@ -71,8 +76,7 @@ public class ContaAguaControle {
 		
 			e.printStackTrace();
 		}
-	
-	
+		
 	return new ResponseEntity<String>("foi", HttpStatus.ACCEPTED);
 		}
 		
