@@ -4,7 +4,7 @@ import { useState } from "react";
 import NumberFormat from "react-number-format";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-
+import axios from "axios";
 function ContaAgua() {
   const [n_fornecimento, setN_fornecimento] = useState("");
   const [concessionaria, setConcessionaria] = useState("");
@@ -37,7 +37,7 @@ function ContaAgua() {
   const [data_vencimento, setData_vencimento] = useState("");
   const [contratoId, setContratoId] = useState("");
   const [file, setFile] = useState("");
-
+  
   async function buscaContrato() {
     try {
       const response = await fetch(
@@ -60,7 +60,6 @@ function ContaAgua() {
       return console.log(error.message);
     }
   }
-
   //   // function constructor(props) {
   //   //     super(props);
   //   //     this.state = {
@@ -71,23 +70,18 @@ function ContaAgua() {
   //   const b64toBlob = (b64Data, contentType = "", sliceSize = 512) => {
   //     const byteCharacters = atob(b64Data);
   //     const byteArrays = [];
-
   //     for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
   //       const slice = byteCharacters.slice(offset, offset + sliceSize);
-
   //       const byteNumbers = new Array(slice.length);
   //       for (let i = 0; i < slice.length; i++) {
   //         byteNumbers[i] = slice.charCodeAt(i);
   //       }
-
   //       const byteArray = new Uint8Array(byteNumbers);
   //       byteArrays.push(byteArray);
   //     }
-
   //     const blob = new Blob(byteArrays, { type: contentType });
   //     return blob;
   //   };
-
   //   function onChange(e) {
   //     let files = e.target.files;
   //     const blobb = new Blob(files, { type: "application/pdf" });
@@ -97,10 +91,8 @@ function ContaAgua() {
   //     // const contentType = "application/pdf";
   //     // const blobb = b64toBlob(files.name, contentType);
   //     // const blobUrl = URL.createObjectURL(blobb);
-
   //     let reader = new FileReader();
   //     reader.readAsDataURL(files[0]);
-
   //     reader.onload = (e) => {
   //       const formData = e.target.result;
   //       const blobb = new Blob(formData, { type: "application/pdf" });
@@ -134,9 +126,8 @@ function ContaAgua() {
     });
     const defaults = { headers: headers };
     options = Object.assign({}, defaults, options);
+
     await fetch('http://localhost:8080/contadeagua/geral', options)
-
-
 
     setConcessionaria("");
     setCnpj_concessionaria("");
@@ -167,8 +158,6 @@ function ContaAgua() {
     setTaxa_regulacao("");
     setData_vencimento("");
     setFile("");
-
-
     return;
 
   };
@@ -196,6 +185,7 @@ function ContaAgua() {
       contaagua_contrato_id: { id: contratoId },
     };
     const formData = new FormData();
+
     formData.append('contaAgua', new Blob([JSON.stringify(dados)], {
       type: "application/json"
     }));
@@ -214,10 +204,8 @@ function ContaAgua() {
     const ano = `${arrayData[2]}`;
     const mes = `${arrayData[1]}`;
     const dia = `${arrayData[0]}`;
-
     return `${ano + "-" + mes + "-" + dia}`;
   }
-
   return (
     <div className="c_Agua">
       <Menu />
@@ -248,7 +236,6 @@ function ContaAgua() {
                 variant="outlined"
                 disabled
               />
-
               <TextField
                 id="concessionaria"
                 className="input"
@@ -269,7 +256,6 @@ function ContaAgua() {
                 variant="outlined"
                 disabled
               />
-
               <TextField
                 id="cnpj_cpf_cliente"
                 className="input"
@@ -348,7 +334,6 @@ function ContaAgua() {
                 disabled
               />
             </div>
-
             <h2>Dados Conta</h2>
             <div className="coluna">
               <TextField
@@ -425,7 +410,6 @@ function ContaAgua() {
                 variant="outlined"
               />
             </div>
-
             <div className="coluna">
               <TextField
                 id="media_consumo"
@@ -596,7 +580,6 @@ function ContaAgua() {
                 variant="outlined"
               />
             </div>
-
             <div className="bt-container">
               <input
                 className="btn-upload"
@@ -613,7 +596,6 @@ function ContaAgua() {
                   component="span"
                 >Upload</Button>
               </label>
-              <p id="file_name">{file.name}</p>
               <button type="submit" className="cadastrar" id="botao_cad">
                 ENVIAR
               </button>
@@ -625,5 +607,4 @@ function ContaAgua() {
     </div>
   );
 }
-
 export default ContaAgua;

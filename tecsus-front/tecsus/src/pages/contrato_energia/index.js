@@ -329,7 +329,7 @@ function ContratoEnergia() {
               />
             </div>
 
-            <p>Local de Consumo</p>
+            <h4>Local de Consumo</h4>
 
             <div className="coluna">
               <TextField
@@ -425,7 +425,7 @@ function ContratoEnergia() {
               <button type="submit" className="cadastrar" id="botao_cad">
                 ENVIAR
               </button>
-              {/* <p>Cadastro realizado com exito</p> */}
+              {/* <h4>Cadastro realizado com exito</h4> */}
             </div>
           </form>
         </div>
