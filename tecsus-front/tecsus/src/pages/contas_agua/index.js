@@ -4,7 +4,7 @@ import { useState } from "react";
 import NumberFormat from "react-number-format";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import axios from "axios";
+
 function ContaAgua() {
   const [n_fornecimento, setN_fornecimento] = useState("");
   const [concessionaria, setConcessionaria] = useState("");
@@ -37,7 +37,8 @@ function ContaAgua() {
   const [data_vencimento, setData_vencimento] = useState("");
   const [contratoId, setContratoId] = useState("");
   const [file, setFile] = useState("");
-  
+  const [fileName, setFileName] = useState("");
+
   async function buscaContrato() {
     try {
       const response = await fetch(
@@ -127,7 +128,7 @@ function ContaAgua() {
     const defaults = { headers: headers };
     options = Object.assign({}, defaults, options);
 
-    await fetch('http://localhost:8080/contadeagua/geral', options)
+    await fetch("http://localhost:8080/contadeagua/geral", options);
 
     setConcessionaria("");
     setCnpj_concessionaria("");
@@ -158,8 +159,8 @@ function ContaAgua() {
     setTaxa_regulacao("");
     setData_vencimento("");
     setFile("");
+    setFileName("");
     return;
-
   };
   async function handleSubmit(event) {
     event.preventDefault();
@@ -186,16 +187,18 @@ function ContaAgua() {
     };
     const formData = new FormData();
 
-    formData.append('contaAgua', new Blob([JSON.stringify(dados)], {
-      type: "application/json"
-    }));
-    formData.append('file', file);
+    formData.append(
+      "contaAgua",
+      new Blob([JSON.stringify(dados)], {
+        type: "application/json",
+      })
+    );
+    formData.append("file", file);
     const headers = new Headers({});
     return request({
-
       headers: headers,
-      method: 'POST',
-      body: formData
+      method: "POST",
+      body: formData,
     });
   }
 
@@ -581,21 +584,36 @@ function ContaAgua() {
               />
             </div>
             <div className="bt-container">
-              <input
-                className="btn-upload"
-                id="contained-button-file"
-                multiple
-                type="file"
-                onChange={(e) => setFile(e.target.files[0])}
-              />
-              <label htmlFor="contained-button-file">
-                <Button
-                  id="upload"
-                  variant="contained"
-                  color="primary"
-                  component="span"
-                >Upload</Button>
-              </label>
+              <div className="containerUpload">
+                <TextField
+                  type="text"
+                  label="Upload Conta"
+                  className="inputUpload"
+                  value={fileName}
+                  variant="outlined"
+                  disabled
+                />
+                <input
+                  className="btn-upload"
+                  id="contained-button-file"
+                  multiple
+                  type="file"
+                  onChange={(e) => {
+                    setFile(e.target.files[0]);
+                    setFileName(e.target.files[0].name);
+                  }}
+                />
+                <label htmlFor="contained-button-file">
+                  <Button
+                    id="uploadAgua"
+                    variant="contained"
+                    color="primary"
+                    component="span"
+                  >
+                    Pesquisar
+                  </Button>
+                </label>
+              </div>
               <button type="submit" className="cadastrar" id="botao_cad">
                 ENVIAR
               </button>

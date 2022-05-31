@@ -11,9 +11,9 @@ export function useAuthProvider() {
   const [dado, setDado, removeDado] = useLocalStorage("dados", null);
   const [usuario, setUsuario] = useState("");
   const [senha, setSenha] = useState("");
+  const [erro, setErro] = useState();
 
   const logar = async () => {
-    console.log("entrei");
     try {
       const response = await fetch(`http://localhost:8080/usuarios`);
       const dados = await response.json();
@@ -22,13 +22,20 @@ export function useAuthProvider() {
         return x.email === usuario && x.senha === senha;
       });
 
-      if (achouDados !== undefined) {
+      if (achouDados === undefined) {
+        setErro(true);
+        removeToken();
+        removeDado();
+        setUsuario("");
+        setSenha("");
+      } else {
         setDado(achouDados);
         setToken(true);
+        setErro(false);
+        setUsuario("");
+        setSenha("");
       }
     } catch (error) {
-      removeToken();
-      removeDado();
       return console.log(error.message);
     }
   };
@@ -45,5 +52,7 @@ export function useAuthProvider() {
     dado,
     setDado,
     removeDado,
+    erro,
+    setErro,
   };
 }

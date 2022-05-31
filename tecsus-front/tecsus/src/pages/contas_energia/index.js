@@ -41,7 +41,8 @@ function ContaEnergia() {
   const [valor_cofins, setValor_cofins] = useState("");
   const [contratoId, setContratoId] = useState("");
   const [file, setFile] = useState("");
-  
+  const [fileName, setFileName] = useState("");
+
   async function buscaContrato() {
     try {
       const response = await fetch(
@@ -68,60 +69,56 @@ function ContaEnergia() {
     }
   }
 
+  const request = async (options) => {
+    const headers = new Headers({
+      "Content-Type": "application/json",
+    });
+    const defaults = { headers: headers };
+    options = Object.assign({}, defaults, options);
+    await fetch("http://localhost:8080/contadeenergia/geral", options);
 
-    const request = async (options) => {
-      const headers = new Headers({
-        "Content-Type": "application/json",
-      });
-      const defaults = { headers: headers };
-      options = Object.assign({}, defaults, options);
-      await fetch('http://localhost:8080/contadeenergia/geral', options)
-  
-  
-  
-      setCep_cliente("");
-      setNota_fiscal("");
-      setValor_total("");
-      setNumero_instalacao("");
-      setData_vencimento("");
-      setConta_mes("");
-      setBandeiraTarifaria("");
-      setEmissao("");
-      setDias_faturamento("");
-      setDescricao_consumo("");
-      setConst_multa("");
-      setKwhMes("");
-      setConcessionaria("");
-      setCep_concessionaria("");
-      setCnpj_concessionaria("");
-      setNome_cliente("");
-      setCpf_cnpj_cliente("");
-      setCodigo_identificador("");
-      setCodigo_fiscal("");
-      setGrupo_sub("");
-      setClase_sub("");
-      setTp_fornecimento("");
-      setModalidade_taf("");
-      setTensao_nominal("");
-      setRoteiro_leitura("");
-      setMedidor("");
-      setValor_total_tusd("");
-      setValor_total_te("");
-      setValor_total_bandeira("");
-      setMulta("");
-      setCip("");
-      setValor_pis("");
-      setValor_cofins("");
-      setFile("");
-      setContratoId("");
-     
-      return;
-  
-  
-    };
-    async function handleSubmit(event) {
-      event.preventDefault();
-      const dados = {
+    setCep_cliente("");
+    setNota_fiscal("");
+    setValor_total("");
+    setNumero_instalacao("");
+    setData_vencimento("");
+    setConta_mes("");
+    setBandeiraTarifaria("");
+    setEmissao("");
+    setDias_faturamento("");
+    setDescricao_consumo("");
+    setConst_multa("");
+    setKwhMes("");
+    setConcessionaria("");
+    setCep_concessionaria("");
+    setCnpj_concessionaria("");
+    setNome_cliente("");
+    setCpf_cnpj_cliente("");
+    setCodigo_identificador("");
+    setCodigo_fiscal("");
+    setGrupo_sub("");
+    setClase_sub("");
+    setTp_fornecimento("");
+    setModalidade_taf("");
+    setTensao_nominal("");
+    setRoteiro_leitura("");
+    setMedidor("");
+    setValor_total_tusd("");
+    setValor_total_te("");
+    setValor_total_bandeira("");
+    setMulta("");
+    setCip("");
+    setValor_pis("");
+    setValor_cofins("");
+    setFile("");
+    setContratoId("");
+    setFileName("");
+
+    return;
+  };
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const dados = {
       bandeira_tarifaria: bandeiraTarifaria,
       bandeira_tarifaria_vigente: valor_total_bandeira,
       const_mult: const_multa,
@@ -142,34 +139,31 @@ function ContaEnergia() {
       valor_total_te: valor_total_te,
       valor_total_tusd: valor_total_tusd,
       contaenergia_contrato_id: { id: contratoId },
-      };
-      const formData = new FormData();
-      formData.append('contaEnergia', new Blob([JSON.stringify(dados)], {
-        type: "application/json"
-      }));
-      formData.append('file', file);
-      const headers = new Headers({});
-      return request({
-  
-        headers: headers,
-        method: 'POST',
-        body: formData
-      });
-    }
+    };
+    const formData = new FormData();
+    formData.append(
+      "contaEnergia",
+      new Blob([JSON.stringify(dados)], {
+        type: "application/json",
+      })
+    );
+    formData.append("file", file);
+    const headers = new Headers({});
+    return request({
+      headers: headers,
+      method: "POST",
+      body: formData,
+    });
+  }
 
+  function formatarData(data) {
+    const arrayData = data.split("/");
+    const ano = `${arrayData[2]}`;
+    const mes = `${arrayData[1]}`;
+    const dia = `${arrayData[0]}`;
 
-
-
-
-    function formatarData(data) {
-      const arrayData = data.split("/");
-      const ano = `${arrayData[2]}`;
-      const mes = `${arrayData[1]}`;
-      const dia = `${arrayData[0]}`;
-
-      return `${ano + "-" + mes + "-" + dia}`;
-    }
-
+    return `${ano + "-" + mes + "-" + dia}`;
+  }
 
   return (
     <div className="c_Energia">
@@ -619,22 +613,36 @@ function ContaEnergia() {
             </div>
 
             <div className="bt-container">
-              <input
-                className="btn-upload"
-                id="contained-button-file"
-                multiple
-                type="file"
-                onChange={(e) => setFile(e.target.files[0])}
-              />
-              <label htmlFor="contained-button-file">
-                <Button
-                  id="upload"
-                  variant="contained"
-                  color="primary"
-                  component="span"
-                > Upload</Button>
-              </label>
-              <p id="file_name">{file.name}</p>
+              <div className="containerUpload">
+                <TextField
+                  type="text"
+                  label="Upload Conta"
+                  className="inputUpload"
+                  value={fileName}
+                  variant="outlined"
+                  disabled
+                />
+                <input
+                  className="btn-upload"
+                  id="contained-button-file"
+                  multiple
+                  type="file"
+                  onChange={(e) => {
+                    setFile(e.target.files[0]);
+                    setFileName(e.target.files[0].name);
+                  }}
+                />
+                <label htmlFor="contained-button-file">
+                  <Button
+                    id="uploadEnergia"
+                    variant="contained"
+                    color="primary"
+                    component="span"
+                  >
+                    Pesquisar
+                  </Button>
+                </label>
+              </div>
               <button type="submit" className="cadastrar" id="botao_cad">
                 ENVIAR
               </button>

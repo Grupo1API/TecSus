@@ -34,17 +34,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Login() {
   const classes = useStyles();
-  const { logar, setUsuario, setSenha, token } = useAuth();
+  const { logar, setUsuario, setSenha, token, erro, usuario, senha, setErro } =
+    useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    try {
-      logar();
-      return token ? navigate("/") : navigate("/login");
-    } catch (error) {
-      return console.log(error.message);
-    }
+  const handleSubmit = () => {
+    logar();
+    return token ? navigate("/") : setErro(true);
   };
 
   return (
@@ -58,17 +54,17 @@ export default function Login() {
           <Typography component="h1" variant="h5">
             Login
           </Typography>
-          <form className={classes.form} onSubmit={handleSubmit}>
+          <div className={classes.form}>
             <TextField
               variant="outlined"
               margin="normal"
               required
+              error={erro}
               fullWidth
               id="email"
               label="Email Address"
-              name="email"
-              autoComplete="email"
               autoFocus
+              value={usuario}
               onChange={(e) => setUsuario(e.target.value)}
             />
             <TextField
@@ -76,15 +72,16 @@ export default function Login() {
               margin="normal"
               required
               fullWidth
-              name="password"
               label="Password"
+              error={erro}
               type="password"
               id="password"
-              autoComplete="current-password"
+              value={senha}
               onChange={(e) => setSenha(e.target.value)}
             />
+            {erro ? <p>Email ou Senha invalidos</p> : ""}
             <Button
-              type="submit"
+              onClick={handleSubmit}
               fullWidth
               variant="contained"
               color="primary"
@@ -92,7 +89,7 @@ export default function Login() {
             >
               Entrar
             </Button>
-          </form>
+          </div>
         </div>
       </Container>
     </div>

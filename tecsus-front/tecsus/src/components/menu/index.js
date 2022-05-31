@@ -73,7 +73,7 @@ export default function Dashboard() {
   const [openContas, setOpenContas] = useState(false);
   const [openContratos, setOpenContratos] = useState(false);
   const [openPainel, setOpenPainel] = useState(false);
-  const { removeToken, dado, removeDado } = useAuth();
+  const { removeToken, dado, removeDado, setErro } = useAuth();
 
   const handleClickContas = () => {
     setOpenContas(!openContas);
@@ -91,9 +91,10 @@ export default function Dashboard() {
     setOpenContas(false);
   };
 
-  const handleClick = () => {
+  const handleClickSair = () => {
     removeToken();
     removeDado();
+    setErro(false);
   };
 
   const nivel = () => {
@@ -144,7 +145,7 @@ export default function Dashboard() {
                 variant="contained"
                 size="small"
                 className={classes.button}
-                onClick={handleClick}
+                onClick={handleClickSair}
               >
                 Sair
               </Button>
