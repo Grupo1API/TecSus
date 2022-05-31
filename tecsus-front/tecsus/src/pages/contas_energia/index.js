@@ -39,9 +39,9 @@ function ContaEnergia() {
   const [cip, setCip] = useState("");
   const [valor_pis, setValor_pis] = useState("");
   const [valor_cofins, setValor_cofins] = useState("");
-  const [upload, setUpload] = useState("");
   const [contratoId, setContratoId] = useState("");
-
+  const [file, setFile] = useState("");
+  
   async function buscaContrato() {
     try {
       const response = await fetch(
@@ -68,59 +68,17 @@ function ContaEnergia() {
     }
   }
 
-  async function carregarArquivo(file) {
-    if (file !== undefined) {
-      const dado = new FormData();
-      dado.append("file", file);
-      await fetch("http://localhost:8080/contadeagua/cadastro", {
-        method: "POST",
-        body: dado,
-      }); // rota para fazer o upload no back end
-    }
-  }
 
-  async function handleSubmit(event) {
-    event.preventDefault();
-    const dado = {
-      arquivo: upload,
-      bandeira_tarifaria: bandeiraTarifaria,
-      bandeira_tarifaria_vigente: valor_total_bandeira,
-      const_mult: const_multa,
-      conta_mes: conta_mes,
-      data_vencimento: formatarData(data_vencimento),
-      descricao_consumo: descricao_consumo,
-      emissao: formatarData(emissao),
-      nota_fiscal: nota_fiscal,
-      num_dias_faturamento: dias_faturamento,
-      numero_instalacao: numero_instalacao,
-      numero_medidor: medidor,
-      quantidade_kwh_mes: kwhMes,
-      valor_cip_contrib_municipal: cip,
-      valor_cofins: valor_cofins,
-      valor_multa: multa,
-      valor_pis: valor_pis,
-      valor_total: Number(valor_total),
-      valor_total_te: valor_total_te,
-      valor_total_tusd: valor_total_tusd,
-      contaenergia_contrato_id: { id: contratoId },
-    };
-    function formatarData(data) {
-      const arrayData = data.split("/");
-      const ano = `${arrayData[2]}`;
-      const mes = `${arrayData[1]}`;
-      const dia = `${arrayData[0]}`;
-
-      return `${ano + "-" + mes + "-" + dia}`;
-    }
-
-    try {
-      await fetch("http://localhost:8080/contadeenergia/cadastro", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(dado),
+    const request = async (options) => {
+      const headers = new Headers({
+        "Content-Type": "application/json",
       });
+      const defaults = { headers: headers };
+      options = Object.assign({}, defaults, options);
+      await fetch('http://localhost:8080/contadeenergia/geral', options)
+  
+  
+  
       setCep_cliente("");
       setNota_fiscal("");
       setValor_total("");
@@ -154,13 +112,64 @@ function ContaEnergia() {
       setCip("");
       setValor_pis("");
       setValor_cofins("");
-      setUpload("");
+      setFile("");
       setContratoId("");
+     
       return;
-    } catch (error) {
-      return console.log(error.message);
+  
+  
+    };
+    async function handleSubmit(event) {
+      event.preventDefault();
+      const dados = {
+      bandeira_tarifaria: bandeiraTarifaria,
+      bandeira_tarifaria_vigente: valor_total_bandeira,
+      const_mult: const_multa,
+      conta_mes: conta_mes,
+      data_vencimento: formatarData(data_vencimento),
+      descricao_consumo: descricao_consumo,
+      emissao: formatarData(emissao),
+      nota_fiscal: nota_fiscal,
+      num_dias_faturamento: dias_faturamento,
+      numero_instalacao: numero_instalacao,
+      numero_medidor: medidor,
+      quantidade_kwh_mes: kwhMes,
+      valor_cip_contrib_municipal: cip,
+      valor_cofins: valor_cofins,
+      valor_multa: multa,
+      valor_pis: valor_pis,
+      valor_total: Number(valor_total),
+      valor_total_te: valor_total_te,
+      valor_total_tusd: valor_total_tusd,
+      contaenergia_contrato_id: { id: contratoId },
+      };
+      const formData = new FormData();
+      formData.append('contaEnergia', new Blob([JSON.stringify(dados)], {
+        type: "application/json"
+      }));
+      formData.append('file', file);
+      const headers = new Headers({});
+      return request({
+  
+        headers: headers,
+        method: 'POST',
+        body: formData
+      });
     }
-  }
+
+
+
+
+
+    function formatarData(data) {
+      const arrayData = data.split("/");
+      const ano = `${arrayData[2]}`;
+      const mes = `${arrayData[1]}`;
+      const dia = `${arrayData[0]}`;
+
+      return `${ano + "-" + mes + "-" + dia}`;
+    }
+
 
   return (
     <div className="c_Energia">
@@ -615,7 +624,7 @@ function ContaEnergia() {
                 id="contained-button-file"
                 multiple
                 type="file"
-                onChange={(e) => carregarArquivo(e.target.files[0])}
+                onChange={(e) => setFile(e.target.files[0])}
               />
               <label htmlFor="contained-button-file">
                 <Button
@@ -623,10 +632,9 @@ function ContaEnergia() {
                   variant="contained"
                   color="primary"
                   component="span"
-                >
-                  Upload
-                </Button>
+                > Upload</Button>
               </label>
+              <p id="file_name">{file.name}</p>
               <button type="submit" className="cadastrar" id="botao_cad">
                 ENVIAR
               </button>

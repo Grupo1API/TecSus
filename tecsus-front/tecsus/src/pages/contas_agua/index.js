@@ -37,6 +37,7 @@ function ContaAgua() {
   const [data_vencimento, setData_vencimento] = useState("");
   const [contratoId, setContratoId] = useState("");
   const [file, setFile] = useState("");
+  
   async function buscaContrato() {
     try {
       const response = await fetch(
@@ -101,6 +102,7 @@ function ContaAgua() {
   //       console.log(blobb);
   //     };
   //   }
+
   // async function carregarArquivo(file) {
   //   if (file !== undefined) {
   //     const dado = new FormData();
@@ -111,19 +113,22 @@ function ContaAgua() {
   //     }); // rota para fazer o upload no back end
   //   }
   // }
+
   // function carregarArquivo(event) {
   //   setFile(event.target.files[0]);
   //   console.log(file);
   //   console.log("chgeuei aqui");
   // }
+
   const request = async (options) => {
     const headers = new Headers({
       "Content-Type": "application/json",
     });
     const defaults = { headers: headers };
     options = Object.assign({}, defaults, options);
-    await fetch("http://localhost:8080/contadeagua/geral", options);
-    console.log(file);
+
+    await fetch('http://localhost:8080/contadeagua/geral', options)
+
     setConcessionaria("");
     setCnpj_concessionaria("");
     setSegmento("");
@@ -154,6 +159,7 @@ function ContaAgua() {
     setData_vencimento("");
     setFile("");
     return;
+
   };
   async function handleSubmit(event) {
     event.preventDefault();
@@ -179,20 +185,20 @@ function ContaAgua() {
       contaagua_contrato_id: { id: contratoId },
     };
     const formData = new FormData();
-    formData.append(
-      "contaAgua",
-      new Blob([JSON.stringify(dados)], {
-        type: "application/json",
-      })
-    );
-    formData.append("file", file);
+
+    formData.append('contaAgua', new Blob([JSON.stringify(dados)], {
+      type: "application/json"
+    }));
+    formData.append('file', file);
     const headers = new Headers({});
     return request({
+
       headers: headers,
-      method: "POST",
-      body: formData,
+      method: 'POST',
+      body: formData
     });
   }
+
   function formatarData(data) {
     const arrayData = data.split("/");
     const ano = `${arrayData[2]}`;
@@ -588,13 +594,8 @@ function ContaAgua() {
                   variant="contained"
                   color="primary"
                   component="span"
-                >
-                  Upload
-                </Button>
+                >Upload</Button>
               </label>
-
-              <p>{file.name}</p>
-
               <button type="submit" className="cadastrar" id="botao_cad">
                 ENVIAR
               </button>

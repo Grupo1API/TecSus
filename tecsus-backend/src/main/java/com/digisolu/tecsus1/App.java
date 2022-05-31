@@ -1,13 +1,12 @@
 package com.digisolu.tecsus1;
 
+import com.digisolu.tecsus1.entidades.Usuarios;
+import com.digisolu.tecsus1.repositorios.UsuariosRepositorio;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import com.digisolu.tecsus1.entidades.Usuarios;
-import com.digisolu.tecsus1.repositorios.UsuariosRepositorio;
 
 @SpringBootApplication
 public class App implements CommandLineRunner {
