@@ -1,6 +1,7 @@
 package com.digisolu.tecsus1.controles;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+//import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -105,12 +106,18 @@ public ResponseEntity<?> excluirEnergia(@RequestBody ContaEnergia exclusao) {
 	return new ResponseEntity<>(HttpStatus.OK);
 }
 
-@RequestMapping ("/conta/energia/{contaenergia_contrato_id}")
-public @ResponseBody ResponseEntity<ContaEnergia> findAllContaEnergia(){
-List<ContaEnergia> contasEnergia = repositorio.findAllContaEnergia();
-if(contasEnergia == null) {
-    return new ResponseEntity<ContaEnergia>(HttpStatus.BAD_REQUEST);
+@GetMapping("/contasdocontrato/energia/{contaenergia_contrato_id}")
+public ResponseEntity <List<ContaEnergia>> findContasDoContrato(@PathVariable long contaenergia_contrato_id){
+List<ContaEnergia> contasEnergia = repositorio.findAll();
+List<ContaEnergia> contas_do_contrato = new ArrayList<ContaEnergia>();
+for (ContaEnergia conta : contasEnergia) {
+	if(contaenergia_contrato_id == conta.getContaenergia_contrato_id().getId()) {
+		contas_do_contrato.add(conta);
+	}
 }
-return new ResponseEntity<ContaEnergia>(HttpStatus.OK);
-}  
+if(contas_do_contrato.isEmpty()) {
+    return new ResponseEntity<List<ContaEnergia>>(HttpStatus.BAD_REQUEST);
+}
+return new ResponseEntity<List<ContaEnergia>>(contas_do_contrato, HttpStatus.OK);
+} 
 }
