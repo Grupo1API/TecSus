@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
-import Menu from "../../components/menu";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -53,7 +52,7 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "190vh",
+    height: "100vh",
   },
   close: {
     position: "absolute",
@@ -108,7 +107,6 @@ export default function QuadroContratoAgua() {
 
   return (
     <div>
-      <Menu />
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>

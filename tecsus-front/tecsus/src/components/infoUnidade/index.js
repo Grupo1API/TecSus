@@ -1,13 +1,13 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import useStyles from "../quadro_unidade/style";
+import useStyles from "../../style/style";
 
 export default function InfoUnidade({ dados }) {
   const classes = useStyles();
-  
+
   return (
     <form className={classes.root}>
-      <div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           required
@@ -15,7 +15,7 @@ export default function InfoUnidade({ dados }) {
           label="Nome"
           variant="outlined"
           fullWidth
-          disabled         
+          disabled
           value={dados.nome}
         />
         <TextField
@@ -28,8 +28,6 @@ export default function InfoUnidade({ dados }) {
           disabled
           value={dados.cpf_cnpj}
         />
-      </div>
-      <div>
         <TextField
           className={classes.text}
           required
@@ -41,6 +39,8 @@ export default function InfoUnidade({ dados }) {
           disabled
           value={dados.telefone}
         />
+      </div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           required
@@ -52,8 +52,6 @@ export default function InfoUnidade({ dados }) {
           disabled
           value={dados.email}
         />
-      </div>
-      <div>
         <TextField
           className={classes.text}
           required
@@ -75,8 +73,7 @@ export default function InfoUnidade({ dados }) {
           value={dados.end_rua}
         />
       </div>
-      
-      <div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           required
@@ -97,8 +94,6 @@ export default function InfoUnidade({ dados }) {
           disabled
           value={dados.end_uf}
         />
-      </div>
-      <div>
         <TextField
           className={classes.text}
           required
@@ -109,6 +104,8 @@ export default function InfoUnidade({ dados }) {
           disabled
           value={dados.end_cidade}
         />
+      </div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           required

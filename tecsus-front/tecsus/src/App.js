@@ -15,6 +15,8 @@ import Login from "./pages/login/index";
 import { AuthProvider } from "./context/AuthContext/AuthContext";
 import RotasProtegidas from "./components/rotasProtegidas";
 import CadastroUsuario from "./pages/cadastro_usuario";
+import RelatorioEnergia from "./pages/relatorioEnergia";
+import RelatorioAgua from "./pages/relatorioAgua";
 
 function Main() {
   return (
@@ -31,6 +33,8 @@ function Main() {
               <Route path="/contrato_agua" element={<ContratoAgua />} />
               <Route path="/contrato_energia" element={<ContratoEnergia />} />
               <Route path="/unidade" element={<Unidade />} />
+              <Route path="/relatorio_energia" element={<RelatorioEnergia />} />
+              <Route path="/relatorio_agua" element={<RelatorioAgua />} />
               <Route path="/cadastro_usuario" element={<CadastroUsuario />} />
               <Route
                 path="/quadro_concessionaria"

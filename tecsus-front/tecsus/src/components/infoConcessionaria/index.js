@@ -1,15 +1,15 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import useStyles from "../quadro_concessionaria/style";
+import useStyles from "../../style/style";
 
-export default function InfoConcessionaria({ dados}) {
+export default function InfoConcessionaria({ dados }) {
   const classes = useStyles();
 
   return (
-    <form className={classes.root} >
-      <div>
+    <form className={classes.root}>
+      <div className={classes.campo}>
         <TextField
-          className={classes.text}       
+          className={classes.text}
           id="outlined"
           type="text"
           label="Nome"
@@ -19,7 +19,7 @@ export default function InfoConcessionaria({ dados}) {
           value={dados.nome}
         />
         <TextField
-          className={classes.text}        
+          className={classes.text}
           id="outlined"
           label="CNPJ"
           variant="outlined"
@@ -27,11 +27,8 @@ export default function InfoConcessionaria({ dados}) {
           disabled
           value={dados.cnpj}
         />
-        
-      </div>
-      <div>
         <TextField
-          className={classes.text} 
+          className={classes.text}
           id="outlined"
           label="Segmento"
           type="text"
@@ -40,6 +37,8 @@ export default function InfoConcessionaria({ dados}) {
           disabled
           value={dados.segmento}
         />
+      </div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           id="outlined"
@@ -49,9 +48,7 @@ export default function InfoConcessionaria({ dados}) {
           disabled
           value={dados.cep}
         />
-      </div>
-      <div>
-      <TextField
+        <TextField
           className={classes.text}
           required
           id="outlined-required"
@@ -61,7 +58,7 @@ export default function InfoConcessionaria({ dados}) {
           disabled
           value={dados.rua}
         />
-         <TextField
+        <TextField
           className={classes.text}
           required
           id="outlined-required"
@@ -72,9 +69,8 @@ export default function InfoConcessionaria({ dados}) {
           value={dados.bairro}
         />
       </div>
-      
-      <div>
-      <TextField
+      <div className={classes.campo}>
+        <TextField
           className={classes.text}
           required
           id="outlined-required"
@@ -94,9 +90,7 @@ export default function InfoConcessionaria({ dados}) {
           disabled
           value={dados.uf}
         />
-      </div>
-      <div>
-      <TextField
+        <TextField
           className={classes.text}
           required
           id="outlined-required"
@@ -107,6 +101,8 @@ export default function InfoConcessionaria({ dados}) {
           disabled
           value={dados.numero}
         />
+      </div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           required
@@ -118,9 +114,7 @@ export default function InfoConcessionaria({ dados}) {
           disabled
           value={dados.telefone}
         />
-      </div>
-      <div>
-      <TextField
+        <TextField
           className={classes.text}
           required
           id="outlined-required"
@@ -132,7 +126,7 @@ export default function InfoConcessionaria({ dados}) {
           value={dados.inscricao_estadual}
         />
         <TextField
-          className={classes.text}        
+          className={classes.text}
           id="outlined"
           type="text"
           label="Incrição Especial"

@@ -21,10 +21,12 @@ import AssignmentTurnedInIcon from "@material-ui/icons/AssignmentTurnedIn";
 import BusinessIcon from "@material-ui/icons/Business";
 import LaptopIcon from "@material-ui/icons/Laptop";
 import WarningIcon from "@material-ui/icons/Warning";
-import BuildIcon from "@material-ui/icons/Build";
+import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth/useAuth";
+import AssessmentIcon from "@material-ui/icons/Assessment";
+import AssignmentIcon from "@material-ui/icons/Assignment";
 
 const drawerWidth = 285;
 
@@ -73,20 +75,30 @@ export default function Dashboard() {
   const [openContas, setOpenContas] = useState(false);
   const [openContratos, setOpenContratos] = useState(false);
   const [openPainel, setOpenPainel] = useState(false);
+  const [openRelatorio, setOpenRelatorio] = useState(false);
   const { removeToken, dado, removeDado, setErro } = useAuth();
 
   const handleClickContas = () => {
     setOpenContas(!openContas);
     setOpenContratos(false);
     setOpenPainel(false);
+    setOpenRelatorio(false);
   };
   const handleClickContratos = () => {
     setOpenContratos(!openContratos);
     setOpenContas(false);
     setOpenPainel(false);
+    setOpenRelatorio(false);
   };
   const handleClickPainel = () => {
     setOpenPainel(!openPainel);
+    setOpenContratos(false);
+    setOpenContas(false);
+    setOpenRelatorio(false);
+  };
+  const handleClickRelatorio = () => {
+    setOpenRelatorio(!openRelatorio);
+    setOpenPainel(false);
     setOpenContratos(false);
     setOpenContas(false);
   };
@@ -164,45 +176,21 @@ export default function Dashboard() {
                 </ListItem>
               </Link>
 
-              <ListItem
-                button
-                onClick={handleClickContas}
-                className={classes.itens}
-              >
-                <ListItemIcon>
-                  <PostAddIcon />
-                </ListItemIcon>
-                <ListItemText primary="Cadastro Contas" />
-                {openContas ? <ExpandLess /> : <ExpandMore />}
-              </ListItem>
-              <Collapse in={openContas} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                  <Link to="/contas_energia" className={classes.link}>
-                    <ListItem button className={classes.nested}>
-                      <ListItemIcon>
-                        <FlashOnIcon />
-                      </ListItemIcon>
-                      <ListItemText primary="Energia" />
-                    </ListItem>
-                  </Link>
-
-                  <Link to="/contas_agua" className={classes.link}>
-                    <ListItem button className={classes.nested}>
-                      <ListItemIcon>
-                        <WavesIcon />
-                      </ListItemIcon>
-                      <ListItemText primary="Água" />
-                    </ListItem>
-                  </Link>
-                </List>
-              </Collapse>
-
               <Link to="/unidade" className={classes.link}>
                 <ListItem button className={classes.itens}>
                   <ListItemIcon>
                     <ApartmentIcon />
                   </ListItemIcon>
                   <ListItemText primary="Cadastro Unidades" />
+                </ListItem>
+              </Link>
+
+              <Link to="/concessionaria" className={classes.link}>
+                <ListItem button className={classes.itens}>
+                  <ListItemIcon>
+                    <BusinessIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Cadastro Concessionária" />
                 </ListItem>
               </Link>
 
@@ -240,14 +228,38 @@ export default function Dashboard() {
                 </List>
               </Collapse>
 
-              <Link to="/concessionaria" className={classes.link}>
-                <ListItem button className={classes.itens}>
-                  <ListItemIcon>
-                    <BusinessIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Cadastro Concessionária" />
-                </ListItem>
-              </Link>
+              <ListItem
+                button
+                onClick={handleClickContas}
+                className={classes.itens}
+              >
+                <ListItemIcon>
+                  <PostAddIcon />
+                </ListItemIcon>
+                <ListItemText primary="Cadastro Contas" />
+                {openContas ? <ExpandLess /> : <ExpandMore />}
+              </ListItem>
+              <Collapse in={openContas} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <Link to="/contas_energia" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <FlashOnIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Energia" />
+                    </ListItem>
+                  </Link>
+
+                  <Link to="/contas_agua" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <WavesIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Água" />
+                    </ListItem>
+                  </Link>
+                </List>
+              </Collapse>
 
               <ListItem
                 button
@@ -295,6 +307,39 @@ export default function Dashboard() {
                         <LayersIcon />
                       </ListItemIcon>
                       <ListItemText primary="Quadro Concessionária" />
+                    </ListItem>
+                  </Link>
+                </List>
+              </Collapse>
+
+              <ListItem
+                button
+                onClick={handleClickRelatorio}
+                className={classes.itens}
+              >
+                <ListItemIcon>
+                  <AssessmentIcon />
+                </ListItemIcon>
+                <ListItemText primary="Relatorios" />
+                {openRelatorio ? <ExpandLess /> : <ExpandMore />}
+              </ListItem>
+              <Collapse in={openRelatorio} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <Link to="/relatorio_energia" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <AssignmentIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Energia" />
+                    </ListItem>
+                  </Link>
+
+                  <Link to="/relatorio_agua" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <AssignmentIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Agua" />
                     </ListItem>
                   </Link>
                 </List>
@@ -362,6 +407,15 @@ export default function Dashboard() {
                 </ListItem>
               </Link>
 
+              <Link to="/concessionaria" className={classes.link}>
+                <ListItem button className={classes.itens}>
+                  <ListItemIcon>
+                    <BusinessIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Cadastro Concessionária" />
+                </ListItem>
+              </Link>
+
               <ListItem
                 button
                 onClick={handleClickContratos}
@@ -395,15 +449,6 @@ export default function Dashboard() {
                   </Link>
                 </List>
               </Collapse>
-
-              <Link to="/concessionaria" className={classes.link}>
-                <ListItem button className={classes.itens}>
-                  <ListItemIcon>
-                    <BusinessIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Cadastro Concessionária" />
-                </ListItem>
-              </Link>
 
               <ListItem
                 button
@@ -456,6 +501,39 @@ export default function Dashboard() {
                 </List>
               </Collapse>
 
+              <ListItem
+                button
+                onClick={handleClickRelatorio}
+                className={classes.itens}
+              >
+                <ListItemIcon>
+                  <AssessmentIcon />
+                </ListItemIcon>
+                <ListItemText primary="Relatorios" />
+                {openRelatorio ? <ExpandLess /> : <ExpandMore />}
+              </ListItem>
+              <Collapse in={openRelatorio} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <Link to="/relatorio_energia" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <AssignmentIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Energia" />
+                    </ListItem>
+                  </Link>
+
+                  <Link to="/relatorio_agua" className={classes.link}>
+                    <ListItem button className={classes.nested}>
+                      <ListItemIcon>
+                        <AssignmentIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Agua" />
+                    </ListItem>
+                  </Link>
+                </List>
+              </Collapse>
+
               <ListItem button className={classes.itens}>
                 <ListItemIcon>
                   <WarningIcon />
@@ -465,7 +543,7 @@ export default function Dashboard() {
               <Link to="/cadastro_usuario" className={classes.link}>
                 <ListItem button className={classes.itens}>
                   <ListItemIcon>
-                    <BuildIcon />
+                    <PersonAddIcon />
                   </ListItemIcon>
                   <ListItemText primary="Cadastro Usuario" />
                 </ListItem>

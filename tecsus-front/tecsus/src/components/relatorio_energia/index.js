@@ -8,10 +8,11 @@ import TableRow from "@material-ui/core/TableRow";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
-import EditConcessionarias from "../formUnidade/formUnidades";
-import InfoUnidade from "../infoUnidade";
+import EditEnergia from "../formContaEnergia/index";
 import CloseIcon from "@material-ui/icons/Close";
 import InfoIcon from "@material-ui/icons/Info";
+import InfoContaEnergia from "../infoContaEnergia";
+import ArchiveIcon from "@material-ui/icons/Archive";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -19,14 +20,14 @@ const StyledTableCell = withStyles((theme) => ({
     color: theme.palette.common.white,
   },
   body: {
-    fontSize: 16,
+    fontSize: 14,
   },
 }))(TableCell);
 
 const StyledTableRow = withStyles((theme) => ({
   root: {
     "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.hover,
+      color: theme.palette.hover,
     },
   },
 }))(TableRow);
@@ -52,7 +53,7 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "100vh",
+    height: "135vh",
   },
   close: {
     position: "absolute",
@@ -62,24 +63,25 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Quadro_unidade() {
+export default function Relatorio_energia() {
   const classes = useStyles();
-  const [listaUnidades, setListaUnidades] = useState([]);
+  const [listaEnergias, setListaEnergias] = useState([]);
   const [modalEdit, setModalEdit] = useState(false);
-  const [modalInfo, setModalInfo] = useState(false);
   const [dados, setDados] = useState([]);
+  const [modalInfo, setModalInfo] = useState(false);
 
   useEffect(() => {
-    listaUnidade();
+    listaEnergia();
   }, []);
 
-  async function listaUnidade() {
+  async function listaEnergia() {
     try {
-      const response = await fetch("http://localhost:8080/cadastrounidade", {
+      const response = await fetch("http://localhost:8080/contadeenergia", {
         method: "GET",
       });
       const data = await response.json();
-      setListaUnidades(data);
+      console.log(data);
+      setListaEnergias(data);
     } catch (error) {
       console.log(error.message);
     }
@@ -89,14 +91,14 @@ export default function Quadro_unidade() {
     const data = {
       id: id,
     };
-    await fetch(`http://localhost:8080/unidade/excluir`, {
+    await fetch(`http://localhost:8080/contasdeenergia/excluir`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
-    listaUnidade();
+    listaEnergia();
   }
 
   function handleClose(event) {
@@ -111,22 +113,28 @@ export default function Quadro_unidade() {
         <TableHead>
           <TableRow>
             <StyledTableCell align="left">ID</StyledTableCell>
-            <StyledTableCell align="left">Nome Unidade</StyledTableCell>
-            <StyledTableCell align="left">CPF/CNPJ</StyledTableCell>
-            <StyledTableCell align="left">CEP</StyledTableCell>
+            <StyledTableCell align="left">Emissão</StyledTableCell>
+            <StyledTableCell align="left">Data Vencimento</StyledTableCell>
+            <StyledTableCell align="left">Consumo Mensal (Kwh)</StyledTableCell>
+            <StyledTableCell align="left">Valor Total (R$)</StyledTableCell>
+
             <StyledTableCell align="left"></StyledTableCell>
           </TableRow>
         </TableHead>
 
         <TableBody className={classes.body}>
-          {listaUnidades.map((x) => (
+          {listaEnergias.map((x) => (
             <StyledTableRow key={x.id}>
               <StyledTableCell>{x.id}</StyledTableCell>
-              <StyledTableCell component="th" scope="row">
-                {x.nome}
+              <StyledTableCell align="left">{x.emissao}</StyledTableCell>
+              <StyledTableCell align="left">
+                {x.data_vencimento}
               </StyledTableCell>
-              <StyledTableCell align="left">{x.cpf_cnpj}</StyledTableCell>
-              <StyledTableCell align="left">{x.end_cep}</StyledTableCell>
+              <StyledTableCell align="left">
+                {x.quantidade_kwh_mes}
+              </StyledTableCell>
+              <StyledTableCell align="left">{x.valor_total}</StyledTableCell>
+
               <StyledTableCell align="left" className={classes.button}>
                 <IconButton
                   color="primary"
@@ -147,6 +155,17 @@ export default function Quadro_unidade() {
                 >
                   <EditIcon />
                 </IconButton>
+
+                <IconButton
+                  color="primary"
+                  // onClick={() => {
+                  //   setModalEdit(true);
+                  //   setDados(x);
+                  // }}
+                >
+                  <ArchiveIcon />
+                </IconButton>
+
                 <IconButton color="primary" onClick={() => handleDelete(x.id)}>
                   <DeleteIcon />
                 </IconButton>
@@ -160,7 +179,7 @@ export default function Quadro_unidade() {
           <IconButton className={classes.close} onClick={handleClose}>
             <CloseIcon fontSize="large" color="#fff" />
           </IconButton>
-          <EditConcessionarias dados={dados} modalEdit={modalEdit} />
+          <EditEnergia dados={dados} modalEdit={modalEdit} />
         </div>
       )}
       {modalInfo && (
@@ -168,7 +187,7 @@ export default function Quadro_unidade() {
           <IconButton className={classes.close} onClick={handleClose}>
             <CloseIcon fontSize="large" color="#fff" />
           </IconButton>
-          <InfoUnidade dados={dados} />
+          <InfoContaEnergia dados={dados} />
         </div>
       )}
     </div>

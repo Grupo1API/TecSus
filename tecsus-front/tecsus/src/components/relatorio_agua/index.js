@@ -8,10 +8,11 @@ import TableRow from "@material-ui/core/TableRow";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
-import EditConcessionarias from "../formUnidade/formUnidades";
-import InfoUnidade from "../infoUnidade";
+import EditContaAgua from "../formContaAgua/index";
 import CloseIcon from "@material-ui/icons/Close";
 import InfoIcon from "@material-ui/icons/Info";
+import InfoContaAgua from "../infoContaAgua";
+import ArchiveIcon from "@material-ui/icons/Archive";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -52,7 +53,7 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "100vh",
+    height: "120vh",
   },
   close: {
     position: "absolute",
@@ -62,43 +63,41 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Quadro_unidade() {
+export default function Relatorio_agua() {
   const classes = useStyles();
-  const [listaUnidades, setListaUnidades] = useState([]);
+  const [listaRelatorioAguas, setListaRelatorioAguas] = useState([]);
   const [modalEdit, setModalEdit] = useState(false);
   const [modalInfo, setModalInfo] = useState(false);
   const [dados, setDados] = useState([]);
 
   useEffect(() => {
-    listaUnidade();
+    listaRelatorioAgua();
   }, []);
 
-  async function listaUnidade() {
+  async function listaRelatorioAgua() {
     try {
-      const response = await fetch("http://localhost:8080/cadastrounidade", {
+      const response = await fetch("http://localhost:8080/contadeagua", {
         method: "GET",
       });
       const data = await response.json();
-      setListaUnidades(data);
+      setListaRelatorioAguas(data);
     } catch (error) {
       console.log(error.message);
     }
   }
-
   async function handleDelete(id) {
     const data = {
       id: id,
     };
-    await fetch(`http://localhost:8080/unidade/excluir`, {
+    await fetch(`http://localhost:8080/contasdeagua/excluir`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
-    listaUnidade();
+    listaRelatorioAgua();
   }
-
   function handleClose(event) {
     event.preventDefault();
     setModalEdit(false);
@@ -111,22 +110,24 @@ export default function Quadro_unidade() {
         <TableHead>
           <TableRow>
             <StyledTableCell align="left">ID</StyledTableCell>
-            <StyledTableCell align="left">Nome Unidade</StyledTableCell>
-            <StyledTableCell align="left">CPF/CNPJ</StyledTableCell>
-            <StyledTableCell align="left">CEP</StyledTableCell>
+            <StyledTableCell align="left">Data Emissão</StyledTableCell>
+            <StyledTableCell align="left">Data Vencimento</StyledTableCell>
+            <StyledTableCell align="left">Consumo Mensal (Kwh)</StyledTableCell>
+            <StyledTableCell align="left">Valor Total (R$)</StyledTableCell>
             <StyledTableCell align="left"></StyledTableCell>
           </TableRow>
         </TableHead>
 
         <TableBody className={classes.body}>
-          {listaUnidades.map((x) => (
+          {listaRelatorioAguas.map((x) => (
             <StyledTableRow key={x.id}>
               <StyledTableCell>{x.id}</StyledTableCell>
-              <StyledTableCell component="th" scope="row">
-                {x.nome}
+              <StyledTableCell align="left">{x.data_emissao}</StyledTableCell>
+              <StyledTableCell align="left">
+                {x.data_vencimento}
               </StyledTableCell>
-              <StyledTableCell align="left">{x.cpf_cnpj}</StyledTableCell>
-              <StyledTableCell align="left">{x.end_cep}</StyledTableCell>
+              <StyledTableCell align="left">{x.consumo_m3}</StyledTableCell>
+              <StyledTableCell align="left">R$ {x.valor_total}</StyledTableCell>
               <StyledTableCell align="left" className={classes.button}>
                 <IconButton
                   color="primary"
@@ -147,6 +148,17 @@ export default function Quadro_unidade() {
                 >
                   <EditIcon />
                 </IconButton>
+
+                <IconButton
+                  color="primary"
+                  // onClick={() => {
+                  //   setModalEdit(true);
+                  //   setDados(x);
+                  // }}
+                >
+                  <ArchiveIcon />
+                </IconButton>
+
                 <IconButton color="primary" onClick={() => handleDelete(x.id)}>
                   <DeleteIcon />
                 </IconButton>
@@ -160,7 +172,7 @@ export default function Quadro_unidade() {
           <IconButton className={classes.close} onClick={handleClose}>
             <CloseIcon fontSize="large" color="#fff" />
           </IconButton>
-          <EditConcessionarias dados={dados} modalEdit={modalEdit} />
+          <EditContaAgua dados={dados} modalEdit={modalEdit} />
         </div>
       )}
       {modalInfo && (
@@ -168,7 +180,7 @@ export default function Quadro_unidade() {
           <IconButton className={classes.close} onClick={handleClose}>
             <CloseIcon fontSize="large" color="#fff" />
           </IconButton>
-          <InfoUnidade dados={dados} />
+          <InfoContaAgua dados={dados} />
         </div>
       )}
     </div>

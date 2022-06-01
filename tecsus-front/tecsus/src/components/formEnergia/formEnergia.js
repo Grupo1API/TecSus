@@ -1,24 +1,16 @@
 import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import useStyles from "../quadro_concessionaria/style";
+import useStyles from "../../style/style";
 import NumberFormat from "react-number-format";
 
 export default function EditEnergia({ dados, modalEdit }) {
   const classes = useStyles();
 
-  const [concessionaria, setConcessionaria] = useState(
-    dados.contrato_concessionaria_id.nome
-  );
-  const [cnpj_concessionaria, setCnpj_concessionaria] = useState(
-    dados.contrato_concessionaria_id.cnpj
-  );
-  const [nome_cliente, setNome_cliente] = useState(
-    dados.contrato_unidade_id.nome
-  );
-  const [cpf_cnpj_cliente, setCpf_cnpj_cliente] = useState(
-    dados.contrato_unidade_id.cpf_cnpj
-  );
+  const concessionaria = dados.contrato_concessionaria_id.nome;
+  const cnpj_concessionaria = dados.contrato_concessionaria_id.cnpj;
+  const nome_cliente = dados.contrato_unidade_id.nome;
+  const cpf_cnpj_cliente = dados.contrato_unidade_id.cpf_cnpj;
   const [codigo_identificador, setCodigo_identificador] = useState(
     dados.codigo_identificador
   );
@@ -84,7 +76,7 @@ export default function EditEnergia({ dados, modalEdit }) {
 
   return (
     <form className={classes.root} onSubmit={handleUpdate}>
-      <div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           id="outlined"
@@ -103,8 +95,6 @@ export default function EditEnergia({ dados, modalEdit }) {
           disabled
           value={concessionaria}
         />
-      </div>
-      <div>
         <TextField
           className={classes.text}
           id="outlined"
@@ -115,6 +105,8 @@ export default function EditEnergia({ dados, modalEdit }) {
           disabled
           value={cpf_cnpj_cliente}
         />
+      </div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           id="outlined-password-input"
@@ -125,8 +117,6 @@ export default function EditEnergia({ dados, modalEdit }) {
           disabled
           value={nome_cliente}
         />
-      </div>
-      <div>
         <TextField
           className={classes.text}
           id="outlined"
@@ -146,8 +136,7 @@ export default function EditEnergia({ dados, modalEdit }) {
           value={codigo_fiscal}
         />
       </div>
-
-      <div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           id="outlined"
@@ -166,8 +155,6 @@ export default function EditEnergia({ dados, modalEdit }) {
           onChange={(e) => setClasse_sub(e.target.value)}
           value={classe_sub}
         />
-      </div>
-      <div>
         <TextField
           className={classes.text}
           id="outlined"
@@ -177,6 +164,8 @@ export default function EditEnergia({ dados, modalEdit }) {
           onChange={(e) => setTp_fornecimento(e.target.value)}
           value={tp_fornecimento}
         />
+      </div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           id="outlined"
@@ -187,8 +176,6 @@ export default function EditEnergia({ dados, modalEdit }) {
           onChange={(e) => setModalidade_taf(e.target.value)}
           value={modalidade_taf}
         />
-      </div>
-      <div>
         <TextField
           className={classes.text}
           id="outlined"
@@ -209,7 +196,7 @@ export default function EditEnergia({ dados, modalEdit }) {
           value={roteiro_leitura}
         />
       </div>
-      <div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           id="outlined"
@@ -234,8 +221,6 @@ export default function EditEnergia({ dados, modalEdit }) {
           fullWidth
           variant="outlined"
         />
-      </div>
-      <div>
         <TextField
           className={classes.text}
           id="outlined"
@@ -245,6 +230,8 @@ export default function EditEnergia({ dados, modalEdit }) {
           onChange={(e) => setEnd_eletrico(e.target.value)}
           value={end_eletrico}
         />
+      </div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           id="outlined"
@@ -255,8 +242,6 @@ export default function EditEnergia({ dados, modalEdit }) {
           onChange={(e) => setCpf_cnpj_ci(e.target.value)}
           value={cpf_cnpj_ci}
         />
-      </div>
-      <div>
         <TextField
           className={classes.text}
           id="outlined"
@@ -277,7 +262,7 @@ export default function EditEnergia({ dados, modalEdit }) {
           value={rua_consumo}
         />
       </div>
-      <div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           id="outlined"
@@ -297,8 +282,6 @@ export default function EditEnergia({ dados, modalEdit }) {
           onChange={(e) => setCidade_consumo(e.target.value)}
           value={cidade_consumo}
         />
-      </div>
-      <div>
         <TextField
           className={classes.text}
           id="outlined"
@@ -308,6 +291,8 @@ export default function EditEnergia({ dados, modalEdit }) {
           onChange={(e) => setEstado_consumo(e.target.value)}
           value={estado_consumo}
         />
+      </div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           id="outlined"

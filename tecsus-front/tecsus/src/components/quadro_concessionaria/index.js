@@ -9,7 +9,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
 import EditConcessionarias from "../../components/formConcessionaria/formCons";
-import InfoIcon from '@material-ui/icons/Info';
+import InfoIcon from "@material-ui/icons/Info";
 import CloseIcon from "@material-ui/icons/Close";
 import InfoConcessionaria from "../infoConcessionaria";
 
@@ -33,7 +33,7 @@ const StyledTableRow = withStyles((theme) => ({
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 700,  
+    minWidth: 700,
   },
   body: {
     backgroundColor: "#fff",
@@ -52,7 +52,7 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "120vh",
+    height: "100vh",
   },
   close: {
     position: "absolute",
@@ -66,7 +66,7 @@ export default function Quadro_concessionaria() {
   const classes = useStyles();
   const [listaConcessionarias, setListaConcessionarias] = useState([]);
   const [modalEdit, setModalEdit] = useState(false);
-  const [modalInfo, setModalInfo] = useState(false)
+  const [modalInfo, setModalInfo] = useState(false);
   const [dados, setDados] = useState([]);
 
   useEffect(() => {
@@ -89,9 +89,9 @@ export default function Quadro_concessionaria() {
   }
 
   async function handleDelete(id) {
-    const data ={
-      id:id
-    }
+    const data = {
+      id: id,
+    };
     await fetch(`http://localhost:8080/concessionaria/excluir`, {
       method: "DELETE",
       headers: {
@@ -101,12 +101,11 @@ export default function Quadro_concessionaria() {
     });
     listaConcessionaria();
   }
-  
 
   function handleClose(event) {
     event.preventDefault();
     setModalEdit(false);
-    setModalInfo(false)
+    setModalInfo(false);
   }
 
   return (
@@ -125,19 +124,21 @@ export default function Quadro_concessionaria() {
         <TableBody className={classes.body}>
           {listaConcessionarias.map((x) => (
             <StyledTableRow key={x.id}>
-              <StyledTableCell >{x.id}</StyledTableCell>
-              <StyledTableCell component="th" scope="row" >{x.nome}</StyledTableCell>
+              <StyledTableCell>{x.id}</StyledTableCell>
+              <StyledTableCell component="th" scope="row">
+                {x.nome}
+              </StyledTableCell>
               <StyledTableCell align="left">{x.cnpj}</StyledTableCell>
-              <StyledTableCell align="left" >{x.cep}</StyledTableCell>
+              <StyledTableCell align="left">{x.cep}</StyledTableCell>
               <StyledTableCell align="left" className={classes.button}>
                 <IconButton
-                    color="primary"
-                    onClick={() => {
-                      setModalInfo(true);
-                      setDados(x);
-                    }}
-                  >
-                    <InfoIcon/>
+                  color="primary"
+                  onClick={() => {
+                    setModalInfo(true);
+                    setDados(x);
+                  }}
+                >
+                  <InfoIcon />
                 </IconButton>
 
                 <IconButton
@@ -166,13 +167,13 @@ export default function Quadro_concessionaria() {
         </div>
       )}
       {modalInfo && (
-          <div className={classes.modal}>
-            <IconButton className={classes.close} onClick={handleClose}>
-              <CloseIcon fontSize="large" color="#fff" />
-            </IconButton>
-            <InfoConcessionaria dados={dados}/>
-          </div>
-        )}
+        <div className={classes.modal}>
+          <IconButton className={classes.close} onClick={handleClose}>
+            <CloseIcon fontSize="large" color="#fff" />
+          </IconButton>
+          <InfoConcessionaria dados={dados} />
+        </div>
+      )}
     </div>
   );
 }
