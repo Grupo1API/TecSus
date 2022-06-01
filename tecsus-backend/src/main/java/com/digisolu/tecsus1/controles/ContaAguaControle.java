@@ -124,6 +124,16 @@ public ResponseEntity<?> excluirContaAgua(@RequestBody ContaAgua exclusao) {
 	return new ResponseEntity<>(HttpStatus.OK);
 }
 
+@GetMapping("/relatorioagua")
+public ResponseEntity <List<ContaAgua>> findAllGroupByContratoOrderByEmissao(){
+	List<ContaAgua> relatorio = repositorio.findAllGroupByContratoOrderByEmissao();
+	if(relatorio.isEmpty()) {
+	    return new ResponseEntity<List<ContaAgua>>(HttpStatus.BAD_REQUEST);
+	}
+	return new ResponseEntity<List<ContaAgua>>(relatorio, HttpStatus.OK);
+	}  
+
+
 @GetMapping("/contasdocontrato/agua/{contaagua_contrato_id}")
 public ResponseEntity <List<ContaAgua>> findContasDoContrato(@PathVariable long contaagua_contrato_id){
 List<ContaAgua> contasAgua = repositorio.findAll();
