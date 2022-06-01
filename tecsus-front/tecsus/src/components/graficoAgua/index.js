@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import Radio from "@material-ui/core/Radio";
 import "./style.css";
 
-function GraficoAgua() {
+function GraficoAgua({ contratoId }) {
   const [dadosAgua, setDadosAgua] = useState([]);
   const [variavelY, setVariavelY] = useState();
   const [legenda, setLegenda] = useState();
@@ -49,7 +49,6 @@ function GraficoAgua() {
     const arrayData = x.data_emissao.split("-");
     const ano = `${arrayData[0]}`;
     const mes = `${arrayData[1]}`;
-    console.log(arrayData);
     return {
       name: `${mes}/${ano}`,
       uv: x.valor_total,
