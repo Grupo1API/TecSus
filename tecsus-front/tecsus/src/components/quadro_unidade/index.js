@@ -11,7 +11,7 @@ import IconButton from "@material-ui/core/IconButton";
 import EditConcessionarias from "../formUnidade/formUnidades";
 import InfoUnidade from "../infoUnidade";
 import CloseIcon from "@material-ui/icons/Close";
-import InfoIcon from '@material-ui/icons/Info';
+import InfoIcon from "@material-ui/icons/Info";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -25,7 +25,7 @@ const StyledTableCell = withStyles((theme) => ({
 
 const StyledTableRow = withStyles((theme) => ({
   root: {
-    '&:nth-of-type(odd)': {
+    "&:nth-of-type(odd)": {
       backgroundColor: theme.palette.hover,
     },
   },
@@ -34,7 +34,6 @@ const StyledTableRow = withStyles((theme) => ({
 const useStyles = makeStyles({
   table: {
     minWidth: 700,
-    
   },
   body: {
     backgroundColor: "#fff",
@@ -53,7 +52,7 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "105vh",
+    height: "100vh",
   },
   close: {
     position: "absolute",
@@ -67,7 +66,7 @@ export default function Quadro_unidade() {
   const classes = useStyles();
   const [listaUnidades, setListaUnidades] = useState([]);
   const [modalEdit, setModalEdit] = useState(false);
-  const [modalInfo, setModalInfo] = useState(false)
+  const [modalInfo, setModalInfo] = useState(false);
   const [dados, setDados] = useState([]);
 
   useEffect(() => {
@@ -76,12 +75,9 @@ export default function Quadro_unidade() {
 
   async function listaUnidade() {
     try {
-      const response = await fetch(
-        "http://localhost:8080/cadastrounidade",
-        {
-          method: "GET",
-        }
-      );
+      const response = await fetch("http://localhost:8080/cadastrounidade", {
+        method: "GET",
+      });
       const data = await response.json();
       setListaUnidades(data);
     } catch (error) {
@@ -90,9 +86,9 @@ export default function Quadro_unidade() {
   }
 
   async function handleDelete(id) {
-    const data ={
-      id:id
-    }
+    const data = {
+      id: id,
+    };
     await fetch(`http://localhost:8080/unidade/excluir`, {
       method: "DELETE",
       headers: {
@@ -106,75 +102,75 @@ export default function Quadro_unidade() {
   function handleClose(event) {
     event.preventDefault();
     setModalEdit(false);
-    setModalInfo(false)
+    setModalInfo(false);
   }
 
   return (
-      <div>        
-        <Table className={classes.table} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell align="left">ID</StyledTableCell>
-              <StyledTableCell align="left">Nome Unidade</StyledTableCell>
-              <StyledTableCell align="left">CPF/CNPJ</StyledTableCell>
-              <StyledTableCell align="left">CEP</StyledTableCell>
-              <StyledTableCell align="left"></StyledTableCell>
-            </TableRow>
-          </TableHead>
+    <div>
+      <Table className={classes.table} aria-label="customized table">
+        <TableHead>
+          <TableRow>
+            <StyledTableCell align="left">ID</StyledTableCell>
+            <StyledTableCell align="left">Nome Unidade</StyledTableCell>
+            <StyledTableCell align="left">CPF/CNPJ</StyledTableCell>
+            <StyledTableCell align="left">CEP</StyledTableCell>
+            <StyledTableCell align="left"></StyledTableCell>
+          </TableRow>
+        </TableHead>
 
-          <TableBody className={classes.body}>
-            {listaUnidades.map((x) => (
-              <StyledTableRow key={x.id}>
-                <StyledTableCell>{x.id}</StyledTableCell>
-                <StyledTableCell component="th" scope="row">
-                  {x.nome}
-                </StyledTableCell>
-                <StyledTableCell align="left">{x.cpf_cnpj}</StyledTableCell>
-                <StyledTableCell align="left">{x.end_cep}</StyledTableCell>
-                <StyledTableCell align="left" className={classes.button}>
-                  <IconButton
-                    color="primary"
-                    onClick={() => {
-                      setModalInfo(true);
-                      setDados(x);
-                    }}
-                  >
-                    <InfoIcon/>
-                  </IconButton>
-                  
-                  <IconButton
-                    color="primary"
-                    onClick={() => {
-                      setModalEdit(true);
-                      setDados(x);
-                    }}
-                  >
-                    <EditIcon />
-                  </IconButton>
-                  <IconButton color="primary" onClick={() => handleDelete(x.id)}>
-                    <DeleteIcon />
-                  </IconButton>
-                </StyledTableCell>
-              </StyledTableRow>
-            ))}
-          </TableBody>
-        </Table>
-        {modalEdit && (
-          <div className={classes.modal}>
-            <IconButton className={classes.close} onClick={handleClose}>
-              <CloseIcon fontSize="large" color="#fff" />
-            </IconButton>
-            <EditConcessionarias dados={dados} modalEdit={modalEdit} />
-          </div>
-        )}
-        {modalInfo && (
-          <div className={classes.modal}>
-            <IconButton className={classes.close} onClick={handleClose}>
-              <CloseIcon fontSize="large" color="#fff" />
-            </IconButton>
-            <InfoUnidade dados={dados}/>
-          </div>
-        )}
-      </div>
+        <TableBody className={classes.body}>
+          {listaUnidades.map((x) => (
+            <StyledTableRow key={x.id}>
+              <StyledTableCell>{x.id}</StyledTableCell>
+              <StyledTableCell component="th" scope="row">
+                {x.nome}
+              </StyledTableCell>
+              <StyledTableCell align="left">{x.cpf_cnpj}</StyledTableCell>
+              <StyledTableCell align="left">{x.end_cep}</StyledTableCell>
+              <StyledTableCell align="left" className={classes.button}>
+                <IconButton
+                  color="primary"
+                  onClick={() => {
+                    setModalInfo(true);
+                    setDados(x);
+                  }}
+                >
+                  <InfoIcon />
+                </IconButton>
+
+                <IconButton
+                  color="primary"
+                  onClick={() => {
+                    setModalEdit(true);
+                    setDados(x);
+                  }}
+                >
+                  <EditIcon />
+                </IconButton>
+                <IconButton color="primary" onClick={() => handleDelete(x.id)}>
+                  <DeleteIcon />
+                </IconButton>
+              </StyledTableCell>
+            </StyledTableRow>
+          ))}
+        </TableBody>
+      </Table>
+      {modalEdit && (
+        <div className={classes.modal}>
+          <IconButton className={classes.close} onClick={handleClose}>
+            <CloseIcon fontSize="large" color="#fff" />
+          </IconButton>
+          <EditConcessionarias dados={dados} modalEdit={modalEdit} />
+        </div>
+      )}
+      {modalInfo && (
+        <div className={classes.modal}>
+          <IconButton className={classes.close} onClick={handleClose}>
+            <CloseIcon fontSize="large" color="#fff" />
+          </IconButton>
+          <InfoUnidade dados={dados} />
+        </div>
+      )}
+    </div>
   );
 }

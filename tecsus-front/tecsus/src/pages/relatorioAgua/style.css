@@ -1,0 +1,20 @@
+
+.sectionGrafico {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left:284px
+}
+.sectionGrafico h1{
+  margin: 20px 0 40px;
+}
+.sectionQuadro{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  margin-left:284px
+}
+.sectionQuadro h2{
+  margin:20px 0;
+}

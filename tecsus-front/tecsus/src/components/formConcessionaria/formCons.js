@@ -1,40 +1,41 @@
 import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import useStyles from "../quadro_concessionaria/style";
+import useStyles from "../../style/style";
 
 export default function EditConcessionaria({ dados, modalEdit }) {
   const classes = useStyles();
-  const [cnpj, setCnpj] = useState(dados.cnpj)
-  const [nome, setNome] = useState(dados.nome)
-  const [segmento, setSegmento] = useState(dados.segmento)
-  const [cep, setCep] = useState(dados.cep)
-  const [rua, setRua] = useState(dados.rua)
-  const [bairro, setBairro] = useState(dados.bairro)
-  const [estado, setEstado] = useState(dados.uf)
-  const [cidade, setCidade] = useState(dados.cidade)
-  const [num_resid, setNum_resid] = useState(dados.numero)
-  const [telefone, setTelefone] = useState(dados.telefone)
-  const [inscricao_est, setInscricao_est] = useState(dados.inscricao_estadual)
-  const [inscricao_unic, setInscricao_unic] = useState(dados.inscricao_especial)
-
+  const [cnpj, setCnpj] = useState(dados.cnpj);
+  const [nome, setNome] = useState(dados.nome);
+  const [segmento, setSegmento] = useState(dados.segmento);
+  const [cep, setCep] = useState(dados.cep);
+  const [rua, setRua] = useState(dados.rua);
+  const [bairro, setBairro] = useState(dados.bairro);
+  const [estado, setEstado] = useState(dados.uf);
+  const [cidade, setCidade] = useState(dados.cidade);
+  const [num_resid, setNum_resid] = useState(dados.numero);
+  const [telefone, setTelefone] = useState(dados.telefone);
+  const [inscricao_est, setInscricao_est] = useState(dados.inscricao_estadual);
+  const [inscricao_unic, setInscricao_unic] = useState(
+    dados.inscricao_especial
+  );
 
   async function handleUpdate() {
     const data = {
-      id:dados.id,
-      cnpj:cnpj,
-      nome:nome,
-      segmento:segmento,
-      cep:cep,
-      rua:rua,
-      bairro:bairro,
-      cidade:cidade,
-      uf:estado,
-      numero:num_resid,
-      telefone:telefone,
-      inscricao_estadual:inscricao_est,
-      inscricao_especial:inscricao_unic
-  };
+      id: dados.id,
+      cnpj: cnpj,
+      nome: nome,
+      segmento: segmento,
+      cep: cep,
+      rua: rua,
+      bairro: bairro,
+      cidade: cidade,
+      uf: estado,
+      numero: num_resid,
+      telefone: telefone,
+      inscricao_estadual: inscricao_est,
+      inscricao_especial: inscricao_unic,
+    };
     await fetch(`http://localhost:8080/concessionaria/atualizar`, {
       method: "PUT",
       headers: {
@@ -46,7 +47,7 @@ export default function EditConcessionaria({ dados, modalEdit }) {
 
   return (
     <form className={classes.root} onSubmit={handleUpdate}>
-      <div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           required
@@ -68,8 +69,6 @@ export default function EditConcessionaria({ dados, modalEdit }) {
           onChange={(e) => setNome(e.target.value)}
           value={nome}
         />
-      </div>
-      <div>
         <TextField
           className={classes.text}
           required
@@ -81,6 +80,8 @@ export default function EditConcessionaria({ dados, modalEdit }) {
           onChange={(e) => setSegmento(e.target.value)}
           value={segmento}
         />
+      </div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           required
@@ -91,9 +92,7 @@ export default function EditConcessionaria({ dados, modalEdit }) {
           onChange={(e) => setCep(e.target.value)}
           value={cep}
         />
-      </div>
-      <div>
-      <TextField
+        <TextField
           className={classes.text}
           required
           id="outlined-required"
@@ -103,7 +102,7 @@ export default function EditConcessionaria({ dados, modalEdit }) {
           onChange={(e) => setRua(e.target.value)}
           value={rua}
         />
-         <TextField
+        <TextField
           className={classes.text}
           required
           id="outlined-required"
@@ -114,9 +113,8 @@ export default function EditConcessionaria({ dados, modalEdit }) {
           value={bairro}
         />
       </div>
-      
-      <div>
-      <TextField
+      <div className={classes.campo}>
+        <TextField
           className={classes.text}
           required
           id="outlined-required"
@@ -136,9 +134,7 @@ export default function EditConcessionaria({ dados, modalEdit }) {
           onChange={(e) => setEstado(e.target.value)}
           value={estado}
         />
-      </div>
-      <div>
-      <TextField
+        <TextField
           className={classes.text}
           required
           id="outlined-required"
@@ -149,6 +145,8 @@ export default function EditConcessionaria({ dados, modalEdit }) {
           onChange={(e) => setNum_resid(e.target.value)}
           value={num_resid}
         />
+      </div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           required
@@ -160,9 +158,7 @@ export default function EditConcessionaria({ dados, modalEdit }) {
           onChange={(e) => setTelefone(e.target.value)}
           value={telefone}
         />
-      </div>
-      <div>
-      <TextField
+        <TextField
           className={classes.text}
           required
           id="outlined-required"
@@ -186,7 +182,6 @@ export default function EditConcessionaria({ dados, modalEdit }) {
         />
       </div>
       <Button
-        onClick={()=>handleUpdate()}
         type="Submit"
         fullWidth
         variant="contained"

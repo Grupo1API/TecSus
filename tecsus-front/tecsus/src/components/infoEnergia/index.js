@@ -1,13 +1,13 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import useStyles from "../quadro_concessionaria/style";
+import useStyles from "../../style/style";
 import NumberFormat from "react-number-format";
 
 export default function EditEnergia({ dados }) {
   const classes = useStyles();
   return (
     <form className={classes.root}>
-      <div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           id="outlined"
@@ -26,8 +26,6 @@ export default function EditEnergia({ dados }) {
           disabled
           value={dados.contrato_concessionaria_id.nome}
         />
-      </div>
-      <div>
         <TextField
           className={classes.text}
           id="outlined"
@@ -38,6 +36,8 @@ export default function EditEnergia({ dados }) {
           disabled
           value={dados.contrato_unidade_id.cpf_cnpj}
         />
+      </div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           id="outlined-password-input"
@@ -48,8 +48,6 @@ export default function EditEnergia({ dados }) {
           disabled
           value={dados.contrato_unidade_id.nome}
         />
-      </div>
-      <div>
         <TextField
           className={classes.text}
           id="outlined"
@@ -69,8 +67,7 @@ export default function EditEnergia({ dados }) {
           value={dados.codigo_fiscal_operacao}
         />
       </div>
-
-      <div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           id="outlined"
@@ -89,8 +86,6 @@ export default function EditEnergia({ dados }) {
           disabled
           value={dados.classe_subclasse}
         />
-      </div>
-      <div>
         <TextField
           className={classes.text}
           id="outlined"
@@ -100,6 +95,8 @@ export default function EditEnergia({ dados }) {
           disabled
           value={dados.tp_fornecimento}
         />
+      </div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           id="outlined"
@@ -110,8 +107,6 @@ export default function EditEnergia({ dados }) {
           disabled
           value={dados.modalidade_tarifaria}
         />
-      </div>
-      <div>
         <TextField
           className={classes.text}
           id="outlined"
@@ -132,7 +127,7 @@ export default function EditEnergia({ dados }) {
           value={dados.roteiro_leitura}
         />
       </div>
-      <div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           id="outlined"
@@ -154,8 +149,6 @@ export default function EditEnergia({ dados }) {
           fullWidth
           variant="outlined"
         />
-      </div>
-      <div>
         <TextField
           className={classes.text}
           id="outlined"
@@ -165,6 +158,8 @@ export default function EditEnergia({ dados }) {
           disabled
           value={dados.endereco_eletrico}
         />
+      </div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           id="outlined"
@@ -175,8 +170,6 @@ export default function EditEnergia({ dados }) {
           disabled
           value={dados.cnpj_cpf_ci}
         />
-      </div>
-      <div>
         <TextField
           className={classes.text}
           id="outlined"
@@ -197,7 +190,7 @@ export default function EditEnergia({ dados }) {
           value={dados.local_rua}
         />
       </div>
-      <div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           id="outlined"
@@ -217,8 +210,6 @@ export default function EditEnergia({ dados }) {
           disabled
           value={dados.local_cidade}
         />
-      </div>
-      <div>
         <TextField
           className={classes.text}
           id="outlined"
@@ -228,6 +219,8 @@ export default function EditEnergia({ dados }) {
           disabled
           value={dados.local_estado}
         />
+      </div>
+      <div className={classes.campo}>
         <TextField
           className={classes.text}
           id="outlined"

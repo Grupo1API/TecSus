@@ -36,6 +36,8 @@ function ContaAgua() {
   const [taxa_regulacao, setTaxa_regulacao] = useState("");
   const [data_vencimento, setData_vencimento] = useState("");
   const [contratoId, setContratoId] = useState("");
+  const [file, setFile] = useState("");
+  const [fileName, setFileName] = useState("");
 
   async function buscaContrato() {
     try {
@@ -59,7 +61,6 @@ function ContaAgua() {
       return console.log(error.message);
     }
   }
-
   //   // function constructor(props) {
   //   //     super(props);
   //   //     this.state = {
@@ -70,23 +71,18 @@ function ContaAgua() {
   //   const b64toBlob = (b64Data, contentType = "", sliceSize = 512) => {
   //     const byteCharacters = atob(b64Data);
   //     const byteArrays = [];
-
   //     for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
   //       const slice = byteCharacters.slice(offset, offset + sliceSize);
-
   //       const byteNumbers = new Array(slice.length);
   //       for (let i = 0; i < slice.length; i++) {
   //         byteNumbers[i] = slice.charCodeAt(i);
   //       }
-
   //       const byteArray = new Uint8Array(byteNumbers);
   //       byteArrays.push(byteArray);
   //     }
-
   //     const blob = new Blob(byteArrays, { type: contentType });
   //     return blob;
   //   };
-
   //   function onChange(e) {
   //     let files = e.target.files;
   //     const blobb = new Blob(files, { type: "application/pdf" });
@@ -96,10 +92,8 @@ function ContaAgua() {
   //     // const contentType = "application/pdf";
   //     // const blobb = b64toBlob(files.name, contentType);
   //     // const blobUrl = URL.createObjectURL(blobb);
-
   //     let reader = new FileReader();
   //     reader.readAsDataURL(files[0]);
-
   //     reader.onload = (e) => {
   //       const formData = e.target.result;
   //       const blobb = new Blob(formData, { type: "application/pdf" });
@@ -110,17 +104,64 @@ function ContaAgua() {
   //     };
   //   }
 
-  async function carregarArquivo(file) {
-    if (file !== undefined) {
-      const dado = new FormData();
-      dado.append("file", file);
-      await fetch("http://localhost:8080/contadeagua/cadastro", {
-        method: "POST",
-        body: dado,
-      }); // rota para fazer o upload no back end
-    }
-  }
+  // async function carregarArquivo(file) {
+  //   if (file !== undefined) {
+  //     const dado = new FormData();
+  //     dado.append("file", file);
+  //     await fetch("http://localhost:8080/contadeagua/upload", {
+  //       method: "POST",
+  //       body: dado,
+  //     }); // rota para fazer o upload no back end
+  //   }
+  // }
 
+  // function carregarArquivo(event) {
+  //   setFile(event.target.files[0]);
+  //   console.log(file);
+  //   console.log("chgeuei aqui");
+  // }
+
+  const request = async (options) => {
+    const headers = new Headers({
+      "Content-Type": "application/json",
+    });
+    const defaults = { headers: headers };
+    options = Object.assign({}, defaults, options);
+
+    await fetch("http://localhost:8080/contadeagua/geral", options);
+
+    setConcessionaria("");
+    setCnpj_concessionaria("");
+    setSegmento("");
+    setN_fornecimento("");
+    setDocumento("");
+    setDataEmissao("");
+    setNome_cliente("");
+    setCepConcessionaria("");
+    setCodigo_cliente("");
+    setPde_rgi("");
+    setHidrometro("");
+    setEconomia("");
+    setCep_unidade("");
+    setTipo_ligacao("");
+    setData_apresentacao("");
+    setProxima_leitura("");
+    setCondicao_leitura("");
+    setConsumo_m3("");
+    setPeriodo_consumo("");
+    setMedia_consumo("");
+    setSubtotal_agua("");
+    setSubtotal_esgoto("");
+    setVtConsumo("");
+    setMulta("");
+    setAt_monet("");
+    setJuros_moradia("");
+    setTaxa_regulacao("");
+    setData_vencimento("");
+    setFile("");
+    setFileName("");
+    return;
+  };
   async function handleSubmit(event) {
     event.preventDefault();
     const dados = {
@@ -144,58 +185,30 @@ function ContaAgua() {
       valor_total: vtConsumo,
       contaagua_contrato_id: { id: contratoId },
     };
+    const formData = new FormData();
 
-    try {
-      await fetch("http://localhost:8080/contadeagua/cadastro", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(dados),
-      });
-
-      setConcessionaria("");
-      setCnpj_concessionaria("");
-      setSegmento("");
-      setN_fornecimento("");
-      setDocumento("");
-      setDataEmissao("");
-      setNome_cliente("");
-      setCepConcessionaria("");
-      setCodigo_cliente("");
-      setPde_rgi("");
-      setHidrometro("");
-      setEconomia("");
-      setCep_unidade("");
-      setTipo_ligacao("");
-      setData_apresentacao("");
-      setProxima_leitura("");
-      setCondicao_leitura("");
-      setConsumo_m3("");
-      setPeriodo_consumo("");
-      setMedia_consumo("");
-      setSubtotal_agua("");
-      setSubtotal_esgoto("");
-      setVtConsumo("");
-      setMulta("");
-      setAt_monet("");
-      setJuros_moradia("");
-      setTaxa_regulacao("");
-      setData_vencimento("");
-      return;
-    } catch (error) {
-      return console.log(error.message);
-    }
+    formData.append(
+      "contaAgua",
+      new Blob([JSON.stringify(dados)], {
+        type: "application/json",
+      })
+    );
+    formData.append("file", file);
+    const headers = new Headers({});
+    return request({
+      headers: headers,
+      method: "POST",
+      body: formData,
+    });
   }
+
   function formatarData(data) {
     const arrayData = data.split("/");
     const ano = `${arrayData[2]}`;
     const mes = `${arrayData[1]}`;
     const dia = `${arrayData[0]}`;
-
     return `${ano + "-" + mes + "-" + dia}`;
   }
-
   return (
     <div className="c_Agua">
       <Menu />
@@ -226,7 +239,6 @@ function ContaAgua() {
                 variant="outlined"
                 disabled
               />
-
               <TextField
                 id="concessionaria"
                 className="input"
@@ -247,7 +259,6 @@ function ContaAgua() {
                 variant="outlined"
                 disabled
               />
-
               <TextField
                 id="cnpj_cpf_cliente"
                 className="input"
@@ -326,7 +337,6 @@ function ContaAgua() {
                 disabled
               />
             </div>
-
             <h2>Dados Conta</h2>
             <div className="coluna">
               <TextField
@@ -403,7 +413,6 @@ function ContaAgua() {
                 variant="outlined"
               />
             </div>
-
             <div className="coluna">
               <TextField
                 id="media_consumo"
@@ -574,25 +583,37 @@ function ContaAgua() {
                 variant="outlined"
               />
             </div>
-
             <div className="bt-container">
-              <input
-                className="btn-upload"
-                id="contained-button-file"
-                multiple
-                type="file"
-                onChange={(e) => carregarArquivo(e.target.files[0])}
-              />
-              <label htmlFor="contained-button-file">
-                <Button
-                  id="upload"
-                  variant="contained"
-                  color="primary"
-                  component="span"
-                >
-                  Upload
-                </Button>
-              </label>
+              <div className="containerUpload">
+                <TextField
+                  type="text"
+                  label="Upload Conta"
+                  className="inputUpload"
+                  value={fileName}
+                  variant="outlined"
+                  disabled
+                />
+                <input
+                  className="btn-upload"
+                  id="contained-button-file"
+                  multiple
+                  type="file"
+                  onChange={(e) => {
+                    setFile(e.target.files[0]);
+                    setFileName(e.target.files[0].name);
+                  }}
+                />
+                <label htmlFor="contained-button-file">
+                  <Button
+                    id="uploadAgua"
+                    variant="contained"
+                    color="primary"
+                    component="span"
+                  >
+                    Pesquisar
+                  </Button>
+                </label>
+              </div>
               <button type="submit" className="cadastrar" id="botao_cad">
                 ENVIAR
               </button>
@@ -604,5 +625,4 @@ function ContaAgua() {
     </div>
   );
 }
-
 export default ContaAgua;

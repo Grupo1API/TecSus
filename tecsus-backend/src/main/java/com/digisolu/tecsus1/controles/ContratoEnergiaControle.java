@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.digisolu.tecsus1.entidades.ContratoEnergia;
 import com.digisolu.tecsus1.modelos.AdicionadorLinkContratoEnergia;
@@ -96,5 +98,14 @@ public class ContratoEnergiaControle {
         }
         return new ResponseEntity<ContratoEnergia>(contratos_energia, HttpStatus.OK);
     }
+    
+    @RequestMapping ("/contrato/energia/{unidade_id}")
+    public @ResponseBody ResponseEntity<List<ContratoEnergia>> findAllContratoEnergia(){
+        List<ContratoEnergia> contratosEnergia = repositorio.findAllContratoEnergia();
+        if(contratosEnergia == null) {
+            return new ResponseEntity<List<ContratoEnergia>>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<List<ContratoEnergia>>(contratosEnergia,HttpStatus.OK);
+        }  
 }
 

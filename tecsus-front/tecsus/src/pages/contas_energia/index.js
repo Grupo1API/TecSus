@@ -39,8 +39,9 @@ function ContaEnergia() {
   const [cip, setCip] = useState("");
   const [valor_pis, setValor_pis] = useState("");
   const [valor_cofins, setValor_cofins] = useState("");
-  const [upload, setUpload] = useState("");
   const [contratoId, setContratoId] = useState("");
+  const [file, setFile] = useState("");
+  const [fileName, setFileName] = useState("");
 
   async function buscaContrato() {
     try {
@@ -68,21 +69,56 @@ function ContaEnergia() {
     }
   }
 
-  async function carregarArquivo(file) {
-    if (file !== undefined) {
-      const dado = new FormData();
-      dado.append("file", file);
-      await fetch("http://localhost:8080/contadeagua/cadastro", {
-        method: "POST",
-        body: dado,
-      }); // rota para fazer o upload no back end
-    }
-  }
+  const request = async (options) => {
+    const headers = new Headers({
+      "Content-Type": "application/json",
+    });
+    const defaults = { headers: headers };
+    options = Object.assign({}, defaults, options);
+    await fetch("http://localhost:8080/contadeenergia/geral", options);
 
+    setCep_cliente("");
+    setNota_fiscal("");
+    setValor_total("");
+    setNumero_instalacao("");
+    setData_vencimento("");
+    setConta_mes("");
+    setBandeiraTarifaria("");
+    setEmissao("");
+    setDias_faturamento("");
+    setDescricao_consumo("");
+    setConst_multa("");
+    setKwhMes("");
+    setConcessionaria("");
+    setCep_concessionaria("");
+    setCnpj_concessionaria("");
+    setNome_cliente("");
+    setCpf_cnpj_cliente("");
+    setCodigo_identificador("");
+    setCodigo_fiscal("");
+    setGrupo_sub("");
+    setClase_sub("");
+    setTp_fornecimento("");
+    setModalidade_taf("");
+    setTensao_nominal("");
+    setRoteiro_leitura("");
+    setMedidor("");
+    setValor_total_tusd("");
+    setValor_total_te("");
+    setValor_total_bandeira("");
+    setMulta("");
+    setCip("");
+    setValor_pis("");
+    setValor_cofins("");
+    setFile("");
+    setContratoId("");
+    setFileName("");
+
+    return;
+  };
   async function handleSubmit(event) {
     event.preventDefault();
-    const dado = {
-      arquivo: upload,
+    const dados = {
       bandeira_tarifaria: bandeiraTarifaria,
       bandeira_tarifaria_vigente: valor_total_bandeira,
       const_mult: const_multa,
@@ -104,62 +140,29 @@ function ContaEnergia() {
       valor_total_tusd: valor_total_tusd,
       contaenergia_contrato_id: { id: contratoId },
     };
-    function formatarData(data) {
-      const arrayData = data.split("/");
-      const ano = `${arrayData[2]}`;
-      const mes = `${arrayData[1]}`;
-      const dia = `${arrayData[0]}`;
+    const formData = new FormData();
+    formData.append(
+      "contaEnergia",
+      new Blob([JSON.stringify(dados)], {
+        type: "application/json",
+      })
+    );
+    formData.append("file", file);
+    const headers = new Headers({});
+    return request({
+      headers: headers,
+      method: "POST",
+      body: formData,
+    });
+  }
 
-      return `${ano + "-" + mes + "-" + dia}`;
-    }
+  function formatarData(data) {
+    const arrayData = data.split("/");
+    const ano = `${arrayData[2]}`;
+    const mes = `${arrayData[1]}`;
+    const dia = `${arrayData[0]}`;
 
-    try {
-      await fetch("http://localhost:8080/contadeenergia/cadastro", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(dado),
-      });
-      setCep_cliente("");
-      setNota_fiscal("");
-      setValor_total("");
-      setNumero_instalacao("");
-      setData_vencimento("");
-      setConta_mes("");
-      setBandeiraTarifaria("");
-      setEmissao("");
-      setDias_faturamento("");
-      setDescricao_consumo("");
-      setConst_multa("");
-      setKwhMes("");
-      setConcessionaria("");
-      setCep_concessionaria("");
-      setCnpj_concessionaria("");
-      setNome_cliente("");
-      setCpf_cnpj_cliente("");
-      setCodigo_identificador("");
-      setCodigo_fiscal("");
-      setGrupo_sub("");
-      setClase_sub("");
-      setTp_fornecimento("");
-      setModalidade_taf("");
-      setTensao_nominal("");
-      setRoteiro_leitura("");
-      setMedidor("");
-      setValor_total_tusd("");
-      setValor_total_te("");
-      setValor_total_bandeira("");
-      setMulta("");
-      setCip("");
-      setValor_pis("");
-      setValor_cofins("");
-      setUpload("");
-      setContratoId("");
-      return;
-    } catch (error) {
-      return console.log(error.message);
-    }
+    return `${ano + "-" + mes + "-" + dia}`;
   }
 
   return (
@@ -431,7 +434,7 @@ function ContaEnergia() {
               />
             </div>
 
-            <p>Descrição do Consumo</p>
+            <h4>Descrição do Consumo</h4>
 
             <div className="coluna">
               <TextField
@@ -534,7 +537,7 @@ function ContaEnergia() {
               />
             </div>
 
-            <p>Itens Financeiros (Valores Totais)</p>
+            <h4>Itens Financeiros (Valores Totais)</h4>
 
             <div className="coluna">
               <NumberFormat
@@ -571,7 +574,7 @@ function ContaEnergia() {
               />
             </div>
 
-            <p>Tributos</p>
+            <h4>Tributos</h4>
 
             <div className="coluna">
               <NumberFormat
@@ -610,23 +613,36 @@ function ContaEnergia() {
             </div>
 
             <div className="bt-container">
-              <input
-                className="btn-upload"
-                id="contained-button-file"
-                multiple
-                type="file"
-                onChange={(e) => carregarArquivo(e.target.files[0])}
-              />
-              <label htmlFor="contained-button-file">
-                <Button
-                  id="upload"
-                  variant="contained"
-                  color="primary"
-                  component="span"
-                >
-                  Upload
-                </Button>
-              </label>
+              <div className="containerUpload">
+                <TextField
+                  type="text"
+                  label="Upload Conta"
+                  className="inputUpload"
+                  value={fileName}
+                  variant="outlined"
+                  disabled
+                />
+                <input
+                  className="btn-upload"
+                  id="contained-button-file"
+                  multiple
+                  type="file"
+                  onChange={(e) => {
+                    setFile(e.target.files[0]);
+                    setFileName(e.target.files[0].name);
+                  }}
+                />
+                <label htmlFor="contained-button-file">
+                  <Button
+                    id="uploadEnergia"
+                    variant="contained"
+                    color="primary"
+                    component="span"
+                  >
+                    Pesquisar
+                  </Button>
+                </label>
+              </div>
               <button type="submit" className="cadastrar" id="botao_cad">
                 ENVIAR
               </button>

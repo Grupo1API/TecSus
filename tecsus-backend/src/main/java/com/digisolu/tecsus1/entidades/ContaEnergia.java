@@ -74,10 +74,17 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	@Column
 	private float valor_cofins;
 	
-
+	@Column
+	private String tipo;
+	
+	
 	@Lob
 	@Column
 	private byte[] arquivo;
+
+	
+
+
 	
 	public byte[] getArquivo() {
 		return arquivo;
@@ -91,7 +98,12 @@ public class ContaEnergia extends RepresentationModel<ContaEnergia> {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+	public String getTipo() {
+		return tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 	public String getBandeira_tarifaria_vigente() {
 		return bandeira_tarifaria_vigente;
 	}
