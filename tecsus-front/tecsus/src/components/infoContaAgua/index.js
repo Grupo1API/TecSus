@@ -239,6 +239,7 @@ export default function InfoContaAgua({ dados }) {
           placeholder="R$ "
           customInput={TextField}
           variant="outlined"
+          disabled
         />
         <NumberFormat
           id="outlined"
@@ -251,6 +252,7 @@ export default function InfoContaAgua({ dados }) {
           placeholder="R$"
           customInput={TextField}
           variant="outlined"
+          disabled
         />
       </div>
       <div className={classes.campo}>
@@ -265,6 +267,7 @@ export default function InfoContaAgua({ dados }) {
           placeholder="R$"
           customInput={TextField}
           variant="outlined"
+          disabled
         />
         <NumberFormat
           id="outlined"
@@ -277,6 +280,7 @@ export default function InfoContaAgua({ dados }) {
           placeholder="R$"
           customInput={TextField}
           variant="outlined"
+          disabled
         />
         <NumberFormat
           id="outlined"
@@ -289,6 +293,7 @@ export default function InfoContaAgua({ dados }) {
           placeholder="R$"
           customInput={TextField}
           variant="outlined"
+          disabled
         />
       </div>
       <div className={classes.campo}>
@@ -303,6 +308,7 @@ export default function InfoContaAgua({ dados }) {
           placeholder="R$"
           customInput={TextField}
           variant="outlined"
+          disabled
         />
         <NumberFormat
           id="outlined"
@@ -315,6 +321,7 @@ export default function InfoContaAgua({ dados }) {
           placeholder="R$"
           customInput={TextField}
           variant="outlined"
+          disabled
         />
         <NumberFormat
           id="outlined"

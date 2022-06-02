@@ -2,11 +2,12 @@ import GraficoAgua from "../../components/graficoAgua/index";
 import Menu from "../../components/menu/index";
 import RelatorioAguaa from "../../components/relatorio_agua/index";
 import TextField from "@material-ui/core/TextField";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import Button from "@material-ui/core/Button";
 import "./style.css";
 
 function RelatorioAgua() {
@@ -17,6 +18,17 @@ function RelatorioAgua() {
   const [dadosContratos, setDadosContratos] = useState("");
   const [listaRelatorioAguas, setListaRelatorioAguas] = useState([]);
 
+  useEffect(() => {
+    const buscaContrato = async () => {
+      const responseContrato = await fetch(
+        `http://localhost:8080/contrato/agua/${unidadeId}`
+      );
+      const dadosContrato = await responseContrato.json();
+      setDadosContratos(dadosContrato);
+    };
+    buscaContrato();
+  }, [unidadeId]);
+
   async function buscaUnidade() {
     try {
       const responseUnidade = await fetch(
@@ -25,12 +37,7 @@ function RelatorioAgua() {
       const dadosUnidade = await responseUnidade.json();
       setUnidade(dadosUnidade.nome);
       setUnidadeId(dadosUnidade.id);
-
-      const responseContrato = await fetch(
-        `http://localhost:8080/contrato/agua/${unidadeId}`
-      );
-      const dadosContrato = await responseContrato.json();
-      setDadosContratos(dadosContrato);
+      return;
     } catch (error) {
       return console.log(error.message);
     }
@@ -39,14 +46,12 @@ function RelatorioAgua() {
   async function listaRelatorioAgua() {
     try {
       const response = await fetch(
-        `http://localhost:8080/conta/agua/${contratoId}`,
+        `http://localhost:8080/contasdocontrato/agua/${contratoId}`,
         {
           method: "GET",
         }
       );
       const data = await response.json();
-      console.log(contratoId);
-      console.log(data);
       setListaRelatorioAguas(data);
     } catch (error) {
       console.log(error.message);
@@ -63,58 +68,63 @@ function RelatorioAgua() {
         <div className="sectionGrafico">
           <h1>Relatorio de Água</h1>
           <div>
-            <TextField
-              type="text"
-              required
-              placeholder="CPF/CNPJ da Unidade"
-              value={cpf_cnpjUnidade}
-              onChange={(e) => setCpf_cnpjUnidade(e.target.value)}
-              onBlur={buscaUnidade}
-              label="CPF/CNPJ da Unidade"
-              variant="outlined"
-            />
-            <TextField
-              type="text"
-              placeholder="Unidade"
-              value={unidade}
-              disabled
-              label="Unidade"
-              variant="outlined"
-            />
-          </div>
-          <div>
-            <FormControl variant="outlined" className="select input">
-              <InputLabel id="demo-simple-select-outlined-label">
-                Contratos
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-outlined-label"
-                id="demo-simple-select-outlined"
-                value={contratoId}
-                onChange={(e) => setContratoId(e.target.value)}
-                onBlur={listaRelatorioAgua}
-                label="Contratos"
+            <h2>Filtro</h2>
+            <div className="filtro">
+              <TextField
+                type="text"
+                required
+                placeholder="CPF/CNPJ da Unidade"
+                value={cpf_cnpjUnidade}
+                onChange={(e) => setCpf_cnpjUnidade(e.target.value)}
+                label="CPF/CNPJ da Unidade"
+                onBlur={buscaUnidade}
+                variant="outlined"
+                className="input"
+              />
+              <TextField
+                type="text"
+                placeholder="Unidade"
+                value={unidade}
+                disabled
+                className="input"
+                label="Unidade"
+                variant="outlined"
+              />
+              <FormControl variant="outlined" className="select input">
+                <InputLabel id="demo-simple-select-outlined-label">
+                  Contratos
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-outlined-label"
+                  id="demo-simple-select-outlined"
+                  value={contratoId}
+                  onChange={(e) => setContratoId(e.target.value)}
+                  label="Contratos"
+                >
+                  {dadosContratos &&
+                    dadosContratos.map((x) => (
+                      <MenuItem
+                        value={x.id}
+                      >{`ID: ${x.id} / Concessionaria: ${x.contrato_concessionaria_id.nome} / Nº Fornecimento: ${x.n_fornecimento}`}</MenuItem>
+                    ))}
+                </Select>
+              </FormControl>
+              <Button
+                onClick={listaRelatorioAgua}
+                type="button"
+                variant="contained"
+                color="primary"
+                size="large"
               >
-                {dadosContratos &&
-                  dadosContratos.map((x) => (
-                    <MenuItem
-                      value={x.id}
-                    >{`ID: ${x.id} / Concessionaria: ${x.contrato_concessionaria_id.nome} / Nº Fornecimento: ${x.n_fornecimento}`}</MenuItem>
-                  ))}
-              </Select>
-            </FormControl>
+                Pesquisar
+              </Button>
+            </div>
           </div>
-          <GraficoAgua
-            contratoId={contratoId}
-            listaRelatorioAguas={listaRelatorioAguas}
-          />
+          <GraficoAgua listaRelatorioAguas={listaRelatorioAguas} />
         </div>
         <div className="sectionQuadro">
           <h2>Contas Água</h2>
-          <RelatorioAguaa
-            contratoId={contratoId}
-            listaRelatorioAguas={listaRelatorioAguas}
-          />
+          <RelatorioAguaa listaRelatorioAguas={listaRelatorioAguas} />
         </div>
       </div>
     </div>

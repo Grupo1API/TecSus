@@ -9,33 +9,20 @@ import {
 import FormControl from "@material-ui/core/FormControl";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Radio from "@material-ui/core/Radio";
 import "./style.css";
 
-function GraficoAgua({ contratoId }) {
-  const [dadosAgua, setDadosAgua] = useState([]);
+function GraficoAgua({ listaRelatorioAguas }) {
   const [variavelY, setVariavelY] = useState();
   const [legenda, setLegenda] = useState();
   const [checked, setChecked] = useState("Valor Total R$");
-
-  useEffect(() => {
-    async function dadosAgua() {
-      const response = await fetch("http://localhost:8080/contadeagua", {
-        method: "GET",
-      });
-
-      const data = await response.json();
-      setDadosAgua(data);
-    }
-    dadosAgua();
-  }, []);
 
   const handleChange = (event) => {
     setChecked(event.target.value);
   };
 
-  const dataConsumo = dadosAgua.map((x) => {
+  const dataConsumo = listaRelatorioAguas.map((x) => {
     const arrayData = x.data_emissao.split("-");
     const ano = `${arrayData[0]}`;
     const mes = `${arrayData[1]}`;
@@ -45,7 +32,7 @@ function GraficoAgua({ contratoId }) {
     };
   });
 
-  const daTaValorTotal = dadosAgua.map((x) => {
+  const daTaValorTotal = listaRelatorioAguas.map((x) => {
     const arrayData = x.data_emissao.split("-");
     const ano = `${arrayData[0]}`;
     const mes = `${arrayData[1]}`;

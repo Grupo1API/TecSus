@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -54,6 +54,7 @@ const useStyles = makeStyles({
     justifyContent: "center",
     alignItems: "center",
     height: "120vh",
+    zIndex: 1,
   },
   close: {
     position: "absolute",
@@ -63,13 +64,12 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Relatorio_agua({ contratoId, listaRelatorioAguas }) {
+export default function Relatorio_agua({ listaRelatorioAguas }) {
   const classes = useStyles();
   const [modalEdit, setModalEdit] = useState(false);
   const [modalInfo, setModalInfo] = useState(false);
-  const [dados, setDados] = useState([]);
-
-  useEffect(() => {}, [listaRelatorioAguas]);
+  const [dados, setDados] = useState();
+  const [upload, setUpload] = useState("");
 
   async function handleDelete(id) {
     const data = {
@@ -83,6 +83,16 @@ export default function Relatorio_agua({ contratoId, listaRelatorioAguas }) {
       body: JSON.stringify(data),
     });
   }
+  async function handleUpload() {
+    const blob = new Blob(upload);
+    const reader = new FileReader();
+    reader.readAsDataURL(blob);
+    reader.onloadend = function () {
+      const base64data = reader.result;
+      console.log(base64data);
+    };
+  }
+
   function handleClose(event) {
     event.preventDefault();
     setModalEdit(false);
@@ -104,8 +114,8 @@ export default function Relatorio_agua({ contratoId, listaRelatorioAguas }) {
         </TableHead>
 
         <TableBody className={classes.body}>
-          {listaRelatorioAguas &&
-            listaRelatorioAguas.map((x) => (
+          {listaRelatorioAguas.map((x) => {
+            return (
               <StyledTableRow key={x.id}>
                 <StyledTableCell>{x.id}</StyledTableCell>
                 <StyledTableCell align="left">{x.data_emissao}</StyledTableCell>
@@ -139,10 +149,10 @@ export default function Relatorio_agua({ contratoId, listaRelatorioAguas }) {
 
                   <IconButton
                     color="primary"
-                    // onClick={() => {
-                    //   setModalEdit(true);
-                    //   setDados(x);
-                    // }}
+                    onClick={() => {
+                      setUpload(x.arquivo);
+                      handleUpload();
+                    }}
                   >
                     <ArchiveIcon />
                   </IconButton>
@@ -155,7 +165,8 @@ export default function Relatorio_agua({ contratoId, listaRelatorioAguas }) {
                   </IconButton>
                 </StyledTableCell>
               </StyledTableRow>
-            ))}
+            );
+          })}
         </TableBody>
       </Table>
       {modalEdit && (
