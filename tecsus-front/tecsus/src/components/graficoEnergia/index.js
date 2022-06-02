@@ -9,32 +9,21 @@ import {
 import FormControl from "@material-ui/core/FormControl";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Radio from "@material-ui/core/Radio";
 import "./style.css";
 
-function GraficoEnergia() {
-  const [dadosUsina, setDadosUsina] = useState([]);
+function GraficoEnergia({listaRelatorioEnergia}) {
   const [variavelY, setVariavelY] = useState();
   const [legenda, setLegenda] = useState();
   const [checked, setChecked] = useState("Valor Total R$");
 
-  useEffect(() => {
-    async function dadosUsina() {
-      const response = await fetch("http://localhost:8080/contadeenergia", {
-        method: "GET",
-      });
-      const data = await response.json();
-      setDadosUsina(data);
-    }
-    dadosUsina();
-  }, []);
 
   const handleChange = (event) => {
     setChecked(event.target.value);
   };
 
-  const dataValor = dadosUsina.map((x) => {
+  const dataValor = listaRelatorioEnergia.map((x) => {
     const arrayData = x.emissao.split("-");
     const ano = `${arrayData[0]}`;
     const mes = `${arrayData[1]}`;
@@ -44,7 +33,7 @@ function GraficoEnergia() {
     };
   });
 
-  const dataMes = dadosUsina.map((x) => {
+  const dataMes = listaRelatorioEnergia.map((x) => {
     const arrayData = x.emissao.split("-");
     const ano = `${arrayData[0]}`;
     const mes = `${arrayData[1]}`;

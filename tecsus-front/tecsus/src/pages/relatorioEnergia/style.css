@@ -18,3 +18,9 @@
 .sectionQuadro h2{
   margin:20px 0;
 }
+.filtro{
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  gap: 10px;
+}

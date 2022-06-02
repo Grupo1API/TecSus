@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -63,29 +63,12 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Relatorio_energia() {
+export default function Relatorio_energia({listaRelatorioEnergia}) {
   const classes = useStyles();
-  const [listaEnergias, setListaEnergias] = useState([]);
   const [modalEdit, setModalEdit] = useState(false);
   const [dados, setDados] = useState([]);
   const [modalInfo, setModalInfo] = useState(false);
 
-  useEffect(() => {
-    listaEnergia();
-  }, []);
-
-  async function listaEnergia() {
-    try {
-      const response = await fetch("http://localhost:8080/contadeenergia", {
-        method: "GET",
-      });
-      const data = await response.json();
-      console.log(data);
-      setListaEnergias(data);
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
 
   async function handleDelete(id) {
     const data = {
@@ -98,7 +81,6 @@ export default function Relatorio_energia() {
       },
       body: JSON.stringify(data),
     });
-    listaEnergia();
   }
 
   function handleClose(event) {
@@ -123,55 +105,56 @@ export default function Relatorio_energia() {
         </TableHead>
 
         <TableBody className={classes.body}>
-          {listaEnergias.map((x) => (
-            <StyledTableRow key={x.id}>
-              <StyledTableCell>{x.id}</StyledTableCell>
-              <StyledTableCell align="left">{x.emissao}</StyledTableCell>
-              <StyledTableCell align="left">
-                {x.data_vencimento}
-              </StyledTableCell>
-              <StyledTableCell align="left">
-                {x.quantidade_kwh_mes}
-              </StyledTableCell>
-              <StyledTableCell align="left">{x.valor_total}</StyledTableCell>
+          {listaRelatorioEnergia.map((x) =>{          
+            return(
+              <StyledTableRow key={x.id}>
+                <StyledTableCell>{x.id}</StyledTableCell>
+                <StyledTableCell align="left">{x.emissao}</StyledTableCell>
+                <StyledTableCell align="left">
+                  {x.data_vencimento}
+                </StyledTableCell>
+                <StyledTableCell align="left">
+                  {x.quantidade_kwh_mes}
+                </StyledTableCell>
+                <StyledTableCell align="left">{x.valor_total}</StyledTableCell>
 
-              <StyledTableCell align="left" className={classes.button}>
-                <IconButton
-                  color="primary"
-                  onClick={() => {
-                    setModalInfo(true);
-                    setDados(x);
-                  }}
-                >
-                  <InfoIcon />
-                </IconButton>
+                <StyledTableCell align="left" className={classes.button}>
+                  <IconButton
+                    color="primary"
+                    onClick={() => {
+                      setModalInfo(true);
+                      setDados(x);
+                    }}
+                  >
+                    <InfoIcon />
+                  </IconButton>
 
-                <IconButton
-                  color="primary"
-                  onClick={() => {
-                    setModalEdit(true);
-                    setDados(x);
-                  }}
-                >
-                  <EditIcon />
-                </IconButton>
+                  <IconButton
+                    color="primary"
+                    onClick={() => {
+                      setModalEdit(true);
+                      setDados(x);
+                    }}
+                  >
+                    <EditIcon />
+                  </IconButton>
 
-                <IconButton
-                  color="primary"
-                  // onClick={() => {
-                  //   setModalEdit(true);
-                  //   setDados(x);
-                  // }}
-                >
-                  <ArchiveIcon />
-                </IconButton>
+                  <IconButton
+                    color="primary"
+                    // onClick={() => {
+                    //   setModalEdit(true);
+                    //   setDados(x);
+                    // }}
+                  >
+                    <ArchiveIcon />
+                  </IconButton>
 
-                <IconButton color="primary" onClick={() => handleDelete(x.id)}>
-                  <DeleteIcon />
-                </IconButton>
-              </StyledTableCell>
-            </StyledTableRow>
-          ))}
+                  <IconButton color="primary" onClick={() => handleDelete(x.id)}>
+                    <DeleteIcon />
+                  </IconButton>
+                </StyledTableCell>
+              </StyledTableRow>
+            )})}
         </TableBody>
       </Table>
       {modalEdit && (
