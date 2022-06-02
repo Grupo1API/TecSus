@@ -288,13 +288,15 @@ export default function Dashboard() {
 
               </List>
             </Collapse>
-            
+          <Link to='/alert' className={classes.link} >
             <ListItem button className={classes.itens}>
               <ListItemIcon>
                 <WarningIcon />
               </ListItemIcon>
               <ListItemText primary="Alertas" />
             </ListItem>
+            </Link>
+          
 
             <ListItem button className={classes.itens}>
               <ListItemIcon>

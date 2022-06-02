@@ -16,6 +16,7 @@ import QuadroConcessionaria from './pages/quadro_concessionaria'
 import QuadroUnidade from './pages/quadro_unidades/quadroUnidade';
 import QuadroContratoAgua from './pages/quadro_contrato_agua/quadroContratoAgua';
 import QuadroContratoEnergia from './pages/quadro_contrato_energia/quadroContratoEnergia';
+import Alerta from './pages/alert';
 
 
 function Main() {
@@ -27,6 +28,7 @@ function Main() {
               <Route path="/contas_agua" element={<ContaAgua />} />
               <Route path="/contas_energia" element={<ContaEnergia />}/>
               <Route path="/concessionaria" element={<Concessionaria />}/>
+              <Route path="/alert" element={<Alerta />}/>
               <Route path="/contrato_agua" element={<ContratoAgua />}/>
               <Route path="/contrato_energia" element={<ContratoEnergia />}/>
               <Route path="/grafico_agua" element={<GraficoAgua />}/>
