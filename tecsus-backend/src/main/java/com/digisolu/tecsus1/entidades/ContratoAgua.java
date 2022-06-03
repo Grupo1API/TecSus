@@ -61,7 +61,7 @@ public class ContratoAgua extends RepresentationModel<ContratoAgua>{
 		return contrato_agua_id;
 	}
 	public void setId(Long id) {
-		this.contrato_agua_id = id;
+		this.contrato_agua_id 
 	}
 	
 	public CadastroConcessionaria getContrato_concessionaria_id() {
