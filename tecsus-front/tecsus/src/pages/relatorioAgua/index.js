@@ -8,6 +8,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
+import baseURL from "../../utils";
 import "./style.css";
 
 function RelatorioAgua() {
@@ -20,10 +21,12 @@ function RelatorioAgua() {
 
   useEffect(() => {
     const buscaContrato = async () => {
-      const responseContrato = await fetch(
-        `http://localhost:8080/contrato/agua/${unidadeId}`
-      );
+      const responseContrato = await fetch(`${baseURL}/contrato/agua/${unidadeId}`,{
+        method:'GET'
+      });
+      
       const dadosContrato = await responseContrato.json();
+      console.log(dadosContrato)
       setDadosContratos(dadosContrato);
     };
     buscaContrato();
@@ -32,7 +35,7 @@ function RelatorioAgua() {
   async function buscaUnidade() {
     try {
       const responseUnidade = await fetch(
-        `http://localhost:8080/unidades/${cpf_cnpjUnidade}`
+        `${baseURL}/unidades/${cpf_cnpjUnidade}`
       );
       const dadosUnidade = await responseUnidade.json();
       setUnidade(dadosUnidade.nome);
@@ -44,11 +47,11 @@ function RelatorioAgua() {
   }
 
   async function listaRelatorioAgua() {
-    try {
+    try {      
       const response = await fetch(
-        `http://localhost:8080/contasdocontrato/agua/${contratoId}`,
+        `${baseURL}/contasdocontrato/agua/${contratoId}`,
         {
-          method: "GET",
+          method:'GET',
         }
       );
       const data = await response.json();

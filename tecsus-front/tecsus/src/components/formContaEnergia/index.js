@@ -3,6 +3,7 @@ import NumberFormat from "react-number-format";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import useStyles from "../../style/style";
+import baseURL from "../../utils";
 
 export default function EditContaEnergia({ dados, modalEdit }) {
   const classes = useStyles();
@@ -80,7 +81,7 @@ export default function EditContaEnergia({ dados, modalEdit }) {
       valor_total_te: valor_total_te,
       valor_total_tusd: valor_total_tusd,
     };
-    await fetch(`http://localhost:8080/contadeenergia/atualizar`, {
+    await fetch(`${baseURL}/contadeenergia/atualizar`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

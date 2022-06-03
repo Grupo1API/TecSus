@@ -12,6 +12,7 @@ import EditConcessionarias from "../formUnidade/formUnidades";
 import InfoUnidade from "../infoUnidade";
 import CloseIcon from "@material-ui/icons/Close";
 import InfoIcon from "@material-ui/icons/Info";
+import baseURL from "../../utils";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -75,7 +76,7 @@ export default function Quadro_unidade() {
 
   async function listaUnidade() {
     try {
-      const response = await fetch("http://localhost:8080/cadastrounidade", {
+      const response = await fetch(`${baseURL}/cadastrounidade`, {
         method: "GET",
       });
       const data = await response.json();
@@ -89,7 +90,7 @@ export default function Quadro_unidade() {
     const data = {
       id: id,
     };
-    await fetch(`http://localhost:8080/unidade/excluir`, {
+    await fetch(`${baseURL}/unidade/excluir`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

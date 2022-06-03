@@ -84,12 +84,12 @@ function GraficoAgua({ listaRelatorioAguas }) {
               }}
             />
             <FormControlLabel
-              value="Consumo Mês (Kwh)"
+              value="Consumo Mês (M³)"
               control={<Radio />}
-              label="Consumo Mês (Kwh)"
+              label="Consumo Mês (M³)"
               onClick={() => {
                 setVariavelY(dataConsumo);
-                setLegenda("Consumo Mês (Kwh)");
+                setLegenda("Consumo Mês (M³)");
               }}
             />
           </RadioGroup>

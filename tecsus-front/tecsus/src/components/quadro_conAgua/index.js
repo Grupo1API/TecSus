@@ -12,6 +12,7 @@ import EditAgua from "../formAgua/index";
 import CloseIcon from "@material-ui/icons/Close";
 import InfoIcon from "@material-ui/icons/Info";
 import InfoAgua from "../infoAgua";
+import baseURL from "../../utils";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -75,7 +76,7 @@ export default function QuadroContratoAgua() {
 
   async function listaAgua() {
     try {
-      const response = await fetch("http://localhost:8080/contratoagua", {
+    const response = await fetch(`${baseURL}/contratoagua`, {
         method: "GET",
       });
       const data = await response.json();
@@ -89,7 +90,7 @@ export default function QuadroContratoAgua() {
     const data = {
       id: id,
     };
-    await fetch(`http://localhost:8080/contratoagua/excluir`, {
+    await fetch(`${baseURL}/contratoagua/excluir`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

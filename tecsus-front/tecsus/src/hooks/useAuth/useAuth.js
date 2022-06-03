@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import { useLocalStorage } from "react-use";
+import baseURL from "../../utils";
 
 export function useAuth() {
   return useContext(AuthContext);
@@ -15,7 +16,7 @@ export function useAuthProvider() {
 
   const logar = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/usuarios`);
+      const response = await fetch(`${baseURL}/usuarios`);
       const dados = await response.json();
 
       const achouDados = dados.find((x) => {

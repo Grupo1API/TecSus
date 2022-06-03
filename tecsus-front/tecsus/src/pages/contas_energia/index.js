@@ -4,6 +4,7 @@ import { useState } from "react";
 import NumberFormat from "react-number-format";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import baseURL from "../../utils";
 
 function ContaEnergia() {
   const [cep_cliente, setCep_cliente] = useState("");
@@ -46,7 +47,7 @@ function ContaEnergia() {
   async function buscaContrato() {
     try {
       const response = await fetch(
-        `http://localhost:8080/contratoenergia/${numero_instalacao}`
+        `${baseURL}/contratoenergia/${numero_instalacao}`
       );
       const dados = await response.json();
       setCnpj_concessionaria(dados.contrato_concessionaria_id.cnpj);
@@ -75,7 +76,7 @@ function ContaEnergia() {
     });
     const defaults = { headers: headers };
     options = Object.assign({}, defaults, options);
-    await fetch("http://localhost:8080/contadeenergia/geral", options);
+    await fetch(`${baseURL}/contadeenergia/geral`, options);
 
     setCep_cliente("");
     setNota_fiscal("");
