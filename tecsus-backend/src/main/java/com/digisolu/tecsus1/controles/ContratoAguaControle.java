@@ -100,7 +100,7 @@ public class ContratoAguaControle {
         return new ResponseEntity<ContratoAgua>(contratos_agua, HttpStatus.OK);
     }
     
-    @RequestMapping ("/contrato/agua/{unidade_id}")
+    @GetMapping ("/contrato/agua/{unidade_id}")
     public @ResponseBody ResponseEntity<List<ContratoAgua>> findAllContratoAgua(){
         List<ContratoAgua> contratosAgua = repositorio.findAllContratoAgua();
         if(contratosAgua == null) {
