@@ -26,6 +26,9 @@ public class ContratoAguaAtualizador {
 	if(!(atualizacao.getValor_medio()==0)) {
 		contratoAgua.setValor_medio(atualizacao.getValor_medio());
 	}
+	if(!(atualizacao.getMedia_consumo_m3()==0)) {
+		contratoAgua.setMedia_consumo_m3(atualizacao.getMedia_consumo_m3());
+	}
 	if(!(atualizacao.getLocal_nome()==null)) {
 		contratoAgua.setLocal_nome(atualizacao.getLocal_nome());
 	}

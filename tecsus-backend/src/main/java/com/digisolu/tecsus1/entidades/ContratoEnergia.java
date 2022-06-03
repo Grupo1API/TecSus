@@ -49,6 +49,8 @@ public class ContratoEnergia extends RepresentationModel<ContratoEnergia> {
 	@Column
 	private float valor_medio;
 	@Column
+	private float media_consumo_kwm;
+	@Column
 	private String endereco_eletrico;
 	@Column
 	private String cnpj_cpf_ci;
@@ -167,6 +169,12 @@ public class ContratoEnergia extends RepresentationModel<ContratoEnergia> {
 	}
 	public void setValor_medio(float valor_medio) {
 		this.valor_medio = valor_medio;
+	}
+	public float getMedia_consumo_kwm() {
+		return media_consumo_kwm;
+	}
+	public void setMedia_consumo_kwm(float media_consumo_kwm) {
+		this.media_consumo_kwm = media_consumo_kwm;
 	}
 	public String getEndereco_eletrico() {
 		return endereco_eletrico;

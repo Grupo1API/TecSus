@@ -35,6 +35,9 @@ public class ContratoEnergiaAtualizador {
 	if(!(atualizacao.getValor_medio()==0)) {
 		contratoEnergia.setValor_medio(atualizacao.getValor_medio());
 	}
+	if(!(atualizacao.getMedia_consumo_kwm()==0)) {
+		contratoEnergia.setMedia_consumo_kwm(atualizacao.getMedia_consumo_kwm());
+	}
 	if(!(atualizacao.getEndereco_eletrico()==null)) {
 		contratoEnergia.setEndereco_eletrico(atualizacao.getEndereco_eletrico());
 	}

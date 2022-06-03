@@ -39,6 +39,8 @@ public class ContratoAgua extends RepresentationModel<ContratoAgua>{
 	@Column
 	private float valor_medio;
 	@Column
+	private float media_consumo_m3;
+	@Column
 	private String local_nome;
 	@Column
 	private String local_cnpj;
@@ -115,6 +117,24 @@ public class ContratoAgua extends RepresentationModel<ContratoAgua>{
 	}
 	public void setValor_medio(float valor_medio) {
 		this.valor_medio = valor_medio;
+	}
+	public Long getContrato_agua_id() {
+		return contrato_agua_id;
+	}
+	public void setContrato_agua_id(Long contrato_agua_id) {
+		this.contrato_agua_id = contrato_agua_id;
+	}
+	public String getNumeroFornecimento() {
+		return numeroFornecimento;
+	}
+	public void setNumeroFornecimento(String numeroFornecimento) {
+		this.numeroFornecimento = numeroFornecimento;
+	}
+	public float getMedia_consumo_m3() {
+		return media_consumo_m3;
+	}
+	public void setMedia_consumo_m3(float media_consumo_m3) {
+		this.media_consumo_m3 = media_consumo_m3;
 	}
 	public String getLocal_nome() {
 		return local_nome;

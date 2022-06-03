@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.digisolu.tecsus1.entidades.ContaAgua;
+
 import com.digisolu.tecsus1.entidades.ContaEnergia;
 import com.digisolu.tecsus1.modelos.AdicionadorLinkContaEnergia;
 import com.digisolu.tecsus1.repositorios.ContaEnergiaRepositorio;
