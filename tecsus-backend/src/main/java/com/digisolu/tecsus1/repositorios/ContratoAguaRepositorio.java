@@ -11,9 +11,9 @@ public interface ContratoAguaRepositorio extends JpaRepository<ContratoAgua, Lon
 	ContratoAgua findByNumeroFornecimento(@RequestParam("n_fornecimento") String n_fornecimento);
 	@Query(value = "SELECT * "
     		+ "FROM contrato_agua "
-    		+ "INNER JOIN cadastro_unidade "
-    		+ "WHERE cadastro_unidade.unidade_id= contrato_agua.contrato_unidade_id "
-    		+ "ORDER BY cadastro_unidade.unidade_id",
+    		+ "INNER JOIN cadastro_unidade c "
+    		+ "ON contrato_agua.contrato_unidade_id = c.unidade_id "
+    		+ "ORDER BY c.unidade_id",
     nativeQuery = true)
-	List<ContratoAgua> findAllContratoAgua(@RequestParam ("unidade_id")Long unidade_id);
+	List<ContratoAgua> findAllContratoAgua(@RequestParam ("contrato_unidade_id")Long contrato_unidade_id);
 }
