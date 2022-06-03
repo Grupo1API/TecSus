@@ -22,7 +22,6 @@ import com.digisolu.tecsus1.modelos.ContratoAguaAtualizador;
 import com.digisolu.tecsus1.modelos.ContratoAguaSelecionador;
 import com.digisolu.tecsus1.repositorios.ContratoAguaRepositorio;
 
-
 @CrossOrigin
 @RestController
 public class ContratoAguaControle {
@@ -35,9 +34,9 @@ public class ContratoAguaControle {
 
 	@GetMapping("/contratoagua")
 	public ResponseEntity<List<ContratoAgua>> obterContratoAgua() {
-		List<ContratoAgua> contratosAgua= repositorio.findAll();
+		List<ContratoAgua> contratosAgua = repositorio.findAll();
 		if (contratosAgua.isEmpty()) {
-			ResponseEntity<List<ContratoAgua>> resposta = new ResponseEntity<>(contratosAgua,HttpStatus.NOT_FOUND);
+			ResponseEntity<List<ContratoAgua>> resposta = new ResponseEntity<>(contratosAgua, HttpStatus.NOT_FOUND);
 			return resposta;
 		} else {
 			adicionadorLink.adicionarLink(contratosAgua);
@@ -46,67 +45,66 @@ public class ContratoAguaControle {
 		}
 	}
 
-	@GetMapping("/contratoagua{id}")
+	@GetMapping("/contratoagua/{id}")
 	public ResponseEntity<ContratoAgua> obterContratoAgua(@PathVariable long id) {
-	List<ContratoAgua> contratosAgua = repositorio.findAll();
-	ContratoAgua contratoAgua = selecionador.selecionar(contratosAgua, id);
-	if (contratoAgua == null) {
-		ResponseEntity<ContratoAgua> resposta = new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		return resposta;
-	} else {
-		adicionadorLink.adicionarLink(contratoAgua);
-		ResponseEntity<ContratoAgua> resposta = new ResponseEntity<ContratoAgua>(contratoAgua, HttpStatus.FOUND);
-		return resposta;
-	}
+		List<ContratoAgua> contratosAgua = repositorio.findAll();
+		ContratoAgua contratoAgua = selecionador.selecionar(contratosAgua, id);
+		if (contratoAgua == null) {
+			ResponseEntity<ContratoAgua> resposta = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return resposta;
+		} else {
+			adicionadorLink.adicionarLink(contratoAgua);
+			ResponseEntity<ContratoAgua> resposta = new ResponseEntity<ContratoAgua>(contratoAgua, HttpStatus.FOUND);
+			return resposta;
+		}
 	}
 
 	@PostMapping("/contratoagua/cadastro")
 	public ResponseEntity<?> cadastrarContratoAgua(@RequestBody ContratoAgua contratoAgua) {
-	HttpStatus status = HttpStatus.CONFLICT;
-	if (contratoAgua.getId() == null) {
-		repositorio.save(contratoAgua);
-		status = HttpStatus.OK;
-	}
-	return new ResponseEntity<>(status);
+		HttpStatus status = HttpStatus.CONFLICT;
+		if (contratoAgua.getId() == null) {
+			repositorio.save(contratoAgua);
+			status = HttpStatus.OK;
+		}
+		return new ResponseEntity<>(status);
 
 	}
 
 	@PutMapping("/contratoagua/atualizar")
 	public ResponseEntity<?> atualizarContratoAgua(@RequestBody ContratoAgua atualizacao) {
-	HttpStatus status = HttpStatus.CONFLICT;
-	ContratoAgua contratoAgua = repositorio.getById(atualizacao.getId());
-	if (contratoAgua != null) {
-		ContratoAguaAtualizador atualizador = new ContratoAguaAtualizador();
-		atualizador.atualizar(contratoAgua, atualizacao);
-		repositorio.save(contratoAgua);
-		status = HttpStatus.OK;
-	}
-	return new ResponseEntity<>(status);
+		HttpStatus status = HttpStatus.CONFLICT;
+		ContratoAgua contratoAgua = repositorio.getById(atualizacao.getId());
+		if (contratoAgua != null) {
+			ContratoAguaAtualizador atualizador = new ContratoAguaAtualizador();
+			atualizador.atualizar(contratoAgua, atualizacao);
+			repositorio.save(contratoAgua);
+			status = HttpStatus.OK;
+		}
+		return new ResponseEntity<>(status);
 	}
 
 	@DeleteMapping("/contratoagua/excluir")
 	public ResponseEntity<?> excluirContratoAgua(@RequestBody ContratoAgua exclusao) {
-	ContratoAgua contratoAgua = repositorio.getById(exclusao.getId());
-	repositorio.delete(contratoAgua);
-	return new ResponseEntity<>(HttpStatus.OK);
+		ContratoAgua contratoAgua = repositorio.getById(exclusao.getId());
+		repositorio.delete(contratoAgua);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
-    @GetMapping("/contratoagua/{n_fornecimento}")
-    public ResponseEntity<ContratoAgua> getFornecimento(@PathVariable("n_fornecimento") String n_fornecimento) {
-    	ContratoAgua contratos_agua = repositorio.findByNumeroFornecimento(n_fornecimento);
-        if(contratos_agua == null) {
-            return new ResponseEntity<ContratoAgua>(HttpStatus.BAD_REQUEST);
-        }
-        return new ResponseEntity<ContratoAgua>(contratos_agua, HttpStatus.OK);
-    }
-    
-    @RequestMapping ("/contrato/agua/{unidade_id}")
-    public @ResponseBody ResponseEntity<List<ContratoAgua>> findAllContratoAgua(){
-        List<ContratoAgua> contratosAgua = repositorio.findAllContratoAgua();
-        if(contratosAgua == null) {
-            return new ResponseEntity<List<ContratoAgua>>(HttpStatus.BAD_REQUEST);
-        }
-        return new ResponseEntity<List<ContratoAgua>>(contratosAgua,HttpStatus.OK);
-        }
-}
 
+	@GetMapping("/contratoagua/{n_fornecimento}")
+	public ResponseEntity<ContratoAgua> getFornecimento(@PathVariable("n_fornecimento") String n_fornecimento) {
+		ContratoAgua contratos_agua = repositorio.findByNumeroFornecimento(n_fornecimento);
+		if (contratos_agua == null) {
+			return new ResponseEntity<ContratoAgua>(HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<ContratoAgua>(contratos_agua, HttpStatus.OK);
+	}
+
+	@RequestMapping("/contrato/agua/{unidade_id}")
+	public @ResponseBody ResponseEntity<List<ContratoAgua>> findAllContratoAgua() {
+		List<ContratoAgua> contratosAgua = repositorio.findAllContratoAgua();
+		if (contratosAgua == null) {
+			return new ResponseEntity<List<ContratoAgua>>(HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<List<ContratoAgua>>(contratosAgua, HttpStatus.OK);
+	}
+}

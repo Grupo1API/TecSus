@@ -22,7 +22,7 @@ import com.digisolu.tecsus1.repositorios.UsuariosRepositorio;
 
 @CrossOrigin
 @RestController
-public class UsuariosControle{
+public class UsuariosControle {
 	@Autowired
 	private UsuariosRepositorio repositorio;
 	@Autowired
@@ -30,21 +30,20 @@ public class UsuariosControle{
 	@Autowired
 	private AdicionadorLinkUsuario adicionadorLink;
 
-	
 	@GetMapping("/usuarios")
-	public ResponseEntity<List<Usuarios>> obterUsuarios(){
+	public ResponseEntity<List<Usuarios>> obterUsuarios() {
 		List<Usuarios> usuarios = repositorio.findAll();
 		if (usuarios.isEmpty()) {
-			ResponseEntity<List<Usuarios>> resposta = new ResponseEntity<>(usuarios,HttpStatus.NOT_FOUND);
+			ResponseEntity<List<Usuarios>> resposta = new ResponseEntity<>(usuarios, HttpStatus.NOT_FOUND);
 			return resposta;
 		} else {
 			adicionadorLink.adicionarLink(usuarios);
-			ResponseEntity<List<Usuarios>> resposta = new ResponseEntity<>(usuarios,HttpStatus.OK);
+			ResponseEntity<List<Usuarios>> resposta = new ResponseEntity<>(usuarios, HttpStatus.OK);
 			return resposta;
 		}
 	}
-	
-	@GetMapping("/usuario{id}")
+
+	@GetMapping("/usuario/{id}")
 	public ResponseEntity<Usuarios> obterUsuario(@PathVariable long id) {
 		List<Usuarios> usuarios = repositorio.findAll();
 		Usuarios usuario = selecionador.selecionar(usuarios, id);
@@ -57,19 +56,19 @@ public class UsuariosControle{
 			return resposta;
 		}
 	}
-	
+
 	@PostMapping("/cadastrarusuario")
-	public ResponseEntity<?> cadastrarUsuario(@RequestBody Usuarios usuario){
+	public ResponseEntity<?> cadastrarUsuario(@RequestBody Usuarios usuario) {
 		HttpStatus status = HttpStatus.CONFLICT;
-		if(usuario.getUser_id() == null) {
+		if (usuario.getUser_id() == null) {
 			repositorio.save(usuario);
 			status = HttpStatus.OK;
 		}
 		return new ResponseEntity<>(status);
 	}
-	
+
 	@PutMapping("/usuario/atualizar")
-	public ResponseEntity<?> atualizarUsuario(@RequestBody Usuarios atualizacao){
+	public ResponseEntity<?> atualizarUsuario(@RequestBody Usuarios atualizacao) {
 		HttpStatus status = HttpStatus.CONFLICT;
 		Usuarios usuario = repositorio.getById(atualizacao.getUser_id());
 		if (usuario != null) {
@@ -80,14 +79,12 @@ public class UsuariosControle{
 		}
 		return new ResponseEntity<>(status);
 	}
-	
+
 	@DeleteMapping("/usuario/excluir")
-	public ResponseEntity<?> excluirUsuario(@RequestBody Usuarios exclusao){
+	public ResponseEntity<?> excluirUsuario(@RequestBody Usuarios exclusao) {
 		Usuarios usuario = repositorio.getById(exclusao.getUser_id());
 		repositorio.delete(usuario);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
-}
 
-	
+}
