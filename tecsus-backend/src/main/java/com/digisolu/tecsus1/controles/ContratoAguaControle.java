@@ -101,7 +101,7 @@ public class ContratoAguaControle {
     }
     
     @GetMapping ("/contrato/agua")
-    public @ResponseBody ResponseEntity<List<ContratoAgua>> findAllContratoAgua(){
+    public ResponseEntity<List<ContratoAgua>> findAllContratoAgua(){
         List<ContratoAgua> contratosAgua = repositorio.findAllContratoAgua();
         if(contratosAgua == null) {
             return new ResponseEntity<List<ContratoAgua>>(HttpStatus.BAD_REQUEST);

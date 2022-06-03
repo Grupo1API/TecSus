@@ -100,7 +100,7 @@ public class ContratoEnergiaControle {
     }
     
     @GetMapping ("/contrato/energia")
-    public @ResponseBody ResponseEntity<List<ContratoEnergia>> findAllContratoEnergia(){
+    public ResponseEntity<List<ContratoEnergia>> findAllContratoEnergia(){
         List<ContratoEnergia> contratosEnergia = repositorio.findAllContratoEnergia();
         if(contratosEnergia == null) {
             return new ResponseEntity<List<ContratoEnergia>>(HttpStatus.BAD_REQUEST);
