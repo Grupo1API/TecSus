@@ -13,6 +13,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import InfoIcon from "@material-ui/icons/Info";
 import InfoContaAgua from "../infoContaAgua";
 import ArchiveIcon from "@material-ui/icons/Archive";
+import baseURL from "../../utils";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -75,7 +76,7 @@ export default function Relatorio_agua({ listaRelatorioAguas }) {
     const data = {
       id: id,
     };
-    await fetch(`http://localhost:8080/contasdeagua/excluir`, {
+    await fetch(`${baseURL}/contasdeagua/excluir`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -107,7 +108,7 @@ export default function Relatorio_agua({ listaRelatorioAguas }) {
             <StyledTableCell align="left">ID</StyledTableCell>
             <StyledTableCell align="left">Data Emissão</StyledTableCell>
             <StyledTableCell align="left">Data Vencimento</StyledTableCell>
-            <StyledTableCell align="left">Consumo Mensal (Kwh)</StyledTableCell>
+            <StyledTableCell align="left">Consumo Mensal (M³)</StyledTableCell>
             <StyledTableCell align="left">Valor Total (R$)</StyledTableCell>
             <StyledTableCell align="left"></StyledTableCell>
           </TableRow>

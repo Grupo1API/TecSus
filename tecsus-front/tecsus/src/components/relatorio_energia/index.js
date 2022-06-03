@@ -13,6 +13,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import InfoIcon from "@material-ui/icons/Info";
 import InfoContaEnergia from "../infoContaEnergia";
 import ArchiveIcon from "@material-ui/icons/Archive";
+import baseURL from "../../utils";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -74,7 +75,7 @@ export default function Relatorio_energia({listaRelatorioEnergia}) {
     const data = {
       id: id,
     };
-    await fetch(`http://localhost:8080/contasdeenergia/excluir`, {
+    await fetch(`${baseURL}/contasdeenergia/excluir`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

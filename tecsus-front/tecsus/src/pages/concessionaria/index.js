@@ -7,6 +7,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import baseURL from "../../utils";
 
 function Concessionaria() {
   const [cnpj, setCnpj] = useState("");
@@ -53,7 +54,7 @@ function Concessionaria() {
     };
 
     try {
-      await fetch("http://localhost:8080/concessionaria/cadastro", {
+      await fetch(`${baseURL}/concessionaria/cadastro`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

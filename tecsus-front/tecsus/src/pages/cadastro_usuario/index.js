@@ -6,6 +6,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import baseURL from "../../utils";
 
 function CadastroUsuario() {
   const [acesso, setAcesso] = useState("");
@@ -23,7 +24,7 @@ function CadastroUsuario() {
     };
 
     try {
-      await fetch("http://localhost:8080/cadastrarusuario", {
+      await fetch(`${baseURL}/cadastrarusuario`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

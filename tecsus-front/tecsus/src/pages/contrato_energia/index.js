@@ -3,6 +3,7 @@ import Menu from "../../components/menu";
 import { useState } from "react";
 import NumberFormat from "react-number-format";
 import TextField from "@material-ui/core/TextField";
+import baseURL from "../../utils";
 
 function ContratoEnergia() {
   const [concessionaria, setConcessionaria] = useState(""); //marcar como novo no cadastro
@@ -49,7 +50,7 @@ function ContratoEnergia() {
   async function buscaUnidade() {
     try {
       const response = await fetch(
-        `http://localhost:8080/unidades/${cpf_cnpj_cliente}`
+        `${baseURL}/unidades/${cpf_cnpj_cliente}`
       );
 
       const dados = await response.json();
@@ -62,7 +63,7 @@ function ContratoEnergia() {
   async function buscaConcessionaria() {
     try {
       const response = await fetch(
-        `http://localhost:8080/concessionaria/${cnpj_concessionaria}`
+        `${baseURL}/concessionaria/${cnpj_concessionaria}`
       );
       const dados = await response.json();
       setConcessionaria(dados.nome);
@@ -103,7 +104,7 @@ function ContratoEnergia() {
     };
 
     try {
-      await fetch("http://localhost:8080/contratoenergia/cadastro", {
+      await fetch(`${baseURL}/contratoenergia/cadastro`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

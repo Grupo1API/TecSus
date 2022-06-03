@@ -3,6 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import useStyles from "../../style/style";
 import NumberFormat from "react-number-format";
+import baseURL from "../../utils";
 
 export default function EditAgua({ dados, modalEdit }) {
   const classes = useStyles();
@@ -61,7 +62,7 @@ export default function EditAgua({ dados, modalEdit }) {
       local_estado: estado_consumo,
       local_numero: nResidencial_empresarial,
     };
-    await fetch(`http://localhost:8080/contratoagua/atualizar`, {
+    await fetch(`${baseURL}/contratoagua/atualizar`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

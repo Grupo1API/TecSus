@@ -3,6 +3,7 @@ import Menu from '../../components/menu'
 import { useState } from 'react';
 import NumberFormat from 'react-number-format';
 import TextField from '@material-ui/core/TextField';
+import baseURL from '../../utils';
 
 function Unidade(){
 
@@ -47,7 +48,7 @@ function Unidade(){
         }
     
         try {
-          await fetch("http://localhost:8080/unidade/cadastro", {
+          await fetch(`${baseURL}/unidade/cadastro`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

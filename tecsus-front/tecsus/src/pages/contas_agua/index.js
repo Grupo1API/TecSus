@@ -4,6 +4,7 @@ import { useState } from "react";
 import NumberFormat from "react-number-format";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import baseURL from "../../utils";
 
 function ContaAgua() {
   const [n_fornecimento, setN_fornecimento] = useState("");
@@ -42,9 +43,10 @@ function ContaAgua() {
   async function buscaContrato() {
     try {
       const response = await fetch(
-        `http://localhost:8080/contratoagua/${n_fornecimento}`
+        `${baseURL}/contratoagua/${n_fornecimento}`
       );
       const dados = await response.json();
+      console.log(dados)
       setCnpj_concessionaria(dados.contrato_concessionaria_id.cnpj);
       setConcessionaria(dados.contrato_concessionaria_id.nome);
       setCepConcessionaria(dados.contrato_concessionaria_id.cep);
@@ -128,7 +130,7 @@ function ContaAgua() {
     const defaults = { headers: headers };
     options = Object.assign({}, defaults, options);
 
-    await fetch("http://localhost:8080/contadeagua/geral", options);
+    await fetch(`${baseURL}/contadeagua/geral`, options);
 
     setConcessionaria("");
     setCnpj_concessionaria("");
@@ -560,7 +562,7 @@ function ContaAgua() {
               <TextField
                 id="documento"
                 className="input"
-                type="number"
+                type="text"
                 required={true}
                 label="Nª do Documento"
                 placeholder="Nª do Documento"

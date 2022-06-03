@@ -8,7 +8,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
-
+import baseURL from "../../utils";
 import "./style.css";
 
 function RelatorioEnergia() {
@@ -22,10 +22,11 @@ function RelatorioEnergia() {
   useEffect(() => {
     const buscaContrato = async () => {
       const responseContrato = await fetch(
-        `http://localhost:8080/contrato/energia/${unidadeId}`
+        `${baseURL}/contrato/energia/${unidadeId}`
       );
       const dadosContrato = await responseContrato.json();
       setDadosContratos(dadosContrato);
+      console.log(dadosContrato)
     };
     buscaContrato();
   }, [unidadeId]);
@@ -33,7 +34,7 @@ function RelatorioEnergia() {
   async function buscaUnidade() {
     try {
       const responseUnidade = await fetch(
-        `http://localhost:8080/unidades/${cpf_cnpjUnidade}`
+        `${baseURL}/unidades/${cpf_cnpjUnidade}`
       );
       const dadosUnidade = await responseUnidade.json();
       setUnidade(dadosUnidade.nome);
@@ -47,7 +48,7 @@ function RelatorioEnergia() {
   async function listRelatorioEnergia() {
     try {
       const response = await fetch(
-        `http://localhost:8080/contasdocontrato/energia/${contratoId}`,
+        `${baseURL}/contasdocontrato/energia/${contratoId}`,
         {
           method: "GET",
         }
@@ -105,7 +106,7 @@ function RelatorioEnergia() {
                     dadosContratos.map((x) => (
                       <MenuItem
                         value={x.id}
-                      >{`ID: ${x.id} / Concessionaria: ${x.contrato_concessionaria_id.nome} / Nº Fornecimento: ${x.n_fornecimento}`}</MenuItem>
+                      >{`ID: ${x.id} / Concessionaria: ${x.contrato_concessionaria_id.nome} / Nº Instalação: ${x.numero_instalacao}`}</MenuItem>
                     ))}
                 </Select>
               </FormControl>

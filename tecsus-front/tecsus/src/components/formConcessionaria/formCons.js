@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import useStyles from "../../style/style";
+import baseURL from "../../utils";
 
 export default function EditConcessionaria({ dados, modalEdit }) {
   const classes = useStyles();
@@ -36,7 +37,7 @@ export default function EditConcessionaria({ dados, modalEdit }) {
       inscricao_estadual: inscricao_est,
       inscricao_especial: inscricao_unic,
     };
-    await fetch(`http://localhost:8080/concessionaria/atualizar`, {
+    await fetch(`${baseURL}/concessionaria/atualizar`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

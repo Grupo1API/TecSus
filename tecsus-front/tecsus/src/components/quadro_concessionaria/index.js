@@ -12,6 +12,7 @@ import EditConcessionarias from "../../components/formConcessionaria/formCons";
 import InfoIcon from "@material-ui/icons/Info";
 import CloseIcon from "@material-ui/icons/Close";
 import InfoConcessionaria from "../infoConcessionaria";
+import baseURL from "../../utils";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -76,7 +77,7 @@ export default function Quadro_concessionaria() {
   async function listaConcessionaria() {
     try {
       const response = await fetch(
-        "http://localhost:8080/cadastroconcessionaria",
+        `${baseURL}/cadastroconcessionaria`,
         {
           method: "GET",
         }
@@ -92,7 +93,7 @@ export default function Quadro_concessionaria() {
     const data = {
       id: id,
     };
-    await fetch(`http://localhost:8080/concessionaria/excluir`, {
+    await fetch(`${baseURL}/concessionaria/excluir`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

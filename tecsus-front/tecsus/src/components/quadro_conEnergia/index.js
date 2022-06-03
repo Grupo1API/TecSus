@@ -12,6 +12,7 @@ import EditEnergia from "../../components/formEnergia/formEnergia";
 import CloseIcon from "@material-ui/icons/Close";
 import InfoIcon from "@material-ui/icons/Info";
 import InfoEnergia from "../infoEnergia";
+import baseURL from "../../utils";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -75,7 +76,7 @@ export default function Quadro_contrato_energia() {
 
   async function listaEnergia() {
     try {
-      const response = await fetch("http://localhost:8080/contratoenergia", {
+      const response = await fetch(`${baseURL}/contratoenergia`, {
         method: "GET",
       });
       const data = await response.json();
@@ -89,7 +90,7 @@ export default function Quadro_contrato_energia() {
     const data = {
       id: id,
     };
-    await fetch(`http://localhost:8080/contratoenergia/excluir`, {
+    await fetch(`${baseURL}/contratoenergia/excluir`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

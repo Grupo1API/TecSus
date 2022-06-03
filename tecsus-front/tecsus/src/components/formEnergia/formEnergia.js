@@ -3,6 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import useStyles from "../../style/style";
 import NumberFormat from "react-number-format";
+import baseURL from "../../utils";
 
 export default function EditEnergia({ dados, modalEdit }) {
   const classes = useStyles();
@@ -65,7 +66,7 @@ export default function EditEnergia({ dados, modalEdit }) {
       local_numero: nResidencial_empresarial,
     };
 
-    await fetch(`http://localhost:8080/contratoenergia/atualizar`, {
+    await fetch(`${baseURL}/contratoenergia/atualizar`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

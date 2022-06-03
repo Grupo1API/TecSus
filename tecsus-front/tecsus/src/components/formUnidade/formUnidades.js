@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import useStyles from "../../style/style";
+import baseURL from "../../utils";
 
 export default function EditClientes({ dados, modalEdit }) {
   const classes = useStyles();
@@ -30,7 +31,7 @@ export default function EditClientes({ dados, modalEdit }) {
       end_cidade: cidade,
       end_numero: num_resid,
     };
-    await fetch(`http://localhost:8080/unidade/atualizar`, {
+    await fetch(`${baseURL}/unidade/atualizar`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
