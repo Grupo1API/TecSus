@@ -22,39 +22,39 @@ import com.digisolu.tecsus1.repositorios.CadastroUnidadeRepositorio;
 
 @CrossOrigin
 @RestController
-public class CadastroUnidadeControle{
+public class CadastroUnidadeControle {
 	@Autowired
 	private CadastroUnidadeRepositorio repositorio;
 	@Autowired
 	private CadastroUnidadeSelecionador selecionador;
 	@Autowired
 	private AdicionadorLinkCadastroUnidade adicionadorLink;
-	
+
 	@GetMapping("/cadastrounidade")
-	public ResponseEntity<List<CadastroUnidade>> obterCadastroUnidade(){
+	public ResponseEntity<List<CadastroUnidade>> obterCadastroUnidade() {
 		List<CadastroUnidade> cadastroUnidade = repositorio.findAll();
 		if (cadastroUnidade.isEmpty()) {
-			ResponseEntity<List<CadastroUnidade>> resposta = new ResponseEntity<>(cadastroUnidade,HttpStatus.NOT_FOUND);
+			ResponseEntity<List<CadastroUnidade>> resposta = new ResponseEntity<>(cadastroUnidade, HttpStatus.NOT_FOUND);
 			return resposta;
 		} else {
 			adicionadorLink.adicionarLink(cadastroUnidade);
-			ResponseEntity<List<CadastroUnidade>> resposta = new ResponseEntity<>(cadastroUnidade,HttpStatus.OK);
+			ResponseEntity<List<CadastroUnidade>> resposta = new ResponseEntity<>(cadastroUnidade, HttpStatus.OK);
 			return resposta;
 		}
 	}
-	
+
 	@PostMapping("/unidade/cadastro")
-	public ResponseEntity<?> cadastrarCadastroUnidade(@RequestBody CadastroUnidade cadastroUnidade){
+	public ResponseEntity<?> cadastrarCadastroUnidade(@RequestBody CadastroUnidade cadastroUnidade) {
 		HttpStatus status = HttpStatus.CONFLICT;
-		if(cadastroUnidade.getId() == null) {
+		if (cadastroUnidade.getId() == null) {
 			repositorio.save(cadastroUnidade);
 			status = HttpStatus.OK;
 		}
 		return new ResponseEntity<>(status);
 	}
-	
+
 	@PutMapping("/unidade/atualizar")
-	public ResponseEntity<?> atualizarCadastroUnidade(@RequestBody CadastroUnidade atualizacao){
+	public ResponseEntity<?> atualizarCadastroUnidade(@RequestBody CadastroUnidade atualizacao) {
 		HttpStatus status = HttpStatus.CONFLICT;
 		CadastroUnidade cadastroUnidade = repositorio.getById(atualizacao.getId());
 		if (cadastroUnidade != null) {
@@ -65,63 +65,35 @@ public class CadastroUnidadeControle{
 		}
 		return new ResponseEntity<>(status);
 	}
-	
+
 	@DeleteMapping("/unidade/excluir")
-	public ResponseEntity<?> excluirCadastroUnidade(@RequestBody CadastroUnidade exclusao){
+	public ResponseEntity<?> excluirCadastroUnidade(@RequestBody CadastroUnidade exclusao) {
 		CadastroUnidade cadastroUnidade = repositorio.getById(exclusao.getId());
 		repositorio.delete(cadastroUnidade);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
-		@GetMapping("/cadastrosunidade{id}")
-	public ResponseEntity<CadastroUnidade> obterCadastroUnidade(@PathVariable Long id){
+
+	@GetMapping("/cadastrosunidade/{id}")
+	public ResponseEntity<CadastroUnidade> obterCadastroUnidade(@PathVariable Long id) {
 		List<CadastroUnidade> cadastrosUnidade = repositorio.findAll();
 		CadastroUnidade cadastroUnidade = selecionador.selecionar(cadastrosUnidade, id);
 		if (cadastroUnidade == null) {
-			ResponseEntity<CadastroUnidade> resposta =new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			ResponseEntity<CadastroUnidade> resposta = new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			return resposta;
-		}else {
+		} else {
 			adicionadorLink.adicionarLink(cadastroUnidade);
-			ResponseEntity<CadastroUnidade> resposta = new ResponseEntity<CadastroUnidade>(cadastroUnidade,HttpStatus.FOUND);
+			ResponseEntity<CadastroUnidade> resposta = new ResponseEntity<CadastroUnidade>(cadastroUnidade, HttpStatus.FOUND);
 			return resposta;
 		}
 	}
-	
-	    @GetMapping("unidades/{cpf_cnpj}")
-    public ResponseEntity<CadastroUnidade> getcpf_cnpj(@PathVariable("cpf_cnpj") String cpf_cnpj) {
-        CadastroUnidade unidades = repositorio.findByCpfCnpj(cpf_cnpj);
-        if(unidades == null) {
-            return new ResponseEntity<CadastroUnidade>(HttpStatus.BAD_REQUEST);
-        }
-        return new ResponseEntity<CadastroUnidade>(unidades, HttpStatus.OK);
-    }
+
+	@GetMapping("unidades/{cpf_cnpj}")
+	public ResponseEntity<CadastroUnidade> getcpf_cnpj(@PathVariable("cpf_cnpj") String cpf_cnpj) {
+		CadastroUnidade unidades = repositorio.findByCpfCnpj(cpf_cnpj);
+		if (unidades == null) {
+			return new ResponseEntity<CadastroUnidade>(HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<CadastroUnidade>(unidades, HttpStatus.OK);
+	}
 
 }
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
