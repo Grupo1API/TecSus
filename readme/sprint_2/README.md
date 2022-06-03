@@ -159,7 +159,7 @@ Nesta sprint mantivemos o foco na implementação da ligação entre as tabelas 
   <img align="center" src="./midias/dod/burndownSprint2.png" width="600"/>
 </h3>
 
-<br> 
+<br>
 
 <h1 id="dod">Definition of Done<h1>
 
@@ -199,6 +199,3 @@ Nesta sprint mantivemos o foco na implementação da ligação entre as tabelas 
 
 <h3 align="center"> Quadros para edição e deleção de dados cadastrados</h3>
 <img align="center"  src = "./midias/dod/quadros.gif"/>
-
-
-
