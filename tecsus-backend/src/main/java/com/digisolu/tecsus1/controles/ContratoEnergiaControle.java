@@ -99,9 +99,9 @@ public class ContratoEnergiaControle {
         return new ResponseEntity<ContratoEnergia>(contratos_energia, HttpStatus.OK);
     }
     
-    @GetMapping ("/contrato/energia")
-    public ResponseEntity<List<ContratoEnergia>> findAllContratoEnergia(){
-        List<ContratoEnergia> contratosEnergia = repositorio.findAllContratoEnergia();
+    @GetMapping ("/contrato/energia/{contrato_unidade_id}")
+    public ResponseEntity<List<ContratoEnergia>> findAllContratoEnergia(@PathVariable ("contrato_unidade_id")Long contrato_unidade_id){
+        List<ContratoEnergia> contratosEnergia = repositorio.findAllContratoEnergia(contrato_unidade_id);
         if(contratosEnergia == null) {
             return new ResponseEntity<List<ContratoEnergia>>(HttpStatus.BAD_REQUEST);
         }

@@ -9,15 +9,11 @@ import com.digisolu.tecsus1.entidades.ContratoEnergia;
 
 public interface ContratoEnergiaRepositorio extends JpaRepository<ContratoEnergia, Long> { 
 	ContratoEnergia findByNumeroInstalacao(@RequestParam("numero_instalacao") String numero_instalacao);
-	@Query(value = "SELECT unidade_id, contrato_energia_id, classe_subclasse, cnpj_cpf_ci, "
-    		+ "codigo_identificador, codigo_fiscal_operacao, endereco_eletrico, grupo_subgrupo, local_bairro, "
-    		+ "local_cep, local_cidade, local_estado, local_numero, local_rua, modalidade_tarifaria, num_medidor, "
-    		+ "numero_instalacao, roteiro_leitura, tensao_nominal, tp_fornecimento, valor_medio, contrato_concessionaria_id, "
-    		+ "contrato_unidade_id  "
+	@Query(value = "SELECT *  "
     		+ "FROM contrato_energia "
-    		+ "INNER JOIN cadastro_unidade "
-    		+ "WHERE cadastro_unidade.unidade_id= contrato_energia.contrato_unidade_id "
-    		+ "ORDER BY cadastro_unidade.unidade_id",
+    		+ "INNER JOIN cadastro_unidade c "
+    		+ "ON contrato_energia.contrato_unidade_id = c.unidade_id  "
+    		+ "ORDER BY c.unidade_id",
     nativeQuery = true)
-    List<ContratoEnergia> findAllContratoEnergia();
+    List<ContratoEnergia> findAllContratoEnergia(@RequestParam ("contrato_unidade_id")Long contrato_unidade_id);
 }
