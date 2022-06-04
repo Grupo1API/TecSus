@@ -53,7 +53,7 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "100vh",
+    height: "120vh",
   },
   close: {
     position: "absolute",
@@ -120,6 +120,7 @@ export default function Quadro_contrato_energia() {
             <StyledTableCell align="left">Nome Unidade</StyledTableCell>
             <StyledTableCell align="left">CNPJ/CPF Unidade</StyledTableCell>
             <StyledTableCell align="left">Valor Médio</StyledTableCell>
+            <StyledTableCell align="left">Consumo Médio</StyledTableCell>
             <StyledTableCell align="left"></StyledTableCell>
           </TableRow>
         </TableHead>
@@ -144,6 +145,7 @@ export default function Quadro_contrato_energia() {
                 {x.contrato_unidade_id.cpf_cnpj}
               </StyledTableCell>
               <StyledTableCell align="left">R$ {x.valor_medio}</StyledTableCell>
+              <StyledTableCell align="left">R$ {x.media_consumo_kwm}</StyledTableCell>
               <StyledTableCell align="left" className={classes.button}>
                 <IconButton
                   color="primary"

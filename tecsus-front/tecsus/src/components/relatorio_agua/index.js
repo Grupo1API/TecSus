@@ -54,7 +54,7 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "120vh",
+    height: "160vh",
     zIndex: 1,
   },
   close: {

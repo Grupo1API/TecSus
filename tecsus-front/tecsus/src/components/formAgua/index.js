@@ -38,6 +38,7 @@ export default function EditAgua({ dados, modalEdit }) {
   const [nResidencial_empresarial, setNResidencial_empresarial] = useState(
     dados.local_numero
   );
+  const [consumo_medio, setConsumo_medio] = useState(dados.media_consumo_m3)
 
   async function handleUpdate() {
     const data = {
@@ -61,6 +62,7 @@ export default function EditAgua({ dados, modalEdit }) {
       local_cidade: cidade_consumo,
       local_estado: estado_consumo,
       local_numero: nResidencial_empresarial,
+      media_consumo_m3: consumo_medio
     };
     await fetch(`${baseURL}/contratoagua/atualizar`, {
       method: "PUT",
@@ -197,6 +199,22 @@ export default function EditAgua({ dados, modalEdit }) {
             setValor_medio(floatValue);
           }}
           fullWidth
+          variant="outlined"
+        />
+        <NumberFormat
+          prefix={"R$ "}
+          id="consumo medio"
+          className="input"
+          required={true}
+          floatValue={true}
+          value={consumo_medio}
+          label="Consumo Médio (m³)"
+          placeholder="Consumo Médio (m³)"
+          customInput={TextField}
+          onValueChange={(valores) => {
+            const { floatValue } = valores;
+            setConsumo_medio(floatValue);
+          }}
           variant="outlined"
         />
         <TextField

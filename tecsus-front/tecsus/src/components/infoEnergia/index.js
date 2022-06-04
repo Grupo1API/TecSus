@@ -149,6 +149,17 @@ export default function EditEnergia({ dados }) {
           fullWidth
           variant="outlined"
         />
+        <NumberFormat
+          
+          id="consumo medio"
+          className="input"
+          required={true}
+          floatValue={true}
+          value={dados.media_consumo_kwm}
+          label="Consumo Médio (Kwh)"
+          customInput={TextField}
+          variant="outlined"
+        /> 
         <TextField
           className={classes.text}
           id="outlined"

@@ -27,6 +27,7 @@ function ContratoAgua() {
   const [nResidencial_empresarial, setNResidencial_empresarial] = useState("");
   const [concessionariaId, setConcessionariaId] = useState("");
   const [unidadeId, setUnidadeId] = useState("");
+  const [consumo_medio, setConsumo_medio] = useState("");
 
   async function buscaCep() {
     try {
@@ -52,7 +53,7 @@ function ContratoAgua() {
       const dados = await response.json();
       setNome_cliente(dados.nome);
       setUnidadeId(dados.id);
-      console.log(dados);
+      
     } catch (error) {
       return console.log(error.message);
     }
@@ -65,7 +66,7 @@ function ContratoAgua() {
       const dados = await response.json();
       setConcessionaria(dados.nome);
       setConcessionariaId(dados.id);
-      console.log(dados);
+      
     } catch (error) {
       return console.log(error.message);
     }
@@ -95,6 +96,7 @@ function ContratoAgua() {
       local_numero: nResidencial_empresarial,
       contrato_concessionaria_id: { id: concessionariaId },
       contrato_unidade_id: { id: unidadeId },
+      media_consumo_m3:consumo_medio
     };
 
     try {
@@ -124,6 +126,7 @@ function ContratoAgua() {
       setCidade_consumo("");
       setEstado_consumo("");
       setNResidencial_empresarial("");
+      setConsumo_medio('')
       return;
     } catch (error) {
       return console.log(error.message);
@@ -271,6 +274,22 @@ function ContratoAgua() {
                 }}
                 variant="outlined"
               />
+              <NumberFormat
+                  prefix={"R$ "}
+                  id="consumo medio"
+                  className="input"
+                  required={true}
+                  floatValue={true}
+                  value={consumo_medio}
+                  label="Consumo Médio (m³)"
+                  placeholder="Consumo Médio (m³)"
+                  customInput={TextField}
+                  onValueChange={(valores) => {
+                    const { floatValue } = valores;
+                    setConsumo_medio(floatValue);
+                  }}
+                  variant="outlined"
+                />
             </div>
 
             <h4>Local de Consumo</h4>
