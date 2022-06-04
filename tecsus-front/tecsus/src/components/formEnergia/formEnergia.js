@@ -38,6 +38,7 @@ export default function EditEnergia({ dados, modalEdit }) {
   const [nResidencial_empresarial, setNResidencial_empresarial] = useState(
     dados.local_numero
   );
+  const [consumo_medio, setConsumo_medio] = useState(dados.media_consumo_kwm)
 
   async function handleUpdate() {
     const data = {
@@ -64,6 +65,7 @@ export default function EditEnergia({ dados, modalEdit }) {
       local_cidade: cidade_consumo,
       local_estado: estado_consumo,
       local_numero: nResidencial_empresarial,
+      media_consumo_kwm: consumo_medio
     };
 
     await fetch(`${baseURL}/contratoenergia/atualizar`, {
@@ -222,6 +224,22 @@ export default function EditEnergia({ dados, modalEdit }) {
           fullWidth
           variant="outlined"
         />
+        <NumberFormat
+          prefix={"R$ "}
+          id="consumo medio"
+          className="input"
+          required={true}
+          floatValue={true}
+          value={consumo_medio}
+          label="Consumo Médio (Kwh)"
+          placeholder="Consumo Médio (Kwh)"
+          customInput={TextField}
+          onValueChange={(valores) => {
+            const { floatValue } = valores;
+            setConsumo_medio(floatValue);
+          }}
+          variant="outlined"
+        /> 
         <TextField
           className={classes.text}
           id="outlined"

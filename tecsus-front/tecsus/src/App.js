@@ -17,6 +17,7 @@ import RotasProtegidas from "./components/rotasProtegidas";
 import CadastroUsuario from "./pages/cadastro_usuario";
 import RelatorioEnergia from "./pages/relatorioEnergia";
 import RelatorioAgua from "./pages/relatorioAgua";
+import Alert from "./pages/alerta";
 
 function Main() {
   return (
@@ -36,6 +37,7 @@ function Main() {
               <Route path="/relatorio_energia" element={<RelatorioEnergia />} />
               <Route path="/relatorio_agua" element={<RelatorioAgua />} />
               <Route path="/cadastro_usuario" element={<CadastroUsuario />} />
+              <Route path="/alerta" element={<Alert />} />
               <Route
                 path="/quadro_concessionaria"
                 element={<QuadroConcessionaria />}

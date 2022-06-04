@@ -534,12 +534,15 @@ export default function Dashboard() {
                 </List>
               </Collapse>
 
-              <ListItem button className={classes.itens}>
-                <ListItemIcon>
-                  <WarningIcon />
-                </ListItemIcon>
-                <ListItemText primary="Alertas" />
-              </ListItem>
+              <Link to="/alerta" className={classes.link}>
+                <ListItem button className={classes.itens}>
+                  <ListItemIcon>
+                    <WarningIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Alertas" />
+                </ListItem>
+              </Link>
+
               <Link to="/cadastro_usuario" className={classes.link}>
                 <ListItem button className={classes.itens}>
                   <ListItemIcon>

@@ -31,6 +31,7 @@ function ContratoEnergia() {
   const [concessionariaId, setConcessionariaId] = useState("");
   const [unidadeId, setUnidadeId] = useState("");
   const [numero_instalacao, setNumero_instalacao] = useState("");
+  const [consumo_medio, setConsumo_medio] = useState("");
 
   async function buscaCep() {
     try {
@@ -101,6 +102,7 @@ function ContratoEnergia() {
       numero_instalacao: numero_instalacao,
       contrato_concessionaria_id: { id: concessionariaId },
       contrato_unidade_id: { id: unidadeId },
+      media_consumo_kwm: consumo_medio
     };
 
     try {
@@ -134,6 +136,7 @@ function ContratoEnergia() {
       setEstado_consumo("");
       setNResidencial_empresarial("");
       setNumero_instalacao("");
+      setConsumo_medio('')
       return;
     } catch (error) {
       return console.log(error.message);
@@ -329,6 +332,25 @@ function ContratoEnergia() {
                 variant="outlined"
               />
             </div>
+            <div className="coluna">
+             <NumberFormat
+                
+                id="consumo medio"
+                className="input"
+                required={true}
+                floatValue={true}
+                value={consumo_medio}
+                label="Consumo Médio (Kwh)"
+                placeholder="Consumo Médio (Kwh)"
+                customInput={TextField}
+                onValueChange={(valores) => {
+                  const { floatValue } = valores;
+                  setConsumo_medio(floatValue);
+                }}
+                variant="outlined"
+              /> 
+            </div>
+            
 
             <h4>Local de Consumo</h4>
 

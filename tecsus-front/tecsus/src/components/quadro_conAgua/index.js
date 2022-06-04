@@ -53,7 +53,7 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "100vh",
+    height: "115vh",
   },
   close: {
     position: "absolute",
@@ -81,6 +81,7 @@ export default function QuadroContratoAgua() {
       });
       const data = await response.json();
       setListaAguas(data);
+      console.log(data)
     } catch (error) {
       console.log(error.message);
     }
@@ -120,6 +121,7 @@ export default function QuadroContratoAgua() {
             <StyledTableCell align="left">Nome Unidade</StyledTableCell>
             <StyledTableCell align="left">CNPJ/CPF Unidade</StyledTableCell>
             <StyledTableCell align="left">Valor Médio</StyledTableCell>
+            <StyledTableCell align="left">Consumo Médio</StyledTableCell>
             <StyledTableCell align="left"></StyledTableCell>
           </TableRow>
         </TableHead>
@@ -142,6 +144,7 @@ export default function QuadroContratoAgua() {
                 {x.contrato_unidade_id.cpf_cnpj}
               </StyledTableCell>
               <StyledTableCell align="left">R$ {x.valor_medio}</StyledTableCell>
+              <StyledTableCell align="left">R$ {x.media_consumo_m3}</StyledTableCell>
               <StyledTableCell align="left" className={classes.button}>
                 <IconButton
                   color="primary"

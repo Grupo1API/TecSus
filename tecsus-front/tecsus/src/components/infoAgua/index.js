@@ -127,6 +127,17 @@ export default function EditAgua({ dados, modalEdit }) {
           disabled
           variant="outlined"
         />
+        <NumberFormat
+          prefix={"R$ "}
+          id="consumo medio"
+          className="input"
+          disabled
+          floatValue={true}
+          value={dados.media_consumo_m3}
+          label="Consumo Médio (m³)"
+          customInput={TextField}
+          variant="outlined"
+        />
         <TextField
           id="outlined"
           className={classes.text}
