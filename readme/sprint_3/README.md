@@ -2,7 +2,8 @@
 
 <h1>:ballot_box_with_check: SPRINT 3</h1>
 
-Na terceira e última sprint direcionamos a atenção para implemantação das últimas funcionalidades propostas: Login de usuários, um dashboard com as imformações mais relevantes na página inicial dos sistema, uma área dedicadas a exibição de alerta de consumo e valores acima da média para contas de água e energia e, por fim uma área de para relatários e gráficos de consumo e valores das últimas contas cadastradas tanto de água como de energia.
+<p align="justify">Na terceira e última sprint direcionamos a atenção para implemantação das últimas funcionalidades propostas: Login de usuários, um dashboard com as imformações mais relevantes na página inicial dos sistema, uma área dedicadas a exibição de alerta de consumo e valores acima da média para contas de água e energia e, por fim uma área de para relatários e gráficos de consumo e valores das últimas contas cadastradas tanto de água como de energia.</p>
+
 <br>
 
 <h1>Sumário</h1>
@@ -34,7 +35,7 @@ Na terceira e última sprint direcionamos a atenção para implemantação das �
 <h2 id="use_cases">Use Cases</h2>
 
 <div id="table_use_cases" align="center" width="400">
-  <table>
+  <table align="justify">
     <tr>
       <th>User Story id</th>
       <th>Como um (ator)</th>
