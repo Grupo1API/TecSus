@@ -76,7 +76,7 @@ public class ContaEnergiaControle {
 
 	@PostMapping(value = "/contadeenergia/geral", consumes = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.MULTIPART_FORM_DATA_VALUE })
-	public ResponseEntity<?> receberArquivo(@RequestPart("contaEnergia") ContaEnergia contaEnergia,
+	public ResponseEntity<?> cadastrarEnergia(@RequestPart("contaEnergia") ContaEnergia contaEnergia,
 			@RequestPart("file") MultipartFile arquivoEnviado) {
 
 		try {
