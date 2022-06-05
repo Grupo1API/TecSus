@@ -29,7 +29,6 @@
 
 <br id="sprints-backlog">
 
-
 ### **Status do Projeto: Em progresso.**
 
 <br id="proposta">
@@ -38,34 +37,33 @@
 
 ### **Desenvolver um software que atenda as necessidades da empresa:**<br><br>
 
-### **Requisitos funcionais**   
+### **Requisitos funcionais**
+
 - <img src = "./readme/grupoAPI/feito.jpeg" /> Cadastros de Unidades, Concessionárias, Contratos;
-- <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Cadastro do usuário e seus perfis (administrador, gestor e digitador);
+- <img src = "./readme/grupoAPI/feito.jpeg" /> Cadastro do usuário e seus perfis (administrador, gestor e digitador);
 - <img src = "./readme/grupoAPI/feito.jpeg" /> Cadastro (digitação) da conta de água e energia;
-- <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Relatório de consumo total de água mensal, anual e média;
-- <img src = "./readme/grupoAPI/a_fazer.jpeg" />  Relatório de consumo total de energia mensal, anual e média;
+- <img src = "./readme/grupoAPI/feito.jpeg" /> Relatório de consumo total de água mensal, anual e média;
+- <img src = "./readme/grupoAPI/feito.jpeg" /> Relatório de consumo total de energia mensal, anual e média;
+- <img src = "./readme/grupoAPI/feito.jpeg" /> Upload de arquivos;
 - <img src = "./readme/grupoAPI/feito.jpeg" /> Painel adminitrativo para alterações;
-- <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Emissão de relatorios;
-- <img src = "./readme/grupoAPI/a_fazer.jpeg" /> Geração de alertas de consumo acima da média (a média pode ser definida no cadastro
-do contrato);
+- <img src = "./readme/grupoAPI/feito.jpeg" /> Geração de alertas de consumo acima da média (a média pode ser definida no cadastro
+  do contrato);
 
-
-
-### **Requisitos não funcionais**    
+### **Requisitos não funcionais**
 
 - <img src = "./readme/grupoAPI/feito.jpeg" /> Prezar pelo UX da tela de digitação das contas;
 - <img src = "./readme/grupoAPI/feito.jpeg" /> Incluir atalhos no nos formmulários de casdastro;
 - <img src = "./readme/grupoAPI/feito.jpeg" /> Permitir navegação entre campos por TAB ou seta;
-<h1> 
+<h1>
 
-<br id="cronograma-das-sprints">  
+<br id="cronograma-das-sprints">
 
 ## 📆 Cronograma das Sprints
 
-- <img src = "./readme/grupoAPI/feito.jpeg" />  Kick-Off - 15/03/2022
-- <img src = "./readme/grupoAPI/feito.jpeg" /> <a href="https://github.com/Grupo1API/TecSus/tree/main/readme/sprint_1">Sprint 1</a> - 25/03/2022 a 14/04/2022 
-- <img src = "./readme/grupoAPI/feito.jpeg" /> <a href="https://github.com/Grupo1API/TecSus/tree/main/readme/sprint_2">Sprint 2</a> - 04/2022 a 15/05/2022   
-- <img src = "./readme/grupoAPI/a_fazer.jpeg" /> [ Sprint 3 ]( ) - 16/05/2022 a 05/06/2022  
+- <img src = "./readme/grupoAPI/feito.jpeg" /> Kick-Off - 15/03/2022
+- <img src = "./readme/grupoAPI/feito.jpeg" /> <a href="https://github.com/Grupo1API/TecSus/tree/main/readme/sprint_1">Sprint 1</a> - 25/03/2022 a 14/04/2022
+- <img src = "./readme/grupoAPI/feito.jpeg" /> <a href="https://github.com/Grupo1API/TecSus/tree/main/readme/sprint_2">Sprint 2</a> - 04/2022 a 15/05/2022
+- <img src = "./readme/grupoAPI/feito.jpeg" /><a href="https://github.com/Grupo1API/TecSus/tree/main/readme/sprint_3">Sprint 3</a> - 16/05/2022 a 05/06/2022
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" /> [Feira de Soluções](https://youtu.be/xGE51h8fBuY) - 15/06/2022
 
 <br>
@@ -73,14 +71,14 @@ do contrato);
 <h1 align="center"> 
 <img src = "./readme/framesFigma/cronogramaSprints.png" width="800"/></h1>
 
-<div id="tecnologias-utilizadas"> 
+<div id="tecnologias-utilizadas">
 
-  ## 🖥️ Tecnologias Utilizadas
+## 🖥️ Tecnologias Utilizadas
 
 - **Banco de Dados:** MySQL;
 - **Back-end:** Spring, Java;
 - **Front-end:** HTML, CSS, JavaScript, React;
-- **Ferramentas:** Visual Studio Code, Eclipse, Figma, Git e Github;   
+- **Ferramentas:** Visual Studio Code, Eclipse, Figma, Git e Github;
 
 <div>
 
@@ -134,13 +132,6 @@ do contrato);
         <td><a href="https://www.linkedin.com/in/juliana-maria-a0b0a0124">@LinkedIn</a></td>
         <td><a href="https://github.com/JulianaMaria-Lab">@GitHub</a></td>
         <td><img src = "./readme/integrantes/juliana maria.jpeg" width="40"></td>
-      </tr>
-      <tr id="linha_table">
-        <td>Marcelo Uchoas</td>
-        <td>Desenvolvedor</td>
-        <td><a href="https://www.linkedin.com/in/marcelo-uch%C3%B4as-de-oliveira-b2536a18b/">@LinkedIn</a></td>
-        <td><a href="https://github.com/marcelouchoas">@GitHub</a></td>
-        <td><img src = "./readme/integrantes/marcelo.jpeg" width="40"></td>
       </tr>
       <tr id="linha_table">
         <td>Richard Rafael</td>

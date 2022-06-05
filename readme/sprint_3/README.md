@@ -11,7 +11,7 @@ Na terceira e última sprint direcionamos a atenção para implemantação das �
 <a href="#modelo_de_dados">Modelo de dados</a>   <br>
 <a href="#use_cases">Use Cases</a>   <br>
 <a href="#wireframes">Wireframes</a>   <br>
-<a href="#burndown_sprint_3">Burndowm Sprint 2</a>   <br>
+<a href="#burndown_sprint_3">Burndowm Sprint 3</a>   <br>
 <a href="#dod">DOD (Definition of Done)</a>   <br>
 <a href="#funcionalidades_sprint_3">Funcionalidades implementadas</a>
 
@@ -25,11 +25,11 @@ Na terceira e última sprint direcionamos a atenção para implemantação das �
 
 <br>
 
-<!-- <h2 id="modelo_de_dados" align="center">Modelo de dados</h2>
+<h2 id="modelo_de_dados" align="center">Modelo de dados</h2>
 
 <div align="center">
   <img src="./midias/dor/modelo_de_dados.png" width="800"/>
-</div>-->
+</div>
 
 <h2 id="use_cases">Use Cases</h2>
 
@@ -122,18 +122,9 @@ Na terceira e última sprint direcionamos a atenção para implemantação das �
 <h3 align="center">Tela de Login</h3>
 
 <!-- divs abaixo usadas somente para centralizar as imagens, o align center não estava funciionando na tag img -->
-<h4> • Relatórios</h4>
 <div align="center">
   <img src="./midias/dor/wireframes/tela_login.png" width="800">
 </div>
-
-<!-- <br>
-
-<h3 align="center">Dashboard página inicial</h3>
-<div align="center">
-  <img src="./midias/dor/wireframes/dashboard.png" width="800">
-  <!-- <img src="./midias/dor/wireframes/" width="800"> -->
-</div> -->
 
 <br>
 
@@ -142,6 +133,8 @@ Na terceira e última sprint direcionamos a atenção para implemantação das �
   <img src="./midias/dor/wireframes/alertas_de_consumo.png" width="800">
   <!-- <img src="./midias/dor/wireframes/" width="800"> -->
 </div>
+
+<br>
 
 <h3 align="center">Área de relatórios e gráficos para contas de água cadastradas</h3>
 
@@ -176,6 +169,8 @@ Na terceira e última sprint direcionamos a atenção para implemantação das �
 
 <br>
 
+<h1 id="dod">Definition of Done<h1>
+
 <h2 id="burndown_sprint_3">Burndown da Sprint<h2>
 
 <h3 align="center">
@@ -184,41 +179,24 @@ Na terceira e última sprint direcionamos a atenção para implemantação das �
 
 <br>
 
-<h1 id="dod">Definition of Done<h1>
-
 <h2 id="funcionalidades_sprint_3">Funcionalidades da Sprint</h2>
 
 <br>
 
-<h3 align="center"></h3>
-<img align="center" src = "./midias/dod/"/>
+<h3 align="center">Login e níveis de acesso de usuários</h3>
+<img align="center" src="./midias/dod/gifs_funcionalidades/login_niveis_acesso.gif"/>
 
 <br>
 
-<h3 align="center"></h3>
-<img align="center" src = "./midias/dod/"/>
+<h3 align="center">Dashboard na página inicial</h3>
+<img align="center" src = "./midias/dod/gifs_funcionalidades/dashboard.gif"/>
 
 <br>
 
-<h3 align="center"></h3>
-<img src = "./midias/dod/"/>
+<h3 align="center">Alertas de valores e consumo acima da média</h3>
+<img src = "./midias/dod/gifs_funcionalidades/alertas_consumo.gif"/>
 
 <br>
 
-<h3 align="center"></h3>
-<img align="center"  src = "./midias/dod/contrato_energia.gif"/>
-
-<br>
-
-<h3 align="center"></h3>
-<img align="center"  src = "./midias/dod/"/>
-
-<br>
-
-<h3 align="center"></h3>
-<img align="center"  src = "./midias/dod/"/>
-
-<br>
-
-<h3 align="center"></h3>
-<img align="center"  src = "./midias/dod/"/>
+<h3 align="center">Relatórias e gráficos de contas de água e energia</h3>
+<img align="center"  src = "./midias/dod/gifs_funcionalidades/relatorios_e_graficos.gif"/>
