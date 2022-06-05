@@ -66,7 +66,7 @@ public class ContaEnergiaControle {
 		}
 	}
 
-	@GetMapping("/download/contadeenergia/{id}")
+	@GetMapping("/download/contaenergia/{id}")
 	public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable long id) {
 		ContaEnergia contaEnergia = repositorio.findById(id).get();
 		return ResponseEntity.ok()
