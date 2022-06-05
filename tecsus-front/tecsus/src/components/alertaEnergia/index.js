@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
-import { Alert } from '@material-ui/lab';
+import { Alert } from "@material-ui/lab";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -20,81 +20,76 @@ const StyledTableCell = withStyles((theme) => ({
 
 const StyledTableRow = withStyles((theme) => ({
   root: {
-    '&:nth-of-type(odd)': {
+    "&:nth-of-type(odd)": {
       backgroundColor: theme.palette.hover,
     },
   },
 }))(TableRow);
 
-const useStyles= makeStyles({
+const useStyles = makeStyles({
   table: {
     width: 1200,
-    
   },
   body: {
     backgroundColor: "#fff",
   },
-
 });
 
 export default function TotalEnergia() {
   const classes = useStyles();
   const [avissoEnergia, setAvissoEnergia] = useState([]);
 
-useEffect(() => {
-  AvissoEner();
-}, []);
+  useEffect(() => {
+    AvissoEner();
+  }, []);
 
-async function AvissoEner() {
-  try {
-    const response = await fetch(`${baseURL}/contadeenergia`,
-      {
+  async function AvissoEner() {
+    try {
+      const response = await fetch(`${baseURL}/contadeenergia`, {
         method: "GET",
-      }
-    );
-    const data = await response.json();
-    setAvissoEnergia(data);
-  } 
-  catch (error) {
-    console.log(error.message);
+      });
+      const data = await response.json();
+      setAvissoEnergia(data);
+    } catch (error) {
+      console.log(error.message);
+    }
   }
-  
-}
 
-const comparar_TotalEnergia = avissoEnergia.map((x)=>{
-  if ( x.valor_total >= x.contaenergia_contrato_id.valor_medio){ 
-    return( 
-      <Alert severity="error" variant="filled" icon={false}>
-        Atenção - Valor total acima da média
-      </Alert>
-  )
- } else if(x.valor_total < x.contaenergia_contrato_id.valor_medio ){
-    return(
-      <Alert severity="success" variant="filled" icon={false}>
-        Abaixo - Valor total abaixo da média
-      </Alert>
-      )  
-  }}
-)
-const comparar_consumoEnergia = avissoEnergia.map((x)=>{
-  if ( x.quantidade_kwh_mes >= x.contaenergia_contrato_id.media_consumo_kwm){ 
-    return( 
-      <Alert severity="error" variant="filled" icon={false}>
-        Atenção - Consumo acima da média
-      </Alert>
-  )
- } else if(x.quantidade_kwh_mes < x.contaenergia_contrato_id.media_consumo_kwm ){
-    return(
-      <Alert severity="success" variant="filled" icon={false}>
-        Abaixo - Consumo abaixo da média
-      </Alert>
-      )  
-  }}
-)
+  const comparar_TotalEnergia = (x) => {
+    if (x.valor_total >= x.contaenergia_contrato_id.valor_medio) {
+      return (
+        <Alert severity="error" variant="filled" icon={false}>
+          Atenção - Valor total acima da média
+        </Alert>
+      );
+    } else {
+      return (
+        <Alert severity="success" variant="filled" icon={false}>
+          Abaixo - Valor total abaixo da média
+        </Alert>
+      );
+    }
+  };
+
+  const comparar_consumoEnergia = (x) => {
+    if (x.quantidade_kwh_mes >= x.contaenergia_contrato_id.media_consumo_kwm) {
+      return (
+        <Alert severity="error" variant="filled" icon={false}>
+          Atenção - Consumo acima da média
+        </Alert>
+      );
+    } else {
+      return (
+        <Alert severity="success" variant="filled" icon={false}>
+          Abaixo - Consumo abaixo da média
+        </Alert>
+      );
+    }
+  };
 
   return (
-    <div> 
-      <div>        
+    <div>
+      <div>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
@@ -113,20 +108,26 @@ const comparar_consumoEnergia = avissoEnergia.map((x)=>{
               <StyledTableRow key={x.id}>
                 <StyledTableCell>{x.id}</StyledTableCell>
                 <StyledTableCell align="left">{x.valor_total}</StyledTableCell>
-                <StyledTableCell align="left">{x.contaenergia_contrato_id.valor_medio}</StyledTableCell>
-                <StyledTableCell align="left">{x.quantidade_kwh_mes} </StyledTableCell>
-                <StyledTableCell align="left">{x.contaenergia_contrato_id.media_consumo_kwm} </StyledTableCell>
-                <StyledTableCell align="left">{comparar_TotalEnergia}</StyledTableCell>
-                <StyledTableCell align="left">{comparar_consumoEnergia}</StyledTableCell>
+                <StyledTableCell align="left">
+                  {x.contaenergia_contrato_id.valor_medio}
+                </StyledTableCell>
+                <StyledTableCell align="left">
+                  {x.quantidade_kwh_mes}
+                </StyledTableCell>
+                <StyledTableCell align="left">
+                  {x.contaenergia_contrato_id.media_consumo_kwm}
+                </StyledTableCell>
+                <StyledTableCell align="left">
+                  {comparar_TotalEnergia(x)}
+                </StyledTableCell>
+                <StyledTableCell align="left">
+                  {comparar_consumoEnergia(x)}
+                </StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>
         </Table>
       </div>
-  
-    
-    
-    
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
-import { Alert} from '@material-ui/lab';
+import { Alert } from "@material-ui/lab";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -20,16 +20,15 @@ const StyledTableCell = withStyles((theme) => ({
 
 const StyledTableRow = withStyles((theme) => ({
   root: {
-    '&:nth-of-type(odd)': {
+    "&:nth-of-type(odd)": {
       backgroundColor: theme.palette.hover,
     },
   },
 }))(TableRow);
 
-const useStyles= makeStyles({
+const useStyles = makeStyles({
   table: {
     width: 1200,
-    
   },
   body: {
     backgroundColor: "#fff",
@@ -40,62 +39,57 @@ export default function AA() {
   const classes = useStyles();
   const [avissoAgua, setAvissoAgua] = useState([]);
 
-useEffect(() => {
-  AvissoAgua();
-}, []);
+  useEffect(() => {
+    AvissoAgua();
+  }, []);
 
-async function AvissoAgua() {
-  try {
-    const response = await fetch(`${baseURL}/contadeagua`,
-      {
+  async function AvissoAgua() {
+    try {
+      const response = await fetch(`${baseURL}/contadeagua`, {
         method: "GET",
-      }
-    );
-    const data = await response.json();
-    setAvissoAgua(data);
-  } 
-  catch (error) {
-    console.log(error.message);
+      });
+      const data = await response.json();
+      setAvissoAgua(data);
+    } catch (error) {
+      console.log(error.message);
+    }
   }
-  
-}
 
-const comparar_Total = avissoAgua.map((x)=>{
-  if( x.valor_total >= x.contaagua_contrato_id.valor_medio) { 
-    return(
-      <Alert severity="error" variant="filled" icon={false}>
-      Atenção - Valor total acima da média
-      </Alert>
-    )
-  }
-  else if(x.valor_total < x.contaagua_contrato_id.valor_medio){
-    return(
-      <Alert severity="success" variant="filled" icon={false}>
-        Abaixo - Valor total abaixo da média
-      </Alert>
-    )
-  } 
-})
+  const comparar_Total = (x) => {
+    if (x.valor_total >= x.contaagua_contrato_id.valor_medio) {
+      return (
+        <Alert severity="error" variant="filled" icon={false}>
+          Atenção - Valor total acima da média
+        </Alert>
+      );
+    } else {
+      return (
+        <Alert severity="success" variant="filled" icon={false}>
+          Abaixo - Valor total abaixo da média
+        </Alert>
+      );
+    }
+  };
 
-const comparar_Consumo = avissoAgua.map((x)=>{
-    if( x.consumo_m3 > x.media_consumo) { 
-       return(
+  const comparar_Consumo = (x) => {
+    if (x.consumo_m3 > x.media_consumo) {
+      return (
         <Alert severity="error" variant="filled" icon={false}>
           Atenção - Consumo acima da média
         </Alert>
-       )
-    }
-      else if(x.consumo_m3 < ( x.media_consumo  ) ){
-        return(
+      );
+    } else {
+      return (
         <Alert severity="success" variant="filled" icon={false}>
-          Abaixo - Consumo abaixo da média 
+          Abaixo - Consumo abaixo da média
         </Alert>
-      )     
+      );
     }
-})
+  };
+
   return (
-    <div> 
-      <div>        
+    <div>
+      <div>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
@@ -114,11 +108,19 @@ const comparar_Consumo = avissoAgua.map((x)=>{
               <StyledTableRow key={x.id}>
                 <StyledTableCell>{x.id}</StyledTableCell>
                 <StyledTableCell align="left">{x.valor_total}</StyledTableCell>
-                <StyledTableCell align="left">{x.contaagua_contrato_id.valor_medio}</StyledTableCell>
+                <StyledTableCell align="left">
+                  {x.contaagua_contrato_id.valor_medio}
+                </StyledTableCell>
                 <StyledTableCell align="left">{x.consumo_m3} </StyledTableCell>
-                <StyledTableCell align="left">{x.media_consumo} </StyledTableCell>
-                <StyledTableCell align="left">{comparar_Total}</StyledTableCell>
-                <StyledTableCell align="left">{comparar_Consumo}</StyledTableCell>
+                <StyledTableCell align="left">
+                  {x.media_consumo}
+                </StyledTableCell>
+                <StyledTableCell align="left">
+                  {comparar_Total(x)}
+                </StyledTableCell>
+                <StyledTableCell align="left">
+                  {comparar_Consumo(x)}
+                </StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>

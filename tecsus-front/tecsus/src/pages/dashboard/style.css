@@ -1,0 +1,20 @@
+.containerDashboard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding:20px 0;
+    margin-left:284px
+
+}
+
+.titulo{
+    margin-bottom: 40px;
+}
+
+.info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
