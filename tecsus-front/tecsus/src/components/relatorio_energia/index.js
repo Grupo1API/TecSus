@@ -65,12 +65,11 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Relatorio_energia({listaRelatorioEnergia}) {
+export default function Relatorio_energia({ listaRelatorioEnergia }) {
   const classes = useStyles();
   const [modalEdit, setModalEdit] = useState(false);
   const [dados, setDados] = useState([]);
   const [modalInfo, setModalInfo] = useState(false);
-
 
   async function handleDelete(id) {
     const data = {
@@ -107,8 +106,8 @@ export default function Relatorio_energia({listaRelatorioEnergia}) {
         </TableHead>
 
         <TableBody className={classes.body}>
-          {listaRelatorioEnergia.map((x) =>{          
-            return(
+          {listaRelatorioEnergia.map((x) => {
+            return (
               <StyledTableRow key={x.id}>
                 <StyledTableCell>{x.id}</StyledTableCell>
                 <StyledTableCell align="left">{x.emissao}</StyledTableCell>
@@ -141,22 +140,25 @@ export default function Relatorio_energia({listaRelatorioEnergia}) {
                     <EditIcon />
                   </IconButton>
 
-                  <IconButton
-                    color="primary"
-                    // onClick={() => {
-                    //   setModalEdit(true);
-                    //   setDados(x);
-                    // }}
-                  >
-                    <ArchiveIcon />
+                  <IconButton color="primary">
+                    <a
+                      href={`https://tecsus.herokuapp.com/download/contadeenergia/${x.id}`}
+                      target="_blank"
+                    >
+                      <ArchiveIcon />
+                    </a>
                   </IconButton>
 
-                  <IconButton color="primary" onClick={() => handleDelete(x.id)}>
+                  <IconButton
+                    color="primary"
+                    onClick={() => handleDelete(x.id)}
+                  >
                     <DeleteIcon />
                   </IconButton>
                 </StyledTableCell>
               </StyledTableRow>
-            )})}
+            );
+          })}
         </TableBody>
       </Table>
       {modalEdit && (

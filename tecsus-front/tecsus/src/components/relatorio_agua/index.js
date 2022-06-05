@@ -70,7 +70,6 @@ export default function Relatorio_agua({ listaRelatorioAguas }) {
   const [modalEdit, setModalEdit] = useState(false);
   const [modalInfo, setModalInfo] = useState(false);
   const [dados, setDados] = useState();
-  const [upload, setUpload] = useState("");
 
   async function handleDelete(id) {
     const data = {
@@ -83,15 +82,6 @@ export default function Relatorio_agua({ listaRelatorioAguas }) {
       },
       body: JSON.stringify(data),
     });
-  }
-  async function handleUpload() {
-    const blob = new Blob(upload);
-    const reader = new FileReader();
-    reader.readAsDataURL(blob);
-    reader.onloadend = function () {
-      const base64data = reader.result;
-      console.log(base64data);
-    };
   }
 
   function handleClose(event) {
@@ -148,14 +138,13 @@ export default function Relatorio_agua({ listaRelatorioAguas }) {
                     <EditIcon />
                   </IconButton>
 
-                  <IconButton
-                    color="primary"
-                    onClick={() => {
-                      setUpload(x.arquivo);
-                      handleUpload();
-                    }}
-                  >
-                    <ArchiveIcon />
+                  <IconButton color="primary">
+                    <a
+                      href={`https://tecsus.herokuapp.com/download/contadeagua/${x.id}`}
+                      target="_blank"
+                    >
+                      <ArchiveIcon />
+                    </a>
                   </IconButton>
 
                   <IconButton
