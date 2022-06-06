@@ -2,7 +2,7 @@
 
 <h1>:ballot_box_with_check: SPRINT 2</h1>
 
-Nesta sprint mantivemos o foco na implementação da ligação entre as tabelas do banco de dados, na implementação de atalhos para preenchimento de campos do formulário, upload para aquivos (contas de água e energia) e na disponibilização dos dados cadastrados atráves de um quadro que possibilita edições e deleção diretamente pela interface do software.
+<p align="justify">Nesta sprint mantivemos o foco na implementação da ligação entre as tabelas do banco de dados, na implementação de atalhos para preenchimento de campos do formulário, upload para aquivos (contas de água e energia) e na disponibilização dos dados cadastrados atráves de um quadro que possibilita edições e deleção diretamente pela interface do software.</p>
 <br>
 
 <h1>Sumário</h1>
@@ -34,7 +34,7 @@ Nesta sprint mantivemos o foco na implementação da ligação entre as tabelas 
 <h2 id="use_cases">Use Cases</h2>
 
 <div id="table_use_cases" align="center" width="400">
-  <table>
+  <table align="justify">
     <tr>
       <th>User Story id</th>
       <th>Como um (ator)</th>

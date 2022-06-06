@@ -2,7 +2,7 @@
 
 <h1>:ballot_box_with_check: SPRINT 1</h1>
 
-Após o cliente aprovar o protótipo apresentado, o desenvolvimento do projeto se baseou em focar no principal objetivo do sistema, que é o cadastro e gerenciam de dados, desenvolvendo a princípio as principais funções: Cadastro de conta de energia e água, contratos de fornecimento para energia e água, cadastro para concessionárias responsáveis pela distriuição e unidades que recebem esses serviços.
+<p align="justify">Após o cliente aprovar o protótipo apresentado, o desenvolvimento do projeto se baseou em focar no principal objetivo do sistema, que é o cadastro e gerenciam de dados, desenvolvendo a princípio as principais funções: Cadastro de conta de energia e água, contratos de fornecimento para energia e água, cadastro para concessionárias responsáveis pela distriuição e unidades que recebem esses serviços.</p>
 
 <h1>Sumário</h1>
 <a href="#dor">DOR (Definition od Ready)</a>   <br>
@@ -30,7 +30,7 @@ Após o cliente aprovar o protótipo apresentado, o desenvolvimento do projeto s
 <h2 id="use_cases">Use Cases</h2>
 
 <div id="table_use_cases" align="center" width="400">
-  <table>
+  <table align="justify">
     <tr>
       <th>User Story id</th>
       <th>Como um (ator)</th>
