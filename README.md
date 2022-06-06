@@ -61,9 +61,9 @@
 ## 📆 Cronograma das Sprints
 
 - <img src = "./readme/grupoAPI/feito.jpeg" /> Kick-Off - 15/03/2022
-- <img src = "./readme/grupoAPI/feito.jpeg" /> <a href="https://github.com/Grupo1API/TecSus/tree/main/readme/sprint_1">Sprint 1</a> - 25/03/2022 a 14/04/2022
-- <img src = "./readme/grupoAPI/feito.jpeg" /> <a href="https://github.com/Grupo1API/TecSus/tree/main/readme/sprint_2">Sprint 2</a> - 04/2022 a 15/05/2022
-- <img src = "./readme/grupoAPI/feito.jpeg" /><a href="https://github.com/Grupo1API/TecSus/tree/main/readme/sprint_3">Sprint 3</a> - 16/05/2022 a 05/06/2022
+- <img src = "./readme/grupoAPI/feito.jpeg" /> <a target="_blank" href="https://github.com/Grupo1API/TecSus/tree/main/readme/sprint_1">Sprint 1</a> - 25/03/2022 a 14/04/2022
+- <img src = "./readme/grupoAPI/feito.jpeg" /> <a target="_blank" href="https://github.com/Grupo1API/TecSus/tree/main/readme/sprint_2">Sprint 2</a> - 04/2022 a 15/05/2022
+- <img src = "./readme/grupoAPI/feito.jpeg" /><a target="_blank" href="https://github.com/Grupo1API/TecSus/tree/main/readme/sprint_3">Sprint 3</a> - 16/05/2022 a 05/06/2022
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" /> [Feira de Soluções](https://youtu.be/xGE51h8fBuY) - 15/06/2022
 
 <br>
