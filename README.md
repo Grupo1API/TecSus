@@ -29,8 +29,6 @@
 
 <br id="sprints-backlog">
 
-### **Status do Projeto: Em progresso.**
-
 <br id="proposta">
 
 ## 🎯 Proposta
@@ -63,11 +61,14 @@
 - <img src = "./readme/grupoAPI/feito.jpeg" /> Kick-Off - 15/03/2022
 - <img src = "./readme/grupoAPI/feito.jpeg" /> <a href="https://github.com/Grupo1API/TecSus/tree/main/readme/sprint_1" target="_blank">Sprint 1</a> - 25/03/2022 a 14/04/2022
 - <img src = "./readme/grupoAPI/feito.jpeg" /> <a href="https://github.com/Grupo1API/TecSus/tree/main/readme/sprint_2" target="_blank">Sprint 2</a> - 04/2022 a 15/05/2022
-- <img src = "./readme/grupoAPI/feito.jpeg" /><a href="https://github.com/Grupo1API/TecSus/tree/main/readme/sprint_3" target="_blank">Sprint 3</a> - 16/05/2022 a 05/06/2022
+- <img src = "./readme/grupoAPI/feito.jpeg" /><a href="https://github.com/Grupo1API/TecSus/tree/main/readme/sprint_3" target="_blank"> Sprint 3</a> - 16/05/2022 a 05/06/2022
 - <img src = "./readme/grupoAPI/a_fazer.jpeg" /> [Feira de Soluções](https://youtu.be/xGE51h8fBuY) - 15/06/2022
 
 <br>
-<!--add cronograma sprints figma-->
+
+### **Status do Projeto: Concluído.**
+
+<br>
 <h1 align="center"> 
 <img src = "./readme/framesFigma/cronogramaSprints.png" width="800"/></h1>
 
