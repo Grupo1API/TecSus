@@ -10,7 +10,7 @@
 <a href="#backlog_sprint_2">Backlog Sprint 2</a>   <br>
 <a href="#modelo_de_dados">Modelo de dados</a>   <br>
 <a href="#use_cases">Use Cases</a>   <br>
-<a href="#wireframes">Wireframes</a>   <br>
+<a href="#mockups">Mockups</a>   <br>
 <a href="#burndown_sprint_2">Burndowm Sprint 2</a>   <br>
 <a href="#dod">DOD (Definition of Done)</a>   <br>
 <a href="#funcionalidades_sprint_1">Funcionalidades implementadas</a>
@@ -89,66 +89,66 @@
 
 <br>
 
-<h2 id="wireframes">Wireframes</h2>
+<h2 id="mockups">Mockups</h2>
 
 <h3 align="center">Quadro de controle para concessionárias cadastradas</h3>
 
 <!-- divs abaixo usadas somente para centralizar as imagens, o align center não estava funciionando na tag img -->
 <div align="center">
-  <img src="./midias/dor/wireframes/concessionaria/quadro_concessionaria.png" width="800">
+  <img src="./midias/dor/mockups/concessionaria/quadro_concessionaria.png" width="800">
 </div>
 <h4> • Leitura</h4>
 <div align="center">
-  <img src="./midias/dor/wireframes/concessionaria/quadro_concessionaria_read.png" width="800">
+  <img src="./midias/dor/mockups/concessionaria/quadro_concessionaria_read.png" width="800">
 </div>
 <h4> • Edição</h4>
 <div align="center">
-  <img align="center" src="./midias/dor/wireframes/concessionaria/quadro_concessionaria_update.png" width="800">
+  <img align="center" src="./midias/dor/mockups/concessionaria/quadro_concessionaria_update.png" width="800">
 </div>
 
 <br>
 
 <h3 align="center">Quadro de controle para unidades cadastradas</h3>
 <div align="center">
-  <img src="./midias/dor/wireframes/unidade/quadro_unidade.png" width="800">
+  <img src="./midias/dor/mockups/unidade/quadro_unidade.png" width="800">
 </div>
 <h4> • Leitura</h4>
 <div align="center">
-  <img src="./midias/dor/wireframes/unidade/quadro_unidade_read.png" width="800">
+  <img src="./midias/dor/mockups/unidade/quadro_unidade_read.png" width="800">
 </div>
 <h4> • Edição</h4>
 <div align="center">
-  <img src="./midias/dor/wireframes/unidade/quadro_unidade_update.png" width="800">
+  <img src="./midias/dor/mockups/unidade/quadro_unidade_update.png" width="800">
 </div>
 
 <br>
 
 <h3 align="center">Quadro de controle para contratos de água</h3>
 <div align="center">
-  <img src="./midias/dor/wireframes/contrato_agua/quadro_contrato_agua.png" width="800">
+  <img src="./midias/dor/mockups/contrato_agua/quadro_contrato_agua.png" width="800">
 </div>
 <h4> • Leitura</h4>
 <div align="center">
-  <img src="./midias/dor/wireframes/contrato_agua/quadro_contrato_agua_read.png" width="800">
+  <img src="./midias/dor/mockups/contrato_agua/quadro_contrato_agua_read.png" width="800">
 </div>
 <h4> • Edição</h4>
 <div align="center">
-  <img src="./midias/dor/wireframes/contrato_agua/quadro_contrato_agua_update.png" width="800">
+  <img src="./midias/dor/mockups/contrato_agua/quadro_contrato_agua_update.png" width="800">
 </div>
 
 <br>
 
 <h3 align="center">Quadro de controle para contratos de energia</h3>
 <div align="center">
-  <img src="./midias/dor/wireframes/contrato_energia/quadro_contrato_energia.png" width="800">
+  <img src="./midias/dor/mockups/contrato_energia/quadro_contrato_energia.png" width="800">
 </div>
 <h4> • Leitura</h4>
 <div align="center">
-  <img src="./midias/dor/wireframes/contrato_energia/quadro_contrato_energia_read.png" width="800">
+  <img src="./midias/dor/mockups/contrato_energia/quadro_contrato_energia_read.png" width="800">
 </div>
 <h4> • Edição</h4>
 <div align="center">
-  <img src="./midias/dor/wireframes/contrato_energia/quadro_contrato_energia_update.png" width="800">
+  <img src="./midias/dor/mockups/contrato_energia/quadro_contrato_energia_update.png" width="800">
 </div>
 
 <br>

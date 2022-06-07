@@ -9,7 +9,7 @@
 <a href="#backlog_sprint_1">Backlog Sprint 1</a>   <br>
 <a href="#modelo_de_dados">Modelo de dados</a>   <br>
 <a href="#use_cases">Use Cases</a>   <br>
-<a href="#wireframes">Wireframes</a>   <br>
+<a href="#mockups">Mockups</a>   <br>
 <a href="#burndown_sprint_1">Burndowm Sprint 1</a>   <br>
 <a href="#dod">DOD (Definition of Done)</a>   <br>
 <a href="#funcionalidades_sprint_1">Funcionalidades implementadas</a>
@@ -92,27 +92,27 @@
 
 <br>
 
-<h2 id="wireframes">Wireframes</h2>
+<h2 id="mockups">Mockups</h2>
 
 <h3 align="center">Formulário para cadastro de concessionárias
-<img src="./midias/dor/wireframes/form_concessionaria.png" width="800">
+<img src="./midias/dor/mockups/form_concessionaria.png" width="800">
 
 <h3 align="center">Formulário para cadastro de unidades
-<img src="./midias/dor/wireframes/form_unidade.png" width="800"></h3>
+<img src="./midias/dor/mockups/form_unidade.png" width="800"></h3>
 
 <h3 align="center">Formulário para cadastro de contrato de fornecimento de água
-<img src="./midias/dor/wireframes/contrato_agua.png" width="800"></h3>
+<img src="./midias/dor/mockups/contrato_agua.png" width="800"></h3>
 
 <h3 align="center">Formulário para cadastro de contrato de fornecimento de energia
-<img src="./midias/dor/wireframes/contrato_energia.png" width="800"></h3>
+<img src="./midias/dor/mockups/contrato_energia.png" width="800"></h3>
 
 <h3 align="center">Formulário para cadastro conta/fatura de água
-<img src="./midias/dor/wireframes/pt1_conta_agua.png" width="800">
-<img src="./midias/dor/wireframes/pt2_conta_agua.png" width="800"></h3>
+<img src="./midias/dor/mockups/pt1_conta_agua.png" width="800">
+<img src="./midias/dor/mockups/pt2_conta_agua.png" width="800"></h3>
 
 <h3 align="center">Formulário para cadastro conta/fatura de energia
-<img src="./midias/dor/wireframes/pt1_conta_energia.png" width="800">
-<img src="./midias/dor/wireframes/pt2_conta_energia.png" width="800"></h3>
+<img src="./midias/dor/mockups/pt1_conta_energia.png" width="800">
+<img src="./midias/dor/mockups/pt2_conta_energia.png" width="800"></h3>
 
 <br>
 

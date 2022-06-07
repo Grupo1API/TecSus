@@ -44,7 +44,7 @@
 - <img src = "./readme/grupoAPI/feito.jpeg" /> Cadastro (digitação) da conta de água e energia;
 - <img src = "./readme/grupoAPI/feito.jpeg" /> Relatório de consumo total de água mensal, anual e média;
 - <img src = "./readme/grupoAPI/feito.jpeg" /> Relatório de consumo total de energia mensal, anual e média;
-- <img src = "./readme/grupoAPI/feito.jpeg" /> Upload de arquivos;
+- <img src = "./readme/grupoAPI/feito.jpeg" /> Upload e download de arquivos;
 - <img src = "./readme/grupoAPI/feito.jpeg" /> Painel adminitrativo para alterações;
 - <img src = "./readme/grupoAPI/feito.jpeg" /> Geração de alertas de consumo acima da média (a média pode ser definida no cadastro
   do contrato);

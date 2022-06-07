@@ -11,7 +11,7 @@
 <a href="#backlog_sprint_3">Backlog Sprint 2</a>   <br>
 <a href="#modelo_de_dados">Modelo de dados</a>   <br>
 <a href="#use_cases">Use Cases</a>   <br>
-<a href="#wireframes">Wireframes</a>   <br>
+<a href="#mockups">Mockups</a>   <br>
 <a href="#burndown_sprint_3">Burndowm Sprint 3</a>   <br>
 <a href="#dod">DOD (Definition of Done)</a>   <br>
 <a href="#funcionalidades_sprint_3">Funcionalidades implementadas</a>
@@ -118,21 +118,21 @@
 
 <br>
 
-<h2 id="wireframes">Wireframes</h2>
+<h2 id="mockups">Mockups</h2>
 
 <h3 align="center">Tela de Login</h3>
 
 <!-- divs abaixo usadas somente para centralizar as imagens, o align center não estava funciionando na tag img -->
 <div align="center">
-  <img src="./midias/dor/wireframes/tela_login.png" width="800">
+  <img src="./midias/dor/mockups/tela_login.png" width="800">
 </div>
 
 <br>
 
 <h3 align="center">Área de exibição de alerta de consumo e valores acima da média para as contas de água e energia cadastradas</h3>
 <div align="center">
-  <img src="./midias/dor/wireframes/alertas_de_consumo.png" width="800">
-  <!-- <img src="./midias/dor/wireframes/" width="800"> -->
+  <img src="./midias/dor/mockups/alertas_de_consumo.png" width="800">
+  <!-- <img src="./midias/dor/mockups/" width="800"> -->
 </div>
 
 <br>
@@ -140,15 +140,15 @@
 <h3 align="center">Área de relatórios e gráficos para contas de água cadastradas</h3>
 
 <div align="center">
-  <img src="./midias/dor/wireframes/relatorio_agua/relatorio_contas_agua.png" width="800">
+  <img src="./midias/dor/mockups/relatorio_agua/relatorio_contas_agua.png" width="800">
 </div>
 <h4> • Gráfico Consumo Mensal</h4>
 <div align="center">
-  <img src="./midias/dor/wireframes/relatorio_agua/grafico_consumo_mes_agua.jpeg" width="800">
+  <img src="./midias/dor/mockups/relatorio_agua/grafico_consumo_mes_agua.jpeg" width="800">
 </div>
 <h4> • Gráfico Valor Total Mensal</h4>
 <div align="center">
-  <img src="./midias/dor/wireframes/relatorio_agua/grafico_valor_total_mes_agua.png" width="800">
+  <img src="./midias/dor/mockups/relatorio_agua/grafico_valor_total_mes_agua.png" width="800">
 </div>
 
 <br>
@@ -157,15 +157,15 @@
 
 <h4> • Relatórios</h4>
 <div align="center">
-  <img src="./midias/dor/wireframes/relatorio_energia/relatorio_contas_energia.png" width="800">
+  <img src="./midias/dor/mockups/relatorio_energia/relatorio_contas_energia.png" width="800">
 </div>
 <h4> • Gráfico Consumo Mensal</h4>
 <div align="center">
-  <img src="./midias/dor/wireframes/relatorio_energia/grafico_consumo_mes_energia.png" width="800">
+  <img src="./midias/dor/mockups/relatorio_energia/grafico_consumo_mes_energia.png" width="800">
 </div>
 <h4> • Gráfico Valor Total Mensal</h4>
 <div align="center">
-  <img src="./midias/dor/wireframes/relatorio_energia/grafico_valor_total_mes_energia.png" width="800">
+  <img src="./midias/dor/mockups/relatorio_energia/grafico_valor_total_mes_energia.png" width="800">
 </div>
 
 <br>
